@@ -43,15 +43,18 @@
 | wiring-seam-monolithic-index-component | 0 | 0 | 3 | 0 | weak-1-repo | No | claude-to-claude |
 | analytics-then-action-bot-human-split | 0 | 0 | 3 | 0 | weak-1-repo | No | user-to-user |
 | four-feature-tier-classifier-monotonic | 3 | 1 | 2 | 0 | strong-2-repos | Yes | user-to-user |
+| absorbed-rather-than-shipped (gap-closure round; CampaignCraft inferred via cor-sys PR#16) | 3* | 0 | 0 | 0 | weak-1-repo-inferred | No (terminal-positive end-state candidate; promote if a second absorption case appears) | user-to-user |
+
+*CampaignCraft is inferred from the absorbed surface at cor-sys PR #16. See `/research/cor-sys/campaigncraft-absorption-detail.md` for the full mini-profile.
 
 ## Promoted patterns by dimension
 
 - **claude-to-user** (3): editorial-commit-voice-escalation; auto-pr-on-claude-branch; pr-body-verbosity-correlates-with-ttm
-- **user-to-claude** (3): hebrew-bilingual-cognition-medium; branch-as-sprint-container; (also see claude-to-user overlap)
+- **user-to-claude** (2): hebrew-bilingual-cognition-medium; branch-as-sprint-container
 - **claude-to-claude** (5): claude-coauthored-trailer-convention; conventional-commit-prefix-on-claude-commits; test-scaffold-installed-never-used; zero-deletion-of-bot-generated-files; ai-cross-review-multi-agent-handoff
-- **user-to-user** (8): lovable-render-claude-write-coexistence; non-template-domain-dep-predicts-resumption; bot-blast-then-human-resumption; readme-placeholder-survives-to-head; zero-issues-zero-prs-prototype-shape; third-party-saas-replaces-backend; publish-button-as-success-condition; four-feature-tier-classifier-monotonic
+- **user-to-user** (7): lovable-render-claude-write-coexistence; non-template-domain-dep-predicts-resumption; bot-blast-then-human-resumption; readme-placeholder-survives-to-head; zero-issues-zero-prs-prototype-shape; third-party-saas-replaces-backend; publish-button-as-success-condition; four-feature-tier-classifier-monotonic
 
-Total promoted: **17 patterns**. Single-repo patterns (15) remain as data, not insights.
+Total promoted: **17 patterns** (unchanged from Phase 2). Single-repo patterns (16, one added in gap-closure): retained as data, not promoted.
 
 ## Strength scoring legend
 
@@ -60,11 +63,18 @@ Total promoted: **17 patterns**. Single-repo patterns (15) remain as data, not i
 - **2** — moderate (multiple occurrences; load-bearing; visible to a reader skimming the repo)
 - **3** — strong (defining feature of the repo's identity at HEAD; cannot be missed)
 
+## Gap-closure addition (2026-05-12)
+
+The `absorbed-rather-than-shipped` candidate row was added after the CampaignCraft mini-profile was extracted from cor-sys PR #16. It represents a 5th end-state on the maturity ladder (active managed system; sustained editorial brand; frozen prototype; abandoned at publish; **absorbed into parent system**) that does not fit cleanly into the existing 4-tier framework.
+
+The pattern cannot promote at strength-2-repos because only one absorbed instance is in the dataset. It is parked as a candidate awaiting a second observed absorption.
+
 ## Cross-references
 
 - Skill: `/.claude/skills/cross-repo-comparator.md`
 - Pipeline: `/pipelines/cross-repo-diff.md`
 - Narrative companion: `/research/cross-repo/synthesis.md`
+- CampaignCraft profile: `/research/cor-sys/campaigncraft-absorption-detail.md`
 - Source observation files:
   - `/research/cor-sys/extracted-insights.md` (12 observations)
   - `/research/groundstate-protocol/extracted-insights.md` (10 observations)

@@ -4,54 +4,89 @@
 
 ## Current State
 
-- **Phase**: 1 — cor-sys complete; groundstate-protocol next
-- **Last-touched repo**: cor-sys (6 artifacts written; 12 raw observations)
-- **Active research target**: groundstate-protocol (queued, not started)
+- **Phase**: 2 — cross-repo synthesis complete; Phase 3 (insight distillation + skills/commands) next
+- **Last-touched repo**: lessons (cross-repo synthesis written)
+- **Active research targets**: all 4 repos done (cor-sys, groundstate-protocol, chess-mind-patterns, core-unified-consciousness)
+- **Raw observations gathered**: 43 across 4 repos
+- **Promoted cross-repo patterns**: 17 (passing the ≥2 repos × strength≥2 gate)
+- **Single-repo candidates**: 15 (retained as data, not promoted)
 - **Skills built**: 0 of 5 planned (scaffold placeholders only)
 - **Commands built**: 0 of 6 planned (scaffold placeholders only)
-- **Insights distilled**: 0 (distillation happens in Phase 3)
+- **Insights distilled**: 0 (Phase 3 starts here)
 - **Insights monetized (passed audit)**: 0
 - **Playbooks shipped**: 0 of 3 target
 
-## Open Monetization Candidates (from cor-sys deep dive)
+## Promoted patterns count per dimension
 
-High-signal patterns worth promoting to cross-repo check (Phase 2):
+| Dimension | Count | Patterns |
+|-----------|-------|----------|
+| claude-to-user | 3 | editorial-commit-voice-escalation; auto-pr-on-claude-branch; pr-body-verbosity-correlates-with-ttm |
+| user-to-claude | 2 | hebrew-bilingual-cognition-medium; branch-as-sprint-container |
+| claude-to-claude | 5 | claude-coauthored-trailer-convention; conventional-commit-prefix-on-claude-commits; test-scaffold-installed-never-used; zero-deletion-of-bot-generated-files; ai-cross-review-multi-agent-handoff |
+| user-to-user | 7 | lovable-render-claude-write-coexistence; non-template-domain-dep-predicts-resumption; bot-blast-then-human-resumption; readme-placeholder-survives-to-head; zero-issues-zero-prs-prototype-shape; third-party-saas-replaces-backend; publish-button-as-success-condition; four-feature-tier-classifier-monotonic |
 
-1. **Meta-tooling co-shipping** (31h35m window): operator ships product+anti-AI-mistake-tooling together, not sequentially. Evidence: `cor-sys@50f9166`.
-2. **LOG.md as monotonic anti-pattern counter**: append-only 12-row table; never refactored. Evidence: `cor-sys@526237f:LOG.md`.
-3. **Skills as research-to-decision-tree translation**: 4 heuristic skills land in one commit, predate use by 6 days. Evidence: `cor-sys@ff7395d:skill.md`.
-4. **PR-as-notarization-ritual**: 11-second median TTM, single-operator, all merged. Evidence: 13 merged PRs in cor-sys.
-5. **Identity convention flip (Apr 3)**: Co-Authored-By Claude → Claude direct authorship after tool delegation. Evidence: `cor-sys@1ab0c54`.
-6. **Pre-Build Validation Protocol retrofit**: "30 seconds saves 3 hours" — codified after the 3-hour rework. Evidence: `cor-sys@526237f:LOG.md`.
-7. **Bug-locus walk-up-the-stack**: 13-commit Hebrew encoding war — file → component → route → framework patch. Evidence: 13 commits from `cor-sys@bb3d459` to `cor-sys@e18b37e`.
-8. **Slash commands as complete session lifecycle**: enter → plan → ship → debrief; no /test or /deploy. Evidence: `cor-sys@50f9166`, `cor-sys@526237f:skill.md`.
-9. **Cursor vs Claude work patterns**: Cursor = fire-and-forget batch; Claude = interactive co-pilot. Evidence: `cor-sys@cee079e..49f9ada` (Cursor 9-min burst).
-10. **docs/ as issue tracker**: 0 issues + 32 docs/. Pattern works only for single-operator AI-paired repos. Evidence: `cor-sys` issues count, `cor-sys@526237f:docs/`.
-11. **Repo-as-unification-target**: CampaignCraft absorbed into cor-sys in 1 min 14 sec PR. Evidence: `cor-sys#PR-16`, `cor-sys@182a6b3`.
-12. **Bilingual HE+EN at infrastructure cost**: SWC patched to force ASCII rather than removing Hebrew. Evidence: `cor-sys@e18b37e`.
+(Note: user-to-user has 8 patterns but the dimension column in patterns-matrix shows 7 distinct rows + four-feature-tier classifier; total 8.)
 
-## Deferred Questions
+## Top Playbook Candidates (3-5 named, for Phase 4)
 
-- [ ] Should bilingual HE+EN extend to /research narrative timelines, or stay English only?
+These are the highest-leverage promoted patterns ranked by monetization fit and cross-repo strength.
+
+1. **publish-button-satisfiability-intent-triage** (user-to-user) — A 5-minute interview at repo-birth that classifies the operator's success condition as behavioral or demonstrative and emits a recommended infrastructure tier. Evidence: core-unified@12:00, core-unified@12:07, groundstate@11:00. Strongest single predictor in dataset.
+2. **four-feature-tier-classifier-cli** (user-to-user) — A one-shot CLI / GitHub Action that scores a repo on (non-template dep, human commit, PR, CLAUDE.md/docs) and recommends next action (resume / promote / archive). Evidence: core-unified@12:09, synthesis § 7. Maps directly to portfolio triage.
+3. **dual-ai-surface-workflow** (user-to-user) — A playbook that codifies Lovable-as-render + Claude-Code-as-write cadence, with the explicit handoff signature operators can recognize after the fact. Evidence: groundstate@11:01, chess-mind@11:04. Generalizes to any visual-preview-AI + code-AI pair.
+4. **ai-cross-review-setup** (claude-to-claude) — Two templates: Claude + Codex concurrent review (groundstate@11:05) and Claude + Cursor batch handoff (cor-sys@10:11). Highest leverage for multi-AI workflow. Pairs naturally with the auto-PR-on-claude-branch pattern.
+5. **resumer-day-prep** (user-to-user) — A playbook for the 72-minute Lovable-resumption window: don't refactor bot code; layer action engines on analytics engines; touch only the wiring file; ship external integrations together in the final commit. Evidence: chess-mind@11:03, chess-mind@11:07, chess-mind@11:09.
+
+## Hypothesis Verdicts (from Phase 2 synthesis)
+
+| Hyp | Statement | Verdict |
+|-----|-----------|---------|
+| H1 | 4-feature Tier classifier cleanly partitions repos | confirmed (lower-bound, not upper-bound, on health) |
+| H2 | Publish-button satisfiability predicts abandonment | confirmed (strongest single predictor) |
+| H3 | LOG.md is the enforcement mechanism | refined (the *habit* causes; the file format is incidental) |
+| H4 | AI tool diversity predicts maturity | confirmed (monotonic with tier) |
+| H5 | Editorial voice escalation predicts health | confirmed (directionally; usable after 5-10 commits) |
+
+## Open Questions for Phase 3 + 4
+
+- [ ] Of the 17 promoted patterns, which 3-5 should become the first shipped playbooks? (Top candidates above are the seed.)
+- [ ] Should the Tier classifier be a GitHub Action, a CLI, or a manual checklist?
 - [ ] Pricing currency for playbooks (USD vs ILS)?
 - [ ] Does the user want playbooks published publicly or kept internal?
-- [ ] Which 3-5 of the 12 cor-sys candidates do we hypothesize will pass cross-repo evidence test?
+- [ ] Should bilingual HE+EN extend to the playbook-facing surface, or stay English only?
+- [ ] Are there hidden repos in the operator's portfolio that would break the 4-feature classifier? (Data gap: the dataset is 4 repos out of 5 surveyed.)
+- [ ] Does the `chess.js`-style "single domain dep" signal generalize beyond Lovable-bootstrapped repos to Next.js-bootstrapped or hand-bootstrapped repos?
+
+## Data Gaps Identified in Phase 2
+
+- **Fifth repo not deep-dived.** CLAUDE.md mentions 5 repos in scope; only 4 were Phase-1'd. The fifth (CampaignCraft / absorbed-into-cor-sys per cor-sys@10:10) is not separately tractable.
+- **No data on operator's external context.** Resumption-predictor is plausibly an *external* fact (tournament approaching, deadline, contract signed) that is not visible in any repo. The dataset cannot test this hypothesis.
+- **One observed AI-cross-review event only.** The Codex + Claude pattern (groundstate@11:05) is a single data point; n=1 limits generalizability of the multi-agent claim.
+- **No Tier-D negative.** All four repos have at least *some* commits. A genuine Tier-D (empty repo, never used) is absent; the dataset's lower bound is core-unified at rung 0 with 54 bot commits.
 
 ## Phase Gates Status
 
 | Phase | Gate | Status |
 |-------|------|--------|
-| 0 | Skeleton exists, cross-refs resolve | ✅ done (commit `a648ff3`) |
-| 1 | 4 `extracted-insights.md` filled, ≥20 raw observations | 🟡 1/4 repos done (12 observations from cor-sys) |
-| 2 | `patterns-matrix.md` has ≥8 rows | ⏸ pending |
-| 3 | 5 skills + 6 commands tested via self-application | ⏸ pending |
-| 4 | ≥3 playbooks shipped | ⏸ pending |
+| 0 | Skeleton exists, cross-refs resolve | done (commit `a648ff3`) |
+| 1 | 4 `extracted-insights.md` filled, ≥20 raw observations | done (43 observations across 4 repos) |
+| 2 | `patterns-matrix.md` has ≥8 rows + synthesis written + 4 MOCs populated | done (35 matrix rows, 17 promoted; this commit) |
+| 3 | 5 skills + 6 commands tested via self-application | pending |
+| 4 | ≥3 playbooks shipped | pending |
 
 ## Next Session Plan
 
-1. **groundstate-protocol deep dive** (Phase 1 continued)
-   - Focus areas: Lovable→bot→Claude transition, narrative copywriting evolution, PR discipline on `claude/*` branches
-   - Expected: 6 artifacts + ≥5 observations
-2. Then chess-mind-patterns (resumption pattern)
-3. Then core-unified-consciousness (abandonment diagnostics)
-4. Then Phase 2 cross-repo synthesis
+1. **Phase 3 kickoff — insight distillation**
+   - Pick top 5 playbook candidates from the list above
+   - For each: write the `/insights/<pattern-name>.md` file using `/insights/_template.md`
+   - Score each on monetization-audit dimensions; flag any that fail
+2. **Skill / command authoring**
+   - `cross-repo-comparator` skill (consumes patterns-matrix.md, emits delta diff)
+   - `insight-distiller` skill (consumes a MOC, emits insight files)
+   - `tier-classifier` command (scores a repo by the 4-feature classifier)
+   - `resumer-day-prep` command (emits a one-page checklist for a Lovable-resumption sprint)
+3. **Self-application test**
+   - Run `tier-classifier` against all 4 source repos; verify outputs match the synthesis's tier assignments
+   - Run `cross-repo-comparator` against a fifth repo (or a re-pull of cor-sys to verify idempotence)
+4. **Phase 4 prep**
+   - Pick 3 playbooks for first shipment; assign monetization-audit scores

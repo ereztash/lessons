@@ -1,0 +1,36 @@
+{
+  "name": "@portfoliopilot/scanner",
+  "version": "0.1.0",
+  "description": "GitHub portfolio scanner — Tier A/B/C/D classifier for AI-paired repos (PortfolioPilot MVP)",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "portfolio-scanner": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsx src/index.ts",
+    "clean": "rimraf dist",
+    "scan": "npm run build && node dist/index.js",
+    "typecheck": "tsc --noEmit"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@octokit/rest": "^21.0.2",
+    "@octokit/plugin-retry": "^7.1.2",
+    "@octokit/plugin-throttling": "^9.3.2",
+    "chalk": "^5.3.0",
+    "commander": "^12.1.0",
+    "dotenv": "^16.4.5",
+    "p-limit": "^6.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "rimraf": "^6.0.1",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}

@@ -12,7 +12,10 @@
 | Repo scope | 5 repos under ereztash (see CLAUDE.md) | 2026-05-12 |
 | Default language (machine files) | English | 2026-05-12 |
 | Default language (user-facing /index, /profile) | HE+EN bilingual | 2026-05-12 |
-| Current phase | Phase 0 → Phase 1 (cor-sys) | 2026-05-12 |
+| Current phase | Phase 1 — cor-sys done, groundstate next | 2026-05-12 |
+| cor-sys commit count (verified) | 71 commits, matches Phase 1 survey | 2026-05-12 |
+| cor-sys PR count (verified) | 16 PRs (13 merged, 3 closed unmerged) | 2026-05-12 |
+| cor-sys issues count (verified) | 0 (open + closed combined) | 2026-05-12 |
 
 ## Pre-Research Validation Protocol
 
@@ -33,7 +36,7 @@ Each anti-pattern is a documented mistake + rule. Append, never edit.
 
 | # | Mistake | Rule |
 |---|---------|------|
-| 1 | _(seed — no mistakes recorded yet)_ | _(rule will appear when first mistake is documented)_ |
+| 1 | Phase 1 cor-sys deep-dive agent hit rate limit at end of session before returning summary, but had already written all 6 artifacts | Always verify artifacts via `get_file_contents` even if agent returned mid-failure; trust the GitHub state, not the agent's status report. |
 
 ## Codebase Patterns
 
@@ -61,8 +64,14 @@ applicability: solo-builder | small-team | enterprise
 | <name>  | 3       | 2           | 0          | 0            | strong-2-repos |
 ```
 
+### cor-sys evidence pointer convention (now verified)
+
+Format: `cor-sys@<short-sha>:path/to/file` or `cor-sys#PR-N` or `cor-sys#issue-N`. Verified valid across all 12 observations from Phase 1 cor-sys.
+
 ## Session History
 
 | Date | Phase | Focus | Outcome |
 |------|-------|-------|---------|
-| 2026-05-12 | Phase 0 | Scaffold | 30 files seeded; cross-references wired |
+| 2026-05-12 | Phase 0 | Scaffold | 30 files seeded; cross-references wired; commit `a648ff3` |
+| 2026-05-12 | Phase 1 cor-sys | Code+git+PR+issues deep dive | 6 artifacts written (timeline 9.5KB, commit-archaeology 11.9KB, pr-patterns 9.2KB, issues-themes 2.5KB, architecture-notes 12.7KB, extracted-insights 19.4KB); 12 raw observations with evidence pointers; commit `59a6e6f` |
+| 2026-05-12 | Phase 1 → next | State update | MEMORY.md and LOG.md updated to reflect cor-sys complete; this commit |

@@ -1,6 +1,6 @@
 # Pricing Hypotheses
 
-> Monetization map for each shipped playbook. Updated by `/lesson-ship`.
+> Monetization map for each shipped playbook. Updated by `/lesson-ship` and the gap-closure pass.
 
 ## Format
 
@@ -68,28 +68,57 @@
 - **Confidence**: high — 5/5 audit score; evidence cleanly anchored to chess-mind-patterns' 72-minute sprint and groundstate-protocol's pivot. The time-budget framing is unique to the dataset and not on the first Google page.
 - **Date shipped**: 2026-05-12
 
+### Editorial Commit Voice Escalation
+- **Path**: `/products/playbooks/editorial-commit-voice-escalation.md`
+- **Target buyer**: Solo AI-paired builders with 5+ LLM-tool-paired repos who run quarterly or monthly portfolio reviews and want a 30-second "is this repo still alive?" signal before spending 20 minutes on a deep audit.
+- **Rework hours saved per session**: 2-5 hours per portfolio review (10-15 repo portfolio); 8-20 hours per year across 4 reviews; up to 6 hours per correctly-routed archive-vs-resume decision.
+- **Suggested price range**: $29 – $59 USD
+- **Pricing rationale**: 3.5 hours saved (midpoint) × $100/hr × 15% capture = $52 nominal. Discount because the rubric is partial-replaceable with a manual `git log` read (defensibility is medium-high, not high). Anchored on "the rubric pays for itself on a single quarterly review."
+- **Distribution channel hypothesis**: Gumroad as a standalone $29 entry-tier playbook; ALSO included in the Lovable Resumption Trilogy bundle as a 4th item (raising bundle to $129 or as a free addition that lifts the bundle's perceived value). Substack feature for the "how I read git logs in 30 seconds" hook.
+- **Confidence**: high — 5/5 audit score; 3-repo evidence (groundstate-protocol, cor-sys, chess-mind-patterns) including a clean negative control (core-unified-consciousness shows no escalation → abandonment).
+- **Date shipped**: 2026-05-12
+
+### AI Review Event Instrumentation (meta-playbook)
+- **Path**: `/products/playbooks/ai-review-event-instrumentation.md`
+- **Target buyer**: Solo builders who already own `ai-cross-review-setup.md` and want to convert anecdotal cross-review events into a personal dataset they can analyze, market, and learn from over a year.
+- **Rework hours saved per session**: Per-event overhead is 30-60s; cumulative value over 12 months is 8-20 hours of analysis time + marketing/positioning value of owning the dataset.
+- **Suggested price range**: Bundle-only at this stage. **Not sold standalone in v1.**
+- **Pricing rationale**: The instrumentation playbook adds value only to operators who already have cross-review setup. Standalone sale is unjustified (the buyer would not yet have the source events to instrument). The right placement is as a *bonus* inside the Multi-AI Workflow Pack bundle, raising bundle perceived value without raising bundle price.
+- **Distribution channel hypothesis**: Included free with the Multi-AI Workflow Pack bundle ($129). Promoted as the "compounding companion" — the playbook that makes the parent playbook better over time. After 6 months of bundle sales and observed adoption, revisit standalone pricing.
+- **Confidence**: low — the playbook is a hypothesis (depends-on relationship; meta-pattern; self-fulfilling). It will only prove value after 12 months of operator adoption generate the dataset that confirms it. v1 ship is to *enable* future evidence, not to claim current confidence.
+- **Date shipped**: 2026-05-12
+
 ## Pricing principles
 
 1. **Anchor on rework hours saved** — if a playbook saves 4 hours and the buyer's rate is $100/hr, gross value is $400; price at 10-20% of value ($40-$80) for a digital playbook.
 2. **Confidence multiplier** — high-confidence (evidence in ≥3 repos): full price. Medium (≥2 repos): 75%. Low (1 repo + theoretical generalization): 50% or hold.
 3. **Distribution affects price** — Gumroad/Lemon Squeezy tolerates $20-$80 range without friction. Direct sale tolerates higher ($100-$500) with explicit positioning.
-4. **Bundle discount** — bundle of 3 playbooks at 60% of sum-of-individual. The "Lovable Resumption Trilogy" bundle (Intent Triage + Tier Classifier + Resumer Day Prep) at $99 vs $107-$217 sum.
+4. **Bundle discount** — bundle of 3 playbooks at 60% of sum-of-individual.
 5. **Buyer-emotional-state premium** — playbooks the buyer reads at a moment of acute need (resumption sprint imminent) tolerate higher capture rates than playbooks read during portfolio audits (less acute).
+6. **Meta-playbook rule (new)** — playbooks that depend on another playbook (e.g., `ai-review-event-instrumentation` depends on `ai-cross-review-setup`) ship bundle-only in v1. Standalone pricing waits until the parent playbook has ≥50 sales, so the addressable audience exists.
 
 ## Bundle proposals
 
-### The Lovable Resumption Trilogy ($99)
+### The Lovable Resumption Trilogy ($99 launch, $129 list)
 - Publish-Button Intent Triage ($39-$79)
 - Four-Feature Tier Classifier ($29-$59)
 - Resumer Day Prep ($39-$79)
-- **Combined value if bought separately**: $107 – $217
-- **Bundle price**: $99
-- **Bundle savings**: 8% – 54% depending on individual price points
+- Editorial Commit Voice Escalation ($29-$59) **— added in gap-closure round; positioned as the "30-second portfolio scanner" companion**
+- **Combined value if bought separately**: $136 – $276
+- **Bundle price**: $99 launch, $129 list
+- **Bundle savings**: 27% – 64% depending on individual price points
 - **Distribution**: Gumroad single SKU; cross-promote in indie-hacker newsletters
 
-### The Multi-AI Workflow Pack ($129)
+### The Multi-AI Workflow Pack ($129 launch, $179 list)
 - Dual-AI-Surface Workflow ($49-$99)
 - AI Cross-Review Setup ($59-$129)
-- **Combined value**: $108 – $228
-- **Bundle price**: $129
+- AI Review Event Instrumentation **— included free; turns the bundle into a compounding-value asset**
+- **Combined value (paid components)**: $108 – $228
+- **Bundle price**: $129 launch, $179 list
 - **Distribution**: LinkedIn for the consultant buyer; GitHub README listings
+
+## Refresh cadence
+
+- **30 days after first launch**: Update Confidence column based on conversion data per `/products/launch-checklist.md` § Metric instrumentation.
+- **90 days**: Major refresh. Cut any playbook with <5 sales in 90 days. Promote parking-lot candidates that have matured.
+- **180 days**: Half-year retrospective. Decide on a 2nd-edition bundle structure.

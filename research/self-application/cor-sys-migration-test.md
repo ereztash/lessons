@@ -158,3 +158,51 @@ experience the promised ROI** (faster sessions, less re-explanation). They will
 suspect the playbook delivered structure but not substance — which is correct.
 
 **The product as currently scoped is not ready for sale.**
+
+---
+
+## v0.2 follow-up — adaptive recalibration
+
+The failure of v0.1 was diagnosed as **vacuous specificity**: a spec so narrow that
+satisfying it requires content that doesn't serve the underlying goal.
+
+v0.2 adds content-quality tier (sharpness scoring) borrowed from Genesis validator.
+Five rules (S1-S5) measure: file existence in Gate 0 list, repo-index entry density
+and citation presence, pipeline step count, skill structure, citation density across
+all CRP files.
+
+### Empirical v0.2 results
+
+| Repo | Structural | Sharpness | Verdict |
+|------|-----------|-----------|---------|
+| lessons (real content) | 4/4 | **75/100** | ✓ CRP-COMPLIANT |
+| COR-SYS post-stub-migration | 4/4 | **60/100** | ⚠ STRUCTURAL ONLY |
+| COR-SYS original (no migration) | 1/4 | ~25/100 | ✗ NOT COMPLIANT |
+
+The 15-point gap between real and stub at structural=4/4 is the discriminator v0.1
+lacked. v0.2 correctly identifies the stub-pass as not CRP-compliant.
+
+### What this proves and doesn't
+
+**Proves**:
+- Stub content does NOT pass v0.2 (sharpness rejects placeholder words, low density, no citations)
+- Real content does pass v0.2 (lessons at 75)
+- The gap is wide enough to be a real signal, not noise
+
+**Doesn't prove**:
+- That v0.2 catches all stub variants (especially content duplication)
+- That a repo passing v0.2 will deliver the behavioral promise (fast cold-start sessions)
+- That the spec generalizes to single-product repos without modification
+
+### Next gate
+
+Before reviving the playbook, the v0.2 content-quality rules must be:
+1. Documented in the playbook with examples of substantive vs stub entries
+2. Re-tested via a second migration attempt on COR-SYS where the goal is sharpness ≥70,
+   not just structural pass
+3. The time to substantive (≥70) migration measured, vs the original 4-8 hour estimate
+
+If migration to sharpness ≥70 takes ≥4 hours of real content work — playbook is honest.
+If it takes <1 hour — content threshold needs to be tightened further.
+
+Until that test runs, the playbook stays recalled.

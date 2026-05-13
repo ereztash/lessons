@@ -1,3 +1,13 @@
+# Context Repository Protocol (CRP) — Formal Specification v0.2
+
+> **v0.2 changelog (2026-05-13)**: v0.1 failed internal migration test (50 minutes of
+> stubs took COR-SYS from 1/4 to 4/4). Vacuous specificity. v0.2 adds a content-quality
+> tier (sharpness scoring) that rejects stub-pass. See `research/self-application/`
+> for empirical validation. v0.1 spec preserved as-is below; v0.2 additions are in the
+> "Content Quality (Sharpness)" section.
+
+---
+
 # Context Repository Protocol (CRP) — Formal Specification v0.1
 
 ## What is a CRP?
@@ -112,3 +122,98 @@ self-applied.
 A repo passes CRP compliance if and only if all 4 required elements (R1–R4) are satisfied.
 Each unsatisfied required element is an error. Each unsatisfied optional element is a warning.
 A compliant repo may have any number of warnings.
+
+---
+
+# v0.2 — Content Quality (Sharpness) Tier
+
+v0.1 was structural only. A repo could pass with empty stubs. v0.2 adds a second tier
+that measures **content density and specificity**, borrowed from the Genesis ProjectSpec
+validator (`saas/app/scripts/genesis/validator.ts`).
+
+## Compliance v0.2
+
+A repo is **CRP-COMPLIANT** when:
+- All 4 required structural rules (R1–R4) pass, AND
+- Sharpness score ≥ 70 (out of 100)
+
+A repo is **CRP-STRUCTURAL-ONLY** when:
+- R1–R4 pass, but sharpness < 70
+- This is the stub-pass failure mode. Files exist; content is hollow.
+
+A repo is **NOT-COMPLIANT** when:
+- Any R1–R4 fails (regardless of sharpness)
+
+## Sharpness rules (each scored 0-1)
+
+### S1 — Gate 0 section is substantive
+
+The Gate 0 section in `CLAUDE.md` must:
+- List ≥3 files in its read order
+- All listed files must exist in the repo
+- Score = ratio of listed files that exist
+
+### S2 — Each repo-index entry is substantive
+
+For each `## entry` in `research/repo-index.md`:
+- Body (after heading) ≥ 80 characters
+- Must NOT contain placeholder words: `TODO`, `TBD`, `placeholder`, `stub`, `lorem`, `xxx`, `fixme`
+- Must contain ≥1 citation: file path with extension, commit SHA, function reference, URL
+- Score = ratio of entries that pass all three checks
+
+### S3 — Each pipeline file is substantive
+
+For each `.md` in `pipelines/`:
+- File ≥ 300 characters
+- Contains ≥3 list items or numbered steps
+- No placeholder words
+- Score = ratio of pipelines that pass
+
+### S4 — Each skill is substantive
+
+For each `.md` in `.claude/skills/`:
+- File ≥ 150 characters
+- Contains a trigger condition (`when:`, `signals:`, `triggers:`)
+- Contains an output description (`output:`, `produces:`, `cascade:`, `emits:`)
+- No placeholder words
+- Score = ratio of skills that pass
+
+### S5 — Citation density across all CRP files
+
+Across CLAUDE.md + LOG.md + MEMORY.md + repo-index.md + pipelines/ + .claude/skills/:
+- Count citations: file paths, commit SHAs, function references, URLs, `src/` paths
+- Density target: ≥3 citations per 1000 characters
+- Score = min(1, density/3)
+
+## What v0.2 catches that v0.1 missed
+
+The kill-gate test: stub-only migration of COR-SYS from 1/4 → 4/4 in 50 minutes.
+
+Under v0.1: result was COMPLIANT (4/4 structural pass).
+Under v0.2: result is STRUCTURAL-ONLY (4/4 structural + sharpness 60/100).
+
+The 60/100 is driven by:
+- S2 = 0/3 (all repo-index entries contained "TODO" in Watch-for fields)
+- S3 = 0/1 (dual-repo-session.md was 272 chars, under 300)
+- S5 = OK only because the copied-from-real skill carried over citations
+
+Sharpness 60 < 70 → not CRP-COMPLIANT. v0.2 correctly rejects the stub migration.
+
+## What v0.2 still doesn't catch
+
+- **Content duplication**: copying real content from one CRP file to another satisfies
+  S4 because the copy has real triggers/outputs. Future v0.3 should compare across files.
+- **Misleading citations**: a citation to a file that doesn't reflect the entry's claim
+  is not detected. The lint can verify a file path exists, not that the entry is honest.
+- **Single-product vs portfolio adaptivity**: R2/R3 still mandate portfolio-shaped
+  structure even for single-product repos. v0.3 should add repo-class detection.
+
+## Roadmap to v0.3
+
+v0.3 adds **behavioral validation**: spawn a fresh Claude session on the repo with no
+prior context, give it a representative task, measure tokens-to-first-useful-output.
+
+The structural+content lint becomes the fast pre-check; the behavioral test is the
+ground truth. Repos that pass v0.2 but fail v0.3 reveal further spec gaps.
+
+See: `saas/spec/crp-behavioral-test.md` (design doc).

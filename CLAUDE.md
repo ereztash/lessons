@@ -20,6 +20,16 @@ Read in this exact order:
 
 If LOG.md not yet read this session → **read it now. Do not proceed without it.**
 
+## Dual-Repo Mode
+
+If this session has access to both `lessons` (this repo) AND a target repo:
+
+1. Run `pipelines/dual-repo-session.md` Gate 0 **instead of** the standard Gate 0 above
+2. Look up the target repo in `research/repo-index.md` — one grep, full context
+3. Output the one-line context summary before any tool call on the target repo
+
+Dual-repo mode bypasses the standard LOG/MEMORY/skill read when the target repo is the focus. Load only what the repo-index entry prescribes.
+
 ## Quick Rules
 
 - **Plan-Validate-Capture-Distill** — never invent insights. Use `insight-distiller` skill.
@@ -54,9 +64,13 @@ Rule: any doc >600 lines splits. Insight >200 words → Human layer, 5-line summ
 | chess-mind-patterns | Resumed prototype | 20% | Phase 1 queued |
 | core-unified-consciousness | Stalled | 15% | Phase 1 queued |
 
+Full tier data for all 25 repos: `research/repo-index.md`
+
 ## Navigation
 
 - For research → `/research/<repo>/` or `/research/cross-repo/`
 - For polished insights → `/insights/<dimension>/`
 - For productized insights → `/products/playbooks/`
 - For deep workflow → `/index/CLAUDE.md`
+- **For dual-repo session** → `pipelines/dual-repo-session.md`
+- **For any repo lookup** → `research/repo-index.md`

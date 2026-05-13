@@ -1,0 +1,41 @@
+{
+  "name": "crp-lint",
+  "version": "0.1.0",
+  "description": "CRP (Context Repository Protocol) compliance linter — grade your repo's Claude-Code-readiness in one command",
+  "bin": {
+    "crp-lint": "./dist/cli.js"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "claude-code",
+    "claude",
+    "ai-pair-programming",
+    "repo-protocol",
+    "linter",
+    "context-repository",
+    "crp"
+  ],
+  "author": "ereztash",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ereztash/lessons"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0",
+    "@types/node": "^20.0.0"
+  }
+}

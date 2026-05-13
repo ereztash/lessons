@@ -1,5 +1,6 @@
 import type { ProjectSpec } from './types'
 import { kolzchutSpec } from './domains/kolzchut'
+import { elicitFromLLM } from './llm-elicitor'
 
 const FIXTURES: Record<string, ProjectSpec> = {
   kolzchut: kolzchutSpec,
@@ -11,21 +12,18 @@ export interface ElicitOptions {
 }
 
 export async function elicit(opts: ElicitOptions): Promise<ProjectSpec> {
-  if (opts.intent && !opts.domain) {
-    throw new Error(
-      'LLM elicitation from free-text intent is not implemented in the prototype. ' +
-      'Use --domain <fixture-name> instead. ' +
-      'Available fixtures: ' + Object.keys(FIXTURES).join(', '),
-    )
+  if (opts.domain) {
+    const spec = FIXTURES[opts.domain]
+    if (!spec) {
+      throw new Error(
+        `No fixture for domain "${opts.domain}". Available: ${Object.keys(FIXTURES).join(', ')}`,
+      )
+    }
+    return spec
   }
-  if (!opts.domain) {
-    throw new Error('elicit() requires either --domain or --intent')
+  if (opts.intent) {
+    const result = await elicitFromLLM({ intent: opts.intent })
+    return result.spec
   }
-  const spec = FIXTURES[opts.domain]
-  if (!spec) {
-    throw new Error(
-      `No fixture for domain "${opts.domain}". Available: ${Object.keys(FIXTURES).join(', ')}`,
-    )
-  }
-  return spec
+  throw new Error('elicit() requires either --domain <fixture> or --intent "<paragraph>"')
 }

@@ -2,7 +2,10 @@ node_modules/
 .env
 .env.local
 .next/
-dist/
 build/
 .DS_Store
 *.log
+
+# npm package build output — keep package-lock for the npm pkg, ignore dist
+saas/app/scripts/crp-lint-npm/dist/
+saas/app/dist/

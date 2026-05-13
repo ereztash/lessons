@@ -2,7 +2,7 @@
 
 > Battle-tested playbooks for solo AI-paired builders, extracted from cross-repo analysis of real Lovable + Claude Code + Cursor projects. Every insight is evidence-anchored. Every playbook passes a 5-criterion monetization gate.
 
-**Latest update**: 2026-05-12 — full 25-repo portfolio scan, H6–H8 validated, 12-file SaaS spec complete, Next.js MVP shipped.
+**Latest update**: 2026-05-13 — Phase 8 complete: Genesis Mode CLI prototype built and verified. Compile pipeline runs kolzchut fixture to sharpness 100/100. Stability test infrastructure live (frozen prompt v1.0.0, Jaccard + stdDev metrics).
 
 ## Featured Playbooks
 
@@ -25,7 +25,7 @@ Full pricing rationale: [/products/pricing-hypotheses.md](products/pricing-hypot
 
 - **Gumroad** (primary): _link placeholder — launching soon_
 - **LinkedIn / X**: follow `@ereztash` for launch announcements and weekly insight drops
-- **Substack**: _link placeholder — newsletter coming with each playbook's source story_
+- **Substack**: _link placeholder — newsletter coming with each playbook’s source story_
 - **Direct**: email for $100+ tier playbooks bundled with a 30-minute consult
 
 Launch checklist: [/products/launch-checklist.md](products/launch-checklist.md).
@@ -75,10 +75,11 @@ lessons/
 ├── index/                       — MOC per dimension
 ├── pipelines/                   — execution protocols
 └── saas/
-    ├── spec/                    — 12-file product spec
+    ├── spec/                    — 13-file product spec (incl. Genesis Mode)
     │   ├── 00-README.md
     │   ├── 01-product-thesis.md
     │   ├── 02-product-spec.md
+    │   ├── 02b-genesis-mode.md  — bidirectional classifier + compiler model
     │   ├── 03-architecture.md
     │   ├── 04-pricing.md
     │   ├── 05-gtm-90day.md
@@ -96,6 +97,19 @@ lessons/
         │       ├── classifier/  — 4-feature classifier (pure TypeScript)
         │       ├── github/      — Octokit scanner (batch 6 repos/call)
         │       └── supabase/    — server + browser clients
+        ├── scripts/genesis/     — Genesis Mode CLI (forward compiler)
+        │   ├── types.ts         — ProjectSpec IR + ValidationReport types
+        │   ├── elicitation-questions.ts  — 18 domain-discovery questions (5 dims)
+        │   ├── elicitation-prompt.ts     — frozen system prompt v1.0.0
+        │   ├── elicitor.ts      — fixture loader + LLM router
+        │   ├── llm-elicitor.ts  — Anthropic SDK call (temperature=0)
+        │   ├── validator.ts     — 8 compile-time blockers (E001–E008)
+        │   ├── compiler.ts      — validate → renderAll gate
+        │   ├── templates.ts     — 7 file renderers (CLAUDE, LOG, README, …)
+        │   ├── stability-test.ts — N-run Jaccard + stdDev reliability check
+        │   ├── index.ts         — CLI entry (--domain / --intent / --out)
+        │   └── domains/
+        │       └── kolzchut.ts  — Hebrew civic-rights fixture (7 entities, 7 invariants)
         └── supabase/
             └── migrations/      — initial schema (profiles, repo_scans, RLS)
 ```
@@ -130,8 +144,8 @@ Full table: [research/portfolio-scan/26-repos.md](research/portfolio-scan/26-rep
 
 The methodology in this repo is now productized as a hosted tool.
 
-**Spec** (12 files in [saas/spec/](saas/spec/)):
-- Product thesis, full feature spec, architecture, pricing, 90-day GTM, ICP, moat, unit economics, risk register, MVP roadmap, conviction statement
+**Spec** (13 files in [saas/spec/](saas/spec/)):
+- Product thesis, full feature spec, architecture, pricing, 90-day GTM, ICP, moat, unit economics, risk register, MVP roadmap, conviction statement, Genesis Mode spec
 
 **MVP** ([saas/app/](saas/app/)) — Next.js 14 + Supabase + Octokit:
 - GitHub OAuth → scan all repos → classify with 4-feature scorer → portfolio dashboard
@@ -140,6 +154,25 @@ The methodology in this repo is now productized as a hosted tool.
 - Supabase Postgres with RLS; schema in `supabase/migrations/`
 
 To run locally: see [saas/app/README.md](saas/app/README.md).
+
+### Genesis Mode — the forward compiler
+
+The same 4-feature classifier runs in two directions:
+
+| Direction | Mode | What it does |
+|-----------|------|--------------|
+| Reverse (existing) | RepoHealth scan | Measures F1–F4 post-hoc on any repo |
+| **Forward (new)** | **Genesis compile** | Enforces F1–F4 ex-ante from a paragraph of intent |
+
+Genesis CLI ([saas/app/scripts/genesis/](saas/app/scripts/genesis/)):
+- **Elicitation** — 18 questions across 5 dimensions extract a `ProjectSpec` IR from the domain
+- **Validator** — 8 compile-time blockers (E001–E008) reject generic output at build time
+- **Compiler** — IR → 7 files: `CLAUDE.md`, `LOG.md`, `README.md`, `docs/spec.md`, `ontology.json`, `tier-a.contract.yml`, `package.json`
+- **Stability test** — runs LLM elicitation N times, measures pairwise entity Jaccard + sharpness stdDev; exits 0 only if Jaccard ≥ 80% and stdDev ≤ 5 (publishable threshold)
+
+Verified: `npx tsx scripts/genesis/index.ts -d kolzchut -o /tmp/kolzchut` → **Sharpness 100/100**, 7 files written.
+
+Spec: [saas/spec/02b-genesis-mode.md](saas/spec/02b-genesis-mode.md)
 
 ## Roadmap
 
@@ -150,9 +183,11 @@ To run locally: see [saas/app/README.md](saas/app/README.md).
 - [x] Phase 4 — Monetization audit + playbook shipping (6 playbooks)
 - [x] Gap-closure — launch checklist, self-application test, CampaignCraft profile
 - [x] Phase 5 — Portfolio scan (n=25, H6–H8, Tier D discovery)
-- [x] Phase 6 — SaaS spec (12-file product spec grounded in n=25 data)
+- [x] Phase 6 — SaaS spec (13-file product spec grounded in n=25 data)
 - [x] Phase 7 — MVP build (Next.js classifier + dashboard + auth + Supabase)
+- [x] Phase 8 — Genesis Mode CLI (bidirectional classifier, LLM elicitor, stability test)
 - [ ] Launch — Gumroad setup, deploy to Vercel, first 30-day pricing refresh
+- [ ] Research — run stability test across 3+ domains, publish inter-rater reliability report
 
 ## Navigate this repo
 
@@ -165,4 +200,6 @@ To run locally: see [saas/app/README.md](saas/app/README.md).
 | Pricing | [/products/pricing-hypotheses.md](products/pricing-hypotheses.md) |
 | Launch checklist | [/products/launch-checklist.md](products/launch-checklist.md) |
 | SaaS product spec | [/saas/spec/](saas/spec/) |
+| Genesis Mode spec | [/saas/spec/02b-genesis-mode.md](saas/spec/02b-genesis-mode.md) |
+| Genesis Mode CLI | [/saas/app/scripts/genesis/](saas/app/scripts/genesis/) |
 | Run the MVP locally | [/saas/app/README.md](saas/app/README.md) |

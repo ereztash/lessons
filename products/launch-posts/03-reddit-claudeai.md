@@ -1,3 +1,5 @@
+<!-- DRAFT — DO NOT POST. CRP spec failed internal migration test 2026-05-13. -->
+
 # r/ClaudeAI launch post — CRP
 
 ---

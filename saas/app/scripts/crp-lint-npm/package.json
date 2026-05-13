@@ -1,7 +1,8 @@
 {
   "name": "crp-lint",
-  "version": "0.1.0",
-  "description": "CRP (Context Repository Protocol) compliance linter — grade your repo's Claude-Code-readiness in one command",
+  "version": "0.1.0-pre-validation",
+  "description": "CRP linter — NOT YET PUBLISHED. Spec v0.1 failed internal migration test (vacuous specificity). See research/self-application/cor-sys-migration-test.md.",
+  "private": true,
   "bin": {
     "crp-lint": "./dist/cli.js"
   },

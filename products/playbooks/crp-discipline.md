@@ -1,15 +1,39 @@
 ---
 title: "Make Your Repo Claude-Code-Ready — The CRP Discipline"
+status: DO NOT SELL — internal migration test failed (see research/self-application/cor-sys-migration-test.md)
 target_buyer: Solo AI-paired builders who pair-program with Claude Code 3+ times/week
-hours_saved: 4-12 hrs/month (eliminated context re-loading + reduced session waste)
-launch_price: $29
+hours_saved: 4-12 hrs/month (CLAIM NOT VALIDATED — see migration test)
+launch_price: $29 (NOT YET — failed validation)
 list_price: $49
 evidence_anchors:
   - research/portfolio-scan/crp-compliance-scan.md (n=8, 7/8 fail)
   - saas/spec/crp-spec.md (formal protocol)
   - saas/app/scripts/genesis/domains/lessons.ts (compiled self-fixture)
 status: shipped 2026-05-13
+status_revised: 2026-05-13 — RECALLED. Internal migration test on COR-SYS produced
+                 4/4 linter pass via 50 minutes of stub content with no real value.
+                 Vacuous specificity confirmed. Spec needs revision before sale.
 ---
+
+> # ⚠ DO NOT PURCHASE
+>
+> This playbook failed internal validation. The CRP spec v0.1 is so narrow that
+> satisfying it requires content that does not serve the underlying goal of faster
+> Claude Code sessions.
+>
+> Migration test of COR-SYS (a Tier A repo) from 1/4 → 4/4 took 50 minutes of pure
+> stub work and produced files that add zero value to a cold-start Claude session.
+> See: `research/self-application/cor-sys-migration-test.md` for the full log.
+>
+> Revisions needed before this playbook can ship:
+> 1. Single-repo example for R2 (or relax R2 for non-portfolio projects)
+> 2. Make R3 conditional on actual dual-repo workflows existing
+> 3. Allow `skill.md` OR `.claude/skills/` for R4 (cosmetic asymmetry)
+> 4. Distinguish "linter pass" from "discipline applied" — currently the playbook
+>    sells the file structure, not the content that gives value.
+>
+> Until these revisions land, the playbook is preserved here as evidence of the
+> migration test, not as a product.
 
 # Make Your Repo Claude-Code-Ready
 

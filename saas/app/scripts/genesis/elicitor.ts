@@ -1,9 +1,11 @@
 import type { ProjectSpec } from './types'
 import { kolzchutSpec } from './domains/kolzchut'
+import { lessonsSpec } from './domains/lessons'
 import { elicitFromLLM } from './llm-elicitor'
 
 const FIXTURES: Record<string, ProjectSpec> = {
   kolzchut: kolzchutSpec,
+  lessons:  lessonsSpec,
 }
 
 export interface ElicitOptions {

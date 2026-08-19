@@ -157,18 +157,18 @@ versions across 76 commits). It moves from candidate to promoted — see §2.3.
 | Pattern | mati | a-s | a-a | crm | aia | other | Strength | Promoted? | Dimension |
 |---|----|----|----|----|----|-------|----------|-----------|-----------|
 | agent-identity-collapse | 3 | **2** | 0 | 0 | 0 | lessons 3, proofminer 3 | strong-3-repos | **Yes** | claude-to-claude |
-| adversarial-second-surface | **2** | **1** | 2 | 0 | 0 | proofminer 3, _crm 2 | **moderate-4-repos** (downgraded 2026-08-19 by 3 blind raters) | **Yes — provisional**, see round-2 §4 | claude-to-claude |
-| contract-check-as-ci-gate | 3 | **3** | **3** | 0 | 0 | ampaign-craft 3 | strong-4-repos | **Yes** | user-to-claude |
+| adversarial-second-surface | **2** | **1** | 2 | 0 | 0 | proofminer **2**, _crm 2 | **moderate-4-repos** | **Yes — no longer provisional**; all three supporting cells rated in round 3 | claude-to-claude |
+| contract-check-as-ci-gate | 3 | **3** | **3** | **3** | 0 | ampaign-craft 3, _crm 3 | strong-6-repos | **Yes** | user-to-claude |
 | claude-branch-as-default-branch | 0 | 0 | 3 | 0 | 0 | keepath 3 (scan) | strong-2-repos | **Yes** | user-to-claude |
-| commercial-doc-as-spec | 1 | 3 | 3 | 0 | 0 | — | strong-2-repos | **Yes** | user-to-user |
+| commercial-doc-as-spec | 1 | 3 | 3 | **2** | 0 | _crm 3 | strong-4-repos | **Yes** | user-to-user |
 | resumption-gap-predicts-pivot-vs-continuation | 0 | 0 | 0 | 0 | 3 | groundstate 3, chess-mind 2 | strong-2-repos | **Yes** | user-to-user |
 | language-splits-by-agent-surface | 3 | 0 | 0 | 0 | 1 | — | weak-1-repo | No — needs a second bilingual multi-surface repo | user-to-claude |
 | agents-md-inter-agent-lane-contract | 0 | 0 | 0 | 3 | 0 | — | weak-1-repo | No — but the highest-value single artifact found this round | claude-to-claude |
 | mirror-repo-as-agent-access-shim | 0 | 0 | 0 | 3 | 0 | — | weak-1-repo | No — new terminal state, alongside absorbed-rather-than-shipped | user-to-user |
 | one-day-full-system-build | 3 | 0 | 0 | 0 | 0 | — | weak-1-repo | No | user-to-user |
 | human-as-coauthor-trailer | 0 | 0 | 0 | 0 | 0 | groundstate 3 | weak-1-repo | No | claude-to-user |
-| model-version-in-trailer | 0 | 0 | 0 | 0 | 0 | COR-SYS 3, groundstate-protocol 3 | strong-2-repos | **Yes** (promoted 2026-08-19 on the re-measurement in §2.2) | claude-to-claude |
-| gate-left-behind-by-the-fix | 3 | 3 | 1 | 0 | 0 | — | strong-2-repos | **Yes** | claude-to-claude |
+| model-version-in-trailer | 0 | **3** | 0 | 0 | 0 | COR-SYS 3, groundstate-protocol 3, _crm 3 | **strong-4-repos** | **Yes** | claude-to-claude |
+| gate-left-behind-by-the-fix | 3 | 3 | **2** | 0 | 0 | — | strong-3-repos | **Yes** | claude-to-claude |
 
 ### Row definitions
 
@@ -258,7 +258,7 @@ Full analysis: `research/cross-repo/portfolio-as-one-mechanism.md`.
 | Pattern | pre-call | proofminer | other | Strength | Promoted? | Dimension |
 |---|---|---|---|---|---|---|
 | measured-stopping-rule | 3 | **1** | — | weak-1-repo | No — but it is the portfolio's best C9 implementation | user-to-user |
-| dod-unsatisfiable-by-code | 3 | 1 | MATI 2 | strong-2-repos | **Yes** | user-to-user |
+| dod-unsatisfiable-by-code | 3 | 1 | MATI **0** | weak-1-repo | **NO — DEMOTED 2026-08-19**: MATI's 2 was read off a PR body, not the repo at HEAD, where no DoD exists | user-to-user |
 | adversary-hunts-assertions-not-defects | 2 | 3 | CRM 2 | strong-2-repos | **Yes** | claude-to-claude |
 | authority-boundary-as-named-artifact | 2 | 3 | MATI 3, anti-silo 2 | strong-3-repos | **Yes** | user-to-claude |
 | branch-as-claim | 3 | 1 | — | weak-1-repo | No | claude-to-user |
@@ -340,7 +340,7 @@ in the portfolio has, `lessons` included.
 | external-corpus-validation | 3 | — | weak-1-repo | No — but it is the only break in the self-scoring loop found anywhere | user-to-user |
 | result-reported-with-its-own-ceiling | 3 | pre-call 2 | strong-2-repos | **Yes** | claude-to-user |
 | failure-case-shipped-beside-success-case | 3 | — | weak-1-repo | No | user-to-user |
-| per-project-git-identity | 3 | anti-silo 2 | strong-2-repos | **Yes** | claude-to-claude |
+| per-project-git-identity | 3 | anti-silo 2 *(contested: 2 of 3 raters scored 0)* | strong-2-repos | **Yes — AT RISK**, see round-3 §4 | claude-to-claude |
 
 ### Row definitions
 
@@ -492,3 +492,49 @@ repo, not a better instruction.
 - **pre-call's bypass discipline is wider than the one log.** `assets/i18n.test.js` and
   `markup.test.js` carry EXEMPT allowlists requiring a written reason per entry — *"an entry here is
   a claim that needs a reason"*.
+
+---
+
+# Round 7 — the cells never rated (2026-08-19)
+
+18 cells no blind rater had seen, 8 scored 0–1. Frozen and pushed at `902f738` before any rater ran.
+Full result: `ground-truth/interrater-round3-2026-08-19.md`.
+
+**ICC(2,1) across the three raters: +0.909** (round 2: +0.801). With the incumbent added: +0.676.
+**Eleven of eighteen items have perfect four-way agreement.** The instrument reproduces; the
+incumbent is the variance.
+
+**The polarising bias reproduces on a disjoint item set**: +1.17 where the incumbent scored 0–1,
+−0.47 where it scored 2–3 (round 2: +0.83 / −0.58).
+
+## 7.1 Adopted (6 of 18)
+
+`model-version-in-trailer` @ anti-silo 0→**3** · `commercial-doc-as-spec` @ CRM_Google_ai 0→**2** ·
+`gate-left-behind-by-the-fix` @ Agent-Architect 1→**2** · `contract-check-as-ci-gate` @
+CRM_Google_ai 0→**3** · `adversarial-second-surface` @ proofminer 3→**2** ·
+`dod-unsatisfiable-by-code` @ MATI 2→**0**.
+
+## 7.2 One demotion, one confirmation, one at risk
+
+- **`dod-unsatisfiable-by-code` DEMOTED.** pre-call 3, proofminer 1, MATI 0 — one repo at ≥2.
+  Its MATI score came from PR #18's body, a DoD on an open branch; the scale says *at HEAD*, and at
+  HEAD MATI has three markdown files and no definition of done. **Promoted count 34 → 33.**
+- **`adversarial-second-surface` confirmed, no longer provisional.** The three cells holding it up
+  were this round's purpose: Agent-Architect **2** and `_crm` **2** came back unanimous and equal to
+  the incumbent; proofminer 3→2. Four repos at ≥2 on rated evidence.
+- **`per-project-git-identity` AT RISK.** anti-silo split 0/0/2 against the incumbent's 2 — no
+  adoption under the rule, but two raters found only the generic `Erez`/`ereztash` identity there,
+  with `_crm`'s `Erez (COR-SYS)` the sole project-marked one. If anti-silo is 0 the pattern has one
+  repo and fails. First item next round.
+
+## 7.3 Blinding is impossible here, and now measured rather than assumed
+
+`CLAUDE.md` was absent from disk for the entire run and was still injected verbatim into all three
+raters — the harness assembles project instructions at session level. **Instruction failed in rounds
+1–2; file removal failed in round 3. No in-session subagent can be blinded by any means available
+in this session.** A genuinely blind rating requires a rater outside it.
+
+The one change that worked was requiring each rater to report what it had received as its first
+output line. Round 2's raters offered assurances; round 3's quoted the leak verbatim, including
+`_crm … a kill test that refuted its own metric` — the answer to item 12. Items 9, 12 and 13 are
+named by the leaked text and their agreement is discounted; the other fifteen are untouched by it.

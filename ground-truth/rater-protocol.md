@@ -48,9 +48,19 @@ this repo's `CLAUDE.md` into every subagent before its first tool call. It names
 `measured stopping rule + DoD` for pre-call, `6.7×` (anti-silo's own undercount figure) and
 `proofminer … hidden-agent`, priming at least six items. Two raters of three reported this
 unprompted; the third asserted it had not read the repo, which was true and beside the point.
-**A self-report of blinding is not evidence of blinding.** Any future run must neutralise the
-injection structurally — a working directory outside this repo, or `CLAUDE.md` moved aside for the
-duration — and must enumerate what remains injected before it starts.
+**A self-report of blinding is not evidence of blinding.**
+
+**Round 3 tested the structural fix and it also failed.** `CLAUDE.md` was moved out of the
+repository and confirmed absent from disk for the whole run; all three raters received its full
+contents anyway and quoted them back. The harness assembles project instructions at **session**
+level, not by per-subagent disk read. **No in-session subagent can be blinded by any means available
+from inside the session.** A genuinely blind rating requires a rater outside it — a separate
+session whose project roots do not include this repo.
+
+**What does work, and is now mandatory:** every rater must emit, as its first output line,
+`BLINDING: <verbatim account of what was injected>`. Round 2's raters offered assurances; round 3's
+quoted the leak, which let the affected items be identified and discounted. The leak is then
+measured rather than assumed, and items its text names are excluded from the agreement claim.
 
 ## 4. Declared in advance
 

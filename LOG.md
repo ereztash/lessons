@@ -10,7 +10,7 @@
 | GitHub access | `mcp__github__*` MCP tools only | 2026-05-12 |
 | `gh` CLI | NOT AVAILABLE — use GitHub MCP | 2026-05-12 |
 | Repo scope | **12 repos under ereztash in session scope** (see CLAUDE.md) | 2026-08-19 |
-| Repos deep-dived | 9 (cor-sys, groundstate, chess-mind, core-unified + MATI, anti-silo, Agent-Architect, CRM_Google_ai, agency-insight-analyzer) | 2026-08-19 |
+| Repos deep-dived | **11** (cor-sys, groundstate, chess-mind, core-unified + MATI, anti-silo, Agent-Architect, CRM_Google_ai, agency-insight-analyzer + **pre-call, proofminer**) | 2026-08-19 |
 | Dataset size | n=30 (was n=25) | 2026-08-19 |
 | **AI-authorship counting** | **`git log --author` is NOT sufficient — run `scripts/detect-agent-authorship.sh`** | 2026-08-19 |
 | Currently active repos | **4**: MATI (0d), **pre-call (0d)**, **proofminer (3d)**, anti-silo (3d). All 4 originally deep-dived repos dormant 33–132d | 2026-08-19 |
@@ -26,8 +26,8 @@
 | cor-sys commit count (verified) | 71 commits, matches Phase 1 survey | 2026-05-12 |
 | cor-sys PR count (verified) | 16 PRs (13 merged, 3 closed unmerged) | 2026-05-12 |
 | cor-sys issues count (verified) | 0 (open + closed combined) | 2026-05-12 |
-| Total raw observations gathered | 64 (43 across 4 repos + 21 across 5 new repos) | 2026-08-19 |
-| Promoted cross-repo patterns | 24 (17 Phase 2 + 7 in Round 2) | 2026-08-19 |
+| Total raw observations gathered | **76** (43 across 4 repos + 21 across 5 + 12 across pre-call/proofminer) | 2026-08-19 |
+| Promoted cross-repo patterns | **28** (17 Phase 2 + 7 Round 2 + 4 Round 3) | 2026-08-19 |
 | Skills built (Phase 3) | 5 | 2026-05-12 |
 | Commands built (Phase 3) | 6 | 2026-05-12 |
 | Insights distilled (Phase 4 + gap-closure) | 11 (5 prior + 6 new) | 2026-05-12 |

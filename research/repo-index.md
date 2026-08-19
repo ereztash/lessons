@@ -81,6 +81,55 @@
 
 ---
 
+## pre-call
+
+- **Tier**: A *(F5 rule — one of three in 40 repos)* | **Score**: 3/4 + **F5 ✓** | F1 — F2 ✓ F3 ✓(44) F4 ✓
+- **AI tools**: Claude Code (146 of 185 commits, 113 trailers) + an `agent/*` surface
+- **Dormancy**: 0d — **live** | **Pattern**: 13-day gated build, serving a real deployment
+- **Key findings**:
+  - `docs/stopping-rule.html` — Annett & Duncan 1967 HTA stated as `P × C > acceptable`, with
+    **P measured over 400 runs** and C written in code (`consequenceIfWrong` in `pc-commitments.js`).
+    Synthetic and real-call figures reported side by side, real one worse (0.00 vs 0.33)
+  - `docs/market-ready.md` — six binary DoD conditions, thresholds locked before the round, each
+    labelled with its provenance and the arbitrary one labelled arbitrary. **"Every condition here
+    requires a stranger. None of them can be completed by writing code."** D1 status: 0
+  - Spec and its supervising agent in **one file**, because doc-drift was measured 3 of 3. Carries a
+    drift meter and a **bypass log** — nothing else in the portfolio instruments its own gate's evasion
+  - Branch names are claims, not features: `provenance-must-be-answered`, `telemetry-says-it-is-not-durable`
+  - README states the market it does **not** serve, and the outcome it does not control
+- **Watch for**: D1 and D4 are the whole product question and both read zero. The repo's own DoD says
+  more code cannot move them — do not answer a request here with more code without checking that first
+- **Playbooks**: none yet — source for `dod-unsatisfiable-by-code`, `measured-stopping-rule`, `bypass-log`
+- **Deep-dive**: `research/pre-call/`
+- **Genesis fixture**: pending
+
+---
+
+## proofminer
+
+- **Tier**: B | **Score**: 3/4, F5 — | F1 — F2 ✓ F3 ✓(16) F4 ✓ | R ✓ (3d)
+- **AI tools**: **three surfaces** — an unattributed `agent/*` surface, Claude Code, and **Codex**
+- **Dormancy**: 3d | **Pattern**: entire product built in two days; largest hidden-agent repo in the portfolio
+- **Key findings**:
+  - **193 of 229 non-merge commits in 23 machine-cadence bursts, 212 with empty bodies, 213 authored
+    `ereztash`.** `git log --author` reports 93% human for an agent-written codebase
+  - All 16 Claude commits are **epistemic** corrections, not defect fixes: *"The text layer was
+    fabricating evidence. Stop it."*, *"Stop the product asserting things it does not know"*,
+    *"a parser that refuses to guess"*, *"a planted credential"*
+  - `docs/AUTHORITY.md` — an "Authority Constitution" classifying every recommendation on six axes
+    (Impact · **Reversibility** · Certainty · Sensitivity · User preference · External context),
+    implemented in `src/engine/authority.js`. The richest C6 implementation in the portfolio
+  - Ships agent skills **inside the product repo** (`skills/app-orchestrator`, `skills/vercel-app-builder`)
+  - Three `agent/expert-consultant-mvp-*` branches differ only by a unix-ms suffix — programmatic naming
+  - Abandoned agent exploration archived to `archive/pre-rewrite-agent-work` rather than deleted
+- **Watch for**: the branch prefix is a better authorship record than `git log` here. Count prefixes
+  before attributing anything to a tool
+- **Playbooks**: none yet — source for `adversary-hunts-assertions-not-defects`, `authority-boundary-as-named-artifact`
+- **Deep-dive**: `research/proofminer/`
+- **Genesis fixture**: pending
+
+---
+
 ## MATI
 
 - **Tier**: A | **Score**: 3/4 | F1 —(see note) F2 ✓ F3 ✓(18) F4 ✓

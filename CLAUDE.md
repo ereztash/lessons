@@ -63,8 +63,8 @@ historical depth — the four originally deep-dived repos are all dormant.
 | Repo | Maturity | Dormancy | Status |
 |------|----------|----------|--------|
 | MATI | Tier A, live | 0d | Deep-dived 2026-08-19 |
-| pre-call | Tier A, live | 0d | Cohort 2 — 224 commits, **not deep-dived** |
-| proofminer | Tier B, live | 3d | Cohort 2 — 241 commits, hidden-agent authoring, **not deep-dived** |
+| pre-call | Tier A, live | 0d | **Deep-dived 2026-08-19** — 224 commits, measured stopping rule + DoD |
+| proofminer | Tier B, live | 3d | **Deep-dived 2026-08-19** — 241 commits, largest hidden-agent repo |
 | anti-silo | Tier A, healthy | 3d | Deep-dived 2026-08-19 |
 | Agent-Architect | Tier A, unclaimed trunk | 87d | Deep-dived 2026-08-19 |
 | agency-insight-analyzer | Tier B | 68d | Deep-dived 2026-08-19 |

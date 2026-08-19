@@ -5,8 +5,10 @@ Written 2026-08-19 against unknown outcome data, so the analysis cannot be chose
 fact. Reads the frozen scores TSV, counts substantive commits in the prediction window across
 all refs, and prints both Spearman correlations plus the four secondary verdicts.
 
-Usage: python3 scripts/resolve-prediction.py [repos.tsv] [scores.tsv]
+Usage: python3 scripts/resolve-prediction.py [repos.tsv] [scores.tsv ...]
   repos.tsv  = name<TAB>path per line (paths must still resolve; re-clone if not)
+  scores.tsv = one or more frozen score files; cohort 2 was registered as a separate file so the
+               original stayed frozen, so both are passed and concatenated here.
 """
 import subprocess, sys, csv, datetime
 
@@ -50,12 +52,17 @@ def spearman(xs, ys):
     den = (sum((a-mx)**2 for a in rx) * sum((b-my)**2 for b in ry)) ** 0.5
     return num/den if den else float("nan")
 
-def main(repos_tsv, scores_tsv):
+def main(repos_tsv, *scores_tsvs):
     paths = {}
     for line in open(repos_tsv, encoding="utf-8"):
         if "\t" in line:
             n, p = line.rstrip("\n").split("\t", 1); paths[n] = p
-    rows = list(csv.DictReader(open(scores_tsv, encoding="utf-8"), delimiter="\t"))
+    rows, seen = [], set()
+    for f in scores_tsvs:
+        for r in csv.DictReader(open(f, encoding="utf-8"), delimiter="\t"):
+            if r["repo"] in seen:                       # a repo may not be scored twice
+                raise SystemExit(f"duplicate repo across score files: {r['repo']}")
+            seen.add(r["repo"]); rows.append(r)
 
     data, missing = [], []
     for r in rows:
@@ -108,4 +115,5 @@ def main(repos_tsv, scores_tsv):
 
 if __name__ == "__main__":
     main(sys.argv[1] if len(sys.argv) > 1 else "ground-truth/repo-paths.tsv",
-         sys.argv[2] if len(sys.argv) > 2 else "ground-truth/scores-2026-08-19.tsv")
+         *(sys.argv[2:] or ["ground-truth/scores-2026-08-19.tsv",
+                            "ground-truth/scores-2026-08-19-cohort2.tsv"]))

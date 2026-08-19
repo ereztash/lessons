@@ -50,9 +50,9 @@ establish it — at best it fails to refute it.**
 1. **The scores file is frozen.** `scores-2026-08-19.tsv` is committed today. Re-scoring a repo
    after seeing its outcome invalidates the test.
 2. **Do not act on the prediction in a way that causes it.** Working on `MATI` or `anti-silo`
-   *because* they were scored A would manufacture the result. Both were already the two active
-   repos, so ordinary work on them is expected — but any work started *in order to* satisfy S1
-   must be recorded here and the test excluded.
+   *because* they were scored A would manufacture the result. All three A repos were already
+   active before being scored, so ordinary work on them is expected — but any work started *in
+   order to* satisfy S1 must be recorded here and the test excluded.
 3. **No rule tuning before resolution.** If F5's definition changes before 2026-11-17, this
    prediction is void and must be re-registered against the new definition.
 
@@ -75,3 +75,37 @@ Frozen at `ground-truth/scores-2026-08-19.tsv` (31 rows). Class counts:
 |---|---|---|---|---|
 | old (F1–F4) | 13 | 12 | 0 | 6 |
 | new (F1–F5) | 2 | 11 | 12 | 6 |
+
+---
+
+## Amendment — same day, 2026-08-19
+
+Nine repositories that no scan had seen were found and scored after this prediction was written
+(`research/portfolio-scan/2026-08-19-cohort2.md`). They are registered here as **cohort 2**, in a
+separate frozen file: `ground-truth/scores-2026-08-19-cohort2.tsv`.
+
+**Why this does not contaminate the test.** The prediction window opens 2026-08-19 and no outcome
+exists for any repo yet — there is nothing to have seen. Cohort 2 was scored by the same script on
+the same rule, and `scores-2026-08-19.tsv` was not edited. Both files are frozen from now.
+
+**What changes.** The A class goes from 2 repos to 3: `pre-call` joins `MATI` and `anti-silo`.
+Two of the four repos that are actually active (`pre-call`, `proofminer`) were absent from the
+original 31, which means the original registration was made on a portfolio missing half its live
+work — a limitation worth stating even though the fix arrived the same day.
+
+| Cohort | repos | new-A | new-B | new-C | new-D |
+|---|---|---|---|---|---|
+| 1 (original) | 31 | 2 | 11 | 12 | 6 |
+| 2 (amendment) | 9 | 1 | 6 | 0 | 2 |
+| **combined** | **40** | **3** | **17** | **12** | **8** |
+
+**Resolution.** The primary test runs on the **combined 40**, which is the stronger test and was
+fixed before any outcome existed. `resolve-prediction.py` accepts multiple score files:
+
+```bash
+python3 scripts/resolve-prediction.py ground-truth/repo-paths.tsv \
+  ground-truth/scores-2026-08-19.tsv ground-truth/scores-2026-08-19-cohort2.tsv
+```
+
+Secondary tests S1–S4 keep their original thresholds and are read against cohort 1 alone, since
+they were stated against those class sizes. S1 additionally gets a cohort-2 reading (1 of 1).

@@ -62,14 +62,16 @@ historical depth — the four originally deep-dived repos are all dormant.
 
 | Repo | Maturity | Dormancy | Status |
 |------|----------|----------|--------|
-| MATI | Tier A, live | 0d | Deep-dived 2026-08-19 — the active frontier |
+| MATI | Tier A, live | 0d | Deep-dived 2026-08-19 |
+| pre-call | Tier A, live | 0d | Cohort 2 — 224 commits, **not deep-dived** |
+| proofminer | Tier B, live | 3d | Cohort 2 — 241 commits, hidden-agent authoring, **not deep-dived** |
 | anti-silo | Tier A, healthy | 3d | Deep-dived 2026-08-19 |
 | Agent-Architect | Tier A, unclaimed trunk | 87d | Deep-dived 2026-08-19 |
 | agency-insight-analyzer | Tier B | 68d | Deep-dived 2026-08-19 |
 | CRM_Google_ai | mirror of `_crm` | 66d | Deep-dived 2026-08-19 — score the source, not this |
 | ampaign-craft | Tier A | `main` 101d | Mini-profile; 77 remote branches unfetched |
 | cor-sys | Tier A | 132d | Phase 1–4 complete |
-| groundstate-protocol | Tier A | 92d | Phase 1–4 complete |
+| groundstate-protocol | Tier A | 17d | Phase 1–4 complete — **4 repos share this name-family; the 92d figure belongs to the private 67-commit copy, not this one** |
 | chess-mind-patterns | Tier B | 149d | Phase 1–4 complete (not in session scope) |
 | core-unified-consciousness | Tier C | 163d | Phase 1–4 complete (not in session scope) |
 

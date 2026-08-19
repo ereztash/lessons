@@ -1,0 +1,10 @@
+repo	F1	F2	F3	F4	F_count	F5	R_current	days_all_refs	days_default_branch	src_files	tier_old	tier_new
+pre-call	0	1	1	1	3	1	1	0	0	89	A	A
+proofminer	0	1	1	1	3	0	1	3	3	45	A	B
+_crm	1	1	1	1	4	0	0	49	56	305	A	B
+dod-validator	1	1	1	0	3	0	0	85	85	50	A	B
+kol_kore	0	1	0	0	1	0	0	58	58	0	D	D
+cognitive-sovereignty-ai-paper	1	1	1	1	4	0	0	77	77	26	A	B
+ground-state-protocol-32679ce4	1	1	1	0	3	0	0	92	92	91	A	B
+ground-state-protocol-02aba105	1	1	1	0	3	0	0	92	92	91	A	B
+ex2	0	1	0	0	1	0	0	296	504	0	D	D

@@ -8,6 +8,17 @@
 > Canonical data: `research/portfolio-scan/26-repos.md` + `research/portfolio-scan/2026-08-19-rescan.md`
 > **Before trusting any "AI tools" line below**, read `research/cross-repo/authorship-attribution.md` —
 > author-name counting undercounts AI work, and every "none detected" that was checkable proved wrong.
+>
+> **The Tier lines below are SUPERSEDED.** All 31 repos were re-measured on 2026-08-19 with an
+> external-consumer feature (F5): `ground-truth/f5-rescore-2026-08-19.md`. Under the new rule,
+> Tier A goes from 13 repos to 2 (`MATI`, `anti-silo`) and 23 repos move down one tier. The entries
+> below are left unrewritten on purpose — replacing one unvalidated number with another before
+> `ground-truth/prediction-2026-08-19.md` resolves on 2026-11-17 would hide that neither is tested.
+>
+> Two more corrections from that run: **`groundstate-protocol` (public, 311 commits, 17d) and
+> `ground-state-protocol` (private, 43 commits, 92d) are different repositories** — the entry below
+> conflates them; and dormancy here is default-branch only, which reads 282d for
+> `Contradiction_loss` where all refs say 77d.
 
 ---
 

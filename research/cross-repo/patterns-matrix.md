@@ -158,7 +158,7 @@ versions across 76 commits). It moves from candidate to promoted — see §2.3.
 |---|----|----|----|----|----|-------|----------|-----------|-----------|
 | agent-identity-collapse | 3 | 1 | 0 | 0 | 0 | lessons 3 | strong-2-repos | **Yes** | claude-to-claude |
 | adversarial-second-surface | 3 | 3 | 2 | 0 | 0 | — | strong-3-repos | **Yes** | claude-to-claude |
-| contract-check-as-ci-gate | 3 | 2 | 1 | 0 | 0 | ampaign-craft 3 | strong-3-repos | **Yes** | user-to-claude |
+| contract-check-as-ci-gate | 3 | **3** | 1 | 0 | 0 | ampaign-craft 3 | strong-3-repos | **Yes** | user-to-claude |
 | claude-branch-as-default-branch | 0 | 0 | 3 | 0 | 0 | keepath 3 (scan) | strong-2-repos | **Yes** | user-to-claude |
 | commercial-doc-as-spec | 1 | 3 | 3 | 0 | 0 | — | strong-2-repos | **Yes** | user-to-user |
 | resumption-gap-predicts-pivot-vs-continuation | 0 | 0 | 0 | 0 | 3 | groundstate 3, chess-mind 2 | strong-2-repos | **Yes** | user-to-user |
@@ -386,3 +386,49 @@ The cheapest of these to adopt is the last-but-one: **score the tier classifier 
 an account this operator does not own.** Everything in `ground-truth/` is currently scored on
 artifacts the operator produced, which cannot separate "the classifier works" from "the classifier
 fits this author."
+
+---
+
+# Round 5 — cross-family blind re-rating (2026-08-19)
+
+Fifteen load-bearing cells were re-scored blind by two other model families under
+`ground-truth/rater-protocol.md`. Full result and confounds: `ground-truth/interrater-2026-08-19.md`.
+
+**Verdict, ported from `_crm`'s G1 in the same words it used on itself: the strengths in this file
+have not been shown to be model-independent.** Sonnet reproduced 12 of 15 exactly (mean |diff|
+0.27); haiku 8 of 15 (1.13). Cross-family ICC(2,1) = **+0.068**, but the item set is
+range-restricted by my own selection (incumbent sd 0.34), so the ICC cannot adjudicate this — a
+defect in the test, not a result from it.
+
+## 5.1 Changes made
+
+| Cell | Was | Now | Why |
+|---|---|---|---|
+| `contract-check-as-ci-gate` @ anti-silo | 2 | **3** | Sonnet cited `tests/test_reachability.py`, `test_grounding_permit.py`, `test_file_length.py` (250-line ceiling), all run by pytest in CI. **Verified.** The incumbent under-counted domain-policy gates |
+
+No other score was changed. Where a rater disagreed and the disagreement was interpretive rather
+than factual, the incumbent score stands and the disagreement is recorded below.
+
+## 5.2 Open challenge — `adversarial-second-surface`
+
+Sonnet independently scored MATI **1** (incumbent 3) and anti-silo **2** (incumbent 3) on the same
+ground: the row definition says the second surface *never ships a feature*, but MATI's review branch
+also shipped a test suite, bug fixes and a state migrator, and anti-silo's richest adversarial
+episode was committed together with its own fixes.
+
+The promotion survives — anti-silo 2 + proofminer 3 clears `≥2 in ≥2 repos` under sonnet's scores.
+The strength claim does not. **This is deliberately not resolved by rewriting the definition**,
+which would be tuning a rule after seeing a disconfirming rating. It is the first item for a third
+rating or an explicit definitional decision.
+
+## 5.3 Evidence the blind raters found that the deep-dives missed
+
+- **`_crm` has a second self-kill.** `LOG.md:1824` "Adversarial falsification battery + the
+  reproduced headline number" — `META-XGBoost … FAILED`, `BOTH … FAILED their permutation tests =>
+  the cross-domain transfer is first-person agency, not a deep construct. Reported as a negative,
+  not buried.` Verified. `self-refuting-kill-test` @ `_crm` rests on two artifacts, not one.
+- **`per-project-git-identity` is stronger than recorded.** `Erez (COR-SYS)` spans **two** email
+  addresses (`Erez2812345@gmail.com` ×144, `hnoar.hr@gmail.com` ×81). The deep-dive recorded the
+  name and missed the second address.
+- **A rater fabricated a citation.** Sonnet cited `docs/OFFER.md` in anti-silo; the file does not
+  exist. A blind rater's justification is evidence to check, not evidence.

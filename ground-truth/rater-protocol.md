@@ -62,6 +62,14 @@ Fifteen pattern × repo cells, chosen because each one is load-bearing: it sits 
 promotion threshold, or it is the second repo that carried a pattern over the line. Listed in
 `ground-truth/interrater-2026-08-19.md` with each rater's score beside the incumbent.
 
+**Amended after the first run — applies to the NEXT run, not retroactively.** Selecting only
+load-bearing cells means selecting only cells already scored 2 or 3. The 2026-08-19 set had
+incumbent sd = 0.34 with 13 of 15 items scored 3, and on a range-restricted set ICC collapses even
+under near-perfect agreement — it returned 0.143 between two raters agreeing on 12 of 15 items.
+**At least a third of items must be cells the incumbent scored 0 or 1.** The statistic was
+pre-registered correctly and handed a sample it cannot speak about; that is a selection defect, and
+it is fixed here rather than by changing the statistic after the fact.
+
 ## 6. Re-running
 
 ```bash

@@ -1,0 +1,162 @@
+{
+ "rated": "2026-08-19",
+ "protocol": "ground-truth/rater-protocol.md",
+ "incumbent_rater": "opus 5 (this session, 2026-08-19, frozen at 6952391)",
+ "raters": [
+  "sonnet",
+  "haiku"
+ ],
+ "note": "Blind: raters were pointed at the target repos only and instructed not to open /home/user/lessons. Identical prompt for both. One pass per family.",
+ "items": [
+  {
+   "n": 1,
+   "pattern": "agent-identity-collapse",
+   "repo": "MATI",
+   "incumbent": 3,
+   "scores": {
+    "sonnet": 3,
+    "haiku": 0
+   }
+  },
+  {
+   "n": 2,
+   "pattern": "agent-identity-collapse",
+   "repo": "proofminer",
+   "incumbent": 3,
+   "scores": {
+    "sonnet": 3,
+    "haiku": 0
+   }
+  },
+  {
+   "n": 3,
+   "pattern": "adversarial-second-surface",
+   "repo": "MATI",
+   "incumbent": 3,
+   "scores": {
+    "sonnet": 1,
+    "haiku": 0
+   }
+  },
+  {
+   "n": 4,
+   "pattern": "adversarial-second-surface",
+   "repo": "anti-silo",
+   "incumbent": 3,
+   "scores": {
+    "sonnet": 2,
+    "haiku": 3
+   }
+  },
+  {
+   "n": 5,
+   "pattern": "contract-check-as-ci-gate",
+   "repo": "MATI",
+   "incumbent": 3,
+   "scores": {
+    "sonnet": 3,
+    "haiku": 3
+   }
+  },
+  {
+   "n": 6,
+   "pattern": "contract-check-as-ci-gate",
+   "repo": "anti-silo",
+   "incumbent": 2,
+   "scores": {
+    "sonnet": 3,
+    "haiku": 0
+   }
+  },
+  {
+   "n": 7,
+   "pattern": "commercial-doc-as-spec",
+   "repo": "anti-silo",
+   "incumbent": 3,
+   "scores": {
+    "sonnet": 3,
+    "haiku": 1
+   }
+  },
+  {
+   "n": 8,
+   "pattern": "commercial-doc-as-spec",
+   "repo": "Agent-Architect",
+   "incumbent": 3,
+   "scores": {
+    "sonnet": 3,
+    "haiku": 0
+   }
+  },
+  {
+   "n": 9,
+   "pattern": "claude-branch-as-default-branch",
+   "repo": "Agent-Architect",
+   "incumbent": 3,
+   "scores": {
+    "sonnet": 3,
+    "haiku": 3
+   }
+  },
+  {
+   "n": 10,
+   "pattern": "self-refuting-kill-test",
+   "repo": "_crm",
+   "incumbent": 3,
+   "scores": {
+    "sonnet": 3,
+    "haiku": 3
+   }
+  },
+  {
+   "n": 11,
+   "pattern": "self-refuting-kill-test",
+   "repo": "pre-call",
+   "incumbent": 2,
+   "scores": {
+    "sonnet": 2,
+    "haiku": 3
+   }
+  },
+  {
+   "n": 12,
+   "pattern": "dod-unsatisfiable-by-code",
+   "repo": "pre-call",
+   "incumbent": 3,
+   "scores": {
+    "sonnet": 3,
+    "haiku": 3
+   }
+  },
+  {
+   "n": 13,
+   "pattern": "model-version-in-trailer",
+   "repo": "_crm",
+   "incumbent": 3,
+   "scores": {
+    "sonnet": 3,
+    "haiku": 3
+   }
+  },
+  {
+   "n": 14,
+   "pattern": "per-project-git-identity",
+   "repo": "_crm",
+   "incumbent": 3,
+   "scores": {
+    "sonnet": 3,
+    "haiku": 3
+   }
+  },
+  {
+   "n": 15,
+   "pattern": "gate-left-behind-by-the-fix",
+   "repo": "anti-silo",
+   "incumbent": 3,
+   "scores": {
+    "sonnet": 3,
+    "haiku": 3
+   }
+  }
+ ]
+}

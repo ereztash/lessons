@@ -69,7 +69,7 @@ historical depth — the four originally deep-dived repos are all dormant.
 | CRM_Google_ai | mirror of `_crm` | 66d | Deep-dived 2026-08-19 — score the source, not this |
 | ampaign-craft | Tier A | `main` 101d | Mini-profile; 77 remote branches unfetched |
 | cor-sys | Tier A | 132d | Phase 1–4 complete |
-| groundstate-protocol | Tier A | 105d | Phase 1–4 complete |
+| groundstate-protocol | Tier A | 92d | Phase 1–4 complete |
 | chess-mind-patterns | Tier B | 149d | Phase 1–4 complete (not in session scope) |
 | core-unified-consciousness | Tier C | 163d | Phase 1–4 complete (not in session scope) |
 

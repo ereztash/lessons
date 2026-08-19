@@ -34,6 +34,9 @@
 | **The portfolio is one engine with nine implementations.** Same 9 components (intake → extraction → rubric → provenance → promotion gate → authority boundary → aggregation → packaging → calibration) in TS and Python across repos sharing no code. `lessons` is the ninth instance, not a meta-layer | `research/cross-repo/portfolio-as-one-mechanism.md` |
 | **Biggest gap in `lessons`: no accuracy measurement.** `stability-test.ts` measures self-consistency, `crp-lint.ts` measures conformance; neither compares output to a known-correct answer. `Benchmark.ATS` is exactly that harness and is dormant 274d | one-mechanism §6.1 |
 | **No provenance guard on insights.** Rule 1 checks a pointer *exists*; `CRM/core/provenance.py` checks whether the claim's *language* came from the subject or the analyst. The trailer-convention mis-score was this exact failure, and it survived 4 phases | one-mechanism §6.2 |
+| **FIRST ACCURACY MEASUREMENT (2026-08-19).** The F1–F4 classifier scored against a 10-repo answer key: **20% exact, 90% within one tier, 8/10 over-rated, 0 under-rated, Spearman ρ=0.77.** It orders repos well and is shifted up by ~1 tier. All 8 errors lack an external consumer and are 30+ days stale — F1–F4 measures neither | `ground-truth/results-2026-08-19.md` |
+| **Out-of-time test**: of the 3 repos the May-2026 scan called healthy/active, 1 produced a further week of work and none is active today. Dormancy was observed accurately; "healthy" predicted nothing | results §4 |
+| **All tier numbers in this repo are provisional** until re-scored with an external-consumer feature (F5) | results §5.2 |
 | **`absorbed-rather-than-shipped` verified at byte level** — 8 of 10 shared type files identical between COR-SYS and ampaign-craft, 2 already drifted. Absorption is a copy, not a dependency | patterns-matrix §2.6 |
 
 ## Phase 4 + Gap-Closure Shipping Summary

@@ -103,3 +103,35 @@ The four-feature partition cleanly separates the dataset into the three tiers, w
 - Companion playbook: `/products/playbooks/publish-button-intent-triage.md`
 - Companion playbook: `/products/playbooks/resumer-day-prep.md`
 - Pricing row: `/products/pricing-hypotheses.md`
+
+---
+
+## Accuracy disclosure — added 2026-08-19
+
+This playbook sells an instrument that has now been measured. On a 10-repo answer key built from
+signals it cannot see (`ground-truth/results-2026-08-19.md`):
+
+| | |
+|---|---|
+| Exact tier agreement | **2 / 10 (20%)** |
+| Within one tier | 9 / 10 (90%) |
+| Direction of error | **8 over-rated, 0 under-rated** |
+| Rank correlation (Spearman ρ) | **0.77** |
+
+**What the buyer should be told:** the classifier *orders* a portfolio reliably and *over-rates it
+by roughly one tier*. Read the output as a ranking, not as a verdict — and subtract a tier before
+acting on any single repo's score.
+
+**Why it over-rates:** F1–F4 detects apparatus (a dependency, a human commit, a PR, a docs folder).
+Apparatus was an expensive signal of commitment when a developer had to produce it; in an AI-paired
+workflow it costs an afternoon — `MATI` acquired all four features in eleven hours. Every one of the
+8 errors is a repo with no external consumer that has not been touched in 30+ days, and F1–F4
+measures neither.
+
+**Untested:** all 10 repos in the answer key are executable and none is inert, so the classifier's
+Tier C/D discrimination has never been measured. The measurement is also a self-audit — one
+labeller, not blind (`ground-truth/rubric.md` §5).
+
+Until an external-consumer feature lands and is validated prospectively, the honest claim for this
+playbook is *"ranks a portfolio; over-rates about one tier"* — which is still worth the price, and
+is a claim the buyer can check.

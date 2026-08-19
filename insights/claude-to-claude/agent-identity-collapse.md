@@ -19,6 +19,11 @@ monetization-score: 5/5
 applicability: solo-builder
 related-playbook: none yet
 created: 2026-08-19
+evidence-resolves-to: mixed
+may-report: yes
+may-assert-cause: yes  # 3 repos, all pointers resolve to commits
+score-history:
+  - 2026-08-19: 5/5 — first audit
 ---
 
 # Agent Identity Collapse — `git log --author` Undercounts AI Work by up to 6.7×

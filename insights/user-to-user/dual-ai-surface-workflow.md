@@ -3,10 +3,18 @@ dimension: user-to-user
 slug: dual-ai-surface-workflow
 evidence-repos: [groundstate-protocol, chess-mind-patterns]
 evidence-pointers:
-  - groundstate-protocol@11:01
-  - groundstate-protocol@11:00
-  - chess-mind-patterns@11:04
-  - chess-mind-patterns@11:09
+  - groundstate-protocol@e8a12bc
+  - groundstate-protocol@33b1066
+  - groundstate-protocol@0e45449
+  - groundstate-protocol@dc90fee:src/pages/Landing.tsx
+  - groundstate-protocol@abcdda7:(GroundState flow)
+  - gap 2026-03-08 -> 2026-04-14
+  - chess-mind-patterns@2c7ced2:src/components/
+  - chess-mind-patterns@2c7ced2:src/lib/
+  - file-touch overlap from chess-mind-patterns@875fe1c|f590fe6|2c7ced2
+  - chess-mind-patterns@875fe1c (Index.tsx +82/-24)
+  - chess-mind-patterns@f590fe6 (Index.tsx +28/-2)
+  - chess-mind-patterns@2c7ced2 (Index.tsx +10/-2)
 monetization-criteria:
   reusable: pass
   defensible: pass
@@ -17,6 +25,17 @@ monetization-score: 5/5
 applicability: solo-builder
 related-playbook: products/playbooks/dual-ai-surface-workflow.md
 created: 2026-05-12
+evidence-resolves-to: mixed
+source-observations:  # lessons observations these pointers were resolved from
+  - groundstate-protocol@11:01
+  - groundstate-protocol@11:00
+  - chess-mind-patterns@11:04
+  - chess-mind-patterns@11:09
+may-report: yes
+may-assert-cause: no  # moderate-2-repos; the bot does not return in the third instance
+reversibility: low  # a shipped playbook is sold; a retraction reaches fewer people than the claim did
+score-history:
+  - 2026-05-12: 5/5 — first audit
 ---
 
 # Dual-AI-Surface Workflow — Lovable Renders, Claude Writes

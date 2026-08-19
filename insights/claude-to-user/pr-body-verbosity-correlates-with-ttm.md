@@ -3,8 +3,9 @@ dimension: claude-to-user
 slug: pr-body-verbosity-correlates-with-ttm
 evidence-repos: [cor-sys, groundstate-protocol]
 evidence-pointers:
-  - cor-sys@10:03
-  - groundstate-protocol@11:04
+  - cor-sys#PR-1..#PR-16; cor-sys@526237f:none (statistical)
+  - groundstate-protocol#PR-9 body
+  - groundstate-protocol#PR-10 body
 monetization-criteria:
   reusable: pass
   defensible: pass
@@ -14,6 +15,14 @@ monetization-criteria:
 monetization-score: 5/5
 applicability: solo-builder
 created: 2026-05-12
+evidence-resolves-to: hard
+source-observations:  # lessons observations these pointers were resolved from
+  - cor-sys@10:03
+  - groundstate-protocol@11:04
+may-report: yes
+may-assert-cause: yes  # confirmed with timing numbers in MATI (44s vs 14h+)
+score-history:
+  - 2026-05-12: 5/5 — first audit
 ---
 
 # PR Body Verbosity Correlates with Time-to-Merge

@@ -3,10 +3,20 @@ dimension: user-to-user
 slug: publish-button-satisfiability
 evidence-repos: [core-unified-consciousness, groundstate-protocol, chess-mind-patterns]
 evidence-pointers:
-  - core-unified-consciousness@12:00
-  - core-unified-consciousness@12:07
-  - groundstate-protocol@11:00
-  - chess-mind-patterns@11:07
+  - core-unified-consciousness@b331aa1 (template 2025-01-01)
+  - core-unified-consciousness@9d9327a (first bot commit 2026-03-08 15:51)
+  - core-unified-consciousness@0f32edc (last sprint commit 2026-03-08 18:04)
+  - core-unified-consciousness@ecd8b5c (HEAD 2026-03-09 08:41)
+  - core-unified-consciousness@b331aa1 (template `new_style_vite_react_shadcn_ts_testing_2026-01-08`, same as chess-mind-patterns and groundstate per prior surveys)
+  - the operator's apparent goals (consciousness research framing vs. personal chess improvement vs. (groundstate's purpose))
+  - absence of any product-specific scaffolding in core-unified-consciousness
+  - groundstate-protocol@dc90fee:src/pages/Landing.tsx
+  - groundstate-protocol@abcdda7:(GroundState flow)
+  - gap 2026-03-08 -> 2026-04-14
+  - chess-mind-patterns@2c7ced2 ('feat: Lichess deep-links, demo puzzle seeding, ELO goal setter, PWA + notifications')
+  - chess-mind-patterns@2c7ced2:src/lib/lichess-links.ts (247 LOC mapping 20 skill IDs to Lichess training URLs)
+  - chess-mind-patterns@2c7ced2:public/manifest.json (PWA manifest)
+  - chess-mind-patterns@2c7ced2:public/sw.js (service worker with notification flow)
 monetization-criteria:
   reusable: pass
   defensible: pass
@@ -17,6 +27,17 @@ monetization-score: 5/5
 applicability: solo-builder
 related-playbook: products/playbooks/publish-button-intent-triage.md
 created: 2026-05-12
+evidence-resolves-to: mixed
+source-observations:  # lessons observations these pointers were resolved from
+  - core-unified-consciousness@12:00
+  - core-unified-consciousness@12:07
+  - groundstate-protocol@11:00
+  - chess-mind-patterns@11:07
+may-report: yes
+may-assert-cause: no  # moderate-2-repos; not observed in any Tier A repo of Round 2
+reversibility: low  # a shipped playbook is sold; a retraction reaches fewer people than the claim did
+score-history:
+  - 2026-05-12: 5/5 — first audit
 ---
 
 # Publish-Button Satisfiability — the Intent-Triage Insight

@@ -19,6 +19,12 @@ monetization-score: 5/5
 applicability: solo-builder
 related-playbook: products/playbooks/ai-cross-review-setup.md
 created: 2026-08-19
+evidence-resolves-to: hard
+may-report: yes
+may-assert-cause: yes  # 5 repos after Round 3
+reversibility: low  # a shipped playbook is sold; a retraction reaches fewer people than the claim did
+score-history:
+  - 2026-08-19: 5/5 — first audit
 ---
 
 # The Second Surface Must Be Adversarial, Never Additive

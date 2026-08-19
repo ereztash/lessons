@@ -3,10 +3,18 @@ dimension: user-to-user
 slug: tier-classifier-cli
 evidence-repos: [core-unified-consciousness, chess-mind-patterns, cor-sys, groundstate-protocol]
 evidence-pointers:
-  - core-unified-consciousness@12:09
-  - cor-sys@10:00
-  - chess-mind-patterns@11:00
-  - groundstate-protocol@11:00
+  - synthesis of four-repo dataset (cor-sys, chess-mind-patterns, core-unified-consciousness, groundstate) at HEAD as of 2026-05-12
+  - cor-sys@50f9166:CLAUDE.md
+  - cor-sys@50f9166:LOG.md
+  - cor-sys#PR-3
+  - chess-mind-patterns@b331aa1 (template 2025-01-08)
+  - chess-mind-patterns@b5113d1 (first bot commit 2026-03-08 14:38)
+  - chess-mind-patterns@18426b1 (last bot commit 2026-03-09 01:06)
+  - chess-mind-patterns@875fe1c (first human commit 2026-03-23 21:34)
+  - chess-mind-patterns@2c7ced2 (HEAD 2026-03-23 22:46)
+  - groundstate-protocol@dc90fee:src/pages/Landing.tsx
+  - groundstate-protocol@abcdda7:(GroundState flow)
+  - gap 2026-03-08 -> 2026-04-14
 monetization-criteria:
   reusable: pass
   defensible: pass
@@ -17,6 +25,18 @@ monetization-score: 5/5
 applicability: solo-builder
 related-playbook: products/playbooks/four-feature-tier-classifier.md
 created: 2026-05-12
+evidence-resolves-to: mixed
+source-observations:  # lessons observations these pointers were resolved from
+  - core-unified-consciousness@12:09
+  - cor-sys@10:00
+  - chess-mind-patterns@11:00
+  - groundstate-protocol@11:00
+may-report: yes
+may-assert-cause: no  # MEASURED 2026-08-19: 20% exact agreement, 8 of 10 over-rated. It orders; it does not establish cause
+reversibility: low  # a shipped playbook is sold; a retraction reaches fewer people than the claim did
+score-history:
+  - 2026-05-12: 5/5 — first audit
+  - 2026-08-19: 5/5 — first accuracy measurement: 20% exact, 8/10 over-rated, rho=0.77. Score held, causal claim withdrawn
 ---
 
 # Four-Feature Tier Classifier — Portfolio Triage in 30 Seconds

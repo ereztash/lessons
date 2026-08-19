@@ -3,10 +3,20 @@ dimension: user-to-user
 slug: resumer-day-prep
 evidence-repos: [chess-mind-patterns, groundstate-protocol]
 evidence-pointers:
-  - chess-mind-patterns@11:03
-  - chess-mind-patterns@11:07
-  - chess-mind-patterns@11:09
-  - groundstate-protocol@11:00
+  - chess-mind-patterns@875fe1c (+1421/-24)
+  - chess-mind-patterns@f590fe6 (+2102/-23)
+  - chess-mind-patterns@2c7ced2 (+939/-22)
+  - all 69 deletions inside files originally created by the bot OR by an earlier human commit in the same session
+  - chess-mind-patterns@2c7ced2 ('feat: Lichess deep-links, demo puzzle seeding, ELO goal setter, PWA + notifications')
+  - chess-mind-patterns@2c7ced2:src/lib/lichess-links.ts (247 LOC mapping 20 skill IDs to Lichess training URLs)
+  - chess-mind-patterns@2c7ced2:public/manifest.json (PWA manifest)
+  - chess-mind-patterns@2c7ced2:public/sw.js (service worker with notification flow)
+  - chess-mind-patterns@875fe1c (Index.tsx +82/-24)
+  - chess-mind-patterns@f590fe6 (Index.tsx +28/-2)
+  - chess-mind-patterns@2c7ced2 (Index.tsx +10/-2)
+  - groundstate-protocol@dc90fee:src/pages/Landing.tsx
+  - groundstate-protocol@abcdda7:(GroundState flow)
+  - gap 2026-03-08 -> 2026-04-14
 monetization-criteria:
   reusable: pass
   defensible: pass
@@ -17,6 +27,17 @@ monetization-score: 5/5
 applicability: solo-builder
 related-playbook: products/playbooks/resumer-day-prep.md
 created: 2026-05-12
+evidence-resolves-to: mixed
+source-observations:  # lessons observations these pointers were resolved from
+  - chess-mind-patterns@11:03
+  - chess-mind-patterns@11:07
+  - chess-mind-patterns@11:09
+  - groundstate-protocol@11:00
+may-report: yes
+may-assert-cause: yes  # strong-2-repos, sharpened by the gap-length threshold
+reversibility: low  # a shipped playbook is sold; a retraction reaches fewer people than the claim did
+score-history:
+  - 2026-05-12: 5/5 — first audit
 ---
 
 # Resumer Day Prep — The 72-Minute Lovable Resumption Window

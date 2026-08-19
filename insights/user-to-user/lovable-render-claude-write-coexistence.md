@@ -3,8 +3,12 @@ dimension: user-to-user
 slug: lovable-render-claude-write-coexistence
 evidence-repos: [groundstate-protocol, chess-mind-patterns]
 evidence-pointers:
-  - groundstate-protocol@11:01
-  - chess-mind-patterns@11:04
+  - groundstate-protocol@e8a12bc
+  - groundstate-protocol@33b1066
+  - groundstate-protocol@0e45449
+  - chess-mind-patterns@2c7ced2:src/components/
+  - chess-mind-patterns@2c7ced2:src/lib/
+  - file-touch overlap from chess-mind-patterns@875fe1c|f590fe6|2c7ced2
 monetization-criteria:
   reusable: pass
   defensible: pass
@@ -15,6 +19,15 @@ monetization-score: 5/5
 applicability: solo-builder
 related-playbook: products/playbooks/dual-ai-surface-workflow.md
 created: 2026-05-12
+evidence-resolves-to: hard
+source-observations:  # lessons observations these pointers were resolved from
+  - groundstate-protocol@11:01
+  - chess-mind-patterns@11:04
+may-report: yes
+may-assert-cause: no  # moderate-2-repos
+reversibility: low  # a shipped playbook is sold; a retraction reaches fewer people than the claim did
+score-history:
+  - 2026-05-12: 5/5 — first audit
 ---
 
 # Lovable-Render + Claude-Write Coexistence

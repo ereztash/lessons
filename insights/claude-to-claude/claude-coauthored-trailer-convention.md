@@ -3,9 +3,18 @@ dimension: claude-to-claude
 slug: claude-coauthored-trailer-convention
 evidence-repos: [cor-sys, groundstate-protocol, chess-mind-patterns]
 evidence-pointers:
-  - cor-sys@10:04
-  - groundstate-protocol@11:00
-  - chess-mind-patterns@11:05
+  - cor-sys@1ab0c54 (Claude direct)
+  - cor-sys@77fa8a8 (Claude co-authored under COR-SYS Dev)
+  - cor-sys@50f9166 (Claude co-authored)
+  - groundstate-protocol@dc90fee:src/pages/Landing.tsx
+  - groundstate-protocol@abcdda7:(GroundState flow)
+  - gap 2026-03-08 -> 2026-04-14
+  - chess-mind-patterns@875fe1c (title 'feat: add TL;DR, pattern recommendations, transition signal & demo mode')
+  - chess-mind-patterns@f590fe6 (title 'feat: full course replacement — Phase 1-5 implementation')
+  - chess-mind-patterns@2c7ced2 (title 'feat: Lichess deep-links, demo puzzle seeding, ELO goal setter, PWA + notifications'); contrast with bot subjects like 'Add breakpoint sliders'
+  - 'Save plan in Lovable'
+  - 'Preceding changes'
+  - 'Changes'
 monetization-criteria:
   reusable: pass
   defensible: pass
@@ -15,6 +24,16 @@ monetization-criteria:
 monetization-score: 5/5
 applicability: solo-builder
 created: 2026-05-12
+evidence-resolves-to: mixed
+source-observations:  # lessons observations these pointers were resolved from
+  - cor-sys@10:04
+  - groundstate-protocol@11:00
+  - chess-mind-patterns@11:05
+may-report: yes
+may-assert-cause: no  # Round-2 correction: groundstate has 0 Claude trailers; verified in 2 repos, on different evidence than originally claimed
+score-history:
+  - 2026-05-12: 5/5 — first audit
+  - 2026-08-19: 5/5 — evidence corrected (groundstate has 0 Claude trailers); score held, pitch changed
 ---
 
 # `Co-Authored-By: Claude` Trailer Convention

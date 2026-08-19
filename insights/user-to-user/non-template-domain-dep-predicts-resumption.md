@@ -3,9 +3,15 @@ dimension: user-to-user
 slug: non-template-domain-dep-predicts-resumption
 evidence-repos: [chess-mind-patterns, core-unified-consciousness, cor-sys]
 evidence-pointers:
-  - chess-mind-patterns@11:01
-  - core-unified-consciousness@12:01
-  - cor-sys@10:01
+  - chess-mind-patterns@c1c2685 (2026-03-08 17:39 'Add chess.js dependency')
+  - commit body: 'Installed the chess.js package to resolve build errors.'
+  - core-unified-consciousness@ecd8b5c:package.json (51 deps, all template defaults)
+  - chess-mind-patterns@2c7ced2:package.json (52 deps including chess.js@^1.4.0)
+  - core-unified-consciousness engine class names (`KORA`, `ErezCore`, `MetaBoardOptimizedByX` with toy values)
+  - chess-mind-patterns engine names (`narrative-engine.ts` 45 KB, `spaced-repetition.ts` SM-2, `skill-dag.ts` 20-skill DAG)
+  - cor-sys@526237f:LOG.md
+  - cor-sys@185faa6:LOG.md
+  - cor-sys@7271fd8:LOG.md
 monetization-criteria:
   reusable: pass
   defensible: pass
@@ -15,6 +21,15 @@ monetization-criteria:
 monetization-score: 5/5
 applicability: solo-builder
 created: 2026-05-12
+evidence-resolves-to: mixed
+source-observations:  # lessons observations these pointers were resolved from
+  - chess-mind-patterns@11:01
+  - core-unified-consciousness@12:01
+  - cor-sys@10:01
+may-report: yes
+may-assert-cause: no  # counter-example: MATI is the most active repo with 3 template-only deps
+score-history:
+  - 2026-05-12: 5/5 — first audit
 ---
 
 # Non-Template Domain Dependency Predicts Resumption

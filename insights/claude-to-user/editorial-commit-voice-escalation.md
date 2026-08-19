@@ -3,9 +3,25 @@ dimension: claude-to-user
 slug: editorial-commit-voice-escalation
 evidence-repos: [groundstate-protocol, cor-sys, chess-mind-patterns]
 evidence-pointers:
-  - groundstate-protocol@11:02
-  - cor-sys@10:06
-  - chess-mind-patterns@11:05
+  - groundstate-protocol@9b634aa
+  - groundstate-protocol@c4867f5
+  - groundstate-protocol@af24284
+  - cor-sys@bb3d459
+  - cor-sys@86cf90e
+  - cor-sys@f53a9a2
+  - cor-sys@72b3efd
+  - cor-sys@7719d64
+  - cor-sys@5c2bf0d
+  - cor-sys@6fbb735
+  - cor-sys@31c607f
+  - cor-sys@29ed2d9
+  - cor-sys@e18b37e
+  - chess-mind-patterns@875fe1c (title 'feat: add TL;DR, pattern recommendations, transition signal & demo mode')
+  - chess-mind-patterns@f590fe6 (title 'feat: full course replacement — Phase 1-5 implementation')
+  - chess-mind-patterns@2c7ced2 (title 'feat: Lichess deep-links, demo puzzle seeding, ELO goal setter, PWA + notifications'); contrast with bot subjects like 'Add breakpoint sliders'
+  - 'Save plan in Lovable'
+  - 'Preceding changes'
+  - 'Changes'
 monetization-criteria:
   reusable: pass
   defensible: pass
@@ -16,6 +32,16 @@ monetization-score: 5/5
 applicability: solo-builder
 related-playbook: products/playbooks/editorial-commit-voice-escalation.md
 created: 2026-05-12
+evidence-resolves-to: mixed
+source-observations:  # lessons observations these pointers were resolved from
+  - groundstate-protocol@11:02
+  - cor-sys@10:06
+  - chess-mind-patterns@11:05
+may-report: yes
+may-assert-cause: yes  # confirmed in 4 repos; mechanism isolated in agency-insight-analyzer
+reversibility: low  # a shipped playbook is sold; a retraction reaches fewer people than the claim did
+score-history:
+  - 2026-05-12: 5/5 — first audit
 ---
 
 # Editorial Commit Voice Escalation

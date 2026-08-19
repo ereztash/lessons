@@ -33,7 +33,10 @@ Dual-repo mode bypasses the standard LOG/MEMORY/skill read when the target repo 
 ## Quick Rules
 
 - **Plan-Validate-Capture-Distill** — never invent insights. Use `insight-distiller` skill.
-- **Evidence or defer** — every insight requires evidence pointer (commit SHA / file path / PR#).
+- **Evidence or defer** — every insight requires an evidence pointer that **resolves** to a commit,
+  file or PR. `evidence-resolves-to` is measured, not asserted. Run `scripts/check-lessons-contract.py`.
+- **A green check never seen to go red is not evidence** — fire every gate once on a deliberately
+  broken input before trusting it (`ground-truth/gate-reliability.md`).
 - **Two layers, never duplicate** — Claude-operational vs Human-narrative. Split, don't repeat.
 - **Monetization gate** — 4/5 criteria required (Reusable, Defensible, Time-saving, Encodable, Evidence-anchored).
 - **GitHub MCP only** — `gh` CLI not available. Use `mcp__github__*` tools.

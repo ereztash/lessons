@@ -3,8 +3,14 @@ dimension: claude-to-claude
 slug: ai-cross-review-setup
 evidence-repos: [groundstate-protocol, cor-sys]
 evidence-pointers:
-  - groundstate-protocol@11:05
-  - cor-sys@10:11
+  - groundstate-protocol@f77d0a9
+  - groundstate-protocol#PR-10
+  - cor-sys@cee079e
+  - cor-sys@00e9931
+  - cor-sys@e898d1e
+  - cor-sys@e319f61
+  - cor-sys@49f9ada
+  - cor-sys@86a72c5
 monetization-criteria:
   reusable: pass
   defensible: pass
@@ -15,6 +21,15 @@ monetization-score: 5/5
 applicability: solo-builder
 related-playbook: products/playbooks/ai-cross-review-setup.md
 created: 2026-05-12
+evidence-resolves-to: hard
+source-observations:  # lessons observations these pointers were resolved from
+  - groundstate-protocol@11:05
+  - cor-sys@10:11
+may-report: yes
+may-assert-cause: yes  # 6 repos after Round 3, three novel forms
+reversibility: low  # a shipped playbook is sold; a retraction reaches fewer people than the claim did
+score-history:
+  - 2026-05-12: 5/5 — first audit
 ---
 
 # AI Cross-Review Setup — Concurrent and Batch Handoff Templates

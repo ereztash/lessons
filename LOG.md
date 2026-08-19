@@ -10,12 +10,13 @@
 | GitHub access | `mcp__github__*` MCP tools only | 2026-05-12 |
 | `gh` CLI | NOT AVAILABLE — use GitHub MCP | 2026-05-12 |
 | Repo scope | **12 repos under ereztash in session scope** (see CLAUDE.md) | 2026-08-19 |
-| Repos deep-dived | **11** (cor-sys, groundstate, chess-mind, core-unified + MATI, anti-silo, Agent-Architect, CRM_Google_ai, agency-insight-analyzer + **pre-call, proofminer**) | 2026-08-19 |
+| Repos deep-dived | **12** (cor-sys, groundstate, chess-mind, core-unified + MATI, anti-silo, Agent-Architect, CRM_Google_ai, agency-insight-analyzer, pre-call, proofminer + **_crm**) | 2026-08-19 |
 | Dataset size | n=30 (was n=25) | 2026-08-19 |
 | **AI-authorship counting** | **`git log --author` is NOT sufficient — run `scripts/detect-agent-authorship.sh`** | 2026-08-19 |
 | Currently active repos | **4**: MATI (0d), **pre-call (0d)**, **proofminer (3d)**, anti-silo (3d). All 4 originally deep-dived repos dormant 33–132d | 2026-08-19 |
 | **Classifier accuracy (measured)** | **20% exact / 90% within-1 / 8-of-10 over-rated, ρ=0.77 — n=10 self-audit** | 2026-08-19 |
 | Ground-truth harness | `ground-truth/` + `scripts/collect-outcome-evidence.sh` + `scripts/score-classifier.py` | 2026-08-19 |
+| **Known limit of every measurement here** | all scored on artifacts this operator produced, by one model family. `_crm` shows both fixes: cross-family raters + a public corpus | 2026-08-19 |
 | **Contract gate** | **`scripts/check-lessons-contract.py` — 6 rules, exit 1 on violation, `--bypass` records to `ground-truth/bypass-log.md`** | 2026-08-19 |
 | Playbook claim strength | 4 causal · 3 observational — R6 blocks a playbook out-claiming its insights | 2026-08-19 |
 | Gate reliability | measured: gate-correctness P≥0.50, instrument-design P≥0.375 — `ground-truth/gate-reliability.md` | 2026-08-19 |
@@ -30,8 +31,8 @@
 | cor-sys commit count (verified) | 71 commits, matches Phase 1 survey | 2026-05-12 |
 | cor-sys PR count (verified) | 16 PRs (13 merged, 3 closed unmerged) | 2026-05-12 |
 | cor-sys issues count (verified) | 0 (open + closed combined) | 2026-05-12 |
-| Total raw observations gathered | **76** (43 across 4 repos + 21 across 5 + 12 across pre-call/proofminer) | 2026-08-19 |
-| Promoted cross-repo patterns | **29** (17 Phase 2 + 7 Round 2 + 4 Round 3 + model-version-in-trailer) | 2026-08-19 |
+| Total raw observations gathered | **82** (43 + 21 + 12 + 6 across `_crm`) | 2026-08-19 |
+| Promoted cross-repo patterns | **33** (17 Phase 2 + 7 R2 + 4 R3 + model-version-in-trailer + 4 R4) | 2026-08-19 |
 | Skills built (Phase 3) | 5 | 2026-05-12 |
 | Commands built (Phase 3) | 6 | 2026-05-12 |
 | Insights distilled (Phase 4 + gap-closure) | 11 (5 prior + 6 new) | 2026-05-12 |

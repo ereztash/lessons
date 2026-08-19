@@ -310,3 +310,79 @@ proofminer already implement four of them, better:
 
 The fifth gap — no gate-evasion record — is met by pre-call's **bypass log**, which nothing else
 in the portfolio has, `lessons` included.
+
+---
+
+# Round 4 — `_crm` deep-dive (2026-08-19)
+
+> The Ownership Engine: 257 commits, 70 docs, 127 test modules, and the largest authorship gap in
+> the portfolio. Source: `/research/_crm/extracted-insights.md` (6 observations).
+
+## 4.1 Retest
+
+| Pattern | _crm | Verdict |
+|---|---|---|
+| model-version-in-trailer | **3** | **Now 3 repos** (COR-SYS, groundstate-protocol, _crm) and _crm is the richest: all 211 trailers name the model, 153 also record the context window (`Opus 4.8 (1M context)`) |
+| agent-identity-collapse | 2 | Present in a **new form**: 23× undercount with **zero** cadence bursts. Neither detector reaches it alone — only the trailer survives. Fills the last empty cell of the authorship 2×2 |
+| authority-boundary-as-named-artifact | 3 | **Now 5 repos.** `core/consent.py` fails closed to `local_only`; `core/provenance.py` flags coach-supplied language as hollow |
+| commercial-doc-as-spec | 3 | **Now 5 repos**, and one level up: model cards, a DPIA, an incident-response plan and a trust ledger — written before any user exists |
+| adversary-hunts-assertions-not-defects | 2 | Holds — `core/provenance.py` is the artifact, not a reviewer |
+| dod-unsatisfiable-by-code | 2 | Holds in spirit: the G1 verdict is a claim downgrade no amount of code can reverse |
+| contract-check-as-ci-gate | 3 | `test_trust_ledger.py`, `test_methodology_promotion.py`, `test_no_pii_in_research_outputs.py` — domain policy as tests |
+| claude-branch-as-default-branch | 0 | Not observed — and notably **no agent-named branches at all** despite 211 AI-paired commits |
+
+## 4.2 New rows
+
+| Pattern | _crm | other | Strength | Promoted? | Dimension |
+|---|---|---|---|---|---|
+| self-refuting-kill-test | 3 | pre-call 2, Agent-Architect 1 | strong-2-repos | **Yes** | user-to-user |
+| claim-downgrade-ledger | 3 | Agent-Architect 3, pre-call 2 | strong-3-repos | **Yes** | claude-to-user |
+| external-corpus-validation | 3 | — | weak-1-repo | No — but it is the only break in the self-scoring loop found anywhere | user-to-user |
+| result-reported-with-its-own-ceiling | 3 | pre-call 2 | strong-2-repos | **Yes** | claude-to-user |
+| failure-case-shipped-beside-success-case | 3 | — | weak-1-repo | No | user-to-user |
+| per-project-git-identity | 3 | anti-silo 2 | strong-2-repos | **Yes** | claude-to-claude |
+
+### Row definitions
+
+- **self-refuting-kill-test** — a test whose possible outcomes include destroying the number the
+  product is sold on, actually run. `_crm` G1: ICC 0.89 within-Opus collapses to **0.115**
+  cross-family, and the claim is downgraded in the trust ledger. A test that can only confirm or
+  be inconclusive is decoration.
+- **claim-downgrade-ledger** — a durable record of a claim's strength *moving*, with what moved it.
+  `_crm`'s trust ledger (with `test_trust_ledger.py` enforcing it), Agent-Architect's confidence
+  ladder, pre-call's re-tested status column.
+- **result-reported-with-its-own-ceiling** — the limit travels in the same sentence as the number.
+  `_crm`: "rank-accuracy 1.0 … a perfect rank at n=3 is p~0.17 (not significant)". pre-call:
+  synthetic 49/49 printed beside real 2/3.
+- **per-project-git-identity** — the operator carries a different git identity per project
+  (`Erez (COR-SYS)`, `Erez`, `ereztash`). Any per-author metric across the portfolio double- or
+  triple-counts one person.
+
+## 4.3 Promoted count after Round 4
+
+| Dimension | after Round 3 | Round 4 additions | Total |
+|---|---|---|---|
+| claude-to-user | 3 | claim-downgrade-ledger; result-reported-with-its-own-ceiling | 5 |
+| user-to-claude | 5 | — | 5 |
+| claude-to-claude | 9 | per-project-git-identity | 10 |
+| user-to-user | 11 | self-refuting-kill-test | 12 |
+
+Total promoted: **33** (29 + 4). Single-repo candidates: **28**.
+
+## 4.4 `_crm` is the answer to the gap `lessons` closed today only partly
+
+`ground-truth/results-2026-08-19.md` measured the tier classifier against a 10-repo answer key and
+called it a self-audit — one labeller, one session, not blind. `_crm` shows what the next step looks
+like, and it is not "more repos":
+
+| `lessons` today | `_crm` |
+|---|---|
+| one model family scored every pattern strength | three model families rate blind; cross-family ICC is **the** result |
+| answer key built by the same session that ran the classifier | validated against **AnnoMI**, 133 public sessions nobody here produced |
+| ρ=0.77 reported without a confidence interval | "perfect rank at n=3 is p~0.17 (not significant)" in the same sentence |
+| accuracy disclosure appended to one playbook | a trust ledger with a test that fails when a claim outruns it |
+
+The cheapest of these to adopt is the last-but-one: **score the tier classifier against repos from
+an account this operator does not own.** Everything in `ground-truth/` is currently scored on
+artifacts the operator produced, which cannot separate "the classifier works" from "the classifier
+fits this author."

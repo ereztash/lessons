@@ -71,7 +71,8 @@ historical depth — the four originally deep-dived repos are all dormant.
 | anti-silo | Tier A, healthy | 3d | Deep-dived 2026-08-19 |
 | Agent-Architect | Tier A, unclaimed trunk | 87d | Deep-dived 2026-08-19 |
 | agency-insight-analyzer | Tier B | 68d | Deep-dived 2026-08-19 |
-| CRM_Google_ai | mirror of `_crm` | 66d | Deep-dived 2026-08-19 — score the source, not this |
+| **_crm** | Tier B — the Ownership Engine | 49d | **Deep-dived 2026-08-19** — 70 docs, 127 tests, a kill test that refuted its own metric |
+| CRM_Google_ai | mirror of `_crm`, stale by 182 files | 66d | Deep-dived 2026-08-19 — score the source, not this |
 | ampaign-craft | Tier A | `main` 101d | Mini-profile; 77 remote branches unfetched |
 | cor-sys | Tier A | 132d | Phase 1–4 complete |
 | groundstate-protocol | Tier A | 17d | Phase 1–4 complete — **4 repos share this name-family; the 92d figure belongs to the private 67-commit copy, not this one** |

@@ -44,3 +44,34 @@ Without the trailer, an operator cannot answer "which commits were AI-written?" 
 ## Reusability test
 
 Substitute Cursor's `<a href="https://cursor.com/agents/...">` footer or GitHub Copilot's signature line. The general rule — "every AI-assisted commit carries a machine-readable provenance signal" — generalizes. The Anthropic-specific trailer text generalizes within the Anthropic-tool family. Pass.
+
+---
+
+## Correction — 2026-08-19 (+5-repo ingestion round)
+
+Re-measured across 12 repos. The convention is **not** an operator practice; it is a
+tool-configuration artifact, and it is absent from most of the portfolio:
+
+| Repo | commits | carrying `Co-Authored-By: <Claude>` |
+|---|---|---|
+| anti-silo | 74 | 40 |
+| COR-SYS | 57 | 16 (naming the model: `Claude Sonnet 4.6` ×13, `Claude Opus 4.6` ×3) |
+| MATI | 86 | 5 |
+| ampaign-craft | 124 | 1 (uses `claude.ai/code` session links instead — 83 commits) |
+| Agent-Architect | 20 | 0 |
+| brain-healer-hub / agency-insight-analyzer / CRM_Google_ai | 35 | 0 |
+| **groundstate-protocol** | 43 | **0** — its 34 trailers name the *human* as co-author |
+
+Two consequences for anything built on this insight:
+
+1. **The trailer's absence does not flag a Tier C repo.** The original claim ("its absence flags a
+   Tier C repo where AI never came near git") is refuted: `ampaign-craft` and `Agent-Architect` are
+   Tier A and near-entirely Claude-written with no trailer. Absence indicates a different write
+   path, not a different level of AI involvement. Use `scripts/detect-agent-authorship.sh`.
+2. **A commit-signing hook is still the right artifact** — but sell it as *installing* a convention
+   that mostly does not exist, not as codifying one that emerged across the cohort. The
+   community-emergent framing was an artifact of a 3-repo sample, two of which shared a config.
+
+The insight stays at 5/5 (the hook is more valuable if the convention is rare), with the
+evidence and the pitch corrected. Where the trailer *is* used, COR-SYS shows the better form:
+name the model version, so the trailer records which model did the work.

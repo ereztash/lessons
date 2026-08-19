@@ -9,15 +9,19 @@
 | Target branch | `claude/analyze-workflow-optimization-3NhlH` | 2026-05-12 |
 | GitHub access | `mcp__github__*` MCP tools only | 2026-05-12 |
 | `gh` CLI | NOT AVAILABLE — use GitHub MCP | 2026-05-12 |
-| Repo scope | 5 repos under ereztash (see CLAUDE.md) + CampaignCraft via absorption profile | 2026-05-12 |
+| Repo scope | **12 repos under ereztash in session scope** (see CLAUDE.md) | 2026-08-19 |
+| Repos deep-dived | 9 (cor-sys, groundstate, chess-mind, core-unified + MATI, anti-silo, Agent-Architect, CRM_Google_ai, agency-insight-analyzer) | 2026-08-19 |
+| Dataset size | n=30 (was n=25) | 2026-08-19 |
+| **AI-authorship counting** | **`git log --author` is NOT sufficient — run `scripts/detect-agent-authorship.sh`** | 2026-08-19 |
+| Currently active repos | MATI (0d, live) and anti-silo (3d) only; all 4 originally deep-dived repos dormant 33–132d | 2026-08-19 |
 | Default language (machine files) | English | 2026-05-12 |
 | Default language (user-facing /index, /profile) | HE+EN bilingual | 2026-05-12 |
-| Current phase | Phase 4 + gap-closure round complete; all gates closed | 2026-05-12 |
+| Current phase | Phase 4 + gap-closure + **+5-repo ingestion round** complete | 2026-08-19 |
 | cor-sys commit count (verified) | 71 commits, matches Phase 1 survey | 2026-05-12 |
 | cor-sys PR count (verified) | 16 PRs (13 merged, 3 closed unmerged) | 2026-05-12 |
 | cor-sys issues count (verified) | 0 (open + closed combined) | 2026-05-12 |
-| Total raw observations gathered (4 repos) | 43 | 2026-05-12 |
-| Promoted cross-repo patterns (Phase 2) | 17 (out of 36 matrix rows after gap-closure addition) | 2026-05-12 |
+| Total raw observations gathered | 64 (43 across 4 repos + 21 across 5 new repos) | 2026-08-19 |
+| Promoted cross-repo patterns | 24 (17 Phase 2 + 7 in Round 2) | 2026-08-19 |
 | Skills built (Phase 3) | 5 | 2026-05-12 |
 | Commands built (Phase 3) | 6 | 2026-05-12 |
 | Insights distilled (Phase 4 + gap-closure) | 11 (5 prior + 6 new) | 2026-05-12 |
@@ -94,6 +98,24 @@ Before writing a gap-closure artifact, verify:
 
 Mismatch → reject the closure; clarify scope before writing.
 
+## Pre-Authorship-Claim Protocol (added 2026-08-19 ingestion round)
+
+Before writing any sentence of the form "repo X used AI tool Y" or "N of M commits were AI-written":
+
+```
+1. Run scripts/detect-agent-authorship.sh <repo>
+2. Read BOTH detector outputs — identity (author/trailer/session link) AND cadence (bursts)
+3. If in_burst > (bot + claude), the repo has an unattributed agent surface:
+   report the AI share as a RANGE, never a single number
+4. Check the trailer's subject: `Co-Authored-By: Claude` and
+   `Co-authored-by: <the human>` are opposite conventions, not variants of one
+5. "AI tools: none detected" is never a finding — it is an unrun measurement.
+   Say "not verified" unless both detectors were run.
+```
+
+Mismatch → do not write the claim. Every "none detected" that was checkable in this portfolio
+proved wrong (`Benchmark.ATS`).
+
 ## Anti-Patterns (Rules)
 
 Each anti-pattern is a documented mistake + rule. Append, never edit.
@@ -110,6 +132,10 @@ Each anti-pattern is a documented mistake + rule. Append, never edit.
 | 8 | Phase 4 risk: pricing each playbook in isolation without considering bundle dynamics | The pricing-hypotheses file MUST include at least one bundle proposal when 3+ playbooks ship in the same session. Solo pricing leaves cross-sell revenue on the table; bundle pricing is the operator's distribution-channel hypothesis test. |
 | 9 | Gap-closure risk: treating a hypothetical scenario (e.g., Maya self-application test) as if it were real data | A hypothetical is hypothetical. Every observation derived from it MUST be marked `<inferred>` or `(hypothetical)` to prevent it from being cited as real evidence in future synthesis. The Maya walkthrough at `/research/self-application/maya-walkthrough.md` explicitly states this in section 1; future syntheses must NOT cite Maya@<anything> as if it were a real repo. |
 | 10 | Gap-closure risk: shipping a meta-playbook (depends-on another playbook) without front-matter declaring the dependency | A meta-playbook like `ai-review-event-instrumentation.md` MUST have `depends-on: <parent-playbook-slug>` in front-matter and a "Meta-playbook context" section in body. Without this, a buyer who buys the meta-playbook without the parent is set up for failure. Bundle-only pricing for meta-playbooks until the parent has ≥50 sales. |
+| 11 | Ingestion round: the n=25 scan's "AI tools" column was built from commit author names, and was wrong wherever it could be checked. The `lessons` repo's own history would have been misclassified by its own method | Never state an AI-contribution figure from `git log --author` alone. Run both detectors (`scripts/detect-agent-authorship.sh`). When cadence bursts exceed identified AI commits, report a range and name the blind spot. See `research/cross-repo/authorship-attribution.md`. |
+| 12 | Ingestion round: a promoted Phase-2 pattern (`claude-coauthored-trailer-convention`) was scored 3 for groundstate-protocol, which in fact has **zero** Claude co-author trailers — its 34 trailers name the human | A trailer count is not a trailer *identity*. Before scoring any trailer-based pattern, print the actual trailer lines (`git log --format='%b' \| grep -i co-authored-by \| sort \| uniq -c`) and read who is named. Correct the score in place, in an append-only section, citing the measurement. |
+| 13 | Ingestion round: `CRM_Google_ai` scores 3/4 on F1–F4 while containing no original work — it is a whole-tree mirror of another repo | The classifier reads files, so a mirror inherits the source's score. If ≥50% of commits are whole-tree syncs naming another repo, classify as `mirror` and score the source. A mirror also carries the source's `CLAUDE.md`/`LOG.md`, which then address the wrong working tree — rewrite or delete them. |
+| 14 | Ingestion round: F1 (non-template production dependency) gives a false negative for repos that implement their domain instead of importing it — MATI is Tier A with 3 template-only deps and 958 lines of domain code | F1 detects a *purchased* domain commitment. Where F1 scores — but the repo is active and gated, check for F1b (≥300 lines under a non-framework source dir with no matching dependency) before assigning a tier. F1b is proposed, not yet applied to the dataset — do not silently score with it. |
 
 ## Codebase Patterns
 

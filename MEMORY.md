@@ -4,18 +4,33 @@
 
 ## Current State
 
-- **Phase**: 4 + gap-closure round complete; all gates green
-- **Last-touched repo**: lessons (gap-closure round shipping commits)
-- **Active research targets**: 4 deep-dived (cor-sys, groundstate-protocol, chess-mind-patterns, core-unified-consciousness) + 1 absorbed-project mini-profile (CampaignCraft inferred via cor-sys PR#16)
-- **Raw observations gathered**: 43 across 4 repos + CampaignCraft profile additions
-- **Promoted cross-repo patterns**: 17 (passing the ≥2 repos × strength≥2 gate)
-- **Single-repo candidates**: 16 (one added during gap-closure: absorbed-rather-than-shipped)
+- **Phase**: 4 + gap-closure complete; **+5-repo ingestion round complete (2026-08-19)**
+- **Last-touched repo**: lessons (ingestion round: 5 new deep-dives + method correction)
+- **Dataset**: **n=30** (was n=25). 9 deep-dived repos (4 prior + MATI, anti-silo, Agent-Architect, CRM_Google_ai, agency-insight-analyzer) + CampaignCraft mini-profile
+- **Raw observations gathered**: **64** (43 prior + 21 this round)
+- **Promoted cross-repo patterns**: **24** (17 prior + 7 promoted in Round 2)
+- **Single-repo candidates**: **22** (16 + 6)
+- **Open method correction**: `git log --author` undercounts AI work portfolio-wide —
+  see `research/cross-repo/authorship-attribution.md`. Tool: `scripts/detect-agent-authorship.sh`
+
 - **Skills built**: 5 of 5 planned (workflow-archaeologist, insight-distiller, monetization-auditor, dimension-router, cross-repo-comparator)
 - **Commands built**: 6 of 6 planned (lesson-capture, lesson-distill, lesson-review, lesson-monetize, lesson-cross-check, lesson-ship)
 - **Insights distilled**: 11 (5 prior Phase-4 + 6 new in gap-closure round)
 - **Insights monetized (passed audit)**: 11 (all 5/5 or 4/5)
 - **Insights in parking lot (failed audit)**: 0 — all 12 candidates passed 4/5 or higher; the 12th was distilled but its evidence-anchored criterion failed on the absorbed-rather-than-shipped pattern (only 1 repo), so it stayed at synthesis level
 - **Playbooks shipped**: 6 + 1 meta-playbook (publish-button-intent-triage, four-feature-tier-classifier, dual-ai-surface-workflow, ai-cross-review-setup, resumer-day-prep, editorial-commit-voice-escalation, ai-review-event-instrumentation)
+
+## Ingestion Round 2026-08-19 — headlines
+
+| Finding | Where |
+|---|---|
+| **Author-based AI counting is unsound.** Two orthogonal detectors needed (identity + cadence). MATI hides 81 of 86 agent commits under the operator's git identity; anti-silo undercounts 6.7×; `lessons` itself carries 14 hidden-agent commits | `research/cross-repo/authorship-attribution.md` |
+| **Adversarial second surface** — one AI builds, a second is bought in only to audit. MATI + anti-silo + Agent-Architect (Haiku audits Opus) | patterns-matrix §2.3 |
+| **`AGENTS.md` as a concurrency contract** between Codex and Claude on one working tree — lane split, one-writer-per-file, freeze, handshake | `research/crm-google-ai/` |
+| **Domain policy as a CI gate** — privacy floors and semantic-duplication checks that fail the build, not linter presets | `research/mati/` |
+| **A Phase 2 score was wrong**: groundstate-protocol has 0 Claude co-author trailers; its 34 trailers name the *human* | patterns-matrix §2.2 |
+| **Portfolio centre of gravity moved.** Only MATI (0d, live) and anti-silo (3d) are active; all four originally deep-dived repos are dormant 33–132d | `research/portfolio-scan/2026-08-19-rescan.md` |
+| **F1 false negative**: MATI is Tier A with 3 template-only deps and 958 lines of domain code. F1b proposed, not yet applied | rescan §3 |
 
 ## Phase 4 + Gap-Closure Shipping Summary
 

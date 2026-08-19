@@ -2,6 +2,12 @@
 
 > Tagline: Two AI surfaces, two cognitive moments, one clean cadence — never reverse the polarity.
 
+> **Claim strength: observational.** Both backing insights (`dual-ai-surface-workflow`,
+> `lovable-render-claude-write-coexistence`) carry `may-assert-cause: no` — moderate strength in
+> 2 repos, and in the third instance found on 2026-08-19 (`agency-insight-analyzer`) the render
+> surface never returned after the write surface took over. **The cadence is a description of what
+> two-surface repos looked like, not a mechanism that makes them work.**
+
 ## Target buyer
 
 **Solo builders who are paying for both a visual-preview AI (Lovable, Bolt.new, v0.dev) and a code-writing AI (Claude Code, Cursor) and feel uncertain about which to use when.**
@@ -16,7 +22,7 @@ Over a year of building, the dual-surface cadence converts roughly 2-3 stuck pro
 
 ## Problem statement
 
-Lovable and Claude Code are non-substitutable for distinct cognitive moments. Lovable is the *render-and-review* surface: the operator opens the editor, sees the rendered page, asks for visual tweaks, and shows the result to a stakeholder. Claude Code is the *write-and-commit* surface: the operator authors precise commits with conventional prefixes, opens PRs as decision checkpoints, and integrates external systems. Used together, each surface compensates for the other's weakness. Used singly, each surface forces the operator into the other's failure mode — Lovable-only loses to opaque commits and limited external integration; Claude-only loses to the absence of a live preview for stakeholder iteration. The cadence rule is simple but rarely articulated: open Lovable to see what you built; open Claude Code to change what you built; never reverse the polarity.
+Lovable and Claude Code are non-substitutable for distinct cognitive moments. Lovable is the *render-and-review* surface: the operator opens the editor, sees the rendered page, asks for visual tweaks, and shows the result to a stakeholder. Claude Code is the *write-and-commit* surface: the operator authors precise commits with conventional prefixes, opens PRs as decision checkpoints, and integrates external systems. Used together, each surface compensates for the other's weakness. Used singly, each surface left the operator in the other's failure mode in the repos surveyed — Lovable-only loses to opaque commits and limited external integration; Claude-only loses to the absence of a live preview for stakeholder iteration. The cadence observed was: open Lovable to see what you built; open Claude Code to change what you built. Whether reversing it costs anything has not been tested — no repo in the dataset reversed the polarity, so the prohibition is an extrapolation from absence, not a finding.
 
 ## The playbook
 

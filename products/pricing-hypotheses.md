@@ -122,3 +122,32 @@
 - **30 days after first launch**: Update Confidence column based on conversion data per `/products/launch-checklist.md` § Metric instrumentation.
 - **90 days**: Major refresh. Cut any playbook with <5 sales in 90 days. Promote parking-lot candidates that have matured.
 - **180 days**: Half-year retrospective. Decide on a 2nd-edition bundle structure.
+
+---
+
+## Claim-strength repricing — 2026-08-19
+
+Every playbook now declares whether it may sell a mechanism or only a sorting rule
+(`scripts/check-lessons-contract.py` R6, enforced against `may-assert-cause` on the backing
+insights). Three of seven turned out to be observational, and one of those was selling a claim its
+own measurement had refuted.
+
+| Playbook | Claim strength | Effect on price |
+|---|---|---|
+| AI Cross-Review Setup | **causal** | unchanged — 6 repos, strongest pattern in the dataset |
+| Resumer Day Prep | **causal** | unchanged |
+| Editorial Commit Voice Escalation | **causal** | unchanged — confirmed in 4 repos |
+| AI Review Event Instrumentation | causal, **inherited** | unchanged; bundle-only as before |
+| Publish-Button Intent Triage | **observational** | hold price, change the pitch: it sorts repos, it does not explain them |
+| Dual-AI-Surface Workflow | **observational** | hold price; the "never reverse the polarity" prohibition is an extrapolation from absence and is now labelled as one |
+| Four-Feature Tier Classifier | **observational** | **the one that should move.** It shipped claiming it errs in only one direction and never over-rates. Measured 2026-08-19: every one of its 8 errors was an over-estimate. Either reprice down or ship F5 first |
+
+**The rule this establishes.** A playbook's price rests on what it lets a buyer *decide*. A causal
+playbook says "do X because it causes Y" and is worth the decision it enables. An observational one
+says "repos like this tended to look like that" and is worth a sorting rule — real value, less of
+it. Selling the second at the first's price is the failure `proofminer/docs/AUTHORITY.md` names:
+*a weak trace should not become a confident outbound asset just because the interface can generate
+one.*
+
+No price is changed here. The claim each price rests on is now labelled, which is the precondition
+for changing one honestly.

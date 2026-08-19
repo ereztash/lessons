@@ -25,6 +25,12 @@ Each rule is ported from a repo in the portfolio that already had it:
   R5 bypass-log              <- pre-call docs/market-ready.md
        A gate with no record of being gone around is indistinguishable from a gate nobody needed
        to go around. --bypass requires a reason and appends to ground-truth/bypass-log.md.
+  R6 claim-strength          <- proofminer docs/AUTHORITY.md ("a weak trace should not become a
+       confident outbound asset just because the interface can generate one")
+       A playbook is the outbound asset. It must declare "Claim strength: causal" or
+       "Claim strength: observational", and that declaration must match may-assert-cause on the
+       insights that back it. A playbook backed only by report-only insights may not sell a
+       mechanism.
 
 Usage:
   python3 scripts/check-lessons-contract.py                 # check, exit 1 on any violation
@@ -131,6 +137,39 @@ def check():
                 violations.append(("R3", rel,
                     f"`monetization-score: {score}` does not match the last score-history entry "
                     f"({hist[-1]!r}) — a score change appends, it does not overwrite"))
+
+    # --- R6 claim strength: a playbook may not out-claim the insights behind it ---------------
+    backers = {}                                    # playbook path -> [(insight, may-assert-cause)]
+    for path in insight_files():
+        fm = front_matter(open(path, encoding="utf-8").read())
+        if not fm: continue
+        pb = field(fm, "related-playbook")
+        if pb and pb not in ("none", "none yet"):
+            backers.setdefault(pb, []).append(
+                (os.path.basename(path)[:-3], field(fm, "may-assert-cause")))
+    pbdir = os.path.join(ROOT, "products", "playbooks")
+    if os.path.isdir(pbdir):
+        for fn in sorted(os.listdir(pbdir)):
+            if not fn.endswith(".md"): continue
+            rel = os.path.join("products", "playbooks", fn)
+            text = open(os.path.join(pbdir, fn), encoding="utf-8").read()
+            m = re.search(r"\*\*Claim strength: (causal|observational)", text)
+            mine = backers.get(rel, [])
+            if not m:
+                violations.append(("R6", rel, "no `Claim strength:` declaration"))
+                continue
+            declared = m.group(1)
+            if not mine:                            # meta-playbook or unbacked
+                if "inherited" not in text[m.start():m.start()+200] and \
+                   not re.search(r"^depends-on:", text, re.M):
+                    violations.append(("R6", rel,
+                        "declares a claim strength but no insight names it in `related-playbook`"))
+                continue
+            allowed = "causal" if any(v == "yes" for _, v in mine) else "observational"
+            if declared != allowed:
+                who = ", ".join(f"{n}={v}" for n, v in mine)
+                violations.append(("R6", rel,
+                    f"declares `{declared}` but its backing insights allow `{allowed}` ({who})"))
 
     # --- R4 threshold provenance -------------------------------------------------------------
     rubric = os.path.join(ROOT, "ground-truth", "rubric.md")

@@ -16,7 +16,8 @@
 | Currently active repos | **4**: MATI (0d), **pre-call (0d)**, **proofminer (3d)**, anti-silo (3d). All 4 originally deep-dived repos dormant 33–132d | 2026-08-19 |
 | **Classifier accuracy (measured)** | **20% exact / 90% within-1 / 8-of-10 over-rated, ρ=0.77 — n=10 self-audit** | 2026-08-19 |
 | Ground-truth harness | `ground-truth/` + `scripts/collect-outcome-evidence.sh` + `scripts/score-classifier.py` | 2026-08-19 |
-| **Contract gate** | **`scripts/check-lessons-contract.py` — 5 rules, exit 1 on violation, `--bypass` records to `ground-truth/bypass-log.md`** | 2026-08-19 |
+| **Contract gate** | **`scripts/check-lessons-contract.py` — 6 rules, exit 1 on violation, `--bypass` records to `ground-truth/bypass-log.md`** | 2026-08-19 |
+| Playbook claim strength | 4 causal · 3 observational — R6 blocks a playbook out-claiming its insights | 2026-08-19 |
 | Gate reliability | measured: gate-correctness P≥0.50, instrument-design P≥0.375 — `ground-truth/gate-reliability.md` | 2026-08-19 |
 | Evidence pointers | all 17 insights resolve to commits/files/PRs; 43 clock-pointers re-anchored | 2026-08-19 |
 | Portfolio size (actual) | **40 repos** via `list_repos`. All 40 now scored — cohort 1 (31) + cohort 2 (9) | 2026-08-19 |

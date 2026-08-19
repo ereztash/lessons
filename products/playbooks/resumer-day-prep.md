@@ -2,6 +2,9 @@
 
 > Tagline: You have one ~72-minute window to resume a dormant Lovable repo before context decays — here's how to use every minute.
 
+> **Claim strength: causal.** both backing insights carry `may-assert-cause: yes` — strong-2-repos, sharpened by the gap-length threshold.
+> The mechanism may be stated as a mechanism.
+
 ## Target buyer
 
 **Solo Lovable-builders on month 2+ who have one or more dormant repos and want to resume the most promising one in a single sitting without descending into refactor-paralysis.**

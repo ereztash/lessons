@@ -43,6 +43,15 @@ avoided here by construction:
 3. Raters are not told what the incumbent score is, that an incumbent exists, or which patterns
    were promoted.
 
+**Blinding failed in both 2026-08-19 runs and instruction cannot fix it.** The harness auto-injects
+this repo's `CLAUDE.md` into every subagent before its first tool call. It names
+`measured stopping rule + DoD` for pre-call, `6.7×` (anti-silo's own undercount figure) and
+`proofminer … hidden-agent`, priming at least six items. Two raters of three reported this
+unprompted; the third asserted it had not read the repo, which was true and beside the point.
+**A self-report of blinding is not evidence of blinding.** Any future run must neutralise the
+injection structurally — a working directory outside this repo, or `CLAUDE.md` moved aside for the
+duration — and must enumerate what remains injected before it starts.
+
 ## 4. Declared in advance
 
 - **The incumbent scores are frozen** in git before any rater runs (`git log` on

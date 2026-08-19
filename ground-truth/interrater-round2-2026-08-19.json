@@ -1,0 +1,233 @@
+{
+ "rated": "2026-08-19",
+ "protocol": "ground-truth/rater-protocol.md",
+ "rubric_version": "1.1",
+ "incumbent_rater": "opus 5 (this session)",
+ "selection": "18 cells, 10 of them scored 0-1 by the incumbent (56%) — the range fix required by rater-protocol.md §5 after the 2026-08-19 run returned an uninformative ICC on a range-restricted set. Items 11 and 12 are the disputed adversarial-second-surface cells that run left open.",
+ "incumbent_sd_check": 1.297,
+ "raters": [
+  "opus-control",
+  "sonnet",
+  "fable"
+ ],
+ "rater_note": "opus-control is the SAME family as the incumbent and is the within-family control, not an independent family. _crm's G1 found fable unavailable in its environment; if it errors here that is recorded, not retried into a different design.",
+ "items": [
+  {
+   "n": 1,
+   "pattern": "agent-identity-collapse",
+   "repo": "anti-silo",
+   "path": "/home/user/anti-silo",
+   "incumbent": 1,
+   "scores": {
+    "opus-control": 2,
+    "sonnet": 2,
+    "fable": 3
+   }
+  },
+  {
+   "n": 2,
+   "pattern": "claude-branch-as-default-branch",
+   "repo": "MATI",
+   "path": "/home/user/MATI",
+   "incumbent": 0,
+   "scores": {
+    "opus-control": 0,
+    "sonnet": 0,
+    "fable": 0
+   }
+  },
+  {
+   "n": 3,
+   "pattern": "commercial-doc-as-spec",
+   "repo": "MATI",
+   "path": "/home/user/MATI",
+   "incumbent": 1,
+   "scores": {
+    "opus-control": 1,
+    "sonnet": 1,
+    "fable": 2
+   }
+  },
+  {
+   "n": 4,
+   "pattern": "contract-check-as-ci-gate",
+   "repo": "Agent-Architect",
+   "path": "/home/user/Agent-Architect",
+   "incumbent": 1,
+   "scores": {
+    "opus-control": 3,
+    "sonnet": 3,
+    "fable": 3
+   }
+  },
+  {
+   "n": 5,
+   "pattern": "programmatic-branch-naming",
+   "repo": "pre-call",
+   "path": "/workspace/ereztash/pre-call",
+   "incumbent": 0,
+   "scores": {
+    "opus-control": 2,
+    "sonnet": 3,
+    "fable": 2
+   }
+  },
+  {
+   "n": 6,
+   "pattern": "meta-tooling-co-shipped-with-product",
+   "repo": "pre-call",
+   "path": "/workspace/ereztash/pre-call",
+   "incumbent": 0,
+   "scores": {
+    "opus-control": 2,
+    "sonnet": 0,
+    "fable": 1
+   }
+  },
+  {
+   "n": 7,
+   "pattern": "measured-stopping-rule",
+   "repo": "proofminer",
+   "path": "/workspace/ereztash/proofminer",
+   "incumbent": 0,
+   "scores": {
+    "opus-control": 1,
+    "sonnet": 1,
+    "fable": 1
+   }
+  },
+  {
+   "n": 8,
+   "pattern": "bypass-log",
+   "repo": "proofminer",
+   "path": "/workspace/ereztash/proofminer",
+   "incumbent": 0,
+   "scores": {
+    "opus-control": 1,
+    "sonnet": 1,
+    "fable": 1
+   }
+  },
+  {
+   "n": 9,
+   "pattern": "dod-unsatisfiable-by-code",
+   "repo": "proofminer",
+   "path": "/workspace/ereztash/proofminer",
+   "incumbent": 1,
+   "scores": {
+    "opus-control": 1,
+    "sonnet": 1,
+    "fable": 1
+   }
+  },
+  {
+   "n": 10,
+   "pattern": "branch-as-claim",
+   "repo": "proofminer",
+   "path": "/workspace/ereztash/proofminer",
+   "incumbent": 1,
+   "scores": {
+    "opus-control": 0,
+    "sonnet": 1,
+    "fable": 0
+   }
+  },
+  {
+   "n": 11,
+   "pattern": "adversarial-second-surface",
+   "repo": "MATI",
+   "path": "/home/user/MATI",
+   "incumbent": 3,
+   "scores": {
+    "opus-control": 0,
+    "sonnet": 2,
+    "fable": 2
+   }
+  },
+  {
+   "n": 12,
+   "pattern": "adversarial-second-surface",
+   "repo": "anti-silo",
+   "path": "/home/user/anti-silo",
+   "incumbent": 3,
+   "scores": {
+    "opus-control": 1,
+    "sonnet": 1,
+    "fable": 1
+   }
+  },
+  {
+   "n": 13,
+   "pattern": "adversary-hunts-assertions-not-defects",
+   "repo": "proofminer",
+   "path": "/workspace/ereztash/proofminer",
+   "incumbent": 3,
+   "scores": {
+    "opus-control": 3,
+    "sonnet": 3,
+    "fable": 3
+   }
+  },
+  {
+   "n": 14,
+   "pattern": "programmatic-branch-naming",
+   "repo": "proofminer",
+   "path": "/workspace/ereztash/proofminer",
+   "incumbent": 3,
+   "scores": {
+    "opus-control": 3,
+    "sonnet": 3,
+    "fable": 3
+   }
+  },
+  {
+   "n": 15,
+   "pattern": "meta-tooling-co-shipped-with-product",
+   "repo": "proofminer",
+   "path": "/workspace/ereztash/proofminer",
+   "incumbent": 3,
+   "scores": {
+    "opus-control": 3,
+    "sonnet": 3,
+    "fable": 3
+   }
+  },
+  {
+   "n": 16,
+   "pattern": "branch-as-claim",
+   "repo": "pre-call",
+   "path": "/workspace/ereztash/pre-call",
+   "incumbent": 3,
+   "scores": {
+    "opus-control": 2,
+    "sonnet": 3,
+    "fable": 3
+   }
+  },
+  {
+   "n": 17,
+   "pattern": "bypass-log",
+   "repo": "pre-call",
+   "path": "/workspace/ereztash/pre-call",
+   "incumbent": 3,
+   "scores": {
+    "opus-control": 3,
+    "sonnet": 2,
+    "fable": 2
+   }
+  },
+  {
+   "n": 18,
+   "pattern": "measured-stopping-rule",
+   "repo": "pre-call",
+   "path": "/workspace/ereztash/pre-call",
+   "incumbent": 3,
+   "scores": {
+    "opus-control": 3,
+    "sonnet": 3,
+    "fable": 3
+   }
+  }
+ ],
+ "blinding_failure": "The lessons CLAUDE.md is auto-injected into every subagent context by the harness; the instruction not to read that repo could not be honoured. opus-control and fable each reported it unprompted; sonnet did not. Leaked lines that touch this item set are named in interrater-round2-2026-08-19.md §2."
+}

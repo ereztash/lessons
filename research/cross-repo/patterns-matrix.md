@@ -156,9 +156,9 @@ versions across 76 commits). It moves from candidate to promoted — see §2.3.
 
 | Pattern | mati | a-s | a-a | crm | aia | other | Strength | Promoted? | Dimension |
 |---|----|----|----|----|----|-------|----------|-----------|-----------|
-| agent-identity-collapse | 3 | 1 | 0 | 0 | 0 | lessons 3 | strong-2-repos | **Yes** | claude-to-claude |
-| adversarial-second-surface | 3 | 3 | 2 | 0 | 0 | — | strong-3-repos | **Yes** | claude-to-claude |
-| contract-check-as-ci-gate | 3 | **3** | 1 | 0 | 0 | ampaign-craft 3 | strong-3-repos | **Yes** | user-to-claude |
+| agent-identity-collapse | 3 | **2** | 0 | 0 | 0 | lessons 3, proofminer 3 | strong-3-repos | **Yes** | claude-to-claude |
+| adversarial-second-surface | **2** | **1** | 2 | 0 | 0 | proofminer 3, _crm 2 | **moderate-4-repos** (downgraded 2026-08-19 by 3 blind raters) | **Yes — provisional**, see round-2 §4 | claude-to-claude |
+| contract-check-as-ci-gate | 3 | **3** | **3** | 0 | 0 | ampaign-craft 3 | strong-4-repos | **Yes** | user-to-claude |
 | claude-branch-as-default-branch | 0 | 0 | 3 | 0 | 0 | keepath 3 (scan) | strong-2-repos | **Yes** | user-to-claude |
 | commercial-doc-as-spec | 1 | 3 | 3 | 0 | 0 | — | strong-2-repos | **Yes** | user-to-user |
 | resumption-gap-predicts-pivot-vs-continuation | 0 | 0 | 0 | 0 | 3 | groundstate 3, chess-mind 2 | strong-2-repos | **Yes** | user-to-user |
@@ -257,13 +257,13 @@ Full analysis: `research/cross-repo/portfolio-as-one-mechanism.md`.
 
 | Pattern | pre-call | proofminer | other | Strength | Promoted? | Dimension |
 |---|---|---|---|---|---|---|
-| measured-stopping-rule | 3 | 0 | — | weak-1-repo | No — but it is the portfolio's best C9 implementation | user-to-user |
+| measured-stopping-rule | 3 | **1** | — | weak-1-repo | No — but it is the portfolio's best C9 implementation | user-to-user |
 | dod-unsatisfiable-by-code | 3 | 1 | MATI 2 | strong-2-repos | **Yes** | user-to-user |
 | adversary-hunts-assertions-not-defects | 2 | 3 | CRM 2 | strong-2-repos | **Yes** | claude-to-claude |
 | authority-boundary-as-named-artifact | 2 | 3 | MATI 3, anti-silo 2 | strong-3-repos | **Yes** | user-to-claude |
 | branch-as-claim | 3 | 1 | — | weak-1-repo | No | claude-to-user |
-| bypass-log | 3 | 0 | — | weak-1-repo | No — but nothing else in the portfolio instruments its own gate's evasion | claude-to-claude |
-| programmatic-branch-naming | 0 | 3 | — | weak-1-repo | No | claude-to-claude |
+| bypass-log | 3 | **1** | — | weak-1-repo | No — but nothing else in the portfolio instruments its own gate's evasion | claude-to-claude |
+| programmatic-branch-naming | **2** | 3 | — | strong-2-repos | **Yes** (promoted 2026-08-19 — 3 blind raters found 6 machine-suffixed branches in pre-call I had scored 0) | claude-to-claude |
 | meta-tooling-co-shipped-with-product | 0 | 3 | cor-sys 3 | strong-2-repos | **Yes** (promoted from Phase-2 candidate) | user-to-user |
 | archive-branch-for-abandoned-agent-work | 0 | 3 | — | weak-1-repo | No | claude-to-claude |
 
@@ -432,3 +432,63 @@ rating or an explicit definitional decision.
   name and missed the second address.
 - **A rater fabricated a citation.** Sonnet cited `docs/OFFER.md` in anti-silo; the file does not
   exist. A blind rater's justification is evidence to check, not evidence.
+
+---
+
+# Round 6 — cross-family blind re-rating, with the range fix (2026-08-19)
+
+18 cells, 10 of them scored 0–1 by the incumbent, re-rated blind by three raters across three
+families. Full result, blinding failure and confounds: `ground-truth/interrater-round2-2026-08-19.md`.
+
+**The three raters agree with each other at ICC(2,1) = +0.801. Adding the incumbent drops it to
++0.652.** Round 5's reading — that the strengths might be rater-dependent — was produced by a
+range-restricted sample and is refuted. The variance is the incumbent, not the model.
+
+**The incumbent's deviation has a direction.** On cells scored 0–1 the raters see **+0.83** more;
+on cells scored 2–3 they see **−0.58** less. Cells carrying a story just written get a 3; cells in
+repos already characterised for some other pattern get a 0 without being looked at.
+
+## 6.1 Adopted — median of three raters, where all three moved the same way (7 of 18)
+
+| Cell | Was | Now |
+|---|---|---|
+| `agent-identity-collapse` @ anti-silo | 1 | 2 |
+| `contract-check-as-ci-gate` @ Agent-Architect | 1 | **3** |
+| `programmatic-branch-naming` @ pre-call | 0 | **2** |
+| `measured-stopping-rule` @ proofminer | 0 | 1 |
+| `bypass-log` @ proofminer | 0 | 1 |
+| `adversarial-second-surface` @ MATI | 3 | **2** |
+| `adversarial-second-surface` @ anti-silo | 3 | **1** |
+
+The adoption rule was **not** pre-registered; it is the most conservative rule statable after seeing
+the data, and that is a limitation, not a defence.
+
+## 6.2 Promotion changes
+
+- **`programmatic-branch-naming` promotes** — pre-call 2 + proofminer 3. Total promoted **34**.
+- **`adversarial-second-surface` downgraded** `strong-3-repos` → `moderate-4-repos`, and its
+  promotion is now **provisional**: it clears the gate only on cells (proofminer 3,
+  Agent-Architect 2) that were never re-rated, scored by a rater with a measured polarising bias.
+  First item for the next round.
+- `contract-check-as-ci-gate` → `strong-4-repos`; `agent-identity-collapse` → `strong-3-repos`.
+
+## 6.3 Blinding failed by harness injection
+
+This repo's `CLAUDE.md` is auto-loaded into every subagent. Two raters reported it unprompted; one
+did not. It names `measured stopping rule + DoD` for pre-call, `6.7×` (anti-silo's own undercount
+figure) and `proofminer … hidden-agent` — priming at least six items across **both** runs.
+A self-report of blinding is not evidence of blinding. The fix is a working directory outside this
+repo, not a better instruction.
+
+## 6.4 New evidence from the raters
+
+- **anti-silo's trailers name four model versions**: `Claude Sonnet 5` ×13, `Opus 4.8 (1M context)`
+  ×11, `Opus 5 (1M context)` ×9, `Opus 4.8` ×3, `Fable 5` ×2. `model-version-in-trailer` @ anti-silo
+  was scored 0 and is wrong; it is not re-scored here because that cell was not in the rated set.
+- **proofminer once had an unsatisfiable-by-code DoD and deleted it.** `INDISPENSABILITY_DOD_V1.md`
+  and `DOD_COMMITMENT_GATE` required "a suitable user voluntarily routes the next material
+  commitment"; both were removed in the rewrite and survive only in git history. Its DoD at HEAD is
+  "five review agents converge" — satisfiable by running more agents.
+- **pre-call's bypass discipline is wider than the one log.** `assets/i18n.test.js` and
+  `markup.test.js` carry EXEMPT allowlists requiring a written reason per entry — *"an entry here is
+  a claim that needs a reason"*.

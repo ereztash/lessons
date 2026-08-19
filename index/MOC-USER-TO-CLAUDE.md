@@ -46,3 +46,24 @@ _(populated by `/lesson-ship` in Phase 4)_
   - `/research/core-unified-consciousness/extracted-insights.md`
 - Schema: `/insights/_template.md`
 - Pipeline: `/pipelines/insight-extraction.md`
+
+---
+
+## Round 2 additions (2026-08-19 ingestion round)
+
+### contract-check-as-ci-gate
+**Source observations**: MATI `.github/workflows/ci.yml` (`check:signals`, `check:design`, `check:semantic-ux` run before the production build, plus `npm audit --omit=dev --audit-level=high`); MATI#13 (the semantic-UX contract was written because two fields collected the same semantic fact); anti-silo@cb96bf4 (250-line module guard test); ampaign-craft `eslint.config.js` (`no-restricted-imports` enforcing the ViewModel boundary)
+**Description**: A hand-written, project-specific checker — not a linter preset — that encodes **domain** policy and fails the build: a privacy floor of 5 participants, an RTL/accessibility contract, a rule that two fields may not collect the same fact, a module-size ceiling, an import boundary. Same family as COR-SYS's `LOG.md`: a rule the operator would otherwise re-explain every session, moved into a machine. The novelty is the subject matter — these gates encode product policy and authority boundaries, not code style. A CI gate is the only artifact an agent cannot talk its way past.
+**Caveat carried from the evidence**: MATI's checks match source text with regular expressions, so a rename disables them silently. A contract check needs its own test.
+**Monetization fit**: pass — template + checklist ("which of your session rules is a build failure?").
+**Distilled insight**: pending distillation
+
+### claude-branch-as-default-branch
+**Source observations**: Agent-Architect (`git remote show origin` → `HEAD branch: claude/agent-architect-test-fixtures-mA6dz`; no `main` exists; 20 of 21 commits by Claude; dormant 87d); keepath (default branch `claude/modular-system-design-kJg0a`, never merged to main; dormant 133d at scan time)
+**Description**: When the agent's working branch becomes the trunk, nobody ever performed the "accept this into the project" act. Both known instances are dormant, and neither has an abandoned *feature* — they have an unclaimed *whole*. Diagnostic: `git remote show origin | grep 'HEAD branch'`; if it starts with `claude/` or `agent/`, the resumption task is **adoption, not code** — create `main`, merge, then decide. Adding features to an unclaimed trunk repeats the failure that created it.
+**Monetization fit**: pass — a one-line check plus a re-entry ritual; slots into the `resumer-day-prep` playbook.
+**Distilled insight**: pending distillation
+
+### language-splits-by-agent-surface *(candidate — 1 repo)*
+**Source observations**: MATI — all 13 `agent/*` PRs are Hebrew against a fixed `## מה השתנה / ## למה / ## בדיקה` template; all `claude/*` PRs are English prose with no template (PR#18 ≈1,400 words). Clean across 18 PRs.
+**Description**: Refines `hebrew-bilingual-cognition-medium`: the language is a property of the *surface*, not the operator. Hebrew + fixed template = a scannable changelog from the build surface; English + open prose = reasoning from the audit surface, read once and deeply. The operator never has to ask which kind of document they are looking at. Parked until a second bilingual multi-surface repo appears.

@@ -69,3 +69,31 @@ In this dataset, Claude→Claude surfaces are observable through git artifacts t
   - `/research/core-unified-consciousness/extracted-insights.md`
 - Schema: `/insights/_template.md`
 - Pipeline: `/pipelines/insight-extraction.md`
+
+---
+
+## Round 2 additions (2026-08-19 ingestion round)
+
+### agent-identity-collapse
+**Source observations**: MATI@09:12 (81 of 86 commits authored as the operator, empty bodies, `agent/*` branches, 55 in machine-cadence bursts at 31 s mean gap); anti-silo@09:30 (40 trailered commits vs 6 Claude-authored — 6.7× undercount); lessons@a648ff3 + @ae184a9 (this repo's own hidden-agent commits)
+**Description**: An agent inheriting the operator's `user.name`/`user.email` and writing no trailer is invisible to every identity-based detector. The recorded author is a property of the writing tool's git config, not of who did the work. Detection needs a second, orthogonal signal — cadence — because identity and cadence have disjoint blind spots: identity misses the operator-configured agent, cadence misses Claude Code (which paces commits like a human). The reflexive case matters most: the `lessons` repo, which produced the four-feature classifier, carries 14 such commits, so the method that declared six repos "AI tools: none detected" would have misclassified its own history.
+**Monetization fit**: pass 5/5 — encoded as `scripts/detect-agent-authorship.sh`, legible via the identity × cadence 2×2.
+**Distilled insight**: `/insights/claude-to-claude/agent-identity-collapse.md`
+**Method record**: `/research/cross-repo/authorship-attribution.md`
+
+### adversarial-second-surface
+**Source observations**: MATI#16/#17 (all 5 Claude commits are fixes, a state migrator and a test suite — zero features; branch `claude/code-review-*`); anti-silo (every `claude/*` branch is an audit or review; features arrive on `feat/*` and `agent/*`); Agent-Architect@857e0dd (a Haiku pass audits an Opus-built pipeline and finds 7 logic gaps)
+**Description**: The second AI surface earns its cost by *not* building. When one agent writes both the implementation and its gates, the gates inherit the author's blind spot — MATI's builder wrote three CI contract checks, and the auditor found they matched source text with regular expressions, so a rename walks past them. Value scales with independence: different model, different context, different brief. Auditing is also cheaper than construction, which makes the cost-tiered form (a smaller model reviewing a larger one's output) rational rather than a compromise. Honest cost line: a batch of audit fixes desynchronizes identifiers, so a cross-review round is two commits, never one.
+**Monetization fit**: pass 5/5 — extends the shipped `ai-cross-review-setup` playbook with role assignment, branch-naming convention, and cost tiering.
+**Distilled insight**: `/insights/claude-to-claude/adversarial-second-surface.md`
+
+### gate-left-behind-by-the-fix
+**Source observations**: anti-silo@cb96bf4 (monolith split ships a 250-line guard test); anti-silo@79c4bd3 + @3c9198b (a manual deploy trigger, and the smoke-test gate that makes it unnecessary next time); MATI@e59043b/@a9c389b/@1e93197 (each contract check wired into CI in the same PR that motivated it)
+**Description**: The durable artifact of an AI session is the gate it installs, not the diff it lands. A refactor decays as soon as the next feature arrives unless a machine holds the boundary; a manual intervention recurs unless it leaves a check behind. The diagnostic for a healthy AI-paired repo is therefore not the absence of manual fixes — it is that each manual fix is paired with a gate in the same session.
+**Monetization fit**: pass — a session-close checklist item ("what gate did this session leave?"), encodable as a command.
+**Distilled insight**: pending distillation
+
+### agents-md-inter-agent-lane-contract *(candidate — 1 repo)*
+**Source observations**: CRM_Google_ai `AGENTS.md` — "coordination for two coding agents on one working tree": Codex owns the structural refactor, Claude owns data + semantics; "ONE writer per file at a time. Read-before-write."; an edit freeze while the refactor is in flight; a `## Handshake` section to lift it; a section recording changes made *outside* the repo so the other agent does not double-handle them
+**Description**: Beyond cross-review of finished PRs — two agents writing **concurrently to one tree**, coordinated by a committed file. The mechanism is ordinary concurrency control (mutual exclusion per resource, read-before-write, an out-of-band channel for effects outside the shared resource) applied to agents instead of threads, with commit frequency used as the liveness signal. The strongest single claude-to-claude artifact found in the portfolio; parked as a candidate until a second instance appears.
+**Monetization fit**: strong on Defensible and Encodable; parked on Evidence-anchored (1 repo).

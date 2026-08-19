@@ -3,8 +3,11 @@
 > One entry per repo in the ereztash portfolio.
 > Claude Code working on repo X with lessons access: grep for `## <repo-name>`, load the entry, begin.
 >
-> Source: portfolio scan n=25 (2026-05-12). Update when: tier changes, deep-dive completed, new findings.
-> Canonical data: `research/portfolio-scan/26-repos.md`
+> Source: portfolio scan n=25 (2026-05-12), extended to n=30 by the ingestion round of 2026-08-19.
+> Update when: tier changes, deep-dive completed, new findings.
+> Canonical data: `research/portfolio-scan/26-repos.md` + `research/portfolio-scan/2026-08-19-rescan.md`
+> **Before trusting any "AI tools" line below**, read `research/cross-repo/authorship-attribution.md` —
+> author-name counting undercounts AI work, and every "none detected" that was checkable proved wrong.
 
 ---
 
@@ -12,12 +15,12 @@
 
 - **Tier**: A | **Score**: 4/4 | F1 ✓ F2 ✓ F3 ✓(199+) F4 ✓
 - **AI tools**: Lovable + Claude Code
-- **Dormancy**: 2d | **Pattern**: healthy (most active repo in portfolio)
+- **Dormancy**: `main` 101d *(corrected 2026-08-19, was 2d)* | **Pattern**: was the most active repo; centre of gravity has moved to MATI and anti-silo
 - **Key findings**:
   - Most F1–F4 signals in portfolio: CLAUDE.md + docs/ + .agents/ + .claude/ + evals/ + knowledge/ + load-tests/
   - 60KB SQL migrations (Supabase), vercel.json, e2e/ suite, Hebrew Excel data file
   - Claude commits directly; ereztash merges PRs — clearest human-operator split in portfolio
-- **Watch for**: scope creep (199+ PRs means the system is growing fast — any new feature needs a PR, not a direct push)
+- **Watch for**: scope creep (199+ PRs means the system is growing fast — any new feature needs a PR, not a direct push). Also: `main` has not moved since 2026-05-10 while **77 remote branches** exist — branch-level activity was not fetched on 2026-08-19, so do not read the 101d figure as abandonment without checking them
 - **Playbooks**: [Four-Feature Tier Classifier](../products/playbooks/four-feature-tier-classifier.md), [Editorial Commit Voice Escalation](../products/playbooks/editorial-commit-voice-escalation.md)
 - **Deep-dive**: none (mini-profile in `portfolio-scan/26-repos.md`)
 - **Genesis fixture**: pending
@@ -67,6 +70,93 @@
 
 ---
 
+## MATI
+
+- **Tier**: A | **Score**: 3/4 | F1 —(see note) F2 ✓ F3 ✓(18) F4 ✓
+- **AI tools**: unattributed `agent/*` surface + Claude Code + a PR review bot
+- **Dormancy**: 0d — **live** (PRs #17, #18 open, updated 2026-08-19 07:40) | **Pattern**: one-day gated build, still running
+- **Key findings**:
+  - Empty → full CI-gated production system in 11 hours on 2026-08-18: 18 PRs, 3 domain contract checkers in CI, `npm audit --omit=dev` gate, 43 unit + 12 e2e tests
+  - **81 of 86 commits are agent-written under the operator's git identity** — invisible to `git log --author`. Detected by cadence (55 in bursts, mean gap 31 s) and `agent/*` branch naming
+  - Claude Code never ships a feature here: all 5 of its commits are defect fixes, a shared-state migrator, and the test suite that audits the other surface's regex-based contract checks
+  - PR language splits by surface: Hebrew + fixed template from `agent/*`, English prose from `claude/*`. Short Hebrew PRs merge in ~45 s; long English PRs stay open 14 h+
+  - F1 scores — on 3 template-only deps against 958 lines of domain code in `lib/` — the clearest F1 false negative in the portfolio
+- **Watch for**: the contract checkers match source text with regular expressions — a rename walks past them. Claude's own commit body says so. Do not treat a green `check:*` as coverage
+- **Playbooks**: none yet — this repo is the source for `adversarial-second-surface` and `contract-check-as-ci-gate`
+- **Deep-dive**: `research/mati/`
+- **Genesis fixture**: pending
+
+---
+
+## anti-silo
+
+- **Tier**: A | **Score**: 4/4 | F1 ✓ F2 ✓ F3 ✓(18) F4 ✓
+- **AI tools**: Claude Code (40 trailered commits) + two human git identities
+- **Dormancy**: 3d | **Pattern**: healthy — Python evidence/contradiction engine with a consultant-pilot offering
+- **Key findings**:
+  - **40 of 74 non-merge commits carry `Co-Authored-By: Claude`; only 6 name Claude as author** — a 6.7× undercount by the author column
+  - Every `claude/*` branch is an audit or review (UI review, product-readiness audit, code review); features arrive on `feat/*` and `agent/*`
+  - Claude's day-two work is monolith decomposition that leaves a **250-line guard test** behind, so the monolith cannot grow back
+  - Seven business docs (`INVESTOR_BRIEF`, `LAUNCH_READINESS`, `CONSULTANT_PILOT`, `ADVERSARIAL_REVIEW`) committed from day one, functioning as spec
+  - Final two commits: a manual deploy trigger, and the smoke-test gate that makes it unnecessary next time
+- **Watch for**: two git identities differing only in capitalization (`Erez` / `ereztash`) — any per-author metric on this repo double-counts one person
+- **Playbooks**: [AI Cross-Review Setup](../products/playbooks/ai-cross-review-setup.md)
+- **Deep-dive**: `research/anti-silo/`
+- **Genesis fixture**: pending
+
+---
+
+## Agent-Architect
+
+- **Tier**: A *(dormant)* | **Score**: 4/4 | F1 ✓ F2 ✓ F3 ✓(1) F4 ✓
+- **AI tools**: Claude Code + a Haiku audit pass
+- **Dormancy**: 87d | **Pattern**: unclaimed whole — no trunk was ever created
+- **Key findings**:
+  - **The GitHub default branch is `claude/agent-architect-test-fixtures-mA6dz`. There is no `main`.** Same shape as `keepath`; both dormant
+  - A Haiku pass audited the Opus-built pipeline and found 7 logic gaps, each closed in a named commit — plus a `Consistency pass` commit repairing what the batch fixes desynchronized
+  - Four generations of the master prompt live side by side at HEAD; prompts are version-numbered source, never deleted (a prompt cannot be usefully diffed)
+  - README states a falsifiable question and a **76–82% product-core confidence** that has been re-rated by a fixture run — the inverse of a placeholder README
+  - Ships a `product/` layer (`OFFER.md`, `PRODUCT_DEFINITION.md`, `landing.html`, `sample-report.md`) — the method is the product
+- **Watch for**: the resumption task is **adoption, not code** — create `main`, merge the working branch into it, then decide. Adding features to an unclaimed trunk repeats the failure
+- **Playbooks**: [Resumer Day Prep](../products/playbooks/resumer-day-prep.md)
+- **Deep-dive**: `research/agent-architect/`
+- **Genesis fixture**: pending
+
+---
+
+## CRM_Google_ai
+
+- **Tier**: A *(mirror — score is inflated; see note)* | **Score**: 3/4 | F1 ✓ F2 ✓ F3 — F4 ✓
+- **AI tools**: Claude Code + Codex (per `AGENTS.md`)
+- **Dormancy**: 66d | **Pattern**: **access shim** — a mirror of `ereztash/_crm`, not an independent project
+- **Key findings**:
+  - All 4 commits are an initial commit, a README edit, and two whole-tree mirrors of `_crm` (385 files). The README's CI badge still points at the source repo
+  - **`AGENTS.md` is a written concurrency contract between Codex and Claude Code on one working tree**: lane split, ONE-writer-per-file, read-before-write, an edit freeze during the refactor, and a `## Handshake` section to lift it. The strongest claude-to-claude artifact in the portfolio
+  - The mirrored `LOG.md` opens `# COR-SYS — Build Log & Roadmap` and references paths (`ROOT/_analysis`) that do not exist here — an agent opening this repo cold reads instructions for a different working tree
+- **Watch for**: do not score or resume this repo on its own. Work the source (`_crm`). If the mirror is kept, rewrite or delete `LOG.md` and `AGENTS.md` — a machine-consumed file naming another repo is worse than none
+- **Playbooks**: none
+- **Deep-dive**: `research/crm-google-ai/`
+- **Genesis fixture**: n/a (mirror)
+
+---
+
+## agency-insight-analyzer
+
+- **Tier**: B | **Score**: 2/4 | F1 — F2 ✓ F3 ✓(2) F4 —
+- **AI tools**: Lovable / gpt-engineer + Claude Code
+- **Dormancy**: 68d | **Pattern**: bot blast → **overnight** resumption → continuation (not pivot)
+- **Key findings**:
+  - The bot-blast-to-resumption gap is **11 hours** — the shortest in the dataset (groundstate: 37 days, chess-mind: 14 days). The short gap resumed as *continuation*; the long ones resumed as *pivots*
+  - Claude's commit bodies open by naming the product principle the change serves ("aligned with the 'mirror, not judge' principle") before describing the diff — the justification layer that bot commits (`Changes`, `Work in progress`) structurally cannot produce
+  - Seeded from `tanstack_start_ts_2026-06-08`, three months newer than the `vite_react_shadcn_ts` template in the other Lovable repos — the template string dates the repo's generation
+  - One bot commit subject is in Hebrew (`הוסף תמיכת עברית-אנגלית`) — a verbatim prompt echo, and the only surviving record of the prompt side of a Lovable session
+- **Watch for**: no CLAUDE.md, no docs/ — resumption at 68 days will land in the long-gap (pivot) regime, not the overnight one
+- **Playbooks**: [Publish-Button Intent Triage](../products/playbooks/publish-button-intent-triage.md), [Dual-AI-Surface Workflow](../products/playbooks/dual-ai-surface-workflow.md)
+- **Deep-dive**: `research/agency-insight-analyzer/`
+- **Genesis fixture**: pending
+
+---
+
 ## Algo-trade
 
 - **Tier**: A | **Score**: 3/4 | F1 ✓ F2 ✓ F3 ✓(21+) F4 —
@@ -103,10 +193,11 @@
 
 - **Tier**: B | **Score**: 2/4 | F1 ✓ F2 ✓ F3 — F4 —
 - **AI tools**: Lovable + Claude Code
-- **Dormancy**: 39d | **Pattern**: Lovable-base + Claude Code additions, no PR discipline
+- **Dormancy**: 138d | **Pattern**: Lovable-base + Claude Code additions, no PR discipline
 - **Key findings**:
   - Lovable-started webinar landing page + Supabase lead capture
-  - Claude Code added urgency bars, testimonials, scarcity messaging (5 direct commits) — then Lovable resumed
+  - Claude Code added urgency bars, testimonials, scarcity messaging (**4** direct commits, 2026-03-30 17:40–21:06 — corrected from 5) — then Lovable resumed
+  - F3 — confirmed 2026-08-19: the 3 merge commits are Lovable merges, not PRs
   - `.env` committed (potential secret exposure) — check before any new work
 - **Watch for**: `.env` in git history — run `git log --all --full-history -- .env` before any push
 - **Playbooks**: [Publish-Button Intent Triage](../products/playbooks/publish-button-intent-triage.md)
@@ -166,11 +257,12 @@
 ## All_Erez-s_Connections
 
 - **Tier**: B | **Score**: 1/4 | F1 — F2 ✓ F3 — F4 —
-- **AI tools**: none detected
-- **Dormancy**: 41d | **Pattern**: small human-only project, minimal structure
+- **AI tools**: none — **the only repo in the portfolio that passes both authorship detectors as genuinely human**
+- **Dormancy**: 140d | **Pattern**: small human-only project, minimal structure
 - **Key findings**:
-  - Small Node.js server (server.js + package.json). Connections visualization tool. 3 commits. Human only.
-  - No AI tool fingerprints — pre-AI-tool era or manual build
+  - Small Node.js server (server.js + package.json, express/cors/uuid). Referral/connections database.
+  - **6** commits, not 3 (corrected 2026-08-19), all within 13 minutes on 2026-04-01 (16:57–17:10)
+  - No trailers, no cadence burst — the gaps (60–240 s) sit above the machine-burst threshold. This is the true-negative control case for `scripts/detect-agent-authorship.sh`
 - **Watch for**: no AI tooling → Claude Code starting here is essentially greenfield; add CLAUDE.md first
 - **Playbooks**: [Four-Feature Tier Classifier](../products/playbooks/four-feature-tier-classifier.md)
 - **Deep-dive**: none
@@ -223,14 +315,15 @@
 
 ## Benchmark.ATS
 
-- **Tier**: B | **Score**: 1/4 | F1 — F2 ✓ F3 — F4 —
-- **AI tools**: none detected
-- **Dormancy**: 175d | **Pattern**: companion dataset to CandiApp
+- **Tier**: B | **Score**: 2/4 *(corrected 2026-08-19, was 1/4)* | F1 — F2 ✓ **F3 ✓(2)** F4 —
+- **AI tools**: **Claude Code** *(the n=25 scan recorded "none detected" — wrong)*
+- **Dormancy**: 274d | **Pattern**: companion dataset to CandiApp
 - **Key findings**:
   - 50 resumes + validation scripts + Hebrew README. Companion to CandiApp evaluation
-  - F1 likely overestimated: Python stdlib only, no heavy deps confirmed
+  - F1 confirmed —: `ats_validation_script.py` is Python stdlib only
+  - **Correction**: 2 of 4 commits are authored by `Claude` (`Add ground truth reference files`, `Add .gitignore`), and **2 PRs were merged** — one from branch `claude/create-ground-truth-file-…`. The scan recorded neither
 - **Watch for**: do not work on this in isolation — only activates alongside CandiApp resumption
-- **Deep-dive**: none
+- **Deep-dive**: none (verified in `research/portfolio-scan/2026-08-19-rescan.md`)
 
 ---
 

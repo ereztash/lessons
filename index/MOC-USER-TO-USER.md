@@ -89,3 +89,23 @@ In this dataset, user→user is the most populous dimension — 8 promoted patte
   - `/research/core-unified-consciousness/extracted-insights.md`
 - Schema: `/insights/_template.md`
 - Pipeline: `/pipelines/insight-extraction.md`
+
+---
+
+## Round 2 additions (2026-08-19 ingestion round)
+
+### commercial-doc-as-spec
+**Source observations**: anti-silo `docs/INVESTOR_BRIEF.md`, `LAUNCH_READINESS.md`, `CONSULTANT_PILOT.md`, `DISTRIBUTION.md`, `ADVERSARIAL_REVIEW_2026-07-16.md` (the earliest dated the repo's first day); anti-silo@1785182943 "docs: make the README answer a technical buyer"; Agent-Architect `product/` (`OFFER.md`, `PRODUCT_DEFINITION.md`, `landing.html`, `sample-report.md`) and a README stating 76–82% product-core confidence
+**Description**: Business documents committed at repo-start, functioning as specification rather than launch collateral. A README that must answer a technical buyer constrains what the code is allowed to claim; a stated confidence interval can be re-rated by a fixture run and therefore can be wrong. This is the inverse of `readme-placeholder-survives-to-head` — the placeholder survives precisely in repos where nobody ever had to state a claim.
+**Monetization fit**: pass — a repo-start document set, sold as a constraint mechanism rather than as marketing.
+**Distilled insight**: pending distillation
+
+### resumption-gap-predicts-pivot-vs-continuation
+**Source observations**: agency-insight-analyzer (11-hour gap: 11 bot commits ending 2026-06-11 21:32, first Claude commit 2026-06-12 08:47 — resumption *extends* the same product); groundstate-protocol (37-day gap: the grounding tool becomes a landing page, old flow demoted to `/groundstate`); chess-mind-patterns (14-day gap, 72-minute resumption sprint)
+**Description**: Gap length predicts what resumption *does*, not just whether it happens. Short gap (hours) → continuation. Long gap (weeks) → product pivot. The mechanism is memory: after five weeks the operator no longer holds the product idea and re-decides it; overnight they still hold it and merely extend it. Sharpens `bot-blast-then-human-resumption`, which treated all resumptions alike, and gives the `resumer-day-prep` playbook a branch: prepare for a *decision* above ~2 weeks, prepare for *context* below it.
+**Monetization fit**: pass — a threshold that changes the re-entry ritual; extends a shipped playbook.
+**Distilled insight**: pending distillation
+
+### mirror-repo-as-agent-access-shim *(candidate — 1 repo)*
+**Source observations**: CRM_Google_ai — 4 commits: an initial commit, a README edit, and two whole-tree mirrors of `ereztash/_crm` (385 files); README CI badge still points at the source repo; repo name names the tool it was created for
+**Description**: A new terminal state alongside `absorbed-rather-than-shipped`: not abandoned, not resumable, and containing no original work — a repo created because a tool could reach GitHub but not the original location. It scores 3/4 on F1–F4 because the classifier reads the *mirrored* files, so the tier is inflated. Rule: if ≥50% of commits are whole-tree syncs naming another repo, classify as `mirror` and score the source. Second-order hazard: the mirror carries the source's `CLAUDE.md`/`LOG.md`, which then address a working tree that does not exist here.

@@ -57,14 +57,30 @@ Rule: any doc >600 lines splits. Insight >200 words → Human layer, 5-line summ
 
 ## Source Repos (research targets)
 
-| Repo | Maturity | Effort allocation | Status |
-|------|----------|-------------------|--------|
-| cor-sys | Most mature | 40% | Phase 1 active |
-| groundstate-protocol | Maturing | 25% | Phase 1 queued |
-| chess-mind-patterns | Resumed prototype | 20% | Phase 1 queued |
-| core-unified-consciousness | Stalled | 15% | Phase 1 queued |
+Updated 2026-08-19 after the +5-repo ingestion round. Effort follows current activity, not
+historical depth — the four originally deep-dived repos are all dormant.
 
-Full tier data for all 25 repos: `research/repo-index.md`
+| Repo | Maturity | Dormancy | Status |
+|------|----------|----------|--------|
+| MATI | Tier A, live | 0d | Deep-dived 2026-08-19 — the active frontier |
+| anti-silo | Tier A, healthy | 3d | Deep-dived 2026-08-19 |
+| Agent-Architect | Tier A, unclaimed trunk | 87d | Deep-dived 2026-08-19 |
+| agency-insight-analyzer | Tier B | 68d | Deep-dived 2026-08-19 |
+| CRM_Google_ai | mirror of `_crm` | 66d | Deep-dived 2026-08-19 — score the source, not this |
+| ampaign-craft | Tier A | `main` 101d | Mini-profile; 77 remote branches unfetched |
+| cor-sys | Tier A | 132d | Phase 1–4 complete |
+| groundstate-protocol | Tier A | 105d | Phase 1–4 complete |
+| chess-mind-patterns | Tier B | 149d | Phase 1–4 complete (not in session scope) |
+| core-unified-consciousness | Tier C | 163d | Phase 1–4 complete (not in session scope) |
+
+Full tier data for all 30 repos: `research/repo-index.md`
+Delta + classifier corrections: `research/portfolio-scan/2026-08-19-rescan.md`
+
+## Authorship rule (added 2026-08-19)
+
+Never claim which AI tools a repo used from `git log --author` alone — it undercounts by up to
+6.7× and misses agent surfaces entirely. Run `scripts/detect-agent-authorship.sh <repo>` and read
+both detectors. Full method + portfolio table: `research/cross-repo/authorship-attribution.md`.
 
 ## Navigation
 

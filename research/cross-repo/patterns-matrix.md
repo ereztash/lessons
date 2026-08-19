@@ -95,7 +95,7 @@ The pattern cannot promote at strength-2-repos because only one absorbed instanc
 
 | Pattern | mati | a-s | a-a | crm | aia | Round-2 verdict |
 |---|----|----|----|----|----|---|
-| claude-coauthored-trailer-convention | 1 | 3 | 0 | 0 | 0 | **RE-SCORED — see §2.2.** Holds in anti-silo (40/74) and COR-SYS (16/57); absent in 3 of 5 new repos and in ampaign-craft (1/124). Not an operator convention — a tool-configuration artifact. |
+| claude-coauthored-trailer-convention | 1 | 3 | 0 | 0 | 0 | **Phase 2 score of 3 for groundstate stands — see §2.2, which retracts an erroneous correction.** Holds in anti-silo (40/74) and COR-SYS (16/57); absent in 3 of 5 new repos and in ampaign-craft (1/124). Not an operator convention — a tool-configuration artifact. |
 | conventional-commit-prefix-on-claude-commits | 0 | 3 | 0 | 0 | 0 | **Weakened.** MATI's Claude commits use plain imperative subjects (`Add a test suite covering lib and the browser regressions`). The prefix travels with the *repo's* convention, not with Claude. |
 | lovable-render-claude-write-coexistence | 0 | 0 | 0 | 0 | 2 | Holds where Lovable is present. aia: bot blast → Claude, but the bot does not return (unlike groundstate). |
 | non-template-domain-dep-predicts-resumption | 0 | 3 | 2 | n/v | 0 | **Counter-example found.** MATI has 3 template-only deps and is the most active repo in the portfolio. See F1b in the rescan. |
@@ -114,20 +114,43 @@ The pattern cannot promote at strength-2-repos because only one absorbed instanc
 | publish-button-as-success-condition | 0 | 0 | 0 | 0 | 0 | Not observed in any Tier A repo of this round. Consistent with H2: it predicts abandonment, and none of these are abandoned. |
 | four-feature-tier-classifier-monotonic | — | — | — | — | — | **F1 false negative** (MATI, Agent-Architect, All_Erez-s_Connections). F1b proposed in the rescan; not yet applied. |
 
-## 2.2 Correction to a Phase 2 score
+## 2.2 A correction that was itself wrong — retracted 2026-08-19
 
-`claude-coauthored-trailer-convention` was scored **3 for groundstate-protocol** in the Phase 2 matrix —
-while `index/MOC-CLAUDE-TO-CLAUDE.md` simultaneously described groundstate as having *"no co-authored
-phase"*. The matrix and the MOC contradicted each other and the contradiction survived four phases.
+**What this section said, and why it was wrong.** It claimed the Phase 2 matrix mis-scored
+`claude-coauthored-trailer-convention` as 3 for groundstate-protocol, on the measurement that the
+repo contained **zero** commits with a `Co-Authored-By` trailer naming Claude and that its 34
+trailers all named the human.
 
-Measured 2026-08-19: groundstate-protocol contains **zero** commits with a `Co-Authored-By` trailer naming
-Claude. Its 34 trailers all read `Co-authored-by: ereztash <204869220+ereztash@users.noreply.github.com>` —
-the *human* recorded as co-author on machine-written commits. The MOC was right; the matrix cell was wrong.
-The inverse convention is recorded below as its own row rather than folded into the original.
+That measurement was taken from `/home/user/ground-state-protocol` — the **private 67-commit copy**.
+The Phase 1 research describes the **public `groundstate-protocol`**, which is a different
+repository with 311 commits. Verified: of the 13 commit SHAs cited across
+`/research/groundstate-protocol/`, two exist only in the public repo and none exists only in the
+private one.
 
-The pattern still clears the promotion gate (COR-SYS 3, anti-silo 3), so it stays promoted — but on
-different evidence than originally claimed, and with a refinement: COR-SYS's trailers name the **model
-version** (`Claude Sonnet 4.6` ×13, `Claude Opus 4.6` ×3), making the trailer a model-attribution record.
+**Re-measured against the correct repository** (public `groundstate-protocol`, 194 non-merge commits):
+
+| Trailer | Count |
+|---|---|
+| `Co-Authored-By: Claude Opus 4.8` | 46 |
+| `Co-Authored-By: Claude Opus 5` | 26 |
+| `Co-Authored-By: Claude Sonnet 5` | 2 |
+| `Co-Authored-By: Claude Haiku 4.5` | 2 |
+| `Co-authored-by: ereztash` | 38 |
+| **naming Claude, total** | **76** |
+
+**The Phase 2 score of 3 was correct. The "correction" was the error, and it stood for four commits
+of this session.** It is retracted here rather than deleted, because a retraction that erases what
+it retracts teaches nothing.
+
+**What survives from the Round-2 finding.** The trailer is still *not* universal and still *not* an
+operator convention: it is absent from `ampaign-craft` (1 of 124), `Agent-Architect` (0 of 20),
+`brain-healer-hub` (0 naming Claude) and nearly absent from `MATI` (5 of 86). Its absence therefore
+does not flag a Tier C repo — `ampaign-craft` and `Agent-Architect` are Tier A and near-entirely
+Claude-written. That refinement was never dependent on the groundstate figure.
+
+**What is newly promoted by the correct measurement.** `model-version-in-trailer` now has two repos:
+COR-SYS (`Claude Sonnet 4.6` ×13, `Claude Opus 4.6` ×3) and groundstate-protocol (four model
+versions across 76 commits). It moves from candidate to promoted — see §2.3.
 
 ## 2.3 New rows
 
@@ -144,7 +167,7 @@ version** (`Claude Sonnet 4.6` ×13, `Claude Opus 4.6` ×3), making the trailer 
 | mirror-repo-as-agent-access-shim | 0 | 0 | 0 | 3 | 0 | — | weak-1-repo | No — new terminal state, alongside absorbed-rather-than-shipped | user-to-user |
 | one-day-full-system-build | 3 | 0 | 0 | 0 | 0 | — | weak-1-repo | No | user-to-user |
 | human-as-coauthor-trailer | 0 | 0 | 0 | 0 | 0 | groundstate 3 | weak-1-repo | No | claude-to-user |
-| model-version-in-trailer | 0 | 0 | 0 | 0 | 0 | COR-SYS 3 | weak-1-repo | No | claude-to-claude |
+| model-version-in-trailer | 0 | 0 | 0 | 0 | 0 | COR-SYS 3, groundstate-protocol 3 | strong-2-repos | **Yes** (promoted 2026-08-19 on the re-measurement in §2.2) | claude-to-claude |
 | gate-left-behind-by-the-fix | 3 | 3 | 1 | 0 | 0 | — | strong-2-repos | **Yes** | claude-to-claude |
 
 ### Row definitions
@@ -174,7 +197,7 @@ version** (`Claude Sonnet 4.6` ×13, `Claude Opus 4.6` ×3), making the trailer 
 | claude-to-claude | 5 | agent-identity-collapse; adversarial-second-surface; gate-left-behind-by-the-fix | 8 |
 | user-to-user | 7 | commercial-doc-as-spec; resumption-gap-predicts-pivot-vs-continuation | 9 |
 
-Total promoted: **24** (17 + 7). Single-repo candidates: **22** (16 + 6).
+Total promoted: **25** (17 + 7 + model-version-in-trailer). Single-repo candidates: **21**.
 
 ## 2.5 Source observation files added this round
 
@@ -271,7 +294,7 @@ Full analysis: `research/cross-repo/portfolio-as-one-mechanism.md`.
 | claude-to-claude | 8 | adversary-hunts-assertions-not-defects | 9 |
 | user-to-user | 9 | dod-unsatisfiable-by-code; meta-tooling-co-shipped-with-product | 11 |
 
-Total promoted: **28**. Single-repo candidates: **27**.
+Total promoted: **29**. Single-repo candidates: **26**.
 
 ## 3.4 What these two repos say about `lessons`
 

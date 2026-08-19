@@ -30,10 +30,10 @@ source-observations:  # lessons observations these pointers were resolved from
   - groundstate-protocol@11:00
   - chess-mind-patterns@11:05
 may-report: yes
-may-assert-cause: no  # Round-2 correction: groundstate has 0 Claude trailers; verified in 2 repos, on different evidence than originally claimed
+may-assert-cause: yes  # strong in 3 repos (COR-SYS 16/57, groundstate-protocol 76/194, anti-silo 40/74). The refuted part is the ORIGINAL claim that absence flags Tier C — ampaign-craft and Agent-Architect are Tier A with no trailer
 score-history:
   - 2026-05-12: 5/5 — first audit
-  - 2026-08-19: 5/5 — evidence corrected (groundstate has 0 Claude trailers); score held, pitch changed
+  - 2026-08-19: 5/5 — evidence corrected, then the correction itself retracted; groundstate has 76 Claude trailers, not 0. Score held throughout
 ---
 
 # `Co-Authored-By: Claude` Trailer Convention
@@ -79,7 +79,7 @@ tool-configuration artifact, and it is absent from most of the portfolio:
 | ampaign-craft | 124 | 1 (uses `claude.ai/code` session links instead — 83 commits) |
 | Agent-Architect | 20 | 0 |
 | brain-healer-hub / agency-insight-analyzer / CRM_Google_ai | 35 | 0 |
-| **groundstate-protocol** | 43 | **0** — its 34 trailers name the *human* as co-author |
+| **groundstate-protocol** (public, 194) | 194 | **76** — `Claude Opus 4.8` ×46, `Claude Opus 5` ×26, `Claude Sonnet 5` ×2, `Claude Haiku 4.5` ×2, plus 38 naming the human |
 
 Two consequences for anything built on this insight:
 
@@ -88,8 +88,13 @@ Two consequences for anything built on this insight:
    Tier A and near-entirely Claude-written with no trailer. Absence indicates a different write
    path, not a different level of AI involvement. Use `scripts/detect-agent-authorship.sh`.
 2. **A commit-signing hook is still the right artifact** — but sell it as *installing* a convention
-   that mostly does not exist, not as codifying one that emerged across the cohort. The
-   community-emergent framing was an artifact of a 3-repo sample, two of which shared a config.
+   that is real in some repos and absent in others, not as one that emerged across the cohort.
+
+**Correction to the correction — 2026-08-19.** The first version of this section reported
+groundstate-protocol as having **0** Claude trailers. That figure came from the private 67-commit
+`ground-state-protocol`, a different repository from the public `groundstate-protocol` the Phase 1
+research describes. The correct figure is 76. The Phase 2 score was right; this section's first
+attempt to correct it was the error. See `research/cross-repo/patterns-matrix.md` §2.2.
 
 The insight stays at 5/5 (the hook is more valuable if the convention is rare), with the
 evidence and the pitch corrected. Where the trailer *is* used, COR-SYS shows the better form:

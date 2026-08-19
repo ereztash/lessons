@@ -1,0 +1,203 @@
+{
+ "round": 5,
+ "date": "2026-08-19",
+ "frozen_before_any_rater_ran": true,
+ "selection": {
+  "population": "All 95 cells in the new-generation matrix (Rounds 2-9) that NO blind rater has ever seen. Enumerated mechanically from patterns-matrix.md minus the 47 cells rated in rounds 1-4, not chosen by recall.",
+  "strata": {
+   "incumbent 0": 44,
+   "incumbent 1": 3,
+   "incumbent 2": 15,
+   "incumbent 3": 33
+  },
+  "rule": "Declared before running: (1) stratify by incumbent score; (2) within each stratum sort promoted-pattern cells first, then alphabetically by pattern@repo; (3) cap any one pattern at 2 cells across the whole round so coverage spreads; (4) take 5/3/5/5 from strata 0/1/2/3. Stratum 1 holds only 3 cells, so all three are taken.",
+  "why_stratified": "Round 1 selected only load-bearing cells, which meant only cells already scored 2-3: incumbent sd 0.34, and ICC collapsed to 0.143 despite 80% exact agreement (anti-pattern 24). Round 4's population had almost no variance at all, so ICC was correctly refused there. THIS sample is built to have range: incumbent sd 1.199, 18 items evenly spread across all four scores. ICC is legitimate here for the first time in a stratified round, and that is the reason it is used.",
+  "result": {
+   "items": 18,
+   "distinct_patterns": 10,
+   "distinct_repos": 10,
+   "incumbent_sd": 1.199
+  }
+ },
+ "scale": "0 absent - no evidence in the repo at HEAD. 1 weak - a faint trace; one occurrence; not load-bearing. 2 moderate - multiple occurrences; load-bearing; visible to a reader skimming the repo. 3 strong - a defining feature of the repo's identity at HEAD. Taken unchanged from patterns-matrix.md, so the scale is not a variable. Score from the repo AT HEAD, not from PR bodies or anything you have read about it (anti-pattern 27).",
+ "raters": [
+  "sonnet",
+  "haiku",
+  "fable"
+ ],
+ "incumbent": "the existing matrix score, assigned by one model in one session",
+ "statistics": {
+  "primary": "ICC(2,1) two-way random, absolute agreement, single measure - across the three raters, and again with the incumbent added",
+  "secondary": [
+   "exact-match with the incumbent, per stratum",
+   "reason-correctness, scored separately against the repos (rounds 8-9 found scores and reasons dissociate: 24/24 vs 14/24)"
+  ],
+  "adoption_rule": "A cell changes only where all three raters move in the same direction relative to the incumbent; the new score is their median. Same rule as rounds 2-3, kept unchanged for comparability."
+ },
+ "preregistered_prediction": {
+  "claim": "The incumbent's POLARISING BIAS reproduces a third time, on a third disjoint item set: mean(rater - incumbent) > 0 on the incumbent-0/1 items AND < 0 on the incumbent-2/3 items.",
+  "prior_measurements": {
+   "round2": "+0.83 / -0.58",
+   "round3": "+1.17 / -0.47"
+  },
+  "direction_only": "Magnitude is not predicted, only the two signs. If either sign comes back the other way, the bias is not a stable property of the incumbent and the two prior measurements were selection artefacts.",
+  "what_would_refute_it": "mean(rater - incumbent) <= 0 on the low stratum, or >= 0 on the high stratum."
+ },
+ "blinding": {
+  "not_attempted_this_round": "Three methods have failed: instruction (rounds 1-2), whole-file removal (round 3), paragraph removal (round 9). Anti-pattern 32 says stop attempting it. No removal is tried here.",
+  "instead": "The items the injected text touches are named IN ADVANCE (see primed_by_injected_text on items 2, 3, 6, 12, 14) and their agreement is discounted in the report regardless of how it comes out.",
+  "measurement": "Mandatory `BLINDING:` first line quoting what was received verbatim."
+ },
+ "items": [
+  {
+   "id": 1,
+   "pattern": "adversarial-second-surface",
+   "repo": "CRM_Google_ai",
+   "path": "/home/user/CRM_Google_ai",
+   "incumbent": 0,
+   "definition": "One AI surface builds; a second is bought in solely to audit, review, refactor or attack the first. The second surface never ships a feature."
+  },
+  {
+   "id": 2,
+   "pattern": "agent-identity-collapse",
+   "repo": "CRM_Google_ai",
+   "path": "/home/user/CRM_Google_ai",
+   "incumbent": 0,
+   "definition": "An agent commits under the operator's own user.name/user.email with no trailer, making its work invisible to author-based counting. Detected by CADENCE (runs of >=5 same-author commits with all gaps under 180s), not by identity.",
+   "primed_by_injected_text": "STRONG: CLAUDE.md calls CRM_Google_ai 'a mirror of _crm ... score the source, not this' - the exact framing that produced anti-pattern 28, priming a 0 on an unopened repo"
+  },
+  {
+   "id": 3,
+   "pattern": "agent-identity-collapse",
+   "repo": "pre-call",
+   "path": "/workspace/ereztash/pre-call",
+   "incumbent": 0,
+   "definition": "An agent commits under the operator's own user.name/user.email with no trailer, making its work invisible to author-based counting. Detected by CADENCE (runs of >=5 same-author commits with all gaps under 180s), not by identity.",
+   "primed_by_injected_text": "MODERATE: CLAUDE.md's repo table names proofminer 'largest hidden-agent repo' beside pre-call, priming the contrast this item turns on"
+  },
+  {
+   "id": 4,
+   "pattern": "claude-branch-as-default-branch",
+   "repo": "CRM_Google_ai",
+   "path": "/home/user/CRM_Google_ai",
+   "incumbent": 0,
+   "definition": "The repository's default branch (git HEAD) is an agent working branch such as claude/<task>-<hash>; no trunk was ever created."
+  },
+  {
+   "id": 5,
+   "pattern": "claude-branch-as-default-branch",
+   "repo": "agency-insight-analyzer",
+   "path": "/home/user/agency-insight-analyzer",
+   "incumbent": 0,
+   "definition": "The repository's default branch (git HEAD) is an agent working branch such as claude/<task>-<hash>; no trunk was ever created."
+  },
+  {
+   "id": 6,
+   "pattern": "self-refuting-kill-test",
+   "repo": "Agent-Architect",
+   "path": "/home/user/Agent-Architect",
+   "incumbent": 1,
+   "definition": "A test whose possible outcomes include destroying the number the product is sold on, and which was actually run. A test that can only confirm or be inconclusive does not count.",
+   "primed_by_injected_text": "WEAK: CLAUDE.md tells the rater what a self-refuting kill test looks like ('_crm ... a kill test that refuted its own metric') but says nothing about Agent-Architect"
+  },
+  {
+   "id": 7,
+   "pattern": "language-splits-by-agent-surface",
+   "repo": "agency-insight-analyzer",
+   "path": "/home/user/agency-insight-analyzer",
+   "incumbent": 1,
+   "definition": "The natural language of commits/PRs is a property of the AGENT SURFACE, not of the operator or the document: one surface writes Hebrew to a fixed template, another writes English open prose, consistently."
+  },
+  {
+   "id": 8,
+   "pattern": "language-splits-by-agent-surface",
+   "repo": "pre-call",
+   "path": "/workspace/ereztash/pre-call",
+   "incumbent": 1,
+   "definition": "The natural language of commits/PRs is a property of the AGENT SURFACE, not of the operator or the document: one surface writes Hebrew to a fixed template, another writes English open prose, consistently."
+  },
+  {
+   "id": 9,
+   "pattern": "adversarial-second-surface",
+   "repo": "pre-call",
+   "path": "/workspace/ereztash/pre-call",
+   "incumbent": 2,
+   "definition": "One AI surface builds; a second is bought in solely to audit, review, refactor or attack the first. The second surface never ships a feature."
+  },
+  {
+   "id": 10,
+   "pattern": "adversary-hunts-assertions-not-defects",
+   "repo": "CRM_Google_ai",
+   "path": "/home/user/CRM_Google_ai",
+   "incumbent": 2,
+   "definition": "The second surface is briefed to find unsupported CLAIMS, not crashes. Its characteristic target is fabricated confidence, not defects."
+  },
+  {
+   "id": 11,
+   "pattern": "adversary-hunts-assertions-not-defects",
+   "repo": "_crm",
+   "path": "/workspace/_crm",
+   "incumbent": 2,
+   "definition": "The second surface is briefed to find unsupported CLAIMS, not crashes. Its characteristic target is fabricated confidence, not defects."
+  },
+  {
+   "id": 12,
+   "pattern": "author-name-is-not-an-identity",
+   "repo": "nuxtjs-boilerplate",
+   "path": "/workspace/nuxtjs-boilerplate",
+   "incumbent": 2,
+   "definition": "One human appears under two or more distinct git `name|email` pairs inside THIS repository, so any per-author count over it overcounts people. SCALE FOR THIS ROW IS EXPLICIT: 3 = three or more distinct identities belonging to the same person; 2 = exactly two; 0 = one. Exclude bots/agent surfaces (bot], Lovable, gpt-engineer, noreply@anthropic, cursoragent).",
+   "primed_by_injected_text": "STRONG: CLAUDE.md's identity paragraph gives the portfolio aggregate (10 pairs, 8 one person, 2 split by email capitalisation alone) - nuxtjs-boilerplate's two identities differ by exactly that"
+  },
+  {
+   "id": 13,
+   "pattern": "authority-boundary-as-named-artifact",
+   "repo": "anti-silo",
+   "path": "/home/user/anti-silo",
+   "incumbent": 2,
+   "definition": "The machine/human decision boundary written as its own DOCUMENT and implemented as its own MODULE - not scattered through code as if-statements."
+  },
+  {
+   "id": 14,
+   "pattern": "author-name-is-not-an-identity",
+   "repo": "COR-SYS",
+   "path": "/home/user/COR-SYS",
+   "incumbent": 3,
+   "definition": "One human appears under two or more distinct git `name|email` pairs inside THIS repository, so any per-author count over it overcounts people. SCALE FOR THIS ROW IS EXPLICIT: 3 = three or more distinct identities belonging to the same person; 2 = exactly two; 0 = one. Exclude bots/agent surfaces (bot], Lovable, gpt-engineer, noreply@anthropic, cursoragent).",
+   "primed_by_injected_text": "STRONG: same paragraph; it also names the answer-key script"
+  },
+  {
+   "id": 15,
+   "pattern": "authority-boundary-as-named-artifact",
+   "repo": "MATI",
+   "path": "/home/user/MATI",
+   "incumbent": 3,
+   "definition": "The machine/human decision boundary written as its own DOCUMENT and implemented as its own MODULE - not scattered through code as if-statements."
+  },
+  {
+   "id": 16,
+   "pattern": "branch-as-sprint-container",
+   "repo": "pre-call",
+   "path": "/workspace/ereztash/pre-call",
+   "incumbent": 3,
+   "definition": "The auto-named claude/<task>-<hash> branch is the unit of editorial focus for one sprint: several PRs land inside one branch within hours, and branches are not reused across days."
+  },
+  {
+   "id": 17,
+   "pattern": "branch-as-sprint-container",
+   "repo": "proofminer",
+   "path": "/workspace/ereztash/proofminer",
+   "incumbent": 3,
+   "definition": "The auto-named claude/<task>-<hash> branch is the unit of editorial focus for one sprint: several PRs land inside one branch within hours, and branches are not reused across days."
+  },
+  {
+   "id": 18,
+   "pattern": "claim-downgrade-ledger",
+   "repo": "_crm",
+   "path": "/workspace/_crm",
+   "incumbent": 3,
+   "definition": "A durable committed record of a claim's strength MOVING, and what moved it - not a changelog of code, a ledger of confidence."
+  }
+ ],
+ "note_on_this_file": "The first write of this file assigned every item in a stratum the same id (`len(sel)+1` evaluated before the batch was appended), which also misrouted the primed flags. Caught by printing the file before any rater ran, not by a check. Primed cells are now keyed by pattern@repo, not by id."
+}

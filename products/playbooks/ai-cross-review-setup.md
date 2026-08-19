@@ -2,6 +2,9 @@
 
 > Tagline: Pair a write-AI with a review-AI to catch what single-AI workflows ship to production.
 
+> **Claim strength: causal.** both backing insights carry `may-assert-cause: yes` — 6 repos after Round 3.
+> The mechanism may be stated as a mechanism.
+
 ## Target buyer
 
 **Solo builders shipping production-adjacent code with a single AI write-assistant who have recently shipped a bug that a second pair of eyes (human or AI) would have caught.**

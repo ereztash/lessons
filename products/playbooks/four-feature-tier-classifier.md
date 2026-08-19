@@ -2,6 +2,13 @@
 
 > Tagline: Score any AI-paired repo on four binary features and get back a tier (A / B / C) plus a recommended next action.
 
+> **Claim strength: observational.** Its backing insight (`tier-classifier-cli`) carries
+> `may-assert-cause: no`, withdrawn on 2026-08-19 by the classifier's own accuracy measurement:
+> 20% exact agreement, 8 of 10 repos over-rated, 0 under-rated, Spearman ρ=0.77. **It orders a
+> portfolio; it does not explain one, and it does not bound its own error.** See §Accuracy
+> disclosure — and note that the direction-of-error claim this playbook originally made was
+> measured and found backwards.
+
 ## Target buyer
 
 **Solo AI-paired builders with portfolios of 5+ LLM-tool-paired repos who feel overwhelmed when reviewing their portfolio and want a defensible rule for "what to do with this repo right now."**
@@ -16,7 +23,7 @@ If used continuously, prevents at least one wrong-direction investment per quart
 
 ## Problem statement
 
-A solo builder with 10+ AI-paired repos in their GitHub account does not remember the state of each repo. Returning to a dormant repo, they spend 10-20 minutes trying to reconstruct: did I finish this? Was I planning to come back? Is the code production-grade or a render demo? This disorientation cost compounds across portfolio reviews. The four-feature tier classifier replaces the disoriented review with a mechanical scoring: four yes/no questions answerable in <30 seconds via the GitHub API or a quick browse, producing a tier (A / B / C) and a recommended next action (resume now / promote / archive). The classifier is a *lower bound* on system-mode commitment — it can be wrong in one direction (a Tier-A-by-discipline repo like groundstate-protocol can score B by feature count) but never in the other direction (a 4/4 repo is genuinely Tier A).
+A solo builder with 10+ AI-paired repos in their GitHub account does not remember the state of each repo. Returning to a dormant repo, they spend 10-20 minutes trying to reconstruct: did I finish this? Was I planning to come back? Is the code production-grade or a render demo? This disorientation cost compounds across portfolio reviews. The four-feature tier classifier replaces the disoriented review with a mechanical scoring: four yes/no questions answerable in <30 seconds via the GitHub API or a quick browse, producing a tier (A / B / C) and a recommended next action (resume now / promote / archive). **This paragraph originally claimed the classifier was a lower bound — wrong in only one direction, never over-rating. That was measured on 2026-08-19 and is false, and backwards.** Against a 10-repo answer key built from signals the classifier cannot see, every one of its 8 errors was an over-estimate and none was an under-estimate. `COR-SYS` and `Agent-Architect` both score 4/4 and are ground-truth B; `CRM_Google_ai` scores 3/4, contains no original work, and is ground-truth C. A 4/4 repo is not genuinely Tier A. Read the output as a ranking (ρ=0.77) and subtract about one tier before acting on any single repo.
 
 ## The playbook
 
@@ -103,3 +110,35 @@ The four-feature partition cleanly separates the dataset into the three tiers, w
 - Companion playbook: `/products/playbooks/publish-button-intent-triage.md`
 - Companion playbook: `/products/playbooks/resumer-day-prep.md`
 - Pricing row: `/products/pricing-hypotheses.md`
+
+---
+
+## Accuracy disclosure — added 2026-08-19
+
+This playbook sells an instrument that has now been measured. On a 10-repo answer key built from
+signals it cannot see (`ground-truth/results-2026-08-19.md`):
+
+| | |
+|---|---|
+| Exact tier agreement | **2 / 10 (20%)** |
+| Within one tier | 9 / 10 (90%) |
+| Direction of error | **8 over-rated, 0 under-rated** |
+| Rank correlation (Spearman ρ) | **0.77** |
+
+**What the buyer should be told:** the classifier *orders* a portfolio reliably and *over-rates it
+by roughly one tier*. Read the output as a ranking, not as a verdict — and subtract a tier before
+acting on any single repo's score.
+
+**Why it over-rates:** F1–F4 detects apparatus (a dependency, a human commit, a PR, a docs folder).
+Apparatus was an expensive signal of commitment when a developer had to produce it; in an AI-paired
+workflow it costs an afternoon — `MATI` acquired all four features in eleven hours. Every one of the
+8 errors is a repo with no external consumer that has not been touched in 30+ days, and F1–F4
+measures neither.
+
+**Untested:** all 10 repos in the answer key are executable and none is inert, so the classifier's
+Tier C/D discrimination has never been measured. The measurement is also a self-audit — one
+labeller, not blind (`ground-truth/rubric.md` §5).
+
+Until an external-consumer feature lands and is validated prospectively, the honest claim for this
+playbook is *"ranks a portfolio; over-rates about one tier"* — which is still worth the price, and
+is a claim the buyer can check.

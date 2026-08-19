@@ -2,6 +2,11 @@
 
 > Tagline: Decide in 5 minutes whether your new Lovable / Bolt / v0 repo deserves CLAUDE.md infrastructure or should be shipped at Tier C and forgotten.
 
+> **Claim strength: observational.** Its backing insight (`publish-button-satisfiability`) carries
+> `may-assert-cause: no` — the pattern holds at moderate strength in 2 repos and was not observed in
+> any Tier A repo of the 2026-08-19 round. **Use it to sort repos, not to explain them.** The
+> triage question is worth asking; the answer is a prior, not a diagnosis.
+
 ## Target buyer
 
 **Solo AI-paired builders who have started ≥3 Lovable (or Bolt.new, v0.dev, Replit Agent) repos and have at least one repo that they abandoned without ever opening a local editor.**
@@ -16,7 +21,7 @@ Over a portfolio of 10 LLM-tool-paired repos, the expected savings is 8-15 hours
 
 ## Problem statement
 
-LLM-coding platforms (Lovable, Bolt.new, v0.dev, Replit Agent) ship with a built-in exit affordance: the Publish button. The operator's relationship with this button determines whether the repo will ever leave Tier C. When the success condition is *demonstrative* (render a vision, render a manifesto, render a pitch as a web page), the Publish button fully satisfies the goal — the repo is finished the moment it ships, and any further infrastructure investment is wasted. When the success condition is *behavioral* (improve a measurable skill, convert leads via a real form pipeline, persist user state across sessions), the Publish button cannot satisfy the goal, and the operator will need to leave the platform — but only if they planned the off-platform work in advance. Most operators do not pre-classify their repos, so they over-invest in some Tier-C-finished ones and under-invest in some Tier-B-bound ones, losing hours in both directions.
+LLM-coding platforms (Lovable, Bolt.new, v0.dev, Replit Agent) ship with a built-in exit affordance: the Publish button. In the repos surveyed, the operator's relationship with this button tracked whether the repo ever left Tier C. That is an association across a small sample, not a mechanism: 2026-08-19 found the pattern absent from every Tier A repo in the round, which is consistent with it marking a kind of repo rather than causing an outcome. When the success condition is *demonstrative* (render a vision, render a manifesto, render a pitch as a web page), the Publish button fully satisfies the goal — the repo is finished the moment it ships, and any further infrastructure investment is wasted. When the success condition is *behavioral* (improve a measurable skill, convert leads via a real form pipeline, persist user state across sessions), the Publish button cannot satisfy the goal, and the operator will need to leave the platform — but only if they planned the off-platform work in advance. Most operators do not pre-classify their repos, so they over-invest in some Tier-C-finished ones and under-invest in some Tier-B-bound ones, losing hours in both directions.
 
 ## The playbook
 

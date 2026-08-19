@@ -3,8 +3,14 @@ dimension: claude-to-claude
 slug: zero-deletion-of-bot-generated-files
 evidence-repos: [chess-mind-patterns, core-unified-consciousness]
 evidence-pointers:
-  - chess-mind-patterns@11:03
-  - core-unified-consciousness@12:04
+  - chess-mind-patterns@875fe1c (+1421/-24)
+  - chess-mind-patterns@f590fe6 (+2102/-23)
+  - chess-mind-patterns@2c7ced2 (+939/-22)
+  - all 69 deletions inside files originally created by the bot OR by an earlier human commit in the same session
+  - core-unified-consciousness@2228be1 (2026-03-08 17:45:11 `Cleaned to a 3-page plan`)
+  - core-unified-consciousness@9adbcc8 (2026-03-08 17:45:31 `Merge DeepDive and Demo pages with 3-page plan`)
+  - core-unified-consciousness@ecd8b5c:src/App.tsx lines 18-26 (six `<Navigate replace />` redirects)
+  - core-unified-consciousness@ecd8b5c:src/pages/ (10 .tsx files, only 4 active routes including NotFound)
 monetization-criteria:
   reusable: pass
   defensible: pass
@@ -15,6 +21,15 @@ monetization-score: 5/5
 applicability: solo-builder
 related-playbook: products/playbooks/resumer-day-prep.md
 created: 2026-05-12
+evidence-resolves-to: mixed
+source-observations:  # lessons observations these pointers were resolved from
+  - chess-mind-patterns@11:03
+  - core-unified-consciousness@12:04
+may-report: yes
+may-assert-cause: yes  # strong-2-repos, plus a rational third instance in Agent-Architect
+reversibility: low  # a shipped playbook is sold; a retraction reaches fewer people than the claim did
+score-history:
+  - 2026-05-12: 5/5 — first audit
 ---
 
 # Zero Deletion of Bot-Generated Files

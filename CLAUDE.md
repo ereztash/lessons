@@ -33,7 +33,10 @@ Dual-repo mode bypasses the standard LOG/MEMORY/skill read when the target repo 
 ## Quick Rules
 
 - **Plan-Validate-Capture-Distill** — never invent insights. Use `insight-distiller` skill.
-- **Evidence or defer** — every insight requires evidence pointer (commit SHA / file path / PR#).
+- **Evidence or defer** — every insight requires an evidence pointer that **resolves** to a commit,
+  file or PR. `evidence-resolves-to` is measured, not asserted. Run `scripts/check-lessons-contract.py`.
+- **A green check never seen to go red is not evidence** — fire every gate once on a deliberately
+  broken input before trusting it (`ground-truth/gate-reliability.md`).
 - **Two layers, never duplicate** — Claude-operational vs Human-narrative. Split, don't repeat.
 - **Monetization gate** — 4/5 criteria required (Reusable, Defensible, Time-saving, Encodable, Evidence-anchored).
 - **GitHub MCP only** — `gh` CLI not available. Use `mcp__github__*` tools.
@@ -62,14 +65,16 @@ historical depth — the four originally deep-dived repos are all dormant.
 
 | Repo | Maturity | Dormancy | Status |
 |------|----------|----------|--------|
-| MATI | Tier A, live | 0d | Deep-dived 2026-08-19 — the active frontier |
+| MATI | Tier A, live | 0d | Deep-dived 2026-08-19 |
+| pre-call | Tier A, live | 0d | **Deep-dived 2026-08-19** — 224 commits, measured stopping rule + DoD |
+| proofminer | Tier B, live | 3d | **Deep-dived 2026-08-19** — 241 commits, largest hidden-agent repo |
 | anti-silo | Tier A, healthy | 3d | Deep-dived 2026-08-19 |
 | Agent-Architect | Tier A, unclaimed trunk | 87d | Deep-dived 2026-08-19 |
 | agency-insight-analyzer | Tier B | 68d | Deep-dived 2026-08-19 |
 | CRM_Google_ai | mirror of `_crm` | 66d | Deep-dived 2026-08-19 — score the source, not this |
 | ampaign-craft | Tier A | `main` 101d | Mini-profile; 77 remote branches unfetched |
 | cor-sys | Tier A | 132d | Phase 1–4 complete |
-| groundstate-protocol | Tier A | 105d | Phase 1–4 complete |
+| groundstate-protocol | Tier A | 17d | Phase 1–4 complete — **4 repos share this name-family; the 92d figure belongs to the private 67-commit copy, not this one** |
 | chess-mind-patterns | Tier B | 149d | Phase 1–4 complete (not in session scope) |
 | core-unified-consciousness | Tier C | 163d | Phase 1–4 complete (not in session scope) |
 
@@ -90,3 +95,4 @@ both detectors. Full method + portfolio table: `research/cross-repo/authorship-a
 - For deep workflow → `/index/CLAUDE.md`
 - **For dual-repo session** → `pipelines/dual-repo-session.md`
 - **For any repo lookup** → `research/repo-index.md`
+- **For the portfolio read as one system** → `research/cross-repo/portfolio-as-one-mechanism.md`

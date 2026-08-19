@@ -3,8 +3,13 @@ dimension: user-to-user
 slug: third-party-saas-replaces-backend
 evidence-repos: [groundstate-protocol, chess-mind-patterns]
 evidence-pointers:
-  - groundstate-protocol@11:09
-  - chess-mind-patterns@11:07
+  - groundstate-protocol@8434927:src/lib/web3forms.ts
+  - groundstate-protocol@8434927:src/lib/analytics.ts
+  - groundstate-protocol#PR-2 (react-calendly)
+  - chess-mind-patterns@2c7ced2 ('feat: Lichess deep-links, demo puzzle seeding, ELO goal setter, PWA + notifications')
+  - chess-mind-patterns@2c7ced2:src/lib/lichess-links.ts (247 LOC mapping 20 skill IDs to Lichess training URLs)
+  - chess-mind-patterns@2c7ced2:public/manifest.json (PWA manifest)
+  - chess-mind-patterns@2c7ced2:public/sw.js (service worker with notification flow)
 monetization-criteria:
   reusable: pass
   defensible: pass
@@ -14,6 +19,14 @@ monetization-criteria:
 monetization-score: 5/5
 applicability: solo-builder
 created: 2026-05-12
+evidence-resolves-to: hard
+source-observations:  # lessons observations these pointers were resolved from
+  - groundstate-protocol@11:09
+  - chess-mind-patterns@11:07
+may-report: yes
+may-assert-cause: no  # moderate-2-repos; not observed in Round 2
+score-history:
+  - 2026-05-12: 5/5 — first audit
 ---
 
 # Third-Party SaaS Replaces Backend

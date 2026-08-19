@@ -2,6 +2,9 @@
 
 > Tagline: Tell, in 30 seconds, whether your dormant Lovable repo is being silently invested in or quietly abandoned — by reading the last 10 commit subjects against a 4-register rubric.
 
+> **Claim strength: causal.** its backing insight carries `may-assert-cause: yes` — confirmed in 4 repos, mechanism isolated in agency-insight-analyzer.
+> The mechanism may be stated as a mechanism.
+
 ## Target buyer
 
 **Solo AI-paired builders with 5+ LLM-tool-paired repos who do a quarterly or monthly portfolio review and want a fast read on "is this one still alive?"**

@@ -95,7 +95,7 @@ The pattern cannot promote at strength-2-repos because only one absorbed instanc
 
 | Pattern | mati | a-s | a-a | crm | aia | Round-2 verdict |
 |---|----|----|----|----|----|---|
-| claude-coauthored-trailer-convention | 1 | 3 | 0 | 0 | 0 | **RE-SCORED — see §2.2.** Holds in anti-silo (40/74) and COR-SYS (16/57); absent in 3 of 5 new repos and in ampaign-craft (1/124). Not an operator convention — a tool-configuration artifact. |
+| claude-coauthored-trailer-convention | 1 | 3 | 0 | 0 | 0 | **Phase 2 score of 3 for groundstate stands — see §2.2, which retracts an erroneous correction.** Holds in anti-silo (40/74) and COR-SYS (16/57); absent in 3 of 5 new repos and in ampaign-craft (1/124). Not an operator convention — a tool-configuration artifact. |
 | conventional-commit-prefix-on-claude-commits | 0 | 3 | 0 | 0 | 0 | **Weakened.** MATI's Claude commits use plain imperative subjects (`Add a test suite covering lib and the browser regressions`). The prefix travels with the *repo's* convention, not with Claude. |
 | lovable-render-claude-write-coexistence | 0 | 0 | 0 | 0 | 2 | Holds where Lovable is present. aia: bot blast → Claude, but the bot does not return (unlike groundstate). |
 | non-template-domain-dep-predicts-resumption | 0 | 3 | 2 | n/v | 0 | **Counter-example found.** MATI has 3 template-only deps and is the most active repo in the portfolio. See F1b in the rescan. |
@@ -114,20 +114,43 @@ The pattern cannot promote at strength-2-repos because only one absorbed instanc
 | publish-button-as-success-condition | 0 | 0 | 0 | 0 | 0 | Not observed in any Tier A repo of this round. Consistent with H2: it predicts abandonment, and none of these are abandoned. |
 | four-feature-tier-classifier-monotonic | — | — | — | — | — | **F1 false negative** (MATI, Agent-Architect, All_Erez-s_Connections). F1b proposed in the rescan; not yet applied. |
 
-## 2.2 Correction to a Phase 2 score
+## 2.2 A correction that was itself wrong — retracted 2026-08-19
 
-`claude-coauthored-trailer-convention` was scored **3 for groundstate-protocol** in the Phase 2 matrix —
-while `index/MOC-CLAUDE-TO-CLAUDE.md` simultaneously described groundstate as having *"no co-authored
-phase"*. The matrix and the MOC contradicted each other and the contradiction survived four phases.
+**What this section said, and why it was wrong.** It claimed the Phase 2 matrix mis-scored
+`claude-coauthored-trailer-convention` as 3 for groundstate-protocol, on the measurement that the
+repo contained **zero** commits with a `Co-Authored-By` trailer naming Claude and that its 34
+trailers all named the human.
 
-Measured 2026-08-19: groundstate-protocol contains **zero** commits with a `Co-Authored-By` trailer naming
-Claude. Its 34 trailers all read `Co-authored-by: ereztash <204869220+ereztash@users.noreply.github.com>` —
-the *human* recorded as co-author on machine-written commits. The MOC was right; the matrix cell was wrong.
-The inverse convention is recorded below as its own row rather than folded into the original.
+That measurement was taken from `/home/user/ground-state-protocol` — the **private 67-commit copy**.
+The Phase 1 research describes the **public `groundstate-protocol`**, which is a different
+repository with 311 commits. Verified: of the 13 commit SHAs cited across
+`/research/groundstate-protocol/`, two exist only in the public repo and none exists only in the
+private one.
 
-The pattern still clears the promotion gate (COR-SYS 3, anti-silo 3), so it stays promoted — but on
-different evidence than originally claimed, and with a refinement: COR-SYS's trailers name the **model
-version** (`Claude Sonnet 4.6` ×13, `Claude Opus 4.6` ×3), making the trailer a model-attribution record.
+**Re-measured against the correct repository** (public `groundstate-protocol`, 194 non-merge commits):
+
+| Trailer | Count |
+|---|---|
+| `Co-Authored-By: Claude Opus 4.8` | 46 |
+| `Co-Authored-By: Claude Opus 5` | 26 |
+| `Co-Authored-By: Claude Sonnet 5` | 2 |
+| `Co-Authored-By: Claude Haiku 4.5` | 2 |
+| `Co-authored-by: ereztash` | 38 |
+| **naming Claude, total** | **76** |
+
+**The Phase 2 score of 3 was correct. The "correction" was the error, and it stood for four commits
+of this session.** It is retracted here rather than deleted, because a retraction that erases what
+it retracts teaches nothing.
+
+**What survives from the Round-2 finding.** The trailer is still *not* universal and still *not* an
+operator convention: it is absent from `ampaign-craft` (1 of 124), `Agent-Architect` (0 of 20),
+`brain-healer-hub` (0 naming Claude) and nearly absent from `MATI` (5 of 86). Its absence therefore
+does not flag a Tier C repo — `ampaign-craft` and `Agent-Architect` are Tier A and near-entirely
+Claude-written. That refinement was never dependent on the groundstate figure.
+
+**What is newly promoted by the correct measurement.** `model-version-in-trailer` now has two repos:
+COR-SYS (`Claude Sonnet 4.6` ×13, `Claude Opus 4.6` ×3) and groundstate-protocol (four model
+versions across 76 commits). It moves from candidate to promoted — see §2.3.
 
 ## 2.3 New rows
 
@@ -144,7 +167,7 @@ version** (`Claude Sonnet 4.6` ×13, `Claude Opus 4.6` ×3), making the trailer 
 | mirror-repo-as-agent-access-shim | 0 | 0 | 0 | 3 | 0 | — | weak-1-repo | No — new terminal state, alongside absorbed-rather-than-shipped | user-to-user |
 | one-day-full-system-build | 3 | 0 | 0 | 0 | 0 | — | weak-1-repo | No | user-to-user |
 | human-as-coauthor-trailer | 0 | 0 | 0 | 0 | 0 | groundstate 3 | weak-1-repo | No | claude-to-user |
-| model-version-in-trailer | 0 | 0 | 0 | 0 | 0 | COR-SYS 3 | weak-1-repo | No | claude-to-claude |
+| model-version-in-trailer | 0 | 0 | 0 | 0 | 0 | COR-SYS 3, groundstate-protocol 3 | strong-2-repos | **Yes** (promoted 2026-08-19 on the re-measurement in §2.2) | claude-to-claude |
 | gate-left-behind-by-the-fix | 3 | 3 | 1 | 0 | 0 | — | strong-2-repos | **Yes** | claude-to-claude |
 
 ### Row definitions
@@ -174,7 +197,7 @@ version** (`Claude Sonnet 4.6` ×13, `Claude Opus 4.6` ×3), making the trailer 
 | claude-to-claude | 5 | agent-identity-collapse; adversarial-second-surface; gate-left-behind-by-the-fix | 8 |
 | user-to-user | 7 | commercial-doc-as-spec; resumption-gap-predicts-pivot-vs-continuation | 9 |
 
-Total promoted: **24** (17 + 7). Single-repo candidates: **22** (16 + 6).
+Total promoted: **25** (17 + 7 + model-version-in-trailer). Single-repo candidates: **21**.
 
 ## 2.5 Source observation files added this round
 
@@ -185,3 +208,105 @@ Total promoted: **24** (17 + 7). Single-repo candidates: **22** (16 + 6).
 - `/research/agency-insight-analyzer/extracted-insights.md` (3 observations)
 - `/research/cross-repo/authorship-attribution.md` (method correction + portfolio table)
 - `/research/portfolio-scan/2026-08-19-rescan.md` (n=30 dataset + classifier corrections)
+
+## 2.6 Round 2 addendum — `absorbed-rather-than-shipped` verified at byte level (2026-08-19)
+
+The gap-closure round parked this pattern as `weak-1-repo-inferred`, because CampaignCraft's
+absorption was inferred from COR-SYS PR#16 rather than observed. It is now measured:
+
+- `COR-SYS/src/types/growth/` and `ampaign-craft/src/types/` share 10 filenames; **8 are
+  byte-identical**; `pricing.ts` (120 vs 118 lines) and `retention.ts` (84 vs 85) have drifted.
+- `COR-SYS/src/components/growth/` = 48 components vs `ampaign-craft/src/components/` = 136.
+- `CRM_Google_ai` carries the same module vocabulary in Python (`growth/icp.py`, `growth/leads.py`,
+  `business/value_pricing.py`, `business/roi.py`, `business/lifecycle.py`).
+
+Strength for cor-sys goes from `3*` (inferred) to **3 (verified)**. The pattern still does not
+promote — absorption is observed once, from one source repo — but the inference marker is removed.
+
+**New corollary, promoted with it as a candidate**: `absorption-is-a-copy-not-a-dependency`.
+The absorbed tree is a snapshot, so divergence starts immediately and silently; 2 of 10 shared
+files had drifted before anyone recorded it. Any future absorption needs either a shared package
+or a drift check, not a copy.
+
+Full analysis: `research/cross-repo/portfolio-as-one-mechanism.md`.
+
+---
+
+# Round 3 — pre-call and proofminer deep-dive (2026-08-19)
+
+> Two repos that no scan had seen, both among the four currently active, deep-dived on the same
+> Phase 1 protocol. Sources: `/research/pre-call/extracted-insights.md` (6 observations),
+> `/research/proofminer/extracted-insights.md` (6 observations).
+
+## 3.1 Retest of the Round-2 promotions
+
+| Pattern | pre-call | proofminer | Verdict |
+|---|---|---|---|
+| agent-identity-collapse | 0 | **3** | **Now 3 repos** (MATI 55/86, proofminer **193/229**, lessons 14/37). Settled: this is the portfolio's dominant authoring mode by volume, not an edge case. pre-call is the counter-case — 146 of 185 commits attributed, 113 trailers. |
+| adversarial-second-surface | 2 | **3** | **Now 5 repos** and sharpened: in proofminer all 16 Claude commits are *epistemic* corrections ("The text layer was fabricating evidence. Stop it."), not defect fixes. See new row `adversary-hunts-assertions-not-defects`. |
+| contract-check-as-ci-gate | 3 | 2 | Confirmed. pre-call adds the strongest form: a stopping rule whose P is measured over 400 runs. |
+| commercial-doc-as-spec | **3** | 2 | **Now 4 repos.** pre-call states a *negative* scope claim — the customer it does not serve — which is the strongest form observed. |
+| gate-left-behind-by-the-fix | 3 | 2 | Confirmed. |
+| claude-branch-as-default-branch | 0 | 0 | Not observed; both have `main`. |
+| resumption-gap-predicts-pivot-vs-continuation | 0 | 0 | Not applicable — neither has a gap yet. |
+| branch-as-sprint-container | 3 | 3 | Confirmed, and refined by `branch-as-claim` below. |
+| editorial-commit-voice-escalation | 3 | 3 | Confirmed. proofminer's split is discontinuous, not gradual: 212 empty bodies from the builder, argumentative imperatives from the reviewer. |
+| language-splits-by-agent-surface | 1 | 0 | **Weakened.** pre-call's Hebrew/English split follows the *document* (README and method docs Hebrew, commits English), not the surface. Stays a 1-repo candidate on MATI. |
+
+## 3.2 New rows
+
+| Pattern | pre-call | proofminer | other | Strength | Promoted? | Dimension |
+|---|---|---|---|---|---|---|
+| measured-stopping-rule | 3 | 0 | — | weak-1-repo | No — but it is the portfolio's best C9 implementation | user-to-user |
+| dod-unsatisfiable-by-code | 3 | 1 | MATI 2 | strong-2-repos | **Yes** | user-to-user |
+| adversary-hunts-assertions-not-defects | 2 | 3 | CRM 2 | strong-2-repos | **Yes** | claude-to-claude |
+| authority-boundary-as-named-artifact | 2 | 3 | MATI 3, anti-silo 2 | strong-3-repos | **Yes** | user-to-claude |
+| branch-as-claim | 3 | 1 | — | weak-1-repo | No | claude-to-user |
+| bypass-log | 3 | 0 | — | weak-1-repo | No — but nothing else in the portfolio instruments its own gate's evasion | claude-to-claude |
+| programmatic-branch-naming | 0 | 3 | — | weak-1-repo | No | claude-to-claude |
+| meta-tooling-co-shipped-with-product | 0 | 3 | cor-sys 3 | strong-2-repos | **Yes** (promoted from Phase-2 candidate) | user-to-user |
+| archive-branch-for-abandoned-agent-work | 0 | 3 | — | weak-1-repo | No | claude-to-claude |
+
+### Row definitions
+
+- **dod-unsatisfiable-by-code** — a definition of done deliberately built so the operator's
+  strongest capability cannot satisfy it. pre-call: *"Every condition here requires a stranger.
+  None of them can be completed by writing code."* Thresholds locked before the round, each
+  labelled with its provenance, and the arbitrary one labelled arbitrary.
+- **adversary-hunts-assertions-not-defects** — the second surface is briefed to find unsupported
+  claims, not crashes. The builder's characteristic failure is fabrication: an interface that can
+  render a confident output will render one from a weak input, and the builder cannot audit that
+  because it is the thing generating the confidence.
+- **authority-boundary-as-named-artifact** — the machine/human decision boundary written as its own
+  document and implemented as its own module. Four independent forms: proofminer's six-axis
+  `AUTHORITY.md` + `src/engine/authority.js`, MATI's `organizationalAuthority()`, CRM's
+  `provenance.py`, anti-silo's `eligible.py` TRUST_BOUNDARY. Only proofminer carries a
+  **reversibility** axis.
+- **bypass-log** — a committed record of the occasions the gate was gone around. A gate with no
+  bypass record is indistinguishable from a gate nobody needed to bypass.
+
+## 3.3 Promoted count after Round 3
+
+| Dimension | after Round 2 | Round 3 additions | Total |
+|---|---|---|---|
+| claude-to-user | 3 | — | 3 |
+| user-to-claude | 4 | authority-boundary-as-named-artifact | 5 |
+| claude-to-claude | 8 | adversary-hunts-assertions-not-defects | 9 |
+| user-to-user | 9 | dod-unsatisfiable-by-code; meta-tooling-co-shipped-with-product | 11 |
+
+Total promoted: **29**. Single-repo candidates: **26**.
+
+## 3.4 What these two repos say about `lessons`
+
+`portfolio-as-one-mechanism.md` §6 listed five components `lessons` is weakest at. pre-call and
+proofminer already implement four of them, better:
+
+| `lessons` gap (§6) | Implemented in |
+|---|---|
+| no accuracy measurement | pre-call `docs/stopping-rule.html` — P measured over 400 runs per failure mode, synthetic and real reported side by side with the real one worse |
+| no provenance guard on insights | proofminer `docs/AUTHORITY.md` + `src/engine/authority.js` — six axes including Certainty |
+| promotion is one bit | proofminer's six-axis classification; pre-call's six binary DoD conditions with locked thresholds |
+| confidence scored once, never re-rated | pre-call's status column, re-tested and dated (`D4` reads "no — tested today: `not_configured`") |
+
+The fifth gap — no gate-evasion record — is met by pre-call's **bypass log**, which nothing else
+in the portfolio has, `lessons` included.

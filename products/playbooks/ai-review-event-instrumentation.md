@@ -8,6 +8,10 @@ status: hypothesis
 
 > Tagline: Turn every "one AI caught another AI's bug" event into a row in your personal dataset. Compound the data over a year and you own a defensible body of cross-AI-review evidence nobody else has.
 
+> **Claim strength: causal — inherited.** This is a meta-playbook over
+> `ai-cross-review-setup`, whose backing insights carry `may-assert-cause: yes`.
+> It may not assert more than its parent does, and it adds no evidence of its own.
+
 ## Meta-playbook context
 
 This playbook **depends on** `ai-cross-review-setup.md`. If you have not set up Claude + Codex (concurrent) or Claude + Cursor (batch) per that playbook, this one has nothing to instrument.

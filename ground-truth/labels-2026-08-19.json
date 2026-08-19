@@ -1,0 +1,30 @@
+{
+  "labelled": "2026-08-19",
+  "rubric": "ground-truth/rubric.md",
+  "rubric_version": "1.1",
+  "labeller": "Claude Opus 5, session_01UUeSkNyzr3B1rfLoxs8Rrq",
+  "note": "Signals are raw observations from scripts/collect-outcome-evidence.sh plus the hand adjudications recorded in labels-2026-08-19.md. Labels are DERIVED by scripts/score-classifier.py from these signals - they are not typed in. Change a signal and the label follows.",
+  "signals_are_disjoint_from": ["F1 production dependency", "F2 human commit author", "F3 PR exists", "F4 docs/ or CLAUDE.md"],
+  "repos": [
+    {"repo": "MATI",                    "serving": true,  "days_since_commit": 1,   "work_sessions": 1, "pr_merges": 13, "review_acts": 3, "executable": true,
+     "classifier_tier": "A", "classifier_score": 3},
+    {"repo": "anti-silo",               "serving": true,  "days_since_commit": 3,   "work_sessions": 3, "pr_merges": 15, "review_acts": 4, "executable": true,
+     "classifier_tier": "A", "classifier_score": 4},
+    {"repo": "Agent-Architect",         "serving": false, "days_since_commit": 87,  "work_sessions": 2, "pr_merges": 1,  "review_acts": 2, "executable": true,
+     "classifier_tier": "A", "classifier_score": 4},
+    {"repo": "COR-SYS",                 "serving": false, "days_since_commit": 132, "work_sessions": 1, "pr_merges": 13, "review_acts": 0, "executable": true,
+     "classifier_tier": "A", "classifier_score": 4},
+    {"repo": "ground-state-protocol",   "serving": false, "days_since_commit": 92, "work_sessions": 3, "pr_merges": 8,  "review_acts": 1, "executable": true,
+     "classifier_tier": "A", "classifier_score": 3},
+    {"repo": "CRM_Google_ai",           "serving": false, "days_since_commit": 66,  "work_sessions": 1, "pr_merges": 0,  "review_acts": 0, "executable": true,
+     "classifier_tier": "A", "classifier_score": 3},
+    {"repo": "agency-insight-analyzer", "serving": false, "days_since_commit": 68,  "work_sessions": 1, "pr_merges": 2,  "review_acts": 0, "executable": true,
+     "classifier_tier": "B", "classifier_score": 2},
+    {"repo": "Benchmark.ATS",           "serving": false, "days_since_commit": 274, "work_sessions": 1, "pr_merges": 2,  "review_acts": 0, "executable": true,
+     "classifier_tier": "B", "classifier_score": 2},
+    {"repo": "brain-healer-hub",        "serving": false, "days_since_commit": 138, "work_sessions": 1, "pr_merges": 0,  "review_acts": 0, "executable": true,
+     "classifier_tier": "B", "classifier_score": 2},
+    {"repo": "All_Erez-s_Connections",  "serving": false, "days_since_commit": 140, "work_sessions": 1, "pr_merges": 0,  "review_acts": 0, "executable": true,
+     "classifier_tier": "B", "classifier_score": 1}
+  ]
+}

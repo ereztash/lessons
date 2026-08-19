@@ -3,9 +3,13 @@ dimension: claude-to-user
 slug: auto-pr-on-claude-branch
 evidence-repos: [cor-sys, groundstate-protocol]
 evidence-pointers:
-  - cor-sys@10:03
-  - cor-sys@10:07
-  - groundstate-protocol@11:06
+  - cor-sys#PR-1..#PR-16; cor-sys@526237f:none (statistical)
+  - cor-sys#PR-12
+  - cor-sys#PR-14
+  - cor-sys#PR-15
+  - cor-sys@bb3d459
+  - groundstate-protocol branch `claude/landing-page-redesign-i1Mwg` (5 PRs in 5h on Apr 19)
+  - groundstate-protocol branch `claude/audit-landing-page-OR0tf` (3 PRs in 2h on May 6)
 monetization-criteria:
   reusable: pass
   defensible: pass
@@ -15,6 +19,15 @@ monetization-criteria:
 monetization-score: 5/5
 applicability: solo-builder
 created: 2026-05-12
+evidence-resolves-to: mixed
+source-observations:  # lessons observations these pointers were resolved from
+  - cor-sys@10:03
+  - cor-sys@10:07
+  - groundstate-protocol@11:06
+may-report: yes
+may-assert-cause: yes  # confirmed in 4 repos in Round 2
+score-history:
+  - 2026-05-12: 5/5 — first audit
 ---
 
 # Auto-PR on `claude/*` Branch

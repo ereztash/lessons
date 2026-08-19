@@ -7,6 +7,16 @@ No insight, observation, or pattern enters the repo without an evidence pointer 
 
 **Enforcement**: `insight-distiller` and `monetization-auditor` reject inputs missing evidence pointers.
 
+
+**Amended 2026-08-19.** Checking that a pointer *exists* is not checking that it resolves. Before
+today, 43 of 43 pointers across 15 shipped insights resolved to prose this repo wrote about itself
+(`ground-truth/gate-reliability.md` §4). The rule now reads:
+
+> Every insight declares `evidence-resolves-to`, and that value is **measured** by
+> `scripts/check-lessons-contract.py`, not asserted by the author. An insight whose pointers resolve
+> only to prose may not back a playbook. Ported from `CRM_Google_ai/core/provenance.py`, which flags
+> a score whose *language* came from the analyst rather than the subject.
+
 ## Rule 2 — Two layers, never duplicate
 Claude-layer files (dense) and Human-layer files (narrative) carry COMPLEMENTARY content, never the same content twice.
 

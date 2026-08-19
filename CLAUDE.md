@@ -88,11 +88,6 @@ Never claim which AI tools a repo used from `git log --author` alone — it unde
 6.7× and misses agent surfaces entirely. Run `scripts/detect-agent-authorship.sh <repo>` and read
 both detectors. Full method + portfolio table: `research/cross-repo/authorship-attribution.md`.
 
-**The same measure fails in the other direction.** `%an`/`%ae` also *overcount* humans: this
-portfolio carries **10 distinct `name|email` pairs, 8 of them one person** (4 names × 5 emails,
-2 of them split by email capitalisation alone). Never state a contributor count from author names.
-Run `scripts/detect-project-identity.sh`; record: `ground-truth/project-identity-2026-08-19.md`.
-
 ## Navigation
 
 - For research → `/research/<repo>/` or `/research/cross-repo/`

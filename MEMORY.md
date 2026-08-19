@@ -31,6 +31,10 @@
 | **A Phase 2 score was wrong**: groundstate-protocol has 0 Claude co-author trailers; its 34 trailers name the *human* | patterns-matrix §2.2 |
 | **Portfolio centre of gravity moved.** Only MATI (0d, live) and anti-silo (3d) are active; all four originally deep-dived repos are dormant 33–132d | `research/portfolio-scan/2026-08-19-rescan.md` |
 | **F1 false negative**: MATI is Tier A with 3 template-only deps and 958 lines of domain code. F1b proposed, not yet applied | rescan §3 |
+| **The portfolio is one engine with nine implementations.** Same 9 components (intake → extraction → rubric → provenance → promotion gate → authority boundary → aggregation → packaging → calibration) in TS and Python across repos sharing no code. `lessons` is the ninth instance, not a meta-layer | `research/cross-repo/portfolio-as-one-mechanism.md` |
+| **Biggest gap in `lessons`: no accuracy measurement.** `stability-test.ts` measures self-consistency, `crp-lint.ts` measures conformance; neither compares output to a known-correct answer. `Benchmark.ATS` is exactly that harness and is dormant 274d | one-mechanism §6.1 |
+| **No provenance guard on insights.** Rule 1 checks a pointer *exists*; `CRM/core/provenance.py` checks whether the claim's *language* came from the subject or the analyst. The trailer-convention mis-score was this exact failure, and it survived 4 phases | one-mechanism §6.2 |
+| **`absorbed-rather-than-shipped` verified at byte level** — 8 of 10 shared type files identical between COR-SYS and ampaign-craft, 2 already drifted. Absorption is a copy, not a dependency | patterns-matrix §2.6 |
 
 ## Phase 4 + Gap-Closure Shipping Summary
 

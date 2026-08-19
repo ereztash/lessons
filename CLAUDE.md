@@ -90,3 +90,4 @@ both detectors. Full method + portfolio table: `research/cross-repo/authorship-a
 - For deep workflow → `/index/CLAUDE.md`
 - **For dual-repo session** → `pipelines/dual-repo-session.md`
 - **For any repo lookup** → `research/repo-index.md`
+- **For the portfolio read as one system** → `research/cross-repo/portfolio-as-one-mechanism.md`

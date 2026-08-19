@@ -185,3 +185,24 @@ Total promoted: **24** (17 + 7). Single-repo candidates: **22** (16 + 6).
 - `/research/agency-insight-analyzer/extracted-insights.md` (3 observations)
 - `/research/cross-repo/authorship-attribution.md` (method correction + portfolio table)
 - `/research/portfolio-scan/2026-08-19-rescan.md` (n=30 dataset + classifier corrections)
+
+## 2.6 Round 2 addendum — `absorbed-rather-than-shipped` verified at byte level (2026-08-19)
+
+The gap-closure round parked this pattern as `weak-1-repo-inferred`, because CampaignCraft's
+absorption was inferred from COR-SYS PR#16 rather than observed. It is now measured:
+
+- `COR-SYS/src/types/growth/` and `ampaign-craft/src/types/` share 10 filenames; **8 are
+  byte-identical**; `pricing.ts` (120 vs 118 lines) and `retention.ts` (84 vs 85) have drifted.
+- `COR-SYS/src/components/growth/` = 48 components vs `ampaign-craft/src/components/` = 136.
+- `CRM_Google_ai` carries the same module vocabulary in Python (`growth/icp.py`, `growth/leads.py`,
+  `business/value_pricing.py`, `business/roi.py`, `business/lifecycle.py`).
+
+Strength for cor-sys goes from `3*` (inferred) to **3 (verified)**. The pattern still does not
+promote — absorption is observed once, from one source repo — but the inference marker is removed.
+
+**New corollary, promoted with it as a candidate**: `absorption-is-a-copy-not-a-dependency`.
+The absorbed tree is a snapshot, so divergence starts immediately and silently; 2 of 10 shared
+files had drifted before anyone recorded it. Any future absorption needs either a shared package
+or a drift check, not a copy.
+
+Full analysis: `research/cross-repo/portfolio-as-one-mechanism.md`.

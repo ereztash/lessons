@@ -243,7 +243,7 @@ Full analysis: `research/cross-repo/portfolio-as-one-mechanism.md`.
 | Pattern | pre-call | proofminer | Verdict |
 |---|---|---|---|
 | agent-identity-collapse | 0 | **3** | **Now 3 repos** (MATI 55/86, proofminer **193/229**, lessons 14/37). Settled: this is the portfolio's dominant authoring mode by volume, not an edge case. pre-call is the counter-case — 146 of 185 commits attributed, 113 trailers. |
-| adversarial-second-surface | 2 | **3** | **Now 5 repos** and sharpened: in proofminer all 16 Claude commits are *epistemic* corrections ("The text layer was fabricating evidence. Stop it."), not defect fixes. See new row `adversary-hunts-assertions-not-defects`. |
+| adversarial-second-surface | **1** *(was 2 - Round 10)* | **3** | **Now 4 repos.** pre-call's 2 was adopted down to 1 by three blind raters: the review-only artifacts exist (`docs/design-persona.md`, `tools/design-audit.js`) but no *distinct second AI surface* does the auditing - the review commits carry the same Claude trailers as the build commits. Sharpened in proofminer, where all 16 Claude commits are *epistemic* corrections ("The text layer was fabricating evidence. Stop it."), not defect fixes. See new row `adversary-hunts-assertions-not-defects`. | in proofminer all 16 Claude commits are *epistemic* corrections ("The text layer was fabricating evidence. Stop it."), not defect fixes. See new row `adversary-hunts-assertions-not-defects`. |
 | contract-check-as-ci-gate | 3 | 2 | Confirmed. pre-call adds the strongest form: a stopping rule whose P is measured over 400 runs. |
 | commercial-doc-as-spec | **3** | 2 | **Now 4 repos.** pre-call states a *negative* scope claim — the customer it does not serve — which is the strongest form observed. |
 | gate-left-behind-by-the-fix | 3 | 2 | Confirmed. |
@@ -251,7 +251,7 @@ Full analysis: `research/cross-repo/portfolio-as-one-mechanism.md`.
 | resumption-gap-predicts-pivot-vs-continuation | 0 | 0 | Not applicable — neither has a gap yet. |
 | branch-as-sprint-container | 3 | 3 | Confirmed, and refined by `branch-as-claim` below. |
 | editorial-commit-voice-escalation | 3 | 3 | Confirmed. proofminer's split is discontinuous, not gradual: 212 empty bodies from the builder, argumentative imperatives from the reviewer. |
-| language-splits-by-agent-surface | 1 | 0 | **Weakened.** pre-call's Hebrew/English split follows the *document* (README and method docs Hebrew, commits English), not the surface. Stays a 1-repo candidate on MATI. |
+| language-splits-by-agent-surface | **0** *(was 1 - Round 10)* | 0 | **Refuted at pre-call, unanimously.** All three raters checked every commit: 0 of 224 subjects contain a Hebrew character, and the Hebrew that exists is quoted UI strings inside English prose. The incumbent 1 was a trace that is not there. Stays a 1-repo candidate on MATI. | pre-call's Hebrew/English split follows the *document* (README and method docs Hebrew, commits English), not the surface. Stays a 1-repo candidate on MATI. |
 
 ## 3.2 New rows
 
@@ -260,7 +260,7 @@ Full analysis: `research/cross-repo/portfolio-as-one-mechanism.md`.
 | measured-stopping-rule | 3 | **1** | — | weak-1-repo | No — but it is the portfolio's best C9 implementation | user-to-user |
 | dod-unsatisfiable-by-code | 3 | 1 | MATI **0** | weak-1-repo | **NO — DEMOTED 2026-08-19**: MATI's 2 was read off a PR body, not the repo at HEAD, where no DoD exists | user-to-user |
 | adversary-hunts-assertions-not-defects | 2 | 3 | CRM 2 | strong-2-repos | **Yes** | claude-to-claude |
-| authority-boundary-as-named-artifact | 2 | 3 | MATI 3, anti-silo 2 | strong-3-repos | **Yes** | user-to-claude |
+| authority-boundary-as-named-artifact | 2 | 3 | MATI 3, anti-silo **3** *(was 2 - Round 10)*, _crm 3 | strong-5-repos | **Yes** | user-to-claude |
 | branch-as-claim | 3 | 1 | — | weak-1-repo | No | claude-to-user |
 | bypass-log | 3 | **1** | — | weak-1-repo | No — but nothing else in the portfolio instruments its own gate's evasion | claude-to-claude |
 | programmatic-branch-naming | **2** | 3 | — | strong-2-repos | **Yes** (promoted 2026-08-19 — 3 blind raters found 6 machine-suffixed branches in pre-call I had scored 0) | claude-to-claude |
@@ -692,3 +692,91 @@ Applied honestly to this round: no item is struck (the leak carries aggregates, 
 scores), but **item 4 — anti-silo, the crux, the one that tests whether a rater checks the whole
 portfolio — was made easier by a leak saying "8 of these identities are one person".** The 24/24
 carries that discount. It would still pass on the seven uncompromised items.
+
+---
+
+# Round 10 — the never-rated cells (2026-08-19)
+
+95 cells in this matrix had never been seen by a blind rater. They were enumerated mechanically —
+every cell in Rounds 2–9 minus the 47 rated in rounds 1–4 — and 18 were drawn by a rule frozen
+before the round: stratify by incumbent score, promoted patterns first, cap 2 cells per pattern,
+take 5/3/5/5. Incumbent sd **1.199**, against round 1's 0.34. Full result:
+`ground-truth/interrater-round5-2026-08-19.md`.
+
+## 10.1 Round 7's headline does not survive contact with unexamined cells
+
+| | round 6 | round 7 | **round 10** |
+|---|---|---|---|
+| ICC across three blind families | +0.801 | +0.909 | **+0.491** |
+| ICC with the incumbent added | +0.652 | +0.676 | **+0.535** |
+
+Round 7 read this as *"the instrument reproduces; the incumbent is the variance."* On cells nothing
+had examined, **neither half holds** — and adding the incumbent *raises* the figure, reversing both
+prior rounds. That reading was a property of its item set: cells in repos already written up, where
+the evidence is salient enough that any careful reader lands on the same artifacts.
+
+Removing the two contaminated items lifts it only to +0.628. **The drop is real, not the
+contamination.** And removing the five primed items makes agreement *worse* (+0.429) — **the shared
+leak was manufacturing consensus.** Every prior round listed that as a risk; this one measures it.
+Contamination inflates measured reliability, so a leaky blind round reports more confidence than it
+earned.
+
+## 10.2 The polarising bias is confirmed a third time
+
+Pre-registered before the data, direction only. Incumbent 0–1: **+0.542** (round 6 +0.83, round 7
++1.17). Incumbent 2–3: **−0.233** (−0.58, −0.47). Three disjoint item sets, same two signs. Cells
+the incumbent has not opened are scored too low; cells it has just written up, too high.
+
+## 10.3 Changes
+
+| cell | was | now |
+|---|---|---|
+| `language-splits-by-agent-surface` @ pre-call | 1 | **0** — unanimous; 0 of 224 commit subjects contain a Hebrew character |
+| `adversarial-second-surface` @ pre-call | 2 | **1** — unanimous; review artifacts exist but no *distinct* second surface, the review commits carry the same trailers as the build commits |
+| `authority-boundary-as-named-artifact` @ anti-silo | 2 | **3** — unanimous; `grounding_permit.py`'s locate/draft/advise/decide/act ladder, own tests, own emitted artifact |
+
+`adversarial-second-surface` loses a supporting cell: ≥2 in 5 repos → **4** (MATI, Agent-Architect,
+proofminer, `_crm`). It stays promoted and its `moderate-4-repos` label is now exact rather than one
+repo optimistic. `authority-boundary-as-named-artifact` → **strong-5-repos**. **Promoted count
+unchanged at 33.**
+
+11 cells held with the raters split, and 4 were unanimous confirmations.
+
+## 10.4 The session contaminated the artifact it was rating
+
+One rater scored `claude-branch-as-default-branch` @ CRM_Google_ai and @ agency-insight-analyzer as
+**3**, citing `git rev-parse --abbrev-ref HEAD` → `claude/analyze-additional-repos-v0s691`. That is
+**this session's own branch**, checked out in all 40 repos because the task required it. The three
+raters differed by how far they verified: one read the checked-out label (3), one noticed `main`
+exists at the same tip (1), one ran `git ls-remote --symref origin HEAD` against the remote (**0**,
+correct).
+
+Re-checked portfolio-wide from remote refs: exactly **two** repos of 40 carry a genuine agent
+default branch — Agent-Architect (no main or master exists at all) and keepath (`origin/HEAD`
+points at a `claude/` branch). Both already scored 3, so **`claude-branch-as-default-branch` =
+strong-2-repos survives and now rests on remote refs rather than a local checkout.**
+
+`CLAUDE.md` contaminates what a rater *knows*. This contaminates what a rater *observes*, and no
+protocol step in any round ever checked for it.
+
+## 10.5 A leak channel no audit had enumerated
+
+The parent session's **task list** is injected into subagents as recurring system reminders,
+carrying titles verbatim: *"Deep-dive `_crm`: archaeology + architecture"*, *"Re-test 17 promoted
+patterns + promote new ones in patterns-matrix"*, *"Design the ground-truth rubric with disjoint
+evidence"*. Every blinding audit so far enumerated `CLAUDE.md` and memory files and stopped there.
+
+## 10.6 Unanimity caught a rater's search failure
+
+`authority-boundary-as-named-artifact` @ MATI: one rater returned **0** — *"no boundary document or
+module found; no SECURITY.md, no contracts/"* — against two at 3. Checked directly:
+`docs/organizational-signal-contract.md` (5127 bytes, "Authority after detection" at line 77),
+`lib/organizational-signals.ts` (8375 bytes) and `scripts/check-organizational-signal-contract.mjs`
+all exist. **The rater searched the wrong filenames and reported absence** — anti-pattern 28,
+produced by a blind rater this time. Requiring all three to move is what stopped it landing.
+
+## 10.7 What is still unrated
+
+**77 of the 95 never-rated cells remain never rated.** Of the 18 sampled, 11 ended where they
+started with the raters split — the unexamined frontier is less settled than the matrix's
+single-scorer numbers make it look.

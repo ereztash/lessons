@@ -1,0 +1,235 @@
+{
+ "rated": "2026-08-19",
+ "round": 5,
+ "items_frozen_at": "ea4654d",
+ "scorers_frozen_at": "2190889 / ace87e8",
+ "raters": [
+  "sonnet",
+  "haiku",
+  "fable"
+ ],
+ "incumbent_rater": "the existing matrix score",
+ "items": [
+  {
+   "n": 1,
+   "id": 1,
+   "pattern": "adversarial-second-surface",
+   "repo": "CRM_Google_ai",
+   "incumbent": 0,
+   "scores": {
+    "sonnet": 1,
+    "haiku": 0,
+    "fable": 2
+   }
+  },
+  {
+   "n": 2,
+   "id": 2,
+   "pattern": "agent-identity-collapse",
+   "repo": "CRM_Google_ai",
+   "incumbent": 0,
+   "scores": {
+    "sonnet": 0,
+    "haiku": 0,
+    "fable": 0
+   },
+   "primed_by_injected_text": "STRONG: CLAUDE.md calls CRM_Google_ai 'a mirror of _crm ... score the source, not this' - the exact framing that produced anti-pattern 28, priming a 0 on an unopened repo"
+  },
+  {
+   "n": 3,
+   "id": 3,
+   "pattern": "agent-identity-collapse",
+   "repo": "pre-call",
+   "incumbent": 0,
+   "scores": {
+    "sonnet": 2,
+    "haiku": 0,
+    "fable": 2
+   },
+   "primed_by_injected_text": "MODERATE: CLAUDE.md's repo table names proofminer 'largest hidden-agent repo' beside pre-call, priming the contrast this item turns on"
+  },
+  {
+   "n": 4,
+   "id": 4,
+   "pattern": "claude-branch-as-default-branch",
+   "repo": "CRM_Google_ai",
+   "incumbent": 0,
+   "scores": {
+    "sonnet": 0,
+    "haiku": 3,
+    "fable": 1
+   }
+  },
+  {
+   "n": 5,
+   "id": 5,
+   "pattern": "claude-branch-as-default-branch",
+   "repo": "agency-insight-analyzer",
+   "incumbent": 0,
+   "scores": {
+    "sonnet": 0,
+    "haiku": 3,
+    "fable": 1
+   }
+  },
+  {
+   "n": 6,
+   "id": 6,
+   "pattern": "self-refuting-kill-test",
+   "repo": "Agent-Architect",
+   "incumbent": 1,
+   "scores": {
+    "sonnet": 2,
+    "haiku": 0,
+    "fable": 1
+   },
+   "primed_by_injected_text": "WEAK: CLAUDE.md tells the rater what a self-refuting kill test looks like ('_crm ... a kill test that refuted its own metric') but says nothing about Agent-Architect"
+  },
+  {
+   "n": 7,
+   "id": 7,
+   "pattern": "language-splits-by-agent-surface",
+   "repo": "agency-insight-analyzer",
+   "incumbent": 1,
+   "scores": {
+    "sonnet": 2,
+    "haiku": 1,
+    "fable": 1
+   }
+  },
+  {
+   "n": 8,
+   "id": 8,
+   "pattern": "language-splits-by-agent-surface",
+   "repo": "pre-call",
+   "incumbent": 1,
+   "scores": {
+    "sonnet": 0,
+    "haiku": 0,
+    "fable": 0
+   }
+  },
+  {
+   "n": 9,
+   "id": 9,
+   "pattern": "adversarial-second-surface",
+   "repo": "pre-call",
+   "incumbent": 2,
+   "scores": {
+    "sonnet": 0,
+    "haiku": 1,
+    "fable": 1
+   }
+  },
+  {
+   "n": 10,
+   "id": 10,
+   "pattern": "adversary-hunts-assertions-not-defects",
+   "repo": "CRM_Google_ai",
+   "incumbent": 2,
+   "scores": {
+    "sonnet": 1,
+    "haiku": 0,
+    "fable": 2
+   }
+  },
+  {
+   "n": 11,
+   "id": 11,
+   "pattern": "adversary-hunts-assertions-not-defects",
+   "repo": "_crm",
+   "incumbent": 2,
+   "scores": {
+    "sonnet": 3,
+    "haiku": 2,
+    "fable": 3
+   }
+  },
+  {
+   "n": 12,
+   "id": 12,
+   "pattern": "author-name-is-not-an-identity",
+   "repo": "nuxtjs-boilerplate",
+   "incumbent": 2,
+   "scores": {
+    "sonnet": 2,
+    "haiku": 2,
+    "fable": 2
+   },
+   "primed_by_injected_text": "STRONG: CLAUDE.md's identity paragraph gives the portfolio aggregate (10 pairs, 8 one person, 2 split by email capitalisation alone) - nuxtjs-boilerplate's two identities differ by exactly that"
+  },
+  {
+   "n": 13,
+   "id": 13,
+   "pattern": "authority-boundary-as-named-artifact",
+   "repo": "anti-silo",
+   "incumbent": 2,
+   "scores": {
+    "sonnet": 3,
+    "haiku": 3,
+    "fable": 3
+   }
+  },
+  {
+   "n": 14,
+   "id": 14,
+   "pattern": "author-name-is-not-an-identity",
+   "repo": "COR-SYS",
+   "incumbent": 3,
+   "scores": {
+    "sonnet": 3,
+    "haiku": 3,
+    "fable": 3
+   },
+   "primed_by_injected_text": "STRONG: same paragraph; it also names the answer-key script"
+  },
+  {
+   "n": 15,
+   "id": 15,
+   "pattern": "authority-boundary-as-named-artifact",
+   "repo": "MATI",
+   "incumbent": 3,
+   "scores": {
+    "sonnet": 3,
+    "haiku": 0,
+    "fable": 3
+   }
+  },
+  {
+   "n": 16,
+   "id": 16,
+   "pattern": "branch-as-sprint-container",
+   "repo": "pre-call",
+   "incumbent": 3,
+   "scores": {
+    "sonnet": 3,
+    "haiku": 3,
+    "fable": 2
+   }
+  },
+  {
+   "n": 17,
+   "id": 17,
+   "pattern": "branch-as-sprint-container",
+   "repo": "proofminer",
+   "incumbent": 3,
+   "scores": {
+    "sonnet": 3,
+    "haiku": 3,
+    "fable": 2
+   }
+  },
+  {
+   "n": 18,
+   "id": 18,
+   "pattern": "claim-downgrade-ledger",
+   "repo": "_crm",
+   "incumbent": 3,
+   "scores": {
+    "sonnet": 3,
+    "haiku": 3,
+    "fable": 3
+   }
+  }
+ ]
+}

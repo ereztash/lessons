@@ -1,0 +1,19 @@
+{
+  "round": 4, "date": "2026-08-19",
+  "items_frozen_at": "0d0b517", "scorer_frozen_at": "452ec29",
+  "ratings": {
+    "sonnet": {"COR-SYS":3,"_crm":3,"ex2":1,"anti-silo":0,"dod-validator":0,"nuxtjs-boilerplate":0,"MATI":0,"proofminer":0},
+    "haiku":  {"COR-SYS":3,"_crm":3,"ex2":1,"anti-silo":0,"dod-validator":0,"nuxtjs-boilerplate":0,"MATI":0,"proofminer":0},
+    "fable":  {"COR-SYS":3,"_crm":3,"ex2":1,"anti-silo":0,"dod-validator":0,"nuxtjs-boilerplate":0,"MATI":0,"proofminer":0}
+  },
+  "poll": {
+    "sonnet": "STRICT - the only marker _crm has is (COR-SYS), a different project's name stamped on _crm's commits; crediting it under LOOSE rewards identity bleed across projects, the opposite of the discipline the claim asserts",
+    "haiku":  "STRICT - the marker names a different project, not the repository itself, so it is not evidence that the operator carries a different identity per project",
+    "fable":  "STRICT - _crm's majority identity is branded with the name of a different portfolio repo, exactly the cross-project carry-over the claim denies; crediting it rewards a leftover config"
+  },
+  "reason_correctness_scored_by_incumbent_against_git": {
+    "fable":  {"score": "8/8", "note": "every count exact: 50/248/7/83/3/2/95/224 human commits, Erez|Erez2812345 in anti-silo+dod-validator, ereztash|erez2812345 in 34 repos"},
+    "sonnet": {"score": "3/8", "note": "identities and sharing all correct; but 'appears in 32 other repos' is off by one (33) and is repeated across items 4-8"},
+    "haiku":  {"score": "3/8", "note": "COR-SYS denominator 33 for a 50-commit repo and called 100% when it is 64%; _crm denominator 225 for 248; listed 'Claude bot' among human identities on items 5, 7, 8"}
+  }
+}

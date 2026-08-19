@@ -621,3 +621,74 @@ blind rating of the sharpened rule, on the two surviving cells plus the four new
 open and is now the cheapest remaining test. Two repos were also found to have **no human commits
 at all** (`brain-healer-hub`, `core-unified-consciousness`); the first version of the script
 dropped them silently, which is how the omission was found.
+
+---
+
+# Round 9 — the sharpened rule, blind-rated (2026-08-19)
+
+Round 8 replaced a contested judgment with an executable rule. This round tests whether a **reader**
+handed that rule reaches the answer the rule's implementation reaches. Full result, limitations and
+the blinding failure: `ground-truth/interrater-round4-2026-08-19.md`. Items frozen at `0d0b517`,
+scorer at `452ec29`, both pushed before any rater ran.
+
+## 9.1 The definitional split is gone
+
+**24/24 exact. 8 of 8 items unanimous across three families.** Against a declared all-zeros baseline
+of 0.625, with every rater clearing a separate non-zero gate 3/3 so the result is not the null model
+in disguise. The same pattern produced a **0/0/2 rater split one round earlier**. Writing the
+definition down removed the disagreement completely — which is the strongest available evidence that
+Round 8's diagnosis (definitional, not observational) was right.
+
+ICC was deliberately not used and the reason was recorded *before* the data: 3 non-zero repos in 38
+means near-zero between-item variance, and Round 5 measured what that does to ICC (0.143 at 80 %
+agreement). Knowingly repeating anti-pattern 24 to obtain a comparable-looking number would have
+been the worse choice.
+
+## 9.2 Scores reproduce perfectly; reasons do not
+
+| | score-correctness | reason-correctness |
+|---|---|---|
+| pooled | **24/24 = 1.000** | **14/24 = 0.583** |
+| fable | 8/8 | **8/8** — every commit count exact |
+| sonnet | 8/8 | 3/8 — "32 other repos" is 33, repeated over five items |
+| haiku | 8/8 | 3/8 — a 33-commit denominator for a 50-commit repo called "100 %"; "Claude bot" listed among *human* identities |
+
+Second consecutive round in which the two dissociate. It is now a measured property of the
+instrument: **a right score is not evidence of right work, and a wrong reason is not evidence of a
+wrong score.** Both must be checked, separately, against the artifact.
+
+## 9.3 The poll settles Round 8's ordering problem
+
+Unanimous **STRICT**, all three naming the same ground unprompted: `_crm`'s marker says `(COR-SYS)`,
+a different project, and crediting it rewards the cross-project identity bleed the claim denies.
+
+Round 8 disclosed that `--strict` was written *after* seeing `_crm`'s marker and reported it as a
+counterfactual for exactly that reason. Three raters with no stake, shown both readings, chose the
+same one. **The demotion no longer rests on a rule its author reached for after seeing the data.**
+
+Per the consequence declared before the vote: `per-project-identity-as-practice` holds at one repo
+and **stays demoted**. **No score changes. Promoted holds at 33, candidates at 29.** Round 8's rows
+stand exactly as written — which is the point of writing the consequence down first.
+
+## 9.4 Blinding: this repo's own prescribed fix, measured, does not work
+
+| attempt | round | result |
+|---|---|---|
+| instruct the rater not to read the repo | 1–2 | failed |
+| remove the whole `CLAUDE.md` from disk | 3 | failed |
+| remove only the leaking paragraph | **9** | **failed** |
+
+Two of three raters pasted the injected block verbatim and it still contained the paragraph deleted
+before the round began. Three methods, three failures: **in-session subagent blinding is not
+achievable here, demonstrated rather than inferred.** Anti-pattern 25's prescribed remedy is now
+known to be ineffective and is corrected in `LOG.md` (#31).
+
+**And the contamination was self-inflicted.** Round 8's own write-up put the portfolio aggregate and
+the name of the answer-key script into `CLAUDE.md` — the file the harness injects into every
+subagent. **Recording a result disables the next blind test of it**, and the more diligently a repo
+documents its findings in agent-facing files, the worse the effect.
+
+Applied honestly to this round: no item is struck (the leak carries aggregates, not per-repo
+scores), but **item 4 — anti-silo, the crux, the one that tests whether a rater checks the whole
+portfolio — was made easier by a leak saying "8 of these identities are one person".** The 24/24
+carries that discount. It would still pass on the seven uncompromised items.

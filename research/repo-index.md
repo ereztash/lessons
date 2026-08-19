@@ -143,8 +143,9 @@
     so the refutation is not over-read either
   - `docs/LOCO_PREDICTION_2026-06-14.md` reports rank-accuracy **1.0** and, in the same sentence,
     that a perfect rank at n=3 is **p~0.17, not significant**
-  - **Validated against AnnoMI** — 133 public motivational-interviewing sessions. The only repo in
-    the 40 that tests against data the operator did not produce
+  - **Validated against AnnoMI** — 133 public motivational-interviewing sessions
+    (`docs/ARCHITECTURE.md:22`, 5 test modules). The only repo in the 40 that tests against data
+    the operator did not produce
   - 70 docs incl. three model cards, a DPIA, consent policy, incident response, adversarial
     simulation; 127 test modules incl. `test_trust_ledger.py`, `test_no_pii_in_research_outputs.py`
   - A named client **failure** case merged one PR after the success case (#20, #21)

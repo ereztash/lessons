@@ -38,7 +38,7 @@
 ## 2026-08-19 14:19 — Validated against a public corpus it did not produce
 
 **Dimension guess**: user-to-user
-**Evidence**: `tests/test_annomi_owning_signal.py`, `test_annomi_owned_differentiation.py`, `test_annomi_conversation_quality.py`, `test_annomi_interaction_quality.py`, `test_annomi_analysis.py`; README — *"AnnoMI — 133 English motivational-interviewing sessions (public dataset)"*; `data/research/craigslistbargain_agency.md`
+**Evidence**: `tests/test_annomi_owning_signal.py`, `test_annomi_owned_differentiation.py`, `test_annomi_conversation_quality.py`, `test_annomi_interaction_quality.py`, `test_annomi_analysis.py`; `docs/ARCHITECTURE.md:22` — *"AnnoMI — 133 English motivational-interviewing sessions (public dataset), the cross-lingual track."*; `data/research/craigslistbargain_agency.md`
 **Observation**: Five test modules run the ownership detectors against AnnoMI, a public 133-session motivational-interviewing corpus, alongside a negotiation dataset. The only repo in the 40 that validates against data the operator did not create.
 **Mechanism hypothesis**: Every other measurement in this portfolio — including all of `lessons` — is scored on artifacts the operator produced, which cannot distinguish "the instrument works" from "the instrument fits this author." A public corpus is the cheapest available break in that loop. For `lessons` the analogue exists and is unused: score the tier classifier against repos from someone else's GitHub account.
 

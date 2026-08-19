@@ -340,7 +340,9 @@ in the portfolio has, `lessons` included.
 | external-corpus-validation | 3 | — | weak-1-repo | No — but it is the only break in the self-scoring loop found anywhere | user-to-user |
 | result-reported-with-its-own-ceiling | 3 | pre-call 2 | strong-2-repos | **Yes** | claude-to-user |
 | failure-case-shipped-beside-success-case | 3 | — | weak-1-repo | No | user-to-user |
-| per-project-git-identity | 3 | anti-silo 2 *(contested: 2 of 3 raters scored 0)* | strong-2-repos | **Yes — AT RISK**, see round-3 §4 | claude-to-claude |
+| per-project-git-identity | 3 | COR-SYS **3**, anti-silo **0** | strong-2-repos *(loose rule)* | **SPLIT 2026-08-19** into the two rows below — see §8 | claude-to-claude |
+| ├ per-project-identity-as-practice | 1 *(strict)* | COR-SYS 3, all others 0 | weak-1-repo | **No — DEMOTED**: the marker on `_crm` names COR-SYS, not `_crm` | user-to-user |
+| └ author-name-is-not-an-identity | 3 | COR-SYS 3; anti-silo, dod-validator, nextjs-ai-chatbot, nuxtjs-boilerplate 2 | strong-6-repos | **Yes** — 6 repos carry ≥2 identities for one person; measured, not asserted | claude-to-claude |
 
 ### Row definitions
 
@@ -354,9 +356,20 @@ in the portfolio has, `lessons` included.
 - **result-reported-with-its-own-ceiling** — the limit travels in the same sentence as the number.
   `_crm`: "rank-accuracy 1.0 … a perfect rank at n=3 is p~0.17 (not significant)". pre-call:
   synthetic 49/49 printed beside real 2/3.
-- **per-project-git-identity** — the operator carries a different git identity per project
-  (`Erez (COR-SYS)`, `Erez`, `ereztash`). Any per-author metric across the portfolio double- or
-  triple-counts one person.
+- **per-project-git-identity** — *superseded 2026-08-19.* The row conflated a practice with a
+  hazard, which is why raters could not agree on it. Split into:
+  - **per-project-identity-as-practice** — the operator deliberately maintains a distinct,
+    project-marked git identity per project. True of **COR-SYS only** (`COR-SYS Dev`,
+    `97252@cor-sys.local`). `_crm`'s `Erez (COR-SYS)` is a marker for a *different* project
+    carried into this one. One repo — not promoted.
+  - **author-name-is-not-an-identity** — `%an`/`%ae` do not identify a person. Portfolio-wide:
+    **10 distinct `name|email` pairs, 8 of them one human** (4 names × 5 emails), 2 of the 8
+    produced by email capitalisation alone. Any per-author metric over this portfolio reports 8
+    contributors where there is 1. The mirror image of `agent-identity-collapse`, which undercounts
+    machine work by the same measure. Evidence: `ground-truth/project-identity-2026-08-19.md` §5.
+    Per-repo strength here counts **distinct identities belonging to the operator inside that one
+    repo** — 3 = three, 2 = two, 0 = one. `lessons` itself scores 0; the first draft of this row
+    claimed `lessons 3` from memory and the census refuted it before it was committed.
 
 ## 4.3 Promoted count after Round 4
 
@@ -526,6 +539,9 @@ CRM_Google_ai 0→**3** · `adversarial-second-surface` @ proofminer 3→**2** �
   adoption under the rule, but two raters found only the generic `Erez`/`ereztash` identity there,
   with `_crm`'s `Erez (COR-SYS)` the sole project-marked one. If anti-silo is 0 the pattern has one
   repo and fails. First item next round.
+  → **Resolved in Round 8** by measurement, not by re-rating: anti-silo is **0** (raters right,
+  incumbent withdrawn), an unscored cell (COR-SYS **3**) turned out to be the strongest instance,
+  and the row split into a demoted practice and a promoted hazard. See §8.
 
 ## 7.3 Blinding is impossible here, and now measured rather than assumed
 
@@ -538,3 +554,70 @@ The one change that worked was requiring each rater to report what it had receiv
 output line. Round 2's raters offered assurances; round 3's quoted the leak verbatim, including
 `_crm … a kill test that refuted its own metric` — the answer to item 12. Items 9, 12 and 13 are
 named by the leaked text and their agreement is discounted; the other fifteen are untouched by it.
+
+---
+
+# Round 8 — a contested cell resolved by rule, not by rating (2026-08-19)
+
+Round 3 left `per-project-git-identity` AT RISK on a 0/0/2 rater split and named it the first item
+for the next round. It was **not** re-rated. Reading the three justifications showed the
+disagreement was **definitional, not observational** — all three raters saw the same identities and
+disagreed on whether a different name form counts, or whether an explicit project marker is
+required. A fourth rater produces a fourth opinion about a definition.
+
+So the judgment was written down as a rule (`scripts/detect-project-identity.sh`, `--selftest`
+9/9, verified to go red), and run over **all 40 repos** instead of the three cells a rater was
+handed. Full record: `ground-truth/project-identity-2026-08-19.md`.
+
+## 8.1 Both recorded cells were wrong
+
+| Cell | Was | Now | Why |
+|---|---|---|---|
+| `per-project-git-identity` @ anti-silo | 2 | **0** | Only identities shared with other repos. **The raters were right and the incumbent is withdrawn** |
+| `per-project-git-identity` @ COR-SYS | *never scored* | **3** | `COR-SYS Dev\|97252@cor-sys.local`, 32/50 human commits, a project-owned email domain. The pattern's strongest instance was in a cell nobody had looked at |
+| `per-project-git-identity` @ `_crm` | 3 | 3 loose / **1 strict** | `Erez (COR-SYS)` is repo-unique — but the marker names **COR-SYS**, and it does not appear in COR-SYS at all |
+
+One rater's *reason* was also checkably false: fable justified 0 by `Erez|Erez2812345@gmail.com`
+appearing "in no other inspected repo". It appears in two. The score was right, the reason was not
+— the second reminder this session that a blind rater's justification is evidence to check.
+
+## 8.2 The row was two claims wearing one name
+
+That is why it could be contested at all, and the split is the result — not a rescue, since the
+half that was actually in dispute is the half that gets demoted:
+
+| Claim | Verdict | Effect |
+|---|---|---|
+| **practice** — a deliberate distinct identity per project | COR-SYS only. `_crm`'s marker names another project | **Demoted** to single-repo candidate |
+| **hazard** — `%an`/`%ae` do not identify a person | 10 identities portfolio-wide, **8 of them one human**; 6 repos carry ≥2 of them internally | **Promoted**, and now quantified |
+
+Under the loose rule the original row survives at two repos; under the strict one it has one and
+fails. The loose rule was written first and `--strict` added after seeing `_crm`'s marker, so the
+strict result is reported as a counterfactual, not as the headline. **A promotion that depends on
+which of two defensible definitions you adopt is a promotion that should say so.**
+
+## 8.3 The hazard is the mirror of `agent-identity-collapse`
+
+`agent-identity-collapse` says author name **undercounts machine work** by up to 23×.
+`author-name-is-not-an-identity` says author name **overcounts human contributors** 8× on the same
+corpus. Two of the eight identities differ only in the capitalisation of the email address, which
+git compares byte-wise — that alone splits 760 commits from 207.
+
+Every per-author figure in this repository was computed with `%an`. None is invalidated (all were
+about *one* person's repos), but the method note now belongs beside the authorship rule.
+
+## 8.4 Counts
+
+| | before | after |
+|---|---|---|
+| Promoted | 33 | **33** (−`per-project-git-identity`, +`author-name-is-not-an-identity`) |
+| Single-repo candidates | 28 | **29** (+`per-project-identity-as-practice`) |
+
+## 8.5 What this round did not do
+
+The user asked for a round; a measurement was substituted for it. The measurement settles the
+*factual* question (which identities exist where) and cannot settle the *definitional* one — a
+blind rating of the sharpened rule, on the two surviving cells plus the four new ones, is still
+open and is now the cheapest remaining test. Two repos were also found to have **no human commits
+at all** (`brain-healer-hub`, `core-unified-consciousness`); the first version of the script
+dropped them silently, which is how the omission was found.

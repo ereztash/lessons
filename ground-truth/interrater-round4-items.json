@@ -1,0 +1,49 @@
+{
+  "round": 4,
+  "date": "2026-08-19",
+  "frozen_before_any_rater_ran": true,
+  "pattern_under_test": "per-project-git-identity, sharpened into an executable rule in Round 8",
+  "what_is_being_tested": "Not whether raters agree with each other about a definition (Round 3 showed that disagreement was definitional and unresolvable by more raters). Whether a READER handed the sharpened rule reaches the same answer the rule's implementation reaches. If yes, the sharpening removed the ambiguity. If no, the rule is still a judgment wearing a rule's clothes.",
+  "reference": "scripts/detect-project-identity.sh (loose mode) output, which raters do not see and are instructed not to run",
+  "raters": ["sonnet", "haiku", "fable"],
+  "incumbent": "not applicable - the reference is a script, not a prior human/model score",
+
+  "statistic": {
+    "primary": "exact-match rate against the reference, per rater and pooled",
+    "null_baseline": "all-zeros scores 5 of 8 = 0.625, because 5 items are genuinely 0. Any result must be read against this, not against 0.",
+    "pass_threshold_declared_in_advance": "the rule counts as executable-by-a-reader iff (a) pooled exact-match >= 0.85 AND (b) every rater gets >= 2 of the 3 non-zero items exactly right",
+    "secondary": "reason-correctness, scored separately: is each rater's stated reason factually true of the repo? Round 8 found a rater whose score was right and whose reason was false, so these are not the same measurement.",
+    "icc_deliberately_not_used": "The population has 3 non-zero repos in 38. Between-item variance in any honest sample is near-zero, and ICC collapses on a range-restricted set even at high agreement (anti-pattern 24, measured in Round 5: sd 0.34 -> ICC 0.143 at 80% exact agreement). Pre-registering a statistic this sample cannot answer would repeat that defect. Exact-match and per-item unanimity are reported instead."
+  },
+
+  "items": [
+    {"id": 1, "repo": "COR-SYS",            "path": "/home/user/COR-SYS"},
+    {"id": 2, "repo": "_crm",               "path": "/workspace/_crm"},
+    {"id": 3, "repo": "ex2",                "path": "/workspace/ereztash/ex2"},
+    {"id": 4, "repo": "anti-silo",          "path": "/home/user/anti-silo"},
+    {"id": 5, "repo": "dod-validator",      "path": "/workspace/dod-validator"},
+    {"id": 6, "repo": "nuxtjs-boilerplate", "path": "/workspace/nuxtjs-boilerplate"},
+    {"id": 7, "repo": "MATI",               "path": "/home/user/MATI"},
+    {"id": 8, "repo": "proofminer",         "path": "/workspace/ereztash/proofminer"}
+  ],
+
+  "item_design_notes": [
+    "Item 4 (anti-silo) is the crux. Its majority identity `Erez|Erez2812345@gmail.com` (61 commits) looks repo-unique from inside anti-silo and is NOT - it also appears in dod-validator (1 commit). A rater who does not check the whole portfolio scores it 1. This is exactly the error one Round 3 rater made while reaching the right score for the wrong reason.",
+    "Item 2 (_crm) is the decisive item for the loose/strict split and is the only item where the two readings disagree.",
+    "Items 5-8 are all 0 but zero for structurally different reasons (two shared identities / two shared identities one of them a noreply / a single shared identity). A rater who scores 0 by default rather than by rule is not distinguished by the score - only by the reason.",
+    "The item set is the entire non-zero population (3 repos) plus 5 zeros. It is not a sample; selecting for more range is impossible because the range does not exist."
+  ],
+
+  "part_b_declared_as_a_poll_not_a_measurement": {
+    "question": "On `_crm`, does the LOOSE reading (any explicit project marker on a repo-unique identity) or the STRICT reading (the marker must name THIS repo) answer the row's claim that the operator carries a different git identity per project?",
+    "why_it_is_a_poll": "This is the definitional question Round 3 could not settle and more raters still cannot settle. It is collected as declared opinion with reasons, and will be reported as a poll. It does not move any score on its own.",
+    "consequence_recorded_in_advance": "LOOSE -> the practice claim holds at 2 repos and is promoted. STRICT -> it holds at 1 repo and stays demoted. The consequence is written here BEFORE the vote so the outcome cannot be re-read after seeing it."
+  },
+
+  "blinding": {
+    "known_impossible_by_instruction": "Anti-patterns 25 and 26: the harness injects project instructions at session level. Instruction failed in rounds 1-2, file removal failed in round 3.",
+    "new_this_round": "CLAUDE.md was updated in Round 8 with the portfolio aggregate (10 identities, 8 one person) AND the name of the answer-key script. Recording a result contaminated the next blind test of it. The paragraph is removed from disk for the duration of this round and restored after - which is the fix anti-pattern 25 itself prescribes and which has never actually been tried (round 3 removed the whole file, not one paragraph, and this session has shown the harness re-reading CLAUDE.md on change).",
+    "measurement": "Every rater must emit `BLINDING: <verbatim project instructions received, or NONE>` as its first line before anything else. Round 2's raters offered assurances; round 3's quoted the leak verbatim. The line is the measurement, not the assurance.",
+    "contamination_rule_declared_in_advance": "Any item whose answer appears in the leaked text is discounted and reported as discounted. The Round 8 leak carries portfolio AGGREGATES, not per-repo scores, so on its face it answers no item - but if a BLINDING line shows otherwise, the affected items are struck."
+  }
+}

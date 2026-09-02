@@ -156,19 +156,19 @@ versions across 76 commits). It moves from candidate to promoted — see §2.3.
 
 | Pattern | mati | a-s | a-a | crm | aia | other | Strength | Promoted? | Dimension |
 |---|----|----|----|----|----|-------|----------|-----------|-----------|
-| agent-identity-collapse | 3 | 1 | 0 | 0 | 0 | lessons 3 | strong-2-repos | **Yes** | claude-to-claude |
-| adversarial-second-surface | 3 | 3 | 2 | 0 | 0 | — | strong-3-repos | **Yes** | claude-to-claude |
-| contract-check-as-ci-gate | 3 | 2 | 1 | 0 | 0 | ampaign-craft 3 | strong-3-repos | **Yes** | user-to-claude |
+| agent-identity-collapse | 3 | **2** | 0 | 0 | 0 | lessons 3, proofminer 3 | strong-3-repos | **Yes** | claude-to-claude |
+| adversarial-second-surface | **2** | **1** | 2 | 0 | 0 | proofminer **2**, _crm 2 | **moderate-4-repos** | **Yes — no longer provisional**; all three supporting cells rated in round 3 | claude-to-claude |
+| contract-check-as-ci-gate | 3 | **3** | **3** | **3** | 0 | ampaign-craft 3, _crm 3 | strong-6-repos | **Yes** | user-to-claude |
 | claude-branch-as-default-branch | 0 | 0 | 3 | 0 | 0 | keepath 3 (scan) | strong-2-repos | **Yes** | user-to-claude |
-| commercial-doc-as-spec | 1 | 3 | 3 | 0 | 0 | — | strong-2-repos | **Yes** | user-to-user |
+| commercial-doc-as-spec | 1 | 3 | 3 | **2** | 0 | _crm 3 | strong-4-repos | **Yes** | user-to-user |
 | resumption-gap-predicts-pivot-vs-continuation | 0 | 0 | 0 | 0 | 3 | groundstate 3, chess-mind 2 | strong-2-repos | **Yes** | user-to-user |
 | language-splits-by-agent-surface | 3 | 0 | 0 | 0 | 1 | — | weak-1-repo | No — needs a second bilingual multi-surface repo | user-to-claude |
 | agents-md-inter-agent-lane-contract | 0 | 0 | 0 | 3 | 0 | — | weak-1-repo | No — but the highest-value single artifact found this round | claude-to-claude |
 | mirror-repo-as-agent-access-shim | 0 | 0 | 0 | 3 | 0 | — | weak-1-repo | No — new terminal state, alongside absorbed-rather-than-shipped | user-to-user |
 | one-day-full-system-build | 3 | 0 | 0 | 0 | 0 | — | weak-1-repo | No | user-to-user |
 | human-as-coauthor-trailer | 0 | 0 | 0 | 0 | 0 | groundstate 3 | weak-1-repo | No | claude-to-user |
-| model-version-in-trailer | 0 | 0 | 0 | 0 | 0 | COR-SYS 3, groundstate-protocol 3 | strong-2-repos | **Yes** (promoted 2026-08-19 on the re-measurement in §2.2) | claude-to-claude |
-| gate-left-behind-by-the-fix | 3 | 3 | 1 | 0 | 0 | — | strong-2-repos | **Yes** | claude-to-claude |
+| model-version-in-trailer | 0 | **3** | 0 | 0 | 0 | COR-SYS 3, groundstate-protocol 3, _crm 3 | **strong-4-repos** | **Yes** | claude-to-claude |
+| gate-left-behind-by-the-fix | 3 | 3 | **2** | 0 | 0 | — | strong-3-repos | **Yes** | claude-to-claude |
 
 ### Row definitions
 
@@ -243,7 +243,7 @@ Full analysis: `research/cross-repo/portfolio-as-one-mechanism.md`.
 | Pattern | pre-call | proofminer | Verdict |
 |---|---|---|---|
 | agent-identity-collapse | 0 | **3** | **Now 3 repos** (MATI 55/86, proofminer **193/229**, lessons 14/37). Settled: this is the portfolio's dominant authoring mode by volume, not an edge case. pre-call is the counter-case — 146 of 185 commits attributed, 113 trailers. |
-| adversarial-second-surface | 2 | **3** | **Now 5 repos** and sharpened: in proofminer all 16 Claude commits are *epistemic* corrections ("The text layer was fabricating evidence. Stop it."), not defect fixes. See new row `adversary-hunts-assertions-not-defects`. |
+| adversarial-second-surface | **1** *(was 2 - Round 10)* | **3** | **Now 4 repos.** pre-call's 2 was adopted down to 1 by three blind raters: the review-only artifacts exist (`docs/design-persona.md`, `tools/design-audit.js`) but no *distinct second AI surface* does the auditing - the review commits carry the same Claude trailers as the build commits. Sharpened in proofminer, where all 16 Claude commits are *epistemic* corrections ("The text layer was fabricating evidence. Stop it."), not defect fixes. See new row `adversary-hunts-assertions-not-defects`. | in proofminer all 16 Claude commits are *epistemic* corrections ("The text layer was fabricating evidence. Stop it."), not defect fixes. See new row `adversary-hunts-assertions-not-defects`. |
 | contract-check-as-ci-gate | 3 | 2 | Confirmed. pre-call adds the strongest form: a stopping rule whose P is measured over 400 runs. |
 | commercial-doc-as-spec | **3** | 2 | **Now 4 repos.** pre-call states a *negative* scope claim — the customer it does not serve — which is the strongest form observed. |
 | gate-left-behind-by-the-fix | 3 | 2 | Confirmed. |
@@ -251,19 +251,19 @@ Full analysis: `research/cross-repo/portfolio-as-one-mechanism.md`.
 | resumption-gap-predicts-pivot-vs-continuation | 0 | 0 | Not applicable — neither has a gap yet. |
 | branch-as-sprint-container | 3 | 3 | Confirmed, and refined by `branch-as-claim` below. |
 | editorial-commit-voice-escalation | 3 | 3 | Confirmed. proofminer's split is discontinuous, not gradual: 212 empty bodies from the builder, argumentative imperatives from the reviewer. |
-| language-splits-by-agent-surface | 1 | 0 | **Weakened.** pre-call's Hebrew/English split follows the *document* (README and method docs Hebrew, commits English), not the surface. Stays a 1-repo candidate on MATI. |
+| language-splits-by-agent-surface | **0** *(was 1 - Round 10)* | 0 | **Refuted at pre-call, unanimously.** All three raters checked every commit: 0 of 224 subjects contain a Hebrew character, and the Hebrew that exists is quoted UI strings inside English prose. The incumbent 1 was a trace that is not there. Stays a 1-repo candidate on MATI. | pre-call's Hebrew/English split follows the *document* (README and method docs Hebrew, commits English), not the surface. Stays a 1-repo candidate on MATI. |
 
 ## 3.2 New rows
 
 | Pattern | pre-call | proofminer | other | Strength | Promoted? | Dimension |
 |---|---|---|---|---|---|---|
-| measured-stopping-rule | 3 | 0 | — | weak-1-repo | No — but it is the portfolio's best C9 implementation | user-to-user |
-| dod-unsatisfiable-by-code | 3 | 1 | MATI 2 | strong-2-repos | **Yes** | user-to-user |
+| measured-stopping-rule | 3 | **1** | — | weak-1-repo | No — but it is the portfolio's best C9 implementation | user-to-user |
+| dod-unsatisfiable-by-code | 3 | 1 | MATI **0** | weak-1-repo | **NO — DEMOTED 2026-08-19**: MATI's 2 was read off a PR body, not the repo at HEAD, where no DoD exists | user-to-user |
 | adversary-hunts-assertions-not-defects | 2 | 3 | CRM 2 | strong-2-repos | **Yes** | claude-to-claude |
-| authority-boundary-as-named-artifact | 2 | 3 | MATI 3, anti-silo 2 | strong-3-repos | **Yes** | user-to-claude |
+| authority-boundary-as-named-artifact | 2 | 3 | MATI 3, anti-silo **3** *(was 2 - Round 10)*, _crm 3 | strong-5-repos | **Yes** | user-to-claude |
 | branch-as-claim | 3 | 1 | — | weak-1-repo | No | claude-to-user |
-| bypass-log | 3 | 0 | — | weak-1-repo | No — but nothing else in the portfolio instruments its own gate's evasion | claude-to-claude |
-| programmatic-branch-naming | 0 | 3 | — | weak-1-repo | No | claude-to-claude |
+| bypass-log | 3 | **1** | — | weak-1-repo | No — but nothing else in the portfolio instruments its own gate's evasion | claude-to-claude |
+| programmatic-branch-naming | **2** | 3 | — | strong-2-repos | **Yes** (promoted 2026-08-19 — 3 blind raters found 6 machine-suffixed branches in pre-call I had scored 0) | claude-to-claude |
 | meta-tooling-co-shipped-with-product | 0 | 3 | cor-sys 3 | strong-2-repos | **Yes** (promoted from Phase-2 candidate) | user-to-user |
 | archive-branch-for-abandoned-agent-work | 0 | 3 | — | weak-1-repo | No | claude-to-claude |
 
@@ -310,3 +310,473 @@ proofminer already implement four of them, better:
 
 The fifth gap — no gate-evasion record — is met by pre-call's **bypass log**, which nothing else
 in the portfolio has, `lessons` included.
+
+---
+
+# Round 4 — `_crm` deep-dive (2026-08-19)
+
+> The Ownership Engine: 257 commits, 70 docs, 127 test modules, and the largest authorship gap in
+> the portfolio. Source: `/research/_crm/extracted-insights.md` (6 observations).
+
+## 4.1 Retest
+
+| Pattern | _crm | Verdict |
+|---|---|---|
+| model-version-in-trailer | **3** | **Now 3 repos** (COR-SYS, groundstate-protocol, _crm) and _crm is the richest: all 211 trailers name the model, 153 also record the context window (`Opus 4.8 (1M context)`) |
+| agent-identity-collapse | 2 | Present in a **new form**: 23× undercount with **zero** cadence bursts. Neither detector reaches it alone — only the trailer survives. Fills the last empty cell of the authorship 2×2 |
+| authority-boundary-as-named-artifact | 3 | **Now 5 repos.** `core/consent.py` fails closed to `local_only`; `core/provenance.py` flags coach-supplied language as hollow |
+| commercial-doc-as-spec | 3 | **Now 5 repos**, and one level up: model cards, a DPIA, an incident-response plan and a trust ledger — written before any user exists |
+| adversary-hunts-assertions-not-defects | 2 | Holds — `core/provenance.py` is the artifact, not a reviewer |
+| dod-unsatisfiable-by-code | 2 | Holds in spirit: the G1 verdict is a claim downgrade no amount of code can reverse |
+| contract-check-as-ci-gate | 3 | `test_trust_ledger.py`, `test_methodology_promotion.py`, `test_no_pii_in_research_outputs.py` — domain policy as tests |
+| claude-branch-as-default-branch | 0 | Not observed — and notably **no agent-named branches at all** despite 211 AI-paired commits |
+
+## 4.2 New rows
+
+| Pattern | _crm | other | Strength | Promoted? | Dimension |
+|---|---|---|---|---|---|
+| self-refuting-kill-test | 3 | pre-call 2, Agent-Architect 1 | strong-2-repos | **Yes** | user-to-user |
+| claim-downgrade-ledger | 3 | Agent-Architect 3, pre-call 2 | strong-3-repos | **Yes** | claude-to-user |
+| external-corpus-validation | 3 | — | weak-1-repo | No — but it is the only break in the self-scoring loop found anywhere | user-to-user |
+| result-reported-with-its-own-ceiling | 3 | pre-call 2 | strong-2-repos | **Yes** | claude-to-user |
+| failure-case-shipped-beside-success-case | 3 | — | weak-1-repo | No | user-to-user |
+| per-project-git-identity | 3 | COR-SYS **3**, anti-silo **0** | strong-2-repos *(loose rule)* | **SPLIT 2026-08-19** into the two rows below — see §8 | claude-to-claude |
+| ├ per-project-identity-as-practice | 1 *(strict)* | COR-SYS 3, all others 0 | weak-1-repo | **No — DEMOTED**: the marker on `_crm` names COR-SYS, not `_crm` | user-to-user |
+| └ author-name-is-not-an-identity | 3 | COR-SYS 3; anti-silo, dod-validator, nextjs-ai-chatbot, nuxtjs-boilerplate 2 | strong-6-repos | **Yes** — 6 repos carry ≥2 identities for one person; measured, not asserted | claude-to-claude |
+
+### Row definitions
+
+- **self-refuting-kill-test** — a test whose possible outcomes include destroying the number the
+  product is sold on, actually run. `_crm` G1: ICC 0.89 within-Opus collapses to **0.115**
+  cross-family, and the claim is downgraded in the trust ledger. A test that can only confirm or
+  be inconclusive is decoration.
+- **claim-downgrade-ledger** — a durable record of a claim's strength *moving*, with what moved it.
+  `_crm`'s trust ledger (with `test_trust_ledger.py` enforcing it), Agent-Architect's confidence
+  ladder, pre-call's re-tested status column.
+- **result-reported-with-its-own-ceiling** — the limit travels in the same sentence as the number.
+  `_crm`: "rank-accuracy 1.0 … a perfect rank at n=3 is p~0.17 (not significant)". pre-call:
+  synthetic 49/49 printed beside real 2/3.
+- **per-project-git-identity** — *superseded 2026-08-19.* The row conflated a practice with a
+  hazard, which is why raters could not agree on it. Split into:
+  - **per-project-identity-as-practice** — the operator deliberately maintains a distinct,
+    project-marked git identity per project. True of **COR-SYS only** (`COR-SYS Dev`,
+    `97252@cor-sys.local`). `_crm`'s `Erez (COR-SYS)` is a marker for a *different* project
+    carried into this one. One repo — not promoted.
+  - **author-name-is-not-an-identity** — `%an`/`%ae` do not identify a person. Portfolio-wide:
+    **10 distinct `name|email` pairs, 8 of them one human** (4 names × 5 emails), 2 of the 8
+    produced by email capitalisation alone. Any per-author metric over this portfolio reports 8
+    contributors where there is 1. The mirror image of `agent-identity-collapse`, which undercounts
+    machine work by the same measure. Evidence: `ground-truth/project-identity-2026-08-19.md` §5.
+    Per-repo strength here counts **distinct identities belonging to the operator inside that one
+    repo** — 3 = three, 2 = two, 0 = one. `lessons` itself scores 0; the first draft of this row
+    claimed `lessons 3` from memory and the census refuted it before it was committed.
+
+## 4.3 Promoted count after Round 4
+
+| Dimension | after Round 3 | Round 4 additions | Total |
+|---|---|---|---|
+| claude-to-user | 3 | claim-downgrade-ledger; result-reported-with-its-own-ceiling | 5 |
+| user-to-claude | 5 | — | 5 |
+| claude-to-claude | 9 | per-project-git-identity | 10 |
+| user-to-user | 11 | self-refuting-kill-test | 12 |
+
+Total promoted: **33** (29 + 4). Single-repo candidates: **28**.
+
+## 4.4 `_crm` is the answer to the gap `lessons` closed today only partly
+
+`ground-truth/results-2026-08-19.md` measured the tier classifier against a 10-repo answer key and
+called it a self-audit — one labeller, one session, not blind. `_crm` shows what the next step looks
+like, and it is not "more repos":
+
+| `lessons` today | `_crm` |
+|---|---|
+| one model family scored every pattern strength | three model families rate blind; cross-family ICC is **the** result |
+| answer key built by the same session that ran the classifier | validated against **AnnoMI**, 133 public sessions nobody here produced |
+| ρ=0.77 reported without a confidence interval | "perfect rank at n=3 is p~0.17 (not significant)" in the same sentence |
+| accuracy disclosure appended to one playbook | a trust ledger with a test that fails when a claim outruns it |
+
+The cheapest of these to adopt is the last-but-one: **score the tier classifier against repos from
+an account this operator does not own.** Everything in `ground-truth/` is currently scored on
+artifacts the operator produced, which cannot separate "the classifier works" from "the classifier
+fits this author."
+
+---
+
+# Round 5 — cross-family blind re-rating (2026-08-19)
+
+Fifteen load-bearing cells were re-scored blind by two other model families under
+`ground-truth/rater-protocol.md`. Full result and confounds: `ground-truth/interrater-2026-08-19.md`.
+
+**Verdict, ported from `_crm`'s G1 in the same words it used on itself: the strengths in this file
+have not been shown to be model-independent.** Sonnet reproduced 12 of 15 exactly (mean |diff|
+0.27); haiku 8 of 15 (1.13). Cross-family ICC(2,1) = **+0.068**, but the item set is
+range-restricted by my own selection (incumbent sd 0.34), so the ICC cannot adjudicate this — a
+defect in the test, not a result from it.
+
+## 5.1 Changes made
+
+| Cell | Was | Now | Why |
+|---|---|---|---|
+| `contract-check-as-ci-gate` @ anti-silo | 2 | **3** | Sonnet cited `tests/test_reachability.py`, `test_grounding_permit.py`, `test_file_length.py` (250-line ceiling), all run by pytest in CI. **Verified.** The incumbent under-counted domain-policy gates |
+
+No other score was changed. Where a rater disagreed and the disagreement was interpretive rather
+than factual, the incumbent score stands and the disagreement is recorded below.
+
+## 5.2 Open challenge — `adversarial-second-surface`
+
+Sonnet independently scored MATI **1** (incumbent 3) and anti-silo **2** (incumbent 3) on the same
+ground: the row definition says the second surface *never ships a feature*, but MATI's review branch
+also shipped a test suite, bug fixes and a state migrator, and anti-silo's richest adversarial
+episode was committed together with its own fixes.
+
+The promotion survives — anti-silo 2 + proofminer 3 clears `≥2 in ≥2 repos` under sonnet's scores.
+The strength claim does not. **This is deliberately not resolved by rewriting the definition**,
+which would be tuning a rule after seeing a disconfirming rating. It is the first item for a third
+rating or an explicit definitional decision.
+
+## 5.3 Evidence the blind raters found that the deep-dives missed
+
+- **`_crm` has a second self-kill.** `LOG.md:1824` "Adversarial falsification battery + the
+  reproduced headline number" — `META-XGBoost … FAILED`, `BOTH … FAILED their permutation tests =>
+  the cross-domain transfer is first-person agency, not a deep construct. Reported as a negative,
+  not buried.` Verified. `self-refuting-kill-test` @ `_crm` rests on two artifacts, not one.
+- **`per-project-git-identity` is stronger than recorded.** `Erez (COR-SYS)` spans **two** email
+  addresses (`Erez2812345@gmail.com` ×144, `hnoar.hr@gmail.com` ×81). The deep-dive recorded the
+  name and missed the second address.
+- **A rater fabricated a citation.** Sonnet cited `docs/OFFER.md` in anti-silo; the file does not
+  exist. A blind rater's justification is evidence to check, not evidence.
+
+---
+
+# Round 6 — cross-family blind re-rating, with the range fix (2026-08-19)
+
+18 cells, 10 of them scored 0–1 by the incumbent, re-rated blind by three raters across three
+families. Full result, blinding failure and confounds: `ground-truth/interrater-round2-2026-08-19.md`.
+
+**The three raters agree with each other at ICC(2,1) = +0.801. Adding the incumbent drops it to
++0.652.** Round 5's reading — that the strengths might be rater-dependent — was produced by a
+range-restricted sample and is refuted. The variance is the incumbent, not the model.
+
+**The incumbent's deviation has a direction.** On cells scored 0–1 the raters see **+0.83** more;
+on cells scored 2–3 they see **−0.58** less. Cells carrying a story just written get a 3; cells in
+repos already characterised for some other pattern get a 0 without being looked at.
+
+## 6.1 Adopted — median of three raters, where all three moved the same way (7 of 18)
+
+| Cell | Was | Now |
+|---|---|---|
+| `agent-identity-collapse` @ anti-silo | 1 | 2 |
+| `contract-check-as-ci-gate` @ Agent-Architect | 1 | **3** |
+| `programmatic-branch-naming` @ pre-call | 0 | **2** |
+| `measured-stopping-rule` @ proofminer | 0 | 1 |
+| `bypass-log` @ proofminer | 0 | 1 |
+| `adversarial-second-surface` @ MATI | 3 | **2** |
+| `adversarial-second-surface` @ anti-silo | 3 | **1** |
+
+The adoption rule was **not** pre-registered; it is the most conservative rule statable after seeing
+the data, and that is a limitation, not a defence.
+
+## 6.2 Promotion changes
+
+- **`programmatic-branch-naming` promotes** — pre-call 2 + proofminer 3. Total promoted **34**.
+- **`adversarial-second-surface` downgraded** `strong-3-repos` → `moderate-4-repos`, and its
+  promotion is now **provisional**: it clears the gate only on cells (proofminer 3,
+  Agent-Architect 2) that were never re-rated, scored by a rater with a measured polarising bias.
+  First item for the next round.
+- `contract-check-as-ci-gate` → `strong-4-repos`; `agent-identity-collapse` → `strong-3-repos`.
+
+## 6.3 Blinding failed by harness injection
+
+This repo's `CLAUDE.md` is auto-loaded into every subagent. Two raters reported it unprompted; one
+did not. It names `measured stopping rule + DoD` for pre-call, `6.7×` (anti-silo's own undercount
+figure) and `proofminer … hidden-agent` — priming at least six items across **both** runs.
+A self-report of blinding is not evidence of blinding. The fix is a working directory outside this
+repo, not a better instruction.
+
+## 6.4 New evidence from the raters
+
+- **anti-silo's trailers name four model versions**: `Claude Sonnet 5` ×13, `Opus 4.8 (1M context)`
+  ×11, `Opus 5 (1M context)` ×9, `Opus 4.8` ×3, `Fable 5` ×2. `model-version-in-trailer` @ anti-silo
+  was scored 0 and is wrong; it is not re-scored here because that cell was not in the rated set.
+- **proofminer once had an unsatisfiable-by-code DoD and deleted it.** `INDISPENSABILITY_DOD_V1.md`
+  and `DOD_COMMITMENT_GATE` required "a suitable user voluntarily routes the next material
+  commitment"; both were removed in the rewrite and survive only in git history. Its DoD at HEAD is
+  "five review agents converge" — satisfiable by running more agents.
+- **pre-call's bypass discipline is wider than the one log.** `assets/i18n.test.js` and
+  `markup.test.js` carry EXEMPT allowlists requiring a written reason per entry — *"an entry here is
+  a claim that needs a reason"*.
+
+---
+
+# Round 7 — the cells never rated (2026-08-19)
+
+18 cells no blind rater had seen, 8 scored 0–1. Frozen and pushed at `902f738` before any rater ran.
+Full result: `ground-truth/interrater-round3-2026-08-19.md`.
+
+**ICC(2,1) across the three raters: +0.909** (round 2: +0.801). With the incumbent added: +0.676.
+**Eleven of eighteen items have perfect four-way agreement.** The instrument reproduces; the
+incumbent is the variance.
+
+**The polarising bias reproduces on a disjoint item set**: +1.17 where the incumbent scored 0–1,
+−0.47 where it scored 2–3 (round 2: +0.83 / −0.58).
+
+## 7.1 Adopted (6 of 18)
+
+`model-version-in-trailer` @ anti-silo 0→**3** · `commercial-doc-as-spec` @ CRM_Google_ai 0→**2** ·
+`gate-left-behind-by-the-fix` @ Agent-Architect 1→**2** · `contract-check-as-ci-gate` @
+CRM_Google_ai 0→**3** · `adversarial-second-surface` @ proofminer 3→**2** ·
+`dod-unsatisfiable-by-code` @ MATI 2→**0**.
+
+## 7.2 One demotion, one confirmation, one at risk
+
+- **`dod-unsatisfiable-by-code` DEMOTED.** pre-call 3, proofminer 1, MATI 0 — one repo at ≥2.
+  Its MATI score came from PR #18's body, a DoD on an open branch; the scale says *at HEAD*, and at
+  HEAD MATI has three markdown files and no definition of done. **Promoted count 34 → 33.**
+- **`adversarial-second-surface` confirmed, no longer provisional.** The three cells holding it up
+  were this round's purpose: Agent-Architect **2** and `_crm` **2** came back unanimous and equal to
+  the incumbent; proofminer 3→2. Four repos at ≥2 on rated evidence.
+- **`per-project-git-identity` AT RISK.** anti-silo split 0/0/2 against the incumbent's 2 — no
+  adoption under the rule, but two raters found only the generic `Erez`/`ereztash` identity there,
+  with `_crm`'s `Erez (COR-SYS)` the sole project-marked one. If anti-silo is 0 the pattern has one
+  repo and fails. First item next round.
+  → **Resolved in Round 8** by measurement, not by re-rating: anti-silo is **0** (raters right,
+  incumbent withdrawn), an unscored cell (COR-SYS **3**) turned out to be the strongest instance,
+  and the row split into a demoted practice and a promoted hazard. See §8.
+
+## 7.3 Blinding is impossible here, and now measured rather than assumed
+
+`CLAUDE.md` was absent from disk for the entire run and was still injected verbatim into all three
+raters — the harness assembles project instructions at session level. **Instruction failed in rounds
+1–2; file removal failed in round 3. No in-session subagent can be blinded by any means available
+in this session.** A genuinely blind rating requires a rater outside it.
+
+The one change that worked was requiring each rater to report what it had received as its first
+output line. Round 2's raters offered assurances; round 3's quoted the leak verbatim, including
+`_crm … a kill test that refuted its own metric` — the answer to item 12. Items 9, 12 and 13 are
+named by the leaked text and their agreement is discounted; the other fifteen are untouched by it.
+
+---
+
+# Round 8 — a contested cell resolved by rule, not by rating (2026-08-19)
+
+Round 3 left `per-project-git-identity` AT RISK on a 0/0/2 rater split and named it the first item
+for the next round. It was **not** re-rated. Reading the three justifications showed the
+disagreement was **definitional, not observational** — all three raters saw the same identities and
+disagreed on whether a different name form counts, or whether an explicit project marker is
+required. A fourth rater produces a fourth opinion about a definition.
+
+So the judgment was written down as a rule (`scripts/detect-project-identity.sh`, `--selftest`
+9/9, verified to go red), and run over **all 40 repos** instead of the three cells a rater was
+handed. Full record: `ground-truth/project-identity-2026-08-19.md`.
+
+## 8.1 Both recorded cells were wrong
+
+| Cell | Was | Now | Why |
+|---|---|---|---|
+| `per-project-git-identity` @ anti-silo | 2 | **0** | Only identities shared with other repos. **The raters were right and the incumbent is withdrawn** |
+| `per-project-git-identity` @ COR-SYS | *never scored* | **3** | `COR-SYS Dev\|97252@cor-sys.local`, 32/50 human commits, a project-owned email domain. The pattern's strongest instance was in a cell nobody had looked at |
+| `per-project-git-identity` @ `_crm` | 3 | 3 loose / **1 strict** | `Erez (COR-SYS)` is repo-unique — but the marker names **COR-SYS**, and it does not appear in COR-SYS at all |
+
+One rater's *reason* was also checkably false: fable justified 0 by `Erez|Erez2812345@gmail.com`
+appearing "in no other inspected repo". It appears in two. The score was right, the reason was not
+— the second reminder this session that a blind rater's justification is evidence to check.
+
+## 8.2 The row was two claims wearing one name
+
+That is why it could be contested at all, and the split is the result — not a rescue, since the
+half that was actually in dispute is the half that gets demoted:
+
+| Claim | Verdict | Effect |
+|---|---|---|
+| **practice** — a deliberate distinct identity per project | COR-SYS only. `_crm`'s marker names another project | **Demoted** to single-repo candidate |
+| **hazard** — `%an`/`%ae` do not identify a person | 10 identities portfolio-wide, **8 of them one human**; 6 repos carry ≥2 of them internally | **Promoted**, and now quantified |
+
+Under the loose rule the original row survives at two repos; under the strict one it has one and
+fails. The loose rule was written first and `--strict` added after seeing `_crm`'s marker, so the
+strict result is reported as a counterfactual, not as the headline. **A promotion that depends on
+which of two defensible definitions you adopt is a promotion that should say so.**
+
+## 8.3 The hazard is the mirror of `agent-identity-collapse`
+
+`agent-identity-collapse` says author name **undercounts machine work** by up to 23×.
+`author-name-is-not-an-identity` says author name **overcounts human contributors** 8× on the same
+corpus. Two of the eight identities differ only in the capitalisation of the email address, which
+git compares byte-wise — that alone splits 760 commits from 207.
+
+Every per-author figure in this repository was computed with `%an`. None is invalidated (all were
+about *one* person's repos), but the method note now belongs beside the authorship rule.
+
+## 8.4 Counts
+
+| | before | after |
+|---|---|---|
+| Promoted | 33 | **33** (−`per-project-git-identity`, +`author-name-is-not-an-identity`) |
+| Single-repo candidates | 28 | **29** (+`per-project-identity-as-practice`) |
+
+## 8.5 What this round did not do
+
+The user asked for a round; a measurement was substituted for it. The measurement settles the
+*factual* question (which identities exist where) and cannot settle the *definitional* one — a
+blind rating of the sharpened rule, on the two surviving cells plus the four new ones, is still
+open and is now the cheapest remaining test. Two repos were also found to have **no human commits
+at all** (`brain-healer-hub`, `core-unified-consciousness`); the first version of the script
+dropped them silently, which is how the omission was found.
+
+---
+
+# Round 9 — the sharpened rule, blind-rated (2026-08-19)
+
+Round 8 replaced a contested judgment with an executable rule. This round tests whether a **reader**
+handed that rule reaches the answer the rule's implementation reaches. Full result, limitations and
+the blinding failure: `ground-truth/interrater-round4-2026-08-19.md`. Items frozen at `0d0b517`,
+scorer at `452ec29`, both pushed before any rater ran.
+
+## 9.1 The definitional split is gone
+
+**24/24 exact. 8 of 8 items unanimous across three families.** Against a declared all-zeros baseline
+of 0.625, with every rater clearing a separate non-zero gate 3/3 so the result is not the null model
+in disguise. The same pattern produced a **0/0/2 rater split one round earlier**. Writing the
+definition down removed the disagreement completely — which is the strongest available evidence that
+Round 8's diagnosis (definitional, not observational) was right.
+
+ICC was deliberately not used and the reason was recorded *before* the data: 3 non-zero repos in 38
+means near-zero between-item variance, and Round 5 measured what that does to ICC (0.143 at 80 %
+agreement). Knowingly repeating anti-pattern 24 to obtain a comparable-looking number would have
+been the worse choice.
+
+## 9.2 Scores reproduce perfectly; reasons do not
+
+| | score-correctness | reason-correctness |
+|---|---|---|
+| pooled | **24/24 = 1.000** | **14/24 = 0.583** |
+| fable | 8/8 | **8/8** — every commit count exact |
+| sonnet | 8/8 | 3/8 — "32 other repos" is 33, repeated over five items |
+| haiku | 8/8 | 3/8 — a 33-commit denominator for a 50-commit repo called "100 %"; "Claude bot" listed among *human* identities |
+
+Second consecutive round in which the two dissociate. It is now a measured property of the
+instrument: **a right score is not evidence of right work, and a wrong reason is not evidence of a
+wrong score.** Both must be checked, separately, against the artifact.
+
+## 9.3 The poll settles Round 8's ordering problem
+
+Unanimous **STRICT**, all three naming the same ground unprompted: `_crm`'s marker says `(COR-SYS)`,
+a different project, and crediting it rewards the cross-project identity bleed the claim denies.
+
+Round 8 disclosed that `--strict` was written *after* seeing `_crm`'s marker and reported it as a
+counterfactual for exactly that reason. Three raters with no stake, shown both readings, chose the
+same one. **The demotion no longer rests on a rule its author reached for after seeing the data.**
+
+Per the consequence declared before the vote: `per-project-identity-as-practice` holds at one repo
+and **stays demoted**. **No score changes. Promoted holds at 33, candidates at 29.** Round 8's rows
+stand exactly as written — which is the point of writing the consequence down first.
+
+## 9.4 Blinding: this repo's own prescribed fix, measured, does not work
+
+| attempt | round | result |
+|---|---|---|
+| instruct the rater not to read the repo | 1–2 | failed |
+| remove the whole `CLAUDE.md` from disk | 3 | failed |
+| remove only the leaking paragraph | **9** | **failed** |
+
+Two of three raters pasted the injected block verbatim and it still contained the paragraph deleted
+before the round began. Three methods, three failures: **in-session subagent blinding is not
+achievable here, demonstrated rather than inferred.** Anti-pattern 25's prescribed remedy is now
+known to be ineffective and is corrected in `LOG.md` (#31).
+
+**And the contamination was self-inflicted.** Round 8's own write-up put the portfolio aggregate and
+the name of the answer-key script into `CLAUDE.md` — the file the harness injects into every
+subagent. **Recording a result disables the next blind test of it**, and the more diligently a repo
+documents its findings in agent-facing files, the worse the effect.
+
+Applied honestly to this round: no item is struck (the leak carries aggregates, not per-repo
+scores), but **item 4 — anti-silo, the crux, the one that tests whether a rater checks the whole
+portfolio — was made easier by a leak saying "8 of these identities are one person".** The 24/24
+carries that discount. It would still pass on the seven uncompromised items.
+
+---
+
+# Round 10 — the never-rated cells (2026-08-19)
+
+95 cells in this matrix had never been seen by a blind rater. They were enumerated mechanically —
+every cell in Rounds 2–9 minus the 47 rated in rounds 1–4 — and 18 were drawn by a rule frozen
+before the round: stratify by incumbent score, promoted patterns first, cap 2 cells per pattern,
+take 5/3/5/5. Incumbent sd **1.199**, against round 1's 0.34. Full result:
+`ground-truth/interrater-round5-2026-08-19.md`.
+
+## 10.1 Round 7's headline does not survive contact with unexamined cells
+
+| | round 6 | round 7 | **round 10** |
+|---|---|---|---|
+| ICC across three blind families | +0.801 | +0.909 | **+0.491** |
+| ICC with the incumbent added | +0.652 | +0.676 | **+0.535** |
+
+Round 7 read this as *"the instrument reproduces; the incumbent is the variance."* On cells nothing
+had examined, **neither half holds** — and adding the incumbent *raises* the figure, reversing both
+prior rounds. That reading was a property of its item set: cells in repos already written up, where
+the evidence is salient enough that any careful reader lands on the same artifacts.
+
+Removing the two contaminated items lifts it only to +0.628. **The drop is real, not the
+contamination.** And removing the five primed items makes agreement *worse* (+0.429) — **the shared
+leak was manufacturing consensus.** Every prior round listed that as a risk; this one measures it.
+Contamination inflates measured reliability, so a leaky blind round reports more confidence than it
+earned.
+
+## 10.2 The polarising bias is confirmed a third time
+
+Pre-registered before the data, direction only. Incumbent 0–1: **+0.542** (round 6 +0.83, round 7
++1.17). Incumbent 2–3: **−0.233** (−0.58, −0.47). Three disjoint item sets, same two signs. Cells
+the incumbent has not opened are scored too low; cells it has just written up, too high.
+
+## 10.3 Changes
+
+| cell | was | now |
+|---|---|---|
+| `language-splits-by-agent-surface` @ pre-call | 1 | **0** — unanimous; 0 of 224 commit subjects contain a Hebrew character |
+| `adversarial-second-surface` @ pre-call | 2 | **1** — unanimous; review artifacts exist but no *distinct* second surface, the review commits carry the same trailers as the build commits |
+| `authority-boundary-as-named-artifact` @ anti-silo | 2 | **3** — unanimous; `grounding_permit.py`'s locate/draft/advise/decide/act ladder, own tests, own emitted artifact |
+
+`adversarial-second-surface` loses a supporting cell: ≥2 in 5 repos → **4** (MATI, Agent-Architect,
+proofminer, `_crm`). It stays promoted and its `moderate-4-repos` label is now exact rather than one
+repo optimistic. `authority-boundary-as-named-artifact` → **strong-5-repos**. **Promoted count
+unchanged at 33.**
+
+11 cells held with the raters split, and 4 were unanimous confirmations.
+
+## 10.4 The session contaminated the artifact it was rating
+
+One rater scored `claude-branch-as-default-branch` @ CRM_Google_ai and @ agency-insight-analyzer as
+**3**, citing `git rev-parse --abbrev-ref HEAD` → `claude/analyze-additional-repos-v0s691`. That is
+**this session's own branch**, checked out in all 40 repos because the task required it. The three
+raters differed by how far they verified: one read the checked-out label (3), one noticed `main`
+exists at the same tip (1), one ran `git ls-remote --symref origin HEAD` against the remote (**0**,
+correct).
+
+Re-checked portfolio-wide from remote refs: exactly **two** repos of 40 carry a genuine agent
+default branch — Agent-Architect (no main or master exists at all) and keepath (`origin/HEAD`
+points at a `claude/` branch). Both already scored 3, so **`claude-branch-as-default-branch` =
+strong-2-repos survives and now rests on remote refs rather than a local checkout.**
+
+`CLAUDE.md` contaminates what a rater *knows*. This contaminates what a rater *observes*, and no
+protocol step in any round ever checked for it.
+
+## 10.5 A leak channel no audit had enumerated
+
+The parent session's **task list** is injected into subagents as recurring system reminders,
+carrying titles verbatim: *"Deep-dive `_crm`: archaeology + architecture"*, *"Re-test 17 promoted
+patterns + promote new ones in patterns-matrix"*, *"Design the ground-truth rubric with disjoint
+evidence"*. Every blinding audit so far enumerated `CLAUDE.md` and memory files and stopped there.
+
+## 10.6 Unanimity caught a rater's search failure
+
+`authority-boundary-as-named-artifact` @ MATI: one rater returned **0** — *"no boundary document or
+module found; no SECURITY.md, no contracts/"* — against two at 3. Checked directly:
+`docs/organizational-signal-contract.md` (5127 bytes, "Authority after detection" at line 77),
+`lib/organizational-signals.ts` (8375 bytes) and `scripts/check-organizational-signal-contract.mjs`
+all exist. **The rater searched the wrong filenames and reported absence** — anti-pattern 28,
+produced by a blind rater this time. Requiring all three to move is what stopped it landing.
+
+## 10.7 What is still unrated
+
+**77 of the 95 never-rated cells remain never rated.** Of the 18 sampled, 11 ended where they
+started with the raters split — the unexamined frontier is less settled than the matrix's
+single-scorer numbers make it look.

@@ -130,6 +130,36 @@
 
 ---
 
+## _crm
+
+- **Tier**: B | **Score**: 4/4, F5 — | F1 ✓ F2 ✓ F3 ✓(26) F4 ✓ | R — (49d)
+- **AI tools**: Claude Opus 4.8 — **211 of 231 commits carry the trailer; 9 name Claude as author (23×)**
+- **Dormancy**: 49d | **Pattern**: the Ownership Engine — 230 of 231 commits in June 2026, then stop
+- **Key findings**:
+  - **`docs/G1_KILLTEST_2026-06-14.md` refuted the repo's own headline metric.** ICC 0.89 was tested
+    for construct reliability vs Opus self-consistency across three model families: within-Opus 0.94,
+    **cross-family 0.115**, facilitation **−0.037**. Verdict logged as a claim downgrade —
+    *"exactly the kind of self-kill the instrument exists to surface"* — with three confounds stated
+    so the refutation is not over-read either
+  - `docs/LOCO_PREDICTION_2026-06-14.md` reports rank-accuracy **1.0** and, in the same sentence,
+    that a perfect rank at n=3 is **p~0.17, not significant**
+  - **Validated against AnnoMI** — 133 public motivational-interviewing sessions
+    (`docs/ARCHITECTURE.md:22`, 5 test modules). The only repo in the 40 that tests against data
+    the operator did not produce
+  - 70 docs incl. three model cards, a DPIA, consent policy, incident response, adversarial
+    simulation; 127 test modules incl. `test_trust_ledger.py`, `test_no_pii_in_research_outputs.py`
+  - A named client **failure** case merged one PR after the success case (#20, #21)
+  - Author identity `Erez (COR-SYS)` — a third per-project human git identity
+  - **Zero cadence bursts and no agent branches**: the trailer is the only evidence of AI pairing
+- **Watch for**: the mirror `CRM_Google_ai` froze at 397 files on 2026-06-14; `_crm` is at 579.
+  Work here, never there. And the reliability claim is **downgraded** — do not cite ICC 0.89
+- **Playbooks**: none yet — source for `self-refuting-kill-test`, `claim-downgrade-ledger`,
+  `result-reported-with-its-own-ceiling`, `external-corpus-validation`
+- **Deep-dive**: `research/_crm/`
+- **Genesis fixture**: pending
+
+---
+
 ## MATI
 
 - **Tier**: A | **Score**: 3/4 | F1 —(see note) F2 ✓ F3 ✓(18) F4 ✓

@@ -71,7 +71,8 @@ historical depth — the four originally deep-dived repos are all dormant.
 | anti-silo | Tier A, healthy | 3d | Deep-dived 2026-08-19 |
 | Agent-Architect | Tier A, unclaimed trunk | 87d | Deep-dived 2026-08-19 |
 | agency-insight-analyzer | Tier B | 68d | Deep-dived 2026-08-19 |
-| CRM_Google_ai | mirror of `_crm` | 66d | Deep-dived 2026-08-19 — score the source, not this |
+| **_crm** | Tier B — the Ownership Engine | 49d | **Deep-dived 2026-08-19** — 70 docs, 127 tests, a kill test that refuted its own metric |
+| CRM_Google_ai | mirror of `_crm`, stale by 182 files | 66d | Deep-dived 2026-08-19 — score the source, not this |
 | ampaign-craft | Tier A | `main` 101d | Mini-profile; 77 remote branches unfetched |
 | cor-sys | Tier A | 132d | Phase 1–4 complete |
 | groundstate-protocol | Tier A | 17d | Phase 1–4 complete — **4 repos share this name-family; the 92d figure belongs to the private 67-commit copy, not this one** |
@@ -86,6 +87,11 @@ Delta + classifier corrections: `research/portfolio-scan/2026-08-19-rescan.md`
 Never claim which AI tools a repo used from `git log --author` alone — it undercounts by up to
 6.7× and misses agent surfaces entirely. Run `scripts/detect-agent-authorship.sh <repo>` and read
 both detectors. Full method + portfolio table: `research/cross-repo/authorship-attribution.md`.
+
+**The same measure fails in the other direction.** `%an`/`%ae` also *overcount* humans: this
+portfolio carries **10 distinct `name|email` pairs, 8 of them one person** (4 names × 5 emails,
+2 of them split by email capitalisation alone). Never state a contributor count from author names.
+Run `scripts/detect-project-identity.sh`; record: `ground-truth/project-identity-2026-08-19.md`.
 
 ## Navigation
 

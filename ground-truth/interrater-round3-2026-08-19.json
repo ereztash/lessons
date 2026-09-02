@@ -1,0 +1,233 @@
+{
+ "rated": "2026-08-19",
+ "protocol": "ground-truth/rater-protocol.md",
+ "rubric_version": "1.1",
+ "incumbent_rater": "opus 5 (this session)",
+ "selection": "18 cells NEVER previously rated by a blind rater. 8 of 18 (44%) scored 0-1 by the incumbent, per the range requirement. Items 9-11 are the three cells adversarial-second-surface's PROVISIONAL promotion rests on after round 2 downgraded MATI and anti-silo. Item 1 is a cell an earlier rater's side-observation suggests is wrong.",
+ "incumbent_sd_check": 1.257,
+ "blinding_fix": "lessons/CLAUDE.md is MOVED OUT OF THE REPO for the duration of this run and restored after. Rounds 1-2 failed blinding because the harness auto-injects it; instruction could not prevent that. Raters are additionally asked to report verbatim any project instructions they received, so blinding is evidenced rather than self-reported.",
+ "raters": [
+  "opus-control",
+  "sonnet",
+  "fable"
+ ],
+ "items": [
+  {
+   "n": 1,
+   "pattern": "model-version-in-trailer",
+   "repo": "anti-silo",
+   "path": "/home/user/anti-silo",
+   "incumbent": 0,
+   "scores": {
+    "opus-control": 3,
+    "sonnet": 3,
+    "fable": 3
+   }
+  },
+  {
+   "n": 2,
+   "pattern": "claude-branch-as-default-branch",
+   "repo": "_crm",
+   "path": "/workspace/_crm",
+   "incumbent": 0,
+   "scores": {
+    "opus-control": 0,
+    "sonnet": 0,
+    "fable": 0
+   }
+  },
+  {
+   "n": 3,
+   "pattern": "agent-identity-collapse",
+   "repo": "Agent-Architect",
+   "path": "/home/user/Agent-Architect",
+   "incumbent": 0,
+   "scores": {
+    "opus-control": 0,
+    "sonnet": 0,
+    "fable": 0
+   }
+  },
+  {
+   "n": 4,
+   "pattern": "commercial-doc-as-spec",
+   "repo": "CRM_Google_ai",
+   "path": "/home/user/CRM_Google_ai",
+   "incumbent": 0,
+   "scores": {
+    "opus-control": 2,
+    "sonnet": 3,
+    "fable": 2
+   }
+  },
+  {
+   "n": 5,
+   "pattern": "gate-left-behind-by-the-fix",
+   "repo": "Agent-Architect",
+   "path": "/home/user/Agent-Architect",
+   "incumbent": 1,
+   "scores": {
+    "opus-control": 2,
+    "sonnet": 3,
+    "fable": 2
+   }
+  },
+  {
+   "n": 6,
+   "pattern": "adversarial-second-surface",
+   "repo": "agency-insight-analyzer",
+   "path": "/home/user/agency-insight-analyzer",
+   "incumbent": 0,
+   "scores": {
+    "opus-control": 0,
+    "sonnet": 0,
+    "fable": 0
+   }
+  },
+  {
+   "n": 7,
+   "pattern": "contract-check-as-ci-gate",
+   "repo": "CRM_Google_ai",
+   "path": "/home/user/CRM_Google_ai",
+   "incumbent": 0,
+   "scores": {
+    "opus-control": 3,
+    "sonnet": 3,
+    "fable": 2
+   }
+  },
+  {
+   "n": 8,
+   "pattern": "agent-identity-collapse",
+   "repo": "agency-insight-analyzer",
+   "path": "/home/user/agency-insight-analyzer",
+   "incumbent": 0,
+   "scores": {
+    "opus-control": 0,
+    "sonnet": 0,
+    "fable": 0
+   }
+  },
+  {
+   "n": 9,
+   "pattern": "adversarial-second-surface",
+   "repo": "proofminer",
+   "path": "/workspace/ereztash/proofminer",
+   "incumbent": 3,
+   "scores": {
+    "opus-control": 2,
+    "sonnet": 1,
+    "fable": 2
+   }
+  },
+  {
+   "n": 10,
+   "pattern": "adversarial-second-surface",
+   "repo": "Agent-Architect",
+   "path": "/home/user/Agent-Architect",
+   "incumbent": 2,
+   "scores": {
+    "opus-control": 2,
+    "sonnet": 2,
+    "fable": 2
+   }
+  },
+  {
+   "n": 11,
+   "pattern": "adversarial-second-surface",
+   "repo": "_crm",
+   "path": "/workspace/_crm",
+   "incumbent": 2,
+   "scores": {
+    "opus-control": 2,
+    "sonnet": 2,
+    "fable": 2
+   }
+  },
+  {
+   "n": 12,
+   "pattern": "self-refuting-kill-test",
+   "repo": "_crm",
+   "path": "/workspace/_crm",
+   "incumbent": 3,
+   "scores": {
+    "opus-control": 3,
+    "sonnet": 3,
+    "fable": 3
+   }
+  },
+  {
+   "n": 13,
+   "pattern": "self-refuting-kill-test",
+   "repo": "pre-call",
+   "path": "/workspace/ereztash/pre-call",
+   "incumbent": 2,
+   "scores": {
+    "opus-control": 2,
+    "sonnet": 2,
+    "fable": 2
+   }
+  },
+  {
+   "n": 14,
+   "pattern": "claim-downgrade-ledger",
+   "repo": "Agent-Architect",
+   "path": "/home/user/Agent-Architect",
+   "incumbent": 3,
+   "scores": {
+    "opus-control": 3,
+    "sonnet": 3,
+    "fable": 3
+   }
+  },
+  {
+   "n": 15,
+   "pattern": "result-reported-with-its-own-ceiling",
+   "repo": "_crm",
+   "path": "/workspace/_crm",
+   "incumbent": 3,
+   "scores": {
+    "opus-control": 3,
+    "sonnet": 3,
+    "fable": 3
+   }
+  },
+  {
+   "n": 16,
+   "pattern": "per-project-git-identity",
+   "repo": "anti-silo",
+   "path": "/home/user/anti-silo",
+   "incumbent": 2,
+   "scores": {
+    "opus-control": 0,
+    "sonnet": 0,
+    "fable": 2
+   }
+  },
+  {
+   "n": 17,
+   "pattern": "dod-unsatisfiable-by-code",
+   "repo": "MATI",
+   "path": "/home/user/MATI",
+   "incumbent": 2,
+   "scores": {
+    "opus-control": 0,
+    "sonnet": 0,
+    "fable": 0
+   }
+  },
+  {
+   "n": 18,
+   "pattern": "model-version-in-trailer",
+   "repo": "_crm",
+   "path": "/workspace/_crm",
+   "incumbent": 3,
+   "scores": {
+    "opus-control": 3,
+    "sonnet": 3,
+    "fable": 3
+   }
+  }
+ ],
+ "blinding_result": "THE STRUCTURAL FIX FAILED. CLAUDE.md was absent from disk for the whole run (verified before spawn and after) and was still injected verbatim into all three raters — the harness assembles project instructions at session level, not by per-subagent disk read. All three reported it; the mandatory BLINDING line is what made that visible."
+}

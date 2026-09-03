@@ -38,6 +38,10 @@ dependabot, whole-tree sync commits, and the Lovable scaffold's synthetic `templ
 - **`work_sessions`** — commit clusters separated by ≥7 days: how many times anyone came back.
   Replaces "distinct calendar months", which is unreliable: `brain-healer-hub` spans two months
   with a maximum gap of 3 days — one continuous stretch across a month boundary.
+  **The 7-day gap is a line that was set, not derived** (added 2026-09-03; the rule and every
+  label are unchanged, so `rubric_version` stays 1.1). It was the only threshold in this file with
+  no stated provenance, and it stood undetected because R4 in `check-lessons-contract.py` could
+  never fire — see that file's R4 comment and `gate-reliability.md` §6.
 - **`pr_merges`**, **`review_acts`** — merged PRs; branches or commits naming a review or audit.
 - **`executable`** — an executable artifact exists (a declared run/build script, a Python entry
   point, a container, a shell entry). Deliberately **not** size-based: size sits close to F1's

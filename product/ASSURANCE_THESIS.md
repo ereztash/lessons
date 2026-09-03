@@ -38,13 +38,18 @@ Four things survived subtraction in `THESIS_TEST.md` §B, each anchored to a mea
 
 | | Claim | Anchor |
 |---|---|---|
-| 1 | **A gate that has never been observed to fail is not evidence.** | R2 and R3 in this repository passed vacuously for a full round; found only by deliberately breaking a file. P(gate correctness) ≥ 0.500 over 6 scripts |
+| 1 | **A gate that has never been observed to fail is not evidence.** | R2 and R3 passed vacuously for a full round; **R4 for two rounds**, and this round's first positive control covered only the three rules already known good. Per file, 2 of 6 scripts shipped a verdict-affecting defect (`gate-reliability.md` §6 C4 corrects the 0.500 in its own §2). Four demonstrated instances, none found by a green run |
 | 2 | **NOT-MEASURED is a distinct state from PASS, and it is the default.** | "AI tools: none detected" was recorded as a finding; the one checkable case was wrong |
-| 3 | **Evidence has a reality level, and most evidence sits below the level its claim needs.** | pre-call's detector: 49/49 synthetic, 2/3 on six real calls. A Lovable publish commit read as consumption |
-| 4 | **Agent-aware invalidation.** Knowing which claims an overnight agent run just made stale requires knowing that commit authorship undercounts agent work by up to 23×. | `research/cross-repo/authorship-attribution.md`, measured across 12 repositories |
+| 3 | **Evidence has a reality level, and most evidence sits below the level its claim needs.** | pre-call's detector: 49/49 synthetic against 2 of 3 correct on real calls (P=0.33; the source's denominator is ambiguous, see §3). A Lovable publish commit read as consumption |
+| 4 | **Agent-aware invalidation.** In 3 of 12 measured repositories an agent committed under the operator's git identity, so author-name counting undercounts agent work: MATI 55 of 86, proofminer 193 of 229, `lessons` 14 of 37. | `research/cross-repo/authorship-attribution.md` — 12-repo table, **maximum 6.7×** (anti-silo). The **23×** figure is `_crm` and lives in `research/portfolio-scan/2026-08-19-cohort2.md` §4, outside that table. **Corrected 2026-09-03**: earlier drafts cited 23× to the 12-repo file, which does not contain it |
 
-Points 1 through 3 are method. Point 4 is the only technical differentiator, and it rests on a
-measurement that is not general knowledge.
+Points 1 through 3 are method. Point 4 is the only technical differentiator, and it is narrower
+than earlier drafts claimed. Detection rests on two detectors with a stated blind spot between them:
+identity is blind to any agent under the operator's git config, and cadence is documented blind to
+Claude Code, which "by cadence looks exactly like a human" (`authorship-attribution.md`).
+The set carries **one** negative control (`All_Erez-s_Connections`, 6 commits), and `pre-call` is a
+counter-case with attribution intact (146 of 185). **This is a finding about a naive method, not a
+capability no competitor has.**
 
 ---
 
@@ -99,8 +104,12 @@ to the second question was "no", for four months, across fourteen red CI runs.
 | R2 | isolated execution | ran against fixtures the team authored | 49/49 synthetic |
 | R3 | integrated | ran with real dependencies | a CI build |
 | R4 | deployed | ran at the deployed origin, not localhost | a staleness test added after a deploy went stale silently |
-| R5 | real input | ran against inputs the team did not author | 2/3 on six real calls |
+| R5 | real input | ran against inputs the team did not author | 2 of 3 correct on real calls (P=0.33) against 49/49 synthetic. **The source prints "2/3 on six real calls": its denominator is ambiguous in the source and this corpus has not resolved it. The ratio, not the count, is what the rung rests on** |
 | R6 | third party acted | someone outside the team did the thing | a payment with the key enforced: *"without enforcement it is not a sale, it is an agreement"* |
+
+**Provenance note.** This ladder is a construction of the 2026-09-03 round, not a corpus finding.
+No repository in the portfolio defines an ordered ladder (`METHOD_LINEAGE.md` §4). Each rung cites a
+real distinction the corpus draws; the ordering is imposed.
 
 **Operating rule.** A claim carries a required floor. Evidence below the floor is not weak evidence
 for that claim; it is no evidence for it. The corpus's strongest finding is exactly this gap: a
@@ -213,7 +222,9 @@ Not "it makes good marketing stories". Three specific mechanisms:
    classes and found the riskiest are the ones that *build* the tools, not the ones that judge
    claims. That routes audit hours, and no competitor has that number.
 3. **It supplies the attribution method.** Agent-aware invalidation is impossible without knowing
-   that author names undercount by up to 23×, which was measured here across twelve repositories.
+   that author names undercount agent work, measured here across twelve repositories, and without
+   knowing where the two detectors are jointly blind. Both are stated in
+   `authorship-attribution.md`; neither is general knowledge.
 
 What the corpus does **not** supply: any evidence that a second operator gets the same results.
 

@@ -94,8 +94,10 @@ Delta + classifier corrections: `research/portfolio-scan/2026-08-19-rescan.md`
 
 ## Authorship rule (added 2026-08-19)
 
-Never claim which AI tools a repo used from `git log --author` alone — it undercounts by up to
-6.7× and misses agent surfaces entirely. Run `scripts/detect-agent-authorship.sh <repo>` and read
+Never claim which AI tools a repo used from `git log --author` alone. In the 12-repo measurement it
+undercounts by up to **6.7×** (`authorship-attribution.md`); the portfolio-wide record is **23×**
+(`_crm`, `research/portfolio-scan/2026-08-19-cohort2.md` §4, outside that table). Cite the figure to
+the file that contains it. It also misses agent surfaces entirely. Run `scripts/detect-agent-authorship.sh <repo>` and read
 both detectors. Full method + portfolio table: `research/cross-repo/authorship-attribution.md`.
 
 ## Navigation

@@ -25,6 +25,10 @@ Each rule is ported from a repo in the portfolio that already had it:
   R5 bypass-log              <- pre-call docs/market-ready.md
        A gate with no record of being gone around is indistinguishable from a gate nobody needed
        to go around. --bypass requires a reason and appends to ground-truth/bypass-log.md.
+       NOTE (2026-09-03): R5 is a MECHANISM, not a rule that emits a verdict. It appears in no
+       violations.append() and therefore cannot be positive-controlled like R1-R4 and R6.
+       ground-truth/gate-reliability.md line 65 says "R1, R2, R3, R5 was fired once on a broken
+       file"; that is not possible for R5 and is corrected in that file's appended section.
   R6 claim-strength          <- proofminer docs/AUTHORITY.md ("a weak trace should not become a
        confident outbound asset just because the interface can generate one")
        A playbook is the outbound asset. It must declare "Claim strength: causal" or
@@ -172,15 +176,35 @@ def check():
                     f"declares `{declared}` but its backing insights allow `{allowed}` ({who})"))
 
     # --- R4 threshold provenance -------------------------------------------------------------
+    # Rewritten 2026-09-03 after the adversarial pass. The previous form could never fire, and
+    # reproduced LOG anti-pattern #22 twice over:
+    #   1. the pattern was r"\b(?:>=|<=|>=|<=)\s*(\d+)\b". A leading \b before ">" requires a word
+    #      character immediately to its left, so every threshold written with a space before the
+    #      operator ("work_sessions >= 2") was invisible. Measured against the live rubric the
+    #      match set was EMPTY, so the loop body never executed and R4 could not produce a verdict.
+    #   2. provenance was searched in every line CONTAINING THE DIGITS as a substring, so a
+    #      threshold of 77 matched the unrelated sentence "77 remote branches ... because".
+    #      That is the identical substring defect #22 records for R3.
+    # Now: match the operator without a leading word-boundary, and look for provenance inside the
+    # threshold's own "##" section rather than anywhere the digits appear.
     rubric = os.path.join(ROOT, "ground-truth", "rubric.md")
+    PROV = r"because|why|source|set-not-derived|set, not derived|derived|Faulkner|measured|cut-point|rationale"
     if os.path.exists(rubric):
-        t = open(rubric, encoding="utf-8").read()
-        for th in set(re.findall(r"\b(?:>=|<=|≥|≤)\s*(\d+)\b", t)):
-            near = "\n".join(l for l in t.splitlines() if th in l)
-            if not re.search(r"because|why|source|set-not-derived|derived|Faulkner|measured", near, re.I):
-                violations.append(("R4", "ground-truth/rubric.md",
-                    f"threshold {th} appears with no stated provenance "
-                    "(name the source, or label it set-not-derived)"))
+        lines = open(rubric, encoding="utf-8").read().splitlines()
+        bounds, start = [], 0
+        for i, l in enumerate(lines):          # section spans, so provenance is scoped
+            if l.startswith("## ") and i:
+                bounds.append((start, i)); start = i
+        bounds.append((start, len(lines)))
+        for a, b in bounds:
+            section = "\n".join(lines[a:b])
+            has_prov = re.search(PROV, section, re.I)
+            for m in re.finditer(r"(?:>=|<=|≥|≤)\s*(\d+(?:\.\d+)?)", section):
+                if not has_prov:
+                    violations.append(("R4", "ground-truth/rubric.md",
+                        f"threshold {m.group(1)} in section "
+                        f"{lines[a][:60].strip() or '(preamble)'!r} has no stated provenance "
+                        "(name the source, or label it set-not-derived)"))
     return violations
 
 def record_bypass(reason, violations):

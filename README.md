@@ -11,9 +11,12 @@
 > | What is being tested commercially? | [`product/ASSURANCE_THESIS.md`](product/ASSURANCE_THESIS.md), gated by [`product/FIELD_PREREGISTRATION.md`](product/FIELD_PREREGISTRATION.md) |
 > | What may not be edited? | [`research/re-foundation/DO_NOT_TOUCH.md`](research/re-foundation/DO_NOT_TOUCH.md) |
 >
-> **Decision: `PROCEED_SERVICE_ONLY`.** A reusable assurance method did emerge from this portfolio,
-> independently, nine times. It has never been observed outside one operator's work, so a service is
-> authorized and a platform is not.
+> **Decision: `PROCEED_SERVICE_ONLY` — SALE GATED.** A reusable assurance method did emerge from
+> this portfolio, independently, across eight of its repositories. It has never been observed outside
+> one operator's work, so a service is authorized and a platform is not, and the first invoice is
+> gated on four conditions (`docs/REFOUNDATION_DECISION.md`), one of which is still open.
+> The adversarial pass that produced that narrowing is at
+> [`research/re-foundation/ADVERSARIAL_PASS.md`](research/re-foundation/ADVERSARIAL_PASS.md).
 >
 > Three statements in the text below are measurably false as of 2026-09-03 and are left in place
 > rather than quietly corrected, because the drift is itself evidence

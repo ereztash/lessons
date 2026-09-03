@@ -82,7 +82,7 @@ Subtracting everything above, what remains that is both defensible and plausibly
 | **Field-required claims** | **yes** | pre-call `market-ready.md`: *"Every condition here requires a stranger. None can be completed by writing code."* D1 status: 0 | high **as an intervention**, low as software. It is the part of the deliverable a tool cannot produce |
 | **Claim-level authority, separate from observation** | partly | MATI's `mayAssertCausality`; lessons R2/R6 | real, but it reads as governance overhead unless tied to a decision someone is about to make |
 | **Evidence-to-claim mapping** | **no, not alone** | — | this is the assurance-case literature and Vanta's core loop. It is table stakes, not residue |
-| **Agent-aware evidence staleness** | **yes, and it is the most defensible technical residue** | `authorship-attribution.md`: author names undercount agent work by up to 23×; 193 of proofminer's 229 commits are hidden-agent | nobody else can compute "which claims did last night's agent run invalidate" because nobody else has established that the obvious attribution signal is wrong by an order of magnitude |
+| **Agent-aware evidence staleness** | **yes, but narrower than first drafted** | `authorship-attribution.md`, 12 repos: 3 have an agent committing under the operator's identity (MATI 55/86, proofminer 193/229, `lessons` 14/37); that file's **maximum undercount is 6.7×**. The 23× is `_crm`, from `2026-08-19-cohort2.md` §4, outside the table. **Both detectors have a stated blind spot** and the set has one negative control | a real finding about a naive method. **Not** "nobody else can compute this" — corrected 2026-09-03 after the adversarial pass |
 | **Preservation of failed and refuted evidence** | partly | LOG append-only; patterns-matrix §2.2 retracts in place; proofminer's `archive/` branch | valuable inside a practice, hard to price |
 | **Reversal conditions on claims** | partly | the prediction's falsifier clause | good discipline, no buyer has asked for it |
 | **Cross-project failure lineage** | **unproven** | **no artifact in the portfolio does this.** `LOG.md` is single-project; `patterns-matrix` tracks patterns, not failures | this is the proposed moat and it currently has **zero implementations and zero data**. It must not be claimed |
@@ -96,8 +96,10 @@ Three things survive subtraction cleanly and are supported by measurements in th
 2. **NOT-MEASURED is not PASS, and unmeasured is the default state of most claims.**
 3. **Evidence has a reality level, and most evidence sits below the level the claim needs.**
 
-One thing survives as a technical differentiator: **agent-aware invalidation**, which depends on a
-measurement (author-name undercounting) that this corpus made and that is not general knowledge.
+One thing survives as a narrower technical differentiator: **agent-aware invalidation**. It depends
+on a measurement this corpus made that is not general knowledge, and it is bounded by its own
+detectors: identity is blind to agents under the operator's git config, cadence is documented blind
+to Claude Code, and the intersection of those blind spots is unmeasured.
 
 One thing is claimed and has no support at all: **cross-project failure lineage.** It is the
 proposed moat, and §15 of the brief is right that it is potentially the core moat, but there is not
@@ -188,7 +190,7 @@ presents the object model as new is wrong and will be caught. The narrower survi
 - eliciting project-specific claims instead of inheriting them from a framework;
 - treating a gate as unproven until it has been observed to fail;
 - knowing which claims an agent's overnight run just invalidated, which requires knowing that the
-  obvious attribution signal undercounts by up to 23×.
+  obvious attribution signal undercounts agent work, and knowing where its replacements are blind.
 
 **What survived.** The problem claim survived: the gap between "AI produced code" and "we are
 justified in asserting readiness" is real, and this repository is itself an instance of it, with

@@ -92,3 +92,49 @@ python3 scripts/check-lessons-contract.py --explain  # and why each exists
 
 Update this file when a new failure is recorded in `LOG.md`. The denominators come from
 `MEMORY.md` (observations, matrix rows), `ground-truth/scores-*.tsv` (repos) and `scripts/` (count).
+
+
+---
+
+## 6. Correction, appended 2026-09-03 (re-foundation adversarial pass)
+
+Appended rather than edited, on the model of `patterns-matrix.md` §2.2: a correction that erases
+what it corrects teaches nothing. §1–§5 above are left exactly as written on 2026-08-19.
+
+**C1. The denominator moved and this file did not follow its own §5.** §1 reads "`LOG.md` carries
+19 numbered anti-patterns". It carries 23: #23 landed in `528041c`, after this file was created in
+`5be7bd6`, and #24–#26 were added by the re-foundation round. §5 says "Update this file when a new
+failure is recorded in `LOG.md`", and that rule was not applied. Observed failures are now **#11–#26
+= 16**, of which 12 carry a gate class in the §2 table.
+
+**C2. "R1, R2, R3, R5 was fired once on a broken file" (§3, last line) was never possible for R5.**
+R5 is the `--bypass` mechanism. It appears in no `violations.append()` in
+`check-lessons-contract.py` and cannot emit a verdict, so it cannot be broken into one. The claim
+should read **R1, R2, R3**.
+
+**C3. R4 could not fire at all, and this file did not catch it.** Its pattern began
+`\b(?:>=|<=|≥|≤)`, and a leading `\b` before `>` requires a word character immediately to the left,
+so every threshold in `rubric.md` written with a space before the operator was invisible. Measured
+2026-09-03, the match set against the live rubric was **empty**: the loop body never executed.
+Its provenance search was also a raw substring match over every line containing the digits, which
+is LOG anti-pattern #22's defect a second time. Fixed 2026-09-03; on first run it found a real
+violation (the `≥7` work-session gap had no stated provenance), now labelled set-not-derived.
+
+**C4. P for gate correctness is not 0.500.** §2 reads "6 scripts | 3 failures | P ≥ 0.500", but
+#21 and #22 are two defects in **one** file, `check-lessons-contract.py`, and #17 is
+`resolve-prediction.py`. **Per script the figure is 2 of 6 = 0.333.** The numerator counted defects
+and the denominator counted scripts. With R4 now added as a third defective rule in the same file,
+the per-file figure is unchanged at 2 of 6 and the per-rule figure is 3 of 6 rules that emit
+verdicts.
+
+**C5. The four P values in §2–§3 are not comparable, and §4 already says so about one of them.**
+They are computed over denominators of 6, 8, 40 and 134 and printed in one column with no interval.
+3/6 has a Wilson 95% interval of roughly [0.19, 0.81]. The §3 conclusion — "the riskiest gates are
+the ones that build the tools" — is therefore a **hypothesis over four unequal denominators, not a
+measured prior**, and must not be sold as one.
+
+**C6. What survives all of the above.** Three scripts written on 2026-08-19 shipped with a
+verdict-affecting defect, in two of six files; a fourth defect (R4) shipped in the same file and
+survived a further round. Firing a gate on a deliberately broken input found every one of them and
+no green run found any. That is the finding, and it is now enforced by
+`scripts/gate-positive-control.sh`, which covers R1, R2, R3, R4 and R6.

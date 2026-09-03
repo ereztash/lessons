@@ -3,9 +3,17 @@
 > Built 2026-09-03. The candidate model from §8 of the brief is expressed against ten repositories
 > whose evidence exists in this corpus. The purpose is to find what the model **cannot** represent.
 >
-> **Result up front: the model as proposed in §8 could not represent 6 of the 10 cases without
-> ad-hoc fields. By the brief's own test in §9, that means v1 was not ready.** §5 states the five
-> additions that close it, and §6 re-runs the fit. Nothing is implemented until §6 passes.
+> **Result up front: the model as proposed in §8 failed outright on 3 of the 10 cases and strained
+> on a 4th, needing 6 added fields in total. By the brief's own test in §9, that means v1 was not
+> ready.** §5 states the additions, and §6 re-runs the fit.
+>
+> **Corrected 2026-09-03 after the adversarial pass**: an earlier draft of this line read "6 of the
+> 10 cases", conflating the count of missing *fields* with the count of failing *cases*. The §6
+> table is authoritative: 3 `fails`, 1 `strain`, 6 gaps.
+>
+> **§6 is a completeness check, not a test.** Expressiveness on the ten cases the model was derived
+> from cannot come back negative for any sufficiently general schema, and no case is registered that
+> v1.1 could fail. It is not a sub-thesis that can be supported or refuted.
 
 ---
 
@@ -227,7 +235,7 @@ distinctions the corpus actually draws, one rung per observed instance.
 | **R2** | isolated execution | code ran against fixtures the team authored | pre-call's no-budget detector, 49/49 **synthetic** |
 | **R3** | integrated execution | components ran together with real dependencies | MATI's CI build |
 | **R4** | deployed | it ran at the deployed origin, not on localhost | anti-silo's deployment staleness test, added after a deploy silently went stale |
-| **R5** | real input | it ran against inputs the team did not author | pre-call's **2/3 on six real calls** |
+| **R5** | real input | it ran against inputs the team did not author | pre-call's **2 of 3 correct on real calls** (P=0.33) against 49/49 synthetic. The source prints "2/3 on six real calls"; the denominator is ambiguous in the source and unresolved here |
 | **R6** | third party acted | someone outside the team performed the action | pre-call D1 (ten strangers, status 0) and D4 (a payment with the key enforced: *"without enforcement it is not a sale, it is an agreement"*) |
 
 **The rule that makes the ladder useful:** a claim carries a **required floor**, and evidence below
@@ -296,6 +304,20 @@ none of them previously recorded anywhere in the repository:
    demoted it;
 4. the public README asserts a phase and a portfolio size that no current artifact supports.
 
-That is the audit deliverable, produced on the hardest possible subject, which is a repository whose
-entire subject is evidence discipline. It is the strongest single argument for the service in
-`docs/REFOUNDATION_DECISION.md`, and it cost no platform.
+**Narrowed 2026-09-03 after the adversarial pass, and the narrowing matters.** Three qualifications
+the first draft did not carry:
+
+1. **The object model is not load-bearing for any of the four.** Each is reachable with `ls`, `grep`
+   and reading two files. None required Claim, Evidence, reality level, Authority, PositiveControl,
+   Waiver, FieldRequirement, Reversal, Lineage or Policy. This is evidence that **structured looking**
+   works, not that **this structure** did the looking.
+2. **Two were partly on record.** The test-scaffold class is a promoted portfolio pattern
+   (`index/MOC-CLAUDE-TO-CLAUDE.md`, parked per `MEMORY.md`), and both halves of finding 4 were
+   already written down (`README.md` "Twenty-five repositories", `LOG.md` "40 repos"). What was
+   unrecorded was the **join**, not the facts.
+3. **The hour does not transfer.** The auditor had just read the entire corpus. P6 in
+   `product/FIELD_PREREGISTRATION.md` must measure hours on a repository the auditor has not read.
+
+What survives: a structured read produced four true, previously unjoined findings on the hardest
+available subject, and it cost no platform. That is an argument for the service. It is not evidence
+that the schema produced the findings.

@@ -6,35 +6,51 @@
 
 ---
 
-# DECISION: `PROCEED_SERVICE_ONLY`
+# DECISION: `PROCEED_SERVICE_ONLY` — SALE GATED
+
+> **Narrowed 2026-09-03, the same day, after the adversarial pass required by §28 of the brief.**
+> The pass did not refute the decision. It refuted the claim that this round had already
+> instrumented itself against its own thesis: it found that **R4 of the contract gate could never
+> fire**, that this round's first positive control covered only the three rules already known good,
+> and that four figures in the first draft of these documents did not resolve to the files they
+> cited. Those are fixed, the fixes are verified, and the corrections are recorded in place rather
+> than overwritten. The four conditions in "Engineering authorization" now gate the sale, not just
+> the platform. Full report: `research/re-foundation/ADVERSARIAL_PASS.md`.
 
 The **methodological** thesis is supported. The **commercial platform** thesis is not supported,
 and it is unsupported rather than refuted, which is a different and more useful verdict.
 
 | Sub-thesis | Verdict | Decisive evidence |
 |---|---|---|
-| A reusable assurance system genuinely emerged from the portfolio | **SUPPORTED** | 13 principles implemented as executable code in repositories sharing no code, in 3 languages, most predating any taxonomy that names them (`METHOD_LINEAGE.md` §2) |
+| A reusable assurance system genuinely emerged from the portfolio | **SUPPORTED, within one portfolio** | 13 principles implemented as executable code in repositories sharing no code, across TypeScript, Python and JavaScript (`METHOD_LINEAGE.md` §2). **Drawn from 8 of 40 repositories, and those 8 were selected by exhibiting the mechanism** (`METHOD_LINEAGE.md` §3, added after the adversarial pass) |
 | The problem is real | **SUPPORTED** | this repository is an instance: 14 of 14 CI runs failed over 4 months, unread, while its README announced a completed phase |
-| The object model can represent real cases | **SUPPORTED at v1.1** | v1.0 failed 3 of 10 portfolio cases; v1.1 represents all 10 (`ASSURANCE_MODEL_FIT.md` §6) |
+| The object model can represent real cases | **completeness check passed, not a testable sub-thesis** | v1.0 failed 3 of 10 portfolio cases and strained on a 4th; v1.1 expresses all 10. **No case is registered that v1.1 could fail**, so this cannot come back negative and does not belong in the same column as a measurement (`ASSURANCE_MODEL_FIT.md` §6, corrected after the adversarial pass) |
 | The framing is novel | **REFUTED** | claim/argument/evidence is the assurance-case discipline (GSN, DO-178C); the commercial shape is Vanta's |
 | AI-native agencies will pay for it | **UNSUPPORTED** | n=0 buyers, n=0 external projects, n=0 revenue. Nobody has been asked |
 | A cross-project failure lineage is the moat | **UNSUPPORTED, zero instances** | no artifact in 40 repositories tracks a failure class across projects |
 
-`PROCEED_ASSURANCE_PLATFORM` is deferred behind ten preregistered thresholds in
-`product/FIELD_PREREGISTRATION.md`, all of which currently read zero.
+`PROCEED_ASSURANCE_PLATFORM` is deferred behind **eleven** preregistered thresholds in
+`product/FIELD_PREREGISTRATION.md`, all of which currently read zero — and behind a limit that
+deferral does not remove: **P4 counts a failure class recurring across three projects without asking
+whether the constant is the code or the auditor.** A full pass would still leave the platform's
+central premise partly unmeasured. That is recorded in `FIELD_PREREGISTRATION.md` §3 rather than
+left to be discovered after five pilots.
 
 ---
 
 ## BLUF — what Lessons actually is after the audit
 
 Lessons is not a research repository that grew a SaaS. It is **one operator's working assurance
-method, discovered independently nine times across his own portfolio and then instrumented on
-itself** — a corpus of 40 repositories, 76 observations, 29 promoted patterns, 23 recorded failures,
+method, discovered independently across eight of his own repositories and then instrumented on
+itself** — a corpus of 40 repositories, 76 observations, 29 promoted patterns, 16 recorded failures
+(#11–#26; #1–#10 are prophylactic and measure nothing, per `gate-reliability.md` §1),
 one measured accuracy result, one measured gate-reliability result, one open preregistered
 prediction, and one working six-rule gate engine.
 
 Its most valuable asset is not the SaaS, the playbooks, or the classifier. It is the discovery that
-**a green check nobody has seen go red is not evidence**, arrived at three times on three substrates:
+**a green check nobody has seen go red is not evidence**, arrived at four times on four substrates,
+the fourth of them today when the adversarial pass found that this round's own R4 could never
+fire and that its first positive control had been pointed at the three rules already known good:
 in repositories (F1–F4 measures apparatus, and apparatus became cheap), in its own promotion gate
 (a 4/5 criterion nothing has ever failed), and in its own scripts (two of five gates could never
 fire, and half the scripts written in one day shipped with a defect that would have produced a
@@ -81,18 +97,29 @@ F1–F4, does not.
 
 ## Core IP — what is genuinely hard to reproduce
 
-1. **A measured failure ledger with denominators.** Twenty-three recorded failures, four gate
-   classes with P floors, and the finding that the riskiest gates are the ones that *build* the
-   tools rather than the ones that judge claims. A competitor can copy the idea in an afternoon and
-   cannot copy the numbers.
-2. **Positive-control discipline, with a real instance.** R2 and R3 passing vacuously for a full
-   round, found only by deliberately breaking a file. Almost nobody does this, and having done it
-   once is what makes it a checklist item rather than a slogan.
+1. **A measured failure ledger with denominators.** **Sixteen observed failures** (#11–#26), of
+   which twelve carry a gate class. **Corrected 2026-09-03**: an earlier draft said "twenty-three",
+   which counts #1–#10, the prophylactic rows `gate-reliability.md` §1 says "measure nothing".
+   The ordering "the riskiest gates build the tools" is a **hypothesis over four unequal
+   denominators (6, 8, 40, 134) with no intervals**, not a measured prior, and per file the gate
+   figure is 2 of 6 rather than 0.500 (`gate-reliability.md` §6 C4–C5). It may not be sold as
+   "a number no competitor has".
+2. **Positive-control discipline, and the reason to believe it is that it caught this round too.**
+   R2 and R3 passed vacuously for a full round. **R4 passed vacuously for two**, including through
+   this round's own first positive control, which covered exactly R1, R2 and R3 — the three already
+   known good. Fixed and verified 2026-09-03: `scripts/gate-positive-control.sh` now breaks the
+   corpus once per rule and R1, R2, R3, R4 and R6 each go red. R5 is the `--bypass` mechanism and
+   emits no verdict, so it cannot be controlled this way; `gate-reliability.md` §6 C2 corrects the
+   claim that it once was.
 3. **The reality ladder, with the corpus behind each rung.** R2 synthetic against R5 real is not an
    abstraction here: 49/49 against 2/3, printed side by side.
-4. **Agent attribution.** Author names undercount agent work by up to 23× (`_crm`: 211 trailers, 9
-   authors). Nothing else in the market can compute which claims an overnight agent run invalidated,
-   because the obvious signal is wrong by an order of magnitude and that has not been published.
+4. **Agent attribution.** In 3 of 12 measured repositories an agent commits under the operator's
+   git identity (MATI 55/86, proofminer 193/229, `lessons` 14/37), so author-name counting
+   undercounts agent work. **Corrected 2026-09-03**: the 12-repo file's maximum is **6.7×**; the 23×
+   is `_crm` and comes from `2026-08-19-cohort2.md` §4, outside that table, and `CLAUDE.md` still
+   said 6.7×. Both detectors have a documented blind spot and the set has one negative control, so
+   the honest claim is "a finding about a naive method", not "nothing else in the market can do
+   this".
 
 What is **not** IP: the object model (assurance cases, 30 years old), the workflow shape (Vanta),
 the classifier (measured to over-rate), the playbooks (unsold).
@@ -121,9 +148,12 @@ across PROVEN / PROVISIONAL / NOT-MEASURED / FIELD-REQUIRED / WAIVED / CONTRADIC
 blockers, false-green checks, unconsumed gate results, unsupported external claims, silent waivers,
 the claim-to-evidence map with reality mismatches, and the highest-return repairs.
 
-**Evidence that it is worth its fee with no platform:** run against this repository in under an
-hour, the model produced four true findings that no document here had recorded (`ASSURANCE_MODEL_FIT.md`
-§7), on a subject whose entire purpose is evidence discipline.
+**Evidence that it is worth its fee with no platform, stated at the strength it actually has:** a
+structured read of this repository produced four true, previously unjoined findings in under an
+hour. **Narrowed 2026-09-03** (`ASSURANCE_MODEL_FIT.md` §7): none of the four required the object
+model, two were partly on record already so what was new was the join, and the auditor had just
+read the whole corpus, so the hour does not transfer. P6 now measures hours on a repository the
+auditor has not read.
 
 ## Platform boundary
 
@@ -185,6 +215,16 @@ No code beyond step 1 and the checklist in step 2.
 
 ## Engineering authorization
 
+**Four conditions gate the first sale.** Three are discharged; the fourth is not. Until it is,
+the audit may be performed and shown, and may not be invoiced.
+
+| | Condition | Status |
+|---|---|---|
+| 1 | positive-control every rule of the contract gate that emits a verdict | **done** — R1, R2, R3, R4, R6 each observed to go red; R4's regex fixed |
+| 2 | correct the 23× citation, the "23 failures" figure and the P=0.500 reading before any of them reaches a sales artifact | **done** — corrected here, in `ASSURANCE_THESIS.md`, `THESIS_TEST.md` and `gate-reliability.md` §6 |
+| 3 | add an agent-family-independence threshold before the preregistration is treated as frozen | **done** — P11, added before any pilot, which is the last moment §5 rule 1 allows |
+| 4 | **re-audit the 10 insights carrying `may-assert-cause: yes` against `METHOD_LINEAGE.md` §3**, which shows no principle reaches operator-independence, and re-derive the 4 playbooks declaring `Claim strength: causal` | **NOT DONE.** `CONTRADICTIONS.md` §7 row 6 marks it *blocking for anything sold*, and the first draft of this decision authorized selling without discharging it or waiving it. That was a silent waiver, the exact object `ASSURANCE_THESIS.md` §5 counts in the deliverable |
+
 **Authorized now:**
 - fix `.github/workflows/node.js.yml`;
 - the audit checklist as a document;
@@ -204,9 +244,12 @@ that map.
 
 > Do not make the repository look more coherent than the evidence says it is.
 
-A reusable assurance system did emerge. It emerged nine times, in three languages, in repositories
-sharing no code, mostly before anything named it. That is real, and this decision makes it explicit
-and executable.
+A reusable assurance system did emerge. Thirteen principles, implemented as code in repositories
+that share no code, across three languages. That is real, and this decision makes it explicit and
+executable.
 
-It emerged in one person's work, and nothing here has ever been tested on anyone else's. That is
-also real, and this decision refuses to sell a platform on it.
+It emerged in eight of forty repositories, and those eight were selected by exhibiting the
+mechanism. It emerged in one person's work, with one agent family, and nothing here has ever been
+tested on anyone else's. And the round that found all this shipped its own gate with a rule that
+could not fire, behind a positive control pointed at the three rules already known good. That is
+also real, and it is why this decision refuses to sell a platform, and gates the first invoice.

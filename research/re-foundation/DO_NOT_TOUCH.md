@@ -26,11 +26,11 @@ motivated by the prediction must be recorded in the prediction file and the test
 
 | Artifact | Why |
 |---|---|
-| `ground-truth/rubric.md` v1.1 | the labelling rule. `score-classifier.py` asserts `rubric_version` matches, so a rubric change cannot be scored against stale labels by accident. Changing it requires a new version and a new label set, never an edit |
+| `ground-truth/rubric.md` v1.1 | the labelling rule. `score-classifier.py` asserts `rubric_version` matches, so a rubric change cannot be scored against stale labels by accident. **A change to the rule requires a new version and a new label set, never an edit.** One permitted exception, exercised 2026-09-03: *labelling a threshold's provenance* adds information and changes no rule, no signal and no label, so `rubric_version` stays 1.1 and `score-classifier.py` reproduces the same ten rows. It was done because the repaired R4 demanded it, and it is recorded rather than silent |
 | `ground-truth/labels-2026-08-19.json` / `.md` | the 10-repo answer key, including the §3 adjudications recorded rather than folded into the numbers |
 | `ground-truth/results-2026-08-19.md` | the first and only accuracy measurement in this repository. **Every "provisional" marker elsewhere in the corpus traces to it** |
 | `ground-truth/f5-rescore-2026-08-19.md` | the rescore of all 31, including its own statement that F5 is not validated |
-| `ground-truth/gate-reliability.md` | the P×C measurement of this repository's own gates, with `LOG.md` as its denominator. **If `LOG.md`'s anti-pattern table is ever renumbered or edited, this measurement silently becomes wrong** |
+| `ground-truth/gate-reliability.md` | the P×C measurement of this repository's own gates, with `LOG.md` as its denominator. **If `LOG.md`'s anti-pattern table is ever renumbered or edited, this measurement silently becomes wrong.** Frozen against *rewriting* §1–§5; **append-updatable** by its own §5 ("update this file when a new failure is recorded in `LOG.md`"). §6 was appended 2026-09-03 and corrects five figures without editing one |
 | `ground-truth/bypass-log.md` | the waiver register. A bypass log that can be edited is not a bypass log |
 
 ## 3. Append-only — may grow, may never be rewritten

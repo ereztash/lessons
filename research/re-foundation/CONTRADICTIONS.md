@@ -106,7 +106,36 @@ Nothing in this table is fixed by this file. Assignment:
 
 ---
 
-## 8. What this file deliberately does not call a contradiction
+## 8. Found by the adversarial pass, 2026-09-03 — including in this round's own work
+
+Appended the same day. §1–§7 above are left as written.
+
+### 8.1 In the corpus
+
+| Statement | Where | Measurement | Verdict |
+|---|---|---|---|
+| "`LOG.md` carries **19** numbered anti-patterns" | `ground-truth/gate-reliability.md` §1 | it carried **23** before this round and carries **26** now. #23 landed in `528041c`, *after* gate-reliability was created in `5be7bd6` | the file's own §5 says "update this file when a new failure is recorded in `LOG.md`". It was not, one commit later. **And §1–§7 of this file, which claims every row was verified this session, missed it** |
+| "R1, R2, R3, **R5** was fired once on a broken file" | `gate-reliability.md` §3 | R5 appears in **no** `violations.append()` in `check-lessons-contract.py`. It is the `--bypass` mechanism and emits no verdict | it was never possible to fire R5 on a broken file. Corrected in §6 C2 |
+| "Gate correctness \| 6 scripts \| 3 failures \| P ≥ 0.500" | `gate-reliability.md` §2 | #21 and #22 are two defects in **one** file; #17 is a second file. **Per script: 2 of 6 = 0.333** | numerator counts defects, denominator counts scripts. Corrected in §6 C4 |
+| Promoted cross-repo patterns | `MEMORY.md` (**24**), `MEMORY.md` again (**28**), `patterns-matrix.md` §3.3 (**29**) | three values, two of them in the same file | §4 above recorded only the 24-vs-29 pair |
+
+### 8.2 In this round's own documents
+
+Recorded at the same weight as everything else, because a re-foundation that exempts itself is the
+failure it is auditing.
+
+| Claim in the first draft | Reality | Fixed |
+|---|---|---|
+| "`check-lessons-contract.py` — R1–R6, **verified passing** this session" | passing was verified; **firing was not**. R4's regex began `\b(?:>=\|<=\|≥\|≤)`, and a leading `\b` before `>` requires a word character to its left, so its match set against the live rubric was **empty**. R4 could not produce a verdict, through two rounds | regex and provenance scoping rewritten; positive control extended to R4 and R6; the repaired rule immediately found a real violation |
+| "the positive control proves the gate can go red" | it covered **R1, R2, R3** — the three rules already known good from the previous round. The one rule never fired was the broken one | `gate-positive-control.sh` now covers R1, R2, R3, R4, R6 and states why R5 cannot be covered |
+| "undercounts by up to **23×** \| `authorship-attribution.md`, measured across 12 repositories" | that file has **no `_crm` row** and a maximum of **6.7×**. The 23× is in `2026-08-19-cohort2.md` §4 | corrected in four documents; `CLAUDE.md`, which said 6.7×, now carries both with their sources |
+| "**23** recorded failures" | observed failures are **#11 onward**; #1–#10 are prophylactic and `gate-reliability.md` §1 says they "measure nothing" | corrected to 16 |
+| "discovered independently **nine times**" | `METHOD_LINEAGE.md` yields **13 principles across 8 repositories**. "Nine" was borrowed from `portfolio-as-one-mechanism.md`, whose own figure `MEMORY.md` had already revised to 11 | corrected in the decision and the README |
+| "could not represent **6 of the 10** cases" | the §6 table says **3 fails, 1 strain, 6 added fields**. Field count was conflated with case count | corrected in place |
+| "most predating any taxonomy that names them" | `METHOD_LINEAGE.md` §2 has **no date column and no dates** | removed |
+| the service is "authorized now" | `CONTRADICTIONS.md` §7 row 6 marks the causal-insight re-audit **blocking for anything sold**, and nothing discharged or waived it | decision narrowed to `SALE GATED`; the item is condition 4 and is **still open** |
+
+## 9. What this file deliberately does not call a contradiction
 
 - `research/repo-index.md`'s superseded tier lines. Its own header says they are superseded and
   states why they are deliberately unrewritten: replacing one unvalidated number with another

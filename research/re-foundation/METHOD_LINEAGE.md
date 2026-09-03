@@ -84,6 +84,27 @@ person's habit expressed nine times.
 The only measurement in this corpus that could distinguish the two is the one that has never been
 run: the same method, applied by someone else, to a portfolio that is not this one.
 
+### A third bias, added 2026-09-03 after the adversarial pass: the register's own sampling frame
+
+§2's *First evidence* column names exactly **eight repositories** out of forty: pre-call (5 rows),
+MATI (4), lessons (4), CRM_Google_ai (2), proofminer (2), anti-silo (1), Agent-Architect (1),
+Benchmark.ATS (1). **Zero rows come from the other thirty-two** — not from
+`core-unified-consciousness`, `chess-mind-patterns`, `groundstate-protocol`, `ampaign-craft`,
+`COR-SYS`, `brain-healer-hub` or `agency-insight-analyzer`.
+
+The promotion test is "appears in ≥2 repos that share no code". The ≥2 is drawn from a pool that
+exists **because it exhibits the property being registered**. That is selection on the dependent
+variable, and it was not conceded in the first draft of this section.
+
+It bears directly on the commercial claim, and the corpus already shows what the other 80% looks
+like. `ASSURANCE_MODEL_FIT.md` §2.7 on `chess-mind-patterns`: zero gates, zero authority statements,
+every claim `NOT-MEASURED`, every authority `unknown` — *"That is the correct output and it is also
+useless as a deliverable."* The wedge buyer's client repositories will resemble the thirty-two, not
+the eight.
+
+**Narrowed statement:** thirteen mechanisms recur across the eight repositories in this portfolio
+that instrument themselves at all.
+
 ### What would move a principle from 6 to 7
 
 For each level-6 row, the same test: a second operator applies the mechanism to a repository the

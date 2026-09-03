@@ -71,10 +71,38 @@ assert_red "R4 threshold-provenance" "$t" R4
 t=$(stage); sed -i '/^> \*\*Claim strength:/d' "$t/products/playbooks/$prel"
 assert_red "R6 claim-strength" "$t" R6
 
+# --- added 2026-09-03 with R2's new teeth, in the same commit, because anti-pattern 27 is
+# --- exactly the failure of adding a rule and not adding its control.
+mixed_victim="$(grep -l '^evidence-resolves-to: mixed' "$ROOT"/insights/*/*.md | head -1)"
+mrel="${mixed_victim#"$ROOT"/insights/}"
+t=$(stage); sed -i 's/^may-assert-cause: no.*/may-assert-cause: yes/' "$t/insights/$mrel"
+assert_red "R2 causal-needs-hard-evidence" "$t" R2
+
+hard_victim="$(grep -l '^cause-scope:' "$ROOT"/insights/*/*.md | head -1)"
+hrel="${hard_victim#"$ROOT"/insights/}"
+t=$(stage); sed -i '/^cause-scope:/d' "$t/insights/$hrel"
+assert_red "R2 causal-needs-a-scope" "$t" R2
+
+t=$(stage); sed -i 's/Claim strength: causal, scoped to one portfolio/Claim strength: causal/' \
+  "$t/products/playbooks/ai-cross-review-setup.md"
+sed -i 's/scoped \*about these repositories\*/demonstrated about these repositories/' \
+  "$t/products/playbooks/ai-cross-review-setup.md"
+sed -i '0,/^> \*\*Claim strength: causal/{s/scope[a-z]*//g}' \
+  "$t/products/playbooks/ai-cross-review-setup.md"
+python3 - "$t/products/playbooks/ai-cross-review-setup.md" <<'PYX'
+import re,sys
+p=sys.argv[1]; s=open(p).read()
+i=s.index("**Claim strength: causal")
+head,tail=s[:i],s[i:]
+tail=tail[:400].replace("scope","limit").replace("Scope","Limit")+tail[400:]
+open(p,'w').write(head+tail)
+PYX
+assert_red "R6 portfolio-scope-must-be-stated" "$t" R6
+
 echo
 echo "R5 not covered: it is the --bypass mechanism, not a rule that emits a verdict."
 if [ "$fail" -ne 0 ]; then
   echo "POSITIVE CONTROL FAILED — at least one rule cannot go red. It is not evidence."
   exit 1
 fi
-echo "POSITIVE CONTROL PASSED — R1, R2, R3, R4 and R6 were each observed to fail on a broken input."
+echo "POSITIVE CONTROL PASSED — 8 cases across R1, R2, R3, R4 and R6, each observed to go red."

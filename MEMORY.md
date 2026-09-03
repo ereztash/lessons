@@ -9,6 +9,9 @@
 - **Frozen**: `research/re-foundation/DO_NOT_TOUCH.md`. The prospective test resolves 2026-11-17, 75 days out
 - **CI**: the previous workflow failed **14 of 14 runs over four months, unread**. Replaced with the
   contract gate plus `scripts/gate-positive-control.sh`, which proves the gate can go red
+- **Causal authority, re-audited 2026-09-03**: **3** insights may assert cause (was 10), all `hard`,
+  all `cause-scope: portfolio`. **2 of 4 causal playbooks demoted to observational.** All four
+  sale-gate conditions discharged
 - **Counts are derived, not stated.** Every number below this line predates the re-foundation and
   four of them are stale; the derivations are in `docs/AUTHORITY_MAP.md` §5
 

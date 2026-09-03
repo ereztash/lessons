@@ -17,6 +17,9 @@ Each rule is ported from a repo in the portfolio that already had it:
        "Promoted" is one bit here and a ladder everywhere else. An insight must declare
        may-report and may-assert-cause separately, and anything shipped needs a reversibility
        call, because shipping a playbook is irreversible in a way distilling is not.
+       EXTENDED 2026-09-03: R2 now enforces the condition the template had only DOCUMENTED -
+       may-assert-cause: yes requires evidence-resolves-to: hard, >=2 evidence-repos, and a
+       cause-scope. 7 of 10 causal insights failed it on first run.
   R3 score-history           <- Agent-Architect docs/confidence-ladder.md
        A monetization score is a reading, not a stamp. Changing it appends; it never overwrites.
   R4 threshold-provenance    <- pre-call docs/market-ready.md
@@ -122,10 +125,38 @@ def check():
         for f_ in ("may-report", "may-assert-cause"):
             if field(fm, f_) is None:
                 violations.append(("R2", rel, f"missing `{f_}`"))
-        if field(fm, "may-assert-cause") == "yes" and field(fm, "may-report") == "no":
+        mac = field(fm, "may-assert-cause")
+        if mac == "yes" and field(fm, "may-report") == "no":
             violations.append(("R2", rel, "may-assert-cause without may-report is incoherent"))
         if shipped and field(fm, "reversibility") is None:
             violations.append(("R2", rel, "ships a playbook but declares no `reversibility`"))
+        # Added 2026-09-03 (sale-gate condition 4). insights/_template.md has always DOCUMENTED the
+        # condition for `yes` - "strength >=2 in >=2 repos AND evidence-resolves-to: hard" - and R2
+        # never CHECKED it. Measured at the re-audit: 7 of 10 insights asserting cause resolved to
+        # `mixed`. That is the third rule in this file found passing vacuously (after R2 and R3 in
+        # the gap-closure round, and R4 in the adversarial pass), and the pattern is now explicit:
+        # a condition written in a template and not written in the checker is not a condition.
+        if mac == "yes":
+            repos = re.search(r"^evidence-repos:\s*\[(.*?)\]", fm, re.M)
+            n_repos = len([r for r in repos.group(1).split(",") if r.strip()]) if repos else 0
+            if actual != "hard":
+                violations.append(("R2", rel,
+                    f"may-assert-cause: yes but evidence-resolves-to measures `{actual}` - the "
+                    "documented condition is `hard`"))
+            if n_repos < 2:
+                violations.append(("R2", rel,
+                    f"may-assert-cause: yes on {n_repos} evidence-repo(s) - the documented "
+                    "condition is >=2"))
+            if field(fm, "cause-scope") is None:
+                violations.append(("R2", rel,
+                    "may-assert-cause: yes without `cause-scope`. METHOD_LINEAGE.md section 3 "
+                    "records that no principle here has been observed outside one operator's "
+                    "work, so a causal claim must name the scope it holds in "
+                    "(`portfolio` | `replicated`)"))
+        elif field(fm, "cause-scope") is not None:
+            violations.append(("R2", rel,
+                "declares `cause-scope` without may-assert-cause: yes - a scope on a claim that "
+                "may not be made is decoration"))
 
         # --- R3 score history ----------------------------------------------------------------
         hist = listfield(fm, "score-history")
@@ -144,6 +175,7 @@ def check():
 
     # --- R6 claim strength: a playbook may not out-claim the insights behind it ---------------
     backers = {}                                    # playbook path -> [(insight, may-assert-cause)]
+    scopes  = {}                                    # insight slug -> cause-scope
     for path in insight_files():
         fm = front_matter(open(path, encoding="utf-8").read())
         if not fm: continue
@@ -151,6 +183,7 @@ def check():
         if pb and pb not in ("none", "none yet"):
             backers.setdefault(pb, []).append(
                 (os.path.basename(path)[:-3], field(fm, "may-assert-cause")))
+            scopes[os.path.basename(path)[:-3]] = field(fm, "cause-scope")
     pbdir = os.path.join(ROOT, "products", "playbooks")
     if os.path.isdir(pbdir):
         for fn in sorted(os.listdir(pbdir)):
@@ -170,6 +203,15 @@ def check():
                         "declares a claim strength but no insight names it in `related-playbook`"))
                 continue
             allowed = "causal" if any(v == "yes" for _, v in mine) else "observational"
+            # Added 2026-09-03: a playbook is the outbound asset. If every insight behind its
+            # causal claim is scoped to this portfolio, the playbook must carry that limit in the
+            # declaration itself, where a buyer reads it - not in a file the buyer never opens.
+            if declared == "causal" and mine and all(
+                    scopes.get(n) == "portfolio" for n, v in mine if v == "yes"):
+                if not re.search(r"scope", text[m.start():m.start() + 400], re.I):
+                    violations.append(("R6", rel,
+                        "declares `causal` on insights whose `cause-scope` is `portfolio`, but the "
+                        "declaration does not state that limit where a buyer reads it"))
             if declared != allowed:
                 who = ", ".join(f"{n}={v}" for n, v in mine)
                 violations.append(("R6", rel,

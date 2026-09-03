@@ -30,6 +30,18 @@ may-assert-cause: no     # may this be stated as a CAUSE. Separate bit, ported f
                          # lib/organizational-signals.ts, where maySurfaceToOrganization and
                          # mayAssertCausality are independent. Requires strength >=2 in >=2 repos
                          # AND evidence-resolves-to: hard. Name the reason in a trailing comment.
+                         # ENFORCED by check-lessons-contract.py R2 since 2026-09-03. Between the
+                         # gap-closure round and that date this condition was written here and
+                         # checked nowhere, and 7 of 10 insights asserting cause failed it
+                         # (LOG anti-pattern #29). A condition in a template and not in the
+                         # checker is not a condition.
+cause-scope: portfolio   # REQUIRED when may-assert-cause is yes, forbidden otherwise.
+                         # portfolio  = a cause demonstrated about THESE repositories
+                         # replicated = reproduced by a second operator on a portfolio the author
+                         #              has never seen. METHOD_LINEAGE.md section 3 records that
+                         #              nothing has ever reached this, so today every value reads
+                         #              `portfolio`, and a playbook selling a portfolio-scoped
+                         #              cause must state the limit where a buyer reads it (R6).
 reversibility: low       # required once related-playbook is set. Ported from proofminer
                          # docs/AUTHORITY.md, whose six axes include Reversibility: shipping is
                          # irreversible in a way distilling is not, and the gate must know it.

@@ -30,10 +30,15 @@ source-observations:  # lessons observations these pointers were resolved from
   - groundstate-protocol@11:00
   - chess-mind-patterns@11:05
 may-report: yes
-may-assert-cause: yes  # strong in 3 repos (COR-SYS 16/57, groundstate-protocol 76/194, anti-silo 40/74). The refuted part is the ORIGINAL claim that absence flags Tier C — ampaign-craft and Agent-Architect are Tier A with no trailer
+may-assert-cause: no     # DEMOTED 2026-09-03 (sale-gate condition 4). The template's own condition for `yes` is
+                         # "strength >=2 in >=2 repos AND evidence-resolves-to: hard". This insight measures
+                         # `mixed`, and R2 never checked the condition it documented — the third vacuously
+                         # passing rule found in this file. Repairable by re-anchoring the pointers that
+                         # resolve to nothing; not repairable by argument.
 score-history:
   - 2026-05-12: 5/5 — first audit
   - 2026-08-19: 5/5 — evidence corrected, then the correction itself retracted; groundstate has 76 Claude trailers, not 0. Score held throughout
+  - 2026-09-03: 5/5 — re-audit under sale-gate condition 4: causal authority WITHDRAWN, evidence-resolves-to is `mixed` against a documented requirement of `hard`
 ---
 
 # `Co-Authored-By: Claude` Trailer Convention

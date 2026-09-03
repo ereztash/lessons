@@ -138,3 +138,24 @@ verdict-affecting defect, in two of six files; a fourth defect (R4) shipped in t
 survived a further round. Firing a gate on a deliberately broken input found every one of them and
 no green run found any. That is the finding, and it is now enforced by
 `scripts/gate-positive-control.sh`, which covers R1, R2, R3, R4 and R6.
+
+**C7. A fourth vacuously passing rule, found the same week by looking in the other direction.**
+`insights/_template.md` has documented, since the gap-closure round, that `may-assert-cause: yes`
+"Requires strength >=2 in >=2 repos AND evidence-resolves-to: hard". **R2 never checked it.** It
+checked that the field existed and that it was coherent with `may-report`, and nothing else. Measured
+2026-09-03 under sale-gate condition 4: **7 of the 10 insights asserting cause resolved to `mixed`**,
+so seven causal claims had stood for four months against a condition written down and never
+enforced.
+
+That makes four rules in this one file found passing vacuously: R2 and R3 in the gap-closure round,
+R4 in the adversarial pass, and R2's documented-but-unchecked condition here. The generalisation is
+sharper than the original rule and is adopted as LOG anti-pattern #29:
+
+> **A condition written in a template and not written in the checker is not a condition.**
+> Two documents that must agree will disagree, and the one nobody executes is the one that drifts.
+> This is pre-call's "one file, not two", arriving a second time by a different route.
+
+Updated counts after the re-audit: **3** insights may assert cause (down from 10), all three
+`evidence-resolves-to: hard` and all three carrying `cause-scope: portfolio`. **2 of 4 causal
+playbooks were demoted to observational**, and R6 demanded both demotions on its own rather than
+being told.

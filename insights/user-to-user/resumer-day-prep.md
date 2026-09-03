@@ -34,10 +34,15 @@ source-observations:  # lessons observations these pointers were resolved from
   - chess-mind-patterns@11:09
   - groundstate-protocol@11:00
 may-report: yes
-may-assert-cause: yes  # strong-2-repos, sharpened by the gap-length threshold
+may-assert-cause: no     # DEMOTED 2026-09-03 (sale-gate condition 4). The template's own condition for `yes` is
+                         # "strength >=2 in >=2 repos AND evidence-resolves-to: hard". This insight measures
+                         # `mixed`, and R2 never checked the condition it documented — the third vacuously
+                         # passing rule found in this file. Repairable by re-anchoring the pointers that
+                         # resolve to nothing; not repairable by argument.
 reversibility: low  # a shipped playbook is sold; a retraction reaches fewer people than the claim did
 score-history:
   - 2026-05-12: 5/5 — first audit
+  - 2026-09-03: 5/5 — re-audit under sale-gate condition 4: causal authority WITHDRAWN, evidence-resolves-to is `mixed` against a documented requirement of `hard`
 ---
 
 # Resumer Day Prep — The 72-Minute Lovable Resumption Window

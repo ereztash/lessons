@@ -21,9 +21,14 @@ related-playbook: none yet
 created: 2026-08-19
 evidence-resolves-to: mixed
 may-report: yes
-may-assert-cause: yes  # 3 repos, all pointers resolve to commits
+may-assert-cause: no     # DEMOTED 2026-09-03 (sale-gate condition 4). The template's own condition for `yes` is
+                         # "strength >=2 in >=2 repos AND evidence-resolves-to: hard". This insight measures
+                         # `mixed`, and R2 never checked the condition it documented — the third vacuously
+                         # passing rule found in this file. Repairable by re-anchoring the pointers that
+                         # resolve to nothing; not repairable by argument.
 score-history:
   - 2026-08-19: 5/5 — first audit
+  - 2026-09-03: 5/5 — re-audit under sale-gate condition 4: causal authority WITHDRAWN, evidence-resolves-to is `mixed` against a documented requirement of `hard`
 ---
 
 # Agent Identity Collapse — `git log --author` Undercounts AI Work by up to 6.7×

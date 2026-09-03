@@ -29,7 +29,9 @@
 | What failed before, and what rule came from it? | `LOG.md` anti-pattern table, append-only, **never renumbered** | `MEMORY.md`, which summarizes and drifts |
 | What is the current session state? | `MEMORY.md` **for narrative state only.** Every number in it is derived elsewhere and must be checked before citing | `MEMORY.md` for counts (4 of its numbers are stale) |
 | Does this repository's CI pass? | **GitHub Actions run history.** 14 runs, 14 failures | the presence of `.github/workflows/node.js.yml`, which proves only that a file exists |
-| What am I allowed to sell? | `product/FIELD_PREREGISTRATION.md` §1–§2 | `products/playbooks/*`, none of which has been sold |
+| What am I allowed to sell? | `product/FIELD_PREREGISTRATION.md` §1–§1b | `products/playbooks/*`, none of which has been sold |
+| May a finding be stated as a **cause**? | `may-assert-cause` + `cause-scope` in the insight's front-matter, **enforced** by `check-lessons-contract.py` R2 since 2026-09-03 | the prose of the insight, and the template comment that documented the condition for four months while R2 did not check it |
+| How wide does a causal claim hold? | `cause-scope`. Today every one reads `portfolio` | the playbook's confidence of tone |
 
 ## 2. Questions with **no** authority, deliberately
 

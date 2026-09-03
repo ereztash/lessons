@@ -2,7 +2,12 @@
 
 > Tagline: Pair a write-AI with a review-AI to catch what single-AI workflows ship to production.
 
-> **Claim strength: causal.** both backing insights carry `may-assert-cause: yes` — 6 repos after Round 3.
+> **Claim strength: causal, scoped to one portfolio.** Both backing insights survived the
+> 2026-09-03 re-audit: both resolve to `hard` across ≥2 repositories, and `adversarial-second-surface`
+> is the most-replicated principle in the corpus at 5 repositories. **The scope limit is part of the
+> claim, not a disclaimer**: `METHOD_LINEAGE.md` §3 records that no principle here has ever been
+> observed outside one operator's work, so this is a cause demonstrated *about these repositories*
+> and may not be sold as a general mechanism. `cause-scope: portfolio` on both insights.
 > The mechanism may be stated as a mechanism.
 
 ## Target buyer

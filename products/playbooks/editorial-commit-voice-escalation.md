@@ -2,7 +2,13 @@
 
 > Tagline: Tell, in 30 seconds, whether your dormant Lovable repo is being silently invested in or quietly abandoned — by reading the last 10 commit subjects against a 4-register rubric.
 
-> **Claim strength: causal.** its backing insight carries `may-assert-cause: yes` — confirmed in 4 repos, mechanism isolated in agency-insight-analyzer.
+> **Claim strength: observational.** **DEMOTED FROM `causal` on 2026-09-03** under sale-gate
+> condition 4. Its backing insight's evidence resolves to `mixed`, against a documented requirement
+> of `hard`, so its `may-assert-cause` bit was withdrawn and R6 refused the playbook's causal
+> declaration automatically. What you are buying is a pattern observed across 4 repositories of one
+> operator's portfolio, with the mechanism isolated in `agency-insight-analyzer`. It is not a
+> demonstrated cause, and this playbook may not be read as claiming that escalating commit voice
+> *produces* repository health. Repairable: re-anchor the pointers that resolve to nothing.
 > The mechanism may be stated as a mechanism.
 
 ## Target buyer

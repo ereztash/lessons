@@ -2,7 +2,13 @@
 
 > Tagline: You have one ~72-minute window to resume a dormant Lovable repo before context decays — here's how to use every minute.
 
-> **Claim strength: causal.** both backing insights carry `may-assert-cause: yes` — strong-2-repos, sharpened by the gap-length threshold.
+> **Claim strength: observational.** **DEMOTED FROM `causal` on 2026-09-03** under sale-gate
+> condition 4. Both backing insights (`resumer-day-prep`, `zero-deletion-of-bot-generated-files`)
+> resolve to `mixed`, against a documented requirement of `hard`, so both lost their
+> `may-assert-cause` bit and R6 refused the causal declaration automatically. What you are buying is
+> a resumption shape observed in 2 repositories of one operator's portfolio. It is not a
+> demonstrated cause of successful resumption. Repairable: re-anchor the pointers that resolve to
+> nothing.
 > The mechanism may be stated as a mechanism.
 
 ## Target buyer

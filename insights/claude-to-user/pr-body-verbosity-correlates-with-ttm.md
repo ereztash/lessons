@@ -21,8 +21,12 @@ source-observations:  # lessons observations these pointers were resolved from
   - groundstate-protocol@11:04
 may-report: yes
 may-assert-cause: yes  # confirmed with timing numbers in MATI (44s vs 14h+)
+cause-scope: portfolio   # this portfolio only. No principle in METHOD_LINEAGE reaches
+                         # level 7 (a second operator), so a causal claim may be made ABOUT
+                         # these repositories and may NOT be sold as a general mechanism.
 score-history:
   - 2026-05-12: 5/5 — first audit
+  - 2026-09-03: 5/5 — re-audit under sale-gate condition 4: causal authority HELD (`hard`, 2 repos), scoped to this portfolio — nothing in METHOD_LINEAGE reaches level 7
 ---
 
 # PR Body Verbosity Correlates with Time-to-Merge

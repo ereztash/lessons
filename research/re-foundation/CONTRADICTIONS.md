@@ -102,7 +102,7 @@ Nothing in this table is fixed by this file. Assignment:
 | 3 | derive every denominator from `ground-truth/scores-*.tsv` rather than restating it | §19 reconciliation round | no |
 | 4 | reconcile `README.md`, `LOG.md`, `MEMORY.md` phase and count claims against a single derived source | authority-map round | no |
 | 5 | choose one product name or record both as historical | product round | no |
-| 6 | re-audit the 10 `may-assert-cause: yes` insights against `METHOD_LINEAGE.md` §3 | adversarial round | **yes**, for anything sold |
+| 6 | re-audit the 10 `may-assert-cause: yes` insights against `METHOD_LINEAGE.md` §3 | adversarial round | **DISCHARGED 2026-09-03.** 7 of 10 failed the template's own documented condition (`hard` evidence, ≥2 repos) that R2 never checked; demoted. 3 hold, scoped to this portfolio. R6 forced 2 playbook demotions. R2 now enforces the condition, with positive controls |
 
 ---
 

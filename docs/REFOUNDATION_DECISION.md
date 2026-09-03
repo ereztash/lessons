@@ -215,15 +215,16 @@ No code beyond step 1 and the checklist in step 2.
 
 ## Engineering authorization
 
-**Four conditions gate the first sale.** Three are discharged; the fourth is not. Until it is,
-the audit may be performed and shown, and may not be invoiced.
+**Four conditions gated the first sale. All four are now discharged** (2026-09-03). The audit may be
+performed, shown and invoiced, within the scope limits the corpus supports and no wider: every
+causal claim in `products/` is now either withdrawn or explicitly scoped to this portfolio.
 
 | | Condition | Status |
 |---|---|---|
 | 1 | positive-control every rule of the contract gate that emits a verdict | **done** — R1, R2, R3, R4, R6 each observed to go red; R4's regex fixed |
 | 2 | correct the 23× citation, the "23 failures" figure and the P=0.500 reading before any of them reaches a sales artifact | **done** — corrected here, in `ASSURANCE_THESIS.md`, `THESIS_TEST.md` and `gate-reliability.md` §6 |
 | 3 | add an agent-family-independence threshold before the preregistration is treated as frozen | **done** — P11, added before any pilot, which is the last moment §5 rule 1 allows |
-| 4 | **re-audit the 10 insights carrying `may-assert-cause: yes` against `METHOD_LINEAGE.md` §3**, which shows no principle reaches operator-independence, and re-derive the 4 playbooks declaring `Claim strength: causal` | **NOT DONE.** `CONTRADICTIONS.md` §7 row 6 marks it *blocking for anything sold*, and the first draft of this decision authorized selling without discharging it or waiving it. That was a silent waiver, the exact object `ASSURANCE_THESIS.md` §5 counts in the deliverable |
+| 4 | **re-audit the 10 insights carrying `may-assert-cause: yes` against `METHOD_LINEAGE.md` §3** and re-derive the 4 playbooks declaring `Claim strength: causal` | **done 2026-09-03.** The template had always required `hard` evidence in ≥2 repos for a causal claim; **R2 never checked it, and 7 of the 10 measured `mixed`.** Those 7 are demoted to `may-assert-cause: no`, each with an appended score-history entry. The 3 that hold now carry **`cause-scope: portfolio`**, because no principle here has been observed outside one operator's work. **R6 then demanded two playbook demotions on its own** — `editorial-commit-voice-escalation` and `resumer-day-prep` are now `observational`. R2 enforces the condition it used to only document, and 3 new positive-control cases prove the new checks go red |
 
 **Authorized now:**
 - fix `.github/workflows/node.js.yml`;

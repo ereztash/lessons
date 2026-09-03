@@ -83,6 +83,10 @@ Authority       observe | report | recommend | release | assert-cause
                 | automate | block | unknown
 ReversalCondition  evidence that would demote this Claim
 Waiver          owner, date, scope, reason, expiry
+                status: taken | declined | never_offered    # G7. A waiver declined is the
+                # strongest evidence a gate has teeth, and is not the same state as one never
+                # offered. From --Android, which withdrew a shipped feature that failed a
+                # pre-registered stopping rule with a waiver available and not taken.
 FieldRequirement  owner, review_by            # G6
 Failure         a refutation, permanent, first class
 Lineage         where a rule came from and how it changed
@@ -166,6 +170,7 @@ False-green checks:       N     gates never observed to fail
 Unconsumed gate results:  N     verdicts nobody acted on
 Unsupported claims:       N     stated externally, above the evidence
 Silent waivers:           N     insufficiency accepted with no owner
+Waivers declined:         N     insufficiency surfaced, a waiver offered, and refused
 ```
 
 Plus: the claim-to-evidence map; every reality mismatch; gates with no demonstrated teeth; the

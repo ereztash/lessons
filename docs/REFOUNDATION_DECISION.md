@@ -182,7 +182,7 @@ workflow needs.
 | tiers are provisional | `f5-rescore-2026-08-19.md` §5; `prediction-2026-08-19.md` |
 | the assurance method is real and independently invented | `METHOD_LINEAGE.md` §2 (13 rows at level 6) |
 | the method is operator-bound | `METHOD_LINEAGE.md` §3 (nothing at level 7) |
-| the object model works at v1.1 | `ASSURANCE_MODEL_FIT.md` §6 |
+| the object model works at v1.1 | `ASSURANCE_MODEL_FIT.md` §6. **v1.2 after 2026-09-03**: the three repositories the enumeration error excluded are now expressed directly, and `--Android` exposed **G7**, a waiver offered and declined, which v1.1 could not distinguish from one never offered |
 | the problem is real | `BASELINE.md` §2 (14/14 red CI, unread, 4 months) |
 | the framing is not novel | `THESIS_TEST.md` §A.1, §A.2 |
 | the moat has zero instances | `THESIS_TEST.md` §B |

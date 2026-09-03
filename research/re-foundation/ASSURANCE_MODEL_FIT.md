@@ -235,6 +235,53 @@ itself wrong, retracted in place**. The model treats Failure as first-class, but
 take Evidence as its subject, so "a refutation that was refuted" needs an ad-hoc field. Recorded as
 **gap G5**.
 
+### 2.11 `--Android` — added 2026-09-03, after the enumeration correction
+
+The case §0 originally substituted away. It belongs here more than most rows already in §2.
+
+| Object | Instance |
+|---|---|
+| Claim | *"רצה לגמרי במכשיר. אין הרשאת אינטרנט, אין לקוח HTTP, אין אנליטיקה, אין חשבון, אין שרת"* — the product's central promise is a **negative** claim about data leaving the device |
+| Required reality floor | the claim is about a shipped artifact, so the evidence must touch the artifact: **R4**, not R1 |
+| Evidence | `AndroidManifest.xml`: *"NO PERMISSIONS. Not INTERNET, not ACCESS_NETWORK_STATE, not anything."* — re-checked on every push **against a real assembled APK** |
+| Gate | **33 gates** in `scripts/run_gates.py`, each with an id (`GATE-API-1`, `GATE-CRYPTO-1`, `GATE-DOC-1`, `GATE-DOD-1`, `GATE-LEX-1`, `GATE-WITHDRAWN-1`, …) |
+| Positive control | **every gate has one and it runs first**: *"refuse to record any of them as PASSED unless its positive control was demonstrated RED in this same run… the gate is reported as NOT-A-GATE and the whole run fails"* |
+| Waiver | `DEFINITION_OF_DONE.md` §5: **"A waiver is a signature; silence is drift. Shipping without evidence is allowed. Shipping without *saying* that is not."** The blocked-check count went 20 to 22 while features shipped, and a waiver is what makes that a decision |
+| Refutation, first class | a real-word error layer shipped, was measured against a human labeller, **failed a stopping rule registered before the labelling**, and was withdrawn. `GATE-WITHDRAWN-1` fails the build if it returns |
+| Release authority | `RELEASE_READINESS.md`: **NOT READY**, *"there is no 'ready except for'"* |
+| Field requirement | 22 device-blocked checks generated from `QA_MATRIX.md`, with `GATE-DOC-1` failing the build when the two disagree |
+| Lineage | the readiness doc records that it stated its own coverage twice and was wrong twice, then replaced the hand-kept claim with a generated block |
+
+**Fit: v1.1 represents all of it but one thing, and the miss earns the row.**
+
+The withdrawn feature was not waived. A waiver *was available and was not taken*. The model has
+`Waiver` (insufficiency accepted, with an owner) and the deliverable counts **silent waivers**
+(insufficiency accepted with no owner). It has **no state for an insufficiency that was surfaced,
+offered a waiver, and refused.** That is not the same as no waiver existing: a waiver never offered
+and a waiver declined differ exactly as `NOT-MEASURED` and `UNCONSUMED` do, and the declined one is
+the strongest available evidence that a gate has teeth. Recorded as **gap G7**.
+
+### 2.12 `lichess_app` — added 2026-09-03
+
+| Object | Instance |
+|---|---|
+| Claim | one claim at a time, with an `n` and a falsification condition. *"התפוקה היא טענה אחת ודריל אחד, לא דשבורד"* |
+| Authority | the one function that raises a grade accepts `ProspectiveDrillResult` **and has no overload** (`shared/claim.ts`) |
+| Reversal | `refuted` is terminal; `beginDrill` refuses a refuted claim forever |
+| Evidence ordering | *"דריל הוא הדבר היחיד שיכול לשנות דירוג, כי הוא הראיה היחידה שמאוחרת לטענה"* — **evidence must postdate the claim, enforced by the type system** |
+| One authority per question | `shared/promise.ts`, with the drift it prevents named in the file: four surfaces each held a copy, two disagreed during an edit, and *"a trial cannot measure a drift it is itself producing"* |
+| Positive control | `vitest.controls.config.ts`, which exists because a control suite that collects no files exits 1, *"which looks like a passing control while proving nothing"* |
+| Gate | `tests/gates/`: `prereg`, `claim-anchor`, `falsification`, `stale`, `measurement`, `authority` |
+
+**Fit: complete under v1.1**, and it supplies the corpus's only ordering constraint between claim
+and evidence that a compiler enforces rather than a reviewer.
+
+### 2.13 `strategic-portal` — added 2026-09-03
+
+A Hebrew strategic portal, *"מכאב לפרומפט שעובד"*, with six test files, a CI workflow and a service
+worker. **Fit: representable and thin.** Claims are implicit, no gate carries a positive control, no
+authority statement. It is the ordinary case, and it is what a client repository will look like.
+
 ---
 
 ## 3. Reality levels, derived from the corpus
@@ -280,7 +327,14 @@ Gate.result_consumed_by     : Authority | null,  and a fourth Gate state
                               UNCONSUMED alongside PASS | FAIL | NOT-MEASURED  (G4)
 Evidence.subject            : Claim | Evidence                                  (G5)
 FieldRequirement.owner, .review_by                                              (G6)
+Waiver.status : taken | declined | never_offered                                (G7)
 ```
+
+**G7 was added 2026-09-03**, after the three repositories §0 wrongly called absent were cloned.
+`--Android` withdrew a shipped feature that had failed a pre-registered stopping rule, **with a
+waiver available and declined**, and v1.1 could only record that no waiver exists — the same state
+as one never offered. A declined waiver is the strongest evidence a gate has teeth, and the model
+was throwing it away.
 
 `Gate.result_consumed_by` is the one that changes the product, not just the schema. It converts the
 question from *"did the check pass?"* to *"did anyone act on the check?"*, and the second question
@@ -300,6 +354,9 @@ is the one this repository's own history answers with "no, for four months."
 | core-unified-consciousness | **fails** (G3) | complete: `claim_set_status: none` |
 | Benchmark.ATS | complete | complete |
 | **lessons** | **fails** (G4, G5) | complete: the CI gate reads `FAIL / UNCONSUMED` |
+| `--Android` *(added 2026-09-03)* | not examined — excluded by the enumeration error | **strains**: no state for a waiver offered and declined (**G7**) |
+| `lichess_app` *(added 2026-09-03)* | not examined — same | complete |
+| `strategic-portal` *(added 2026-09-03)* | not examined — same | complete, and thin |
 
 **Verdict: v1.1 represents all ten cases without ad-hoc fields.** The model is ready to be
 implemented as a schema. It is **not** thereby validated: all ten cases come from one operator's

@@ -104,7 +104,13 @@ F1–F4, does not.
    denominators (6, 8, 40, 134) with no intervals**, not a measured prior, and per file the gate
    figure is 2 of 6 rather than 0.500 (`gate-reliability.md` §6 C4–C5). It may not be sold as
    "a number no competitor has".
-2. **Positive-control discipline, and the reason to believe it is that it caught this round too.**
+2. **Positive-control discipline — and `lessons` is not its strongest implementation.**
+   **Corrected 2026-09-03**: `ereztash/--Android`, excluded from this round by an enumeration error
+   (`ENUMERATION_CORRECTION.md`), runs each gate's positive control *first* and fails the whole
+   build with `NOT-A-GATE` if the control comes back green, "regardless of what the gate said about
+   the real tree". Its controls are planted defects, including a real assembled APK carrying the
+   INTERNET permission. That is the rule as a build gate; what follows is the same rule as a script,
+   in this repository, and it is the weaker instance.
    R2 and R3 passed vacuously for a full round. **R4 passed vacuously for two**, including through
    this round's own first positive control, which covered exactly R1, R2 and R3 — the three already
    known good. Fixed and verified 2026-09-03: `scripts/gate-positive-control.sh` now breaks the

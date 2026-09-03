@@ -135,6 +135,16 @@ failure it is auditing.
 | "most predating any taxonomy that names them" | `METHOD_LINEAGE.md` §2 has **no date column and no dates** | removed |
 | the service is "authorized now" | `CONTRADICTIONS.md` §7 row 6 marks the causal-insight re-audit **blocking for anything sold**, and nothing discharged or waived it | decision narrowed to `SALE GATED`; the item is condition 4 and is **still open** |
 
+### 8.3 Found after the operator opened the portfolio, same day
+
+| Claim in this round | Reality | Fixed |
+|---|---|---|
+| "the brief named three repositories … none of the four exists in this portfolio" | **three of the four exist.** `lichess_app` (pushed today), `--Android`, `strategic-portal`. All three cloned and verified against their remotes | retracted in `ENUMERATION_CORRECTION.md`; LOG #26 retracted by #30 |
+| "the portfolio is 40 repos" | **44 today**, 40 at the 2026-08-19 freeze. The four newcomers all postdate the freeze and the frozen set is a strict subset | the derivation in `AUTHORITY_MAP.md` §5 now carries a tense |
+| "the brief's 44 is a fifth number" (§3 above) | **the brief was correct** | §3's row on the brief is superseded by this one |
+| Core IP #2 cites this repository's own positive control as the instance | `--Android/scripts/run_gates.py` runs each control first and fails the build with `NOT-A-GATE` if it comes back green. **Stronger, and a build gate rather than a script** | re-attributed in the decision |
+| anti-pattern #27, "a rule added without its control", recorded as a new finding | `lichess_app/vitest.controls.config.ts` already solves it, and names the same failure: a control suite that collects no files exits 1, "which looks like a passing control while proving nothing" | recorded in `ENUMERATION_CORRECTION.md` §3.2 |
+
 ## 9. What this file deliberately does not call a contradiction
 
 - `research/repo-index.md`'s superseded tier lines. Its own header says they are superseded and

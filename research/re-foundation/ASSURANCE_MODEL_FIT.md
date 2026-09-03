@@ -17,10 +17,24 @@
 
 ---
 
-## 0. Repositories named in the brief that do not exist in this portfolio
+## 0. Repositories named in the brief — RETRACTED 2026-09-03
 
-Recorded before anything else, because substituting silently would be the exact failure this round
-is auditing.
+> **This section was wrong on three of its four rows and is corrected in place rather than
+> rewritten.** `lichess_app`, `--Android` and `strategic-portal` all exist and are all now cloned.
+> They were absent from the 2026-08-19 frozen scan because **they entered the portfolio after it**:
+> the portfolio is 44 today and was 40 at the freeze, and the four newcomers all have a `pushed_at`
+> later than 2026-08-19. I read a committed enumeration as current state and wrote "does not exist"
+> where the evidence only supported "is not in the 2026-08-19 scan".
+>
+> Full retraction, and what the exclusion cost: **`research/re-foundation/ENUMERATION_CORRECTION.md`**.
+> The cost was not the count. `--Android` implements this round's own core rule — a gate must be
+> shown to fail — as a build-failing mechanism (`NOT-A-GATE`), and `lichess_app` enforces
+> "evidence must postdate the claim" in its type system. Both are stronger than anything §2 below
+> examines, and both were excluded by the error rather than by judgment.
+>
+> The original table is kept below so the retraction has something to retract.
+
+### The original claim, as written and as wrong
 
 | Named in §9 of the brief | Status | Substituted with | Why |
 |---|---|---|---|

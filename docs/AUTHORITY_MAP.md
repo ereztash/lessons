@@ -22,7 +22,9 @@
 | What research is frozen? | `research/re-foundation/DO_NOT_TOUCH.md` | nothing else claims this |
 | What defines product gates? | `scripts/check-lessons-contract.py` (R1–R6). **The rules ARE the file** | `insights/_template.md`, which documents the schema but does not enforce it |
 | What is historical only? | `research/re-foundation/ASSET_REGISTER.md`, `Disposition` column | file location; `saas/` contains current, superseded and historical assets in one tree |
-| How many repositories are in the portfolio? | `ground-truth/scores-2026-08-19.tsv` + `-cohort2.tsv`, **counted, never stated** | `README.md` (25), `CLAUDE.md` (30), `LOG.md` (both 30 and 40), the brief (44) |
+| How many repositories are in the portfolio **today**? | **`list_repos`, live. 44 on 2026-09-03** | the frozen TSVs, which are a 2026-08-19 measurement and give 40. Both are right with their date attached and neither is right without one (LOG #30) |
+| How many repositories does the frozen research cover? | `ground-truth/scores-2026-08-19*.tsv`, **counted, never stated**: 40 | any prose number |
+| Does repository X exist? | **a live check** (`git ls-remote`, `list_repos`) | any committed enumeration. That inference produced anti-pattern #26, which was wrong on three of four counts |
 | What tier is repo X? | **no current authority.** `f5-rescore-2026-08-19.md` is unvalidated by design; `repo-index.md` says so in its own header | any tier number anywhere. All are provisional until 2026-11-17 |
 | Is F5 better than F1–F4? | **unanswered.** `ground-truth/prediction-2026-08-19.md`, resolving 2026-11-17 | `f5-rescore-2026-08-19.md`, which produces the scores but cannot validate them |
 | What may an agent do in this repository? | `product/ASSURANCE_THESIS.md` §4 and `CLAUDE.md` Gate 0 | a passing test |

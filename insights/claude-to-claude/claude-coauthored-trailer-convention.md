@@ -8,13 +8,13 @@ evidence-pointers:
   - cor-sys@50f9166 (Claude co-authored)
   - groundstate-protocol@dc90fee:src/pages/Landing.tsx
   - groundstate-protocol@abcdda7:(GroundState flow)
-  - gap 2026-03-08 -> 2026-04-14
+  - groundstate-protocol@dc90fee (2026-04-14, the first commit after the 2026-03-08 gap)
   - chess-mind-patterns@875fe1c (title 'feat: add TL;DR, pattern recommendations, transition signal & demo mode')
   - chess-mind-patterns@f590fe6 (title 'feat: full course replacement — Phase 1-5 implementation')
   - chess-mind-patterns@2c7ced2 (title 'feat: Lichess deep-links, demo puzzle seeding, ELO goal setter, PWA + notifications'); contrast with bot subjects like 'Add breakpoint sliders'
-  - 'Save plan in Lovable'
-  - 'Preceding changes'
-  - 'Changes'
+  - groundstate-protocol@6a901af ('Save plan in Lovable')
+  - chess-mind-patterns@29a7152 ('Preceding changes')
+  - chess-mind-patterns@3581185 ('Changes')
 monetization-criteria:
   reusable: pass
   defensible: pass
@@ -24,16 +24,27 @@ monetization-criteria:
 monetization-score: 5/5
 applicability: solo-builder
 created: 2026-05-12
-evidence-resolves-to: mixed
+evidence-resolves-to: hard
 source-observations:  # lessons observations these pointers were resolved from
   - cor-sys@10:04
   - groundstate-protocol@11:00
   - chess-mind-patterns@11:05
 may-report: yes
-may-assert-cause: yes  # strong in 3 repos (COR-SYS 16/57, groundstate-protocol 76/194, anti-silo 40/74). The refuted part is the ORIGINAL claim that absence flags Tier C — ampaign-craft and Agent-Architect are Tier A with no trailer
+may-assert-cause: yes    # RESTORED 2026-09-03. Demoted the same day because the
+                         # evidence measured `mixed`; the operator then opened the
+                         # portfolio, every unresolvable pointer was re-anchored to a
+                         # verified commit or PR, and R1 now measures `hard`. The
+                         # claim came back on measurement, not on argument.
+cause-scope: portfolio   # this portfolio only. Restored 2026-09-03 on re-anchored evidence;
+                         # METHOD_LINEAGE.md section 3 still records level 7 = 0, so a cause may be
+                         # asserted ABOUT these repositories and may NOT be sold as a general
+                         # mechanism.
+
 score-history:
   - 2026-05-12: 5/5 — first audit
   - 2026-08-19: 5/5 — evidence corrected, then the correction itself retracted; groundstate has 76 Claude trailers, not 0. Score held throughout
+  - 2026-09-03: 5/5 — re-audit under sale-gate condition 4: causal authority WITHDRAWN, evidence-resolves-to is `mixed` against a documented requirement of `hard`
+  - 2026-09-03: 5/5 — causal authority RESTORED: pointers re-anchored against the live repositories, R1 measures `hard`, scope declared `portfolio`
 ---
 
 # `Co-Authored-By: Claude` Trailer Convention

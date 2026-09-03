@@ -92,3 +92,96 @@ python3 scripts/check-lessons-contract.py --explain  # and why each exists
 
 Update this file when a new failure is recorded in `LOG.md`. The denominators come from
 `MEMORY.md` (observations, matrix rows), `ground-truth/scores-*.tsv` (repos) and `scripts/` (count).
+
+
+---
+
+## 6. Correction, appended 2026-09-03 (re-foundation adversarial pass)
+
+Appended rather than edited, on the model of `patterns-matrix.md` §2.2: a correction that erases
+what it corrects teaches nothing. §1–§5 above are left exactly as written on 2026-08-19.
+
+**C1. The denominator moved and this file did not follow its own §5.** §1 reads "`LOG.md` carries
+19 numbered anti-patterns". It carries 23: #23 landed in `528041c`, after this file was created in
+`5be7bd6`, and #24–#26 were added by the re-foundation round. §5 says "Update this file when a new
+failure is recorded in `LOG.md`", and that rule was not applied. Observed failures are now **#11–#26
+= 16**, of which 12 carry a gate class in the §2 table.
+
+**C2. "R1, R2, R3, R5 was fired once on a broken file" (§3, last line) was never possible for R5.**
+R5 is the `--bypass` mechanism. It appears in no `violations.append()` in
+`check-lessons-contract.py` and cannot emit a verdict, so it cannot be broken into one. The claim
+should read **R1, R2, R3**.
+
+**C3. R4 could not fire at all, and this file did not catch it.** Its pattern began
+`\b(?:>=|<=|≥|≤)`, and a leading `\b` before `>` requires a word character immediately to the left,
+so every threshold in `rubric.md` written with a space before the operator was invisible. Measured
+2026-09-03, the match set against the live rubric was **empty**: the loop body never executed.
+Its provenance search was also a raw substring match over every line containing the digits, which
+is LOG anti-pattern #22's defect a second time. Fixed 2026-09-03; on first run it found a real
+violation (the `≥7` work-session gap had no stated provenance), now labelled set-not-derived.
+
+**C4. P for gate correctness is not 0.500.** §2 reads "6 scripts | 3 failures | P ≥ 0.500", but
+#21 and #22 are two defects in **one** file, `check-lessons-contract.py`, and #17 is
+`resolve-prediction.py`. **Per script the figure is 2 of 6 = 0.333.** The numerator counted defects
+and the denominator counted scripts. With R4 now added as a third defective rule in the same file,
+the per-file figure is unchanged at 2 of 6 and the per-rule figure is 3 of 6 rules that emit
+verdicts.
+
+**C5. The four P values in §2–§3 are not comparable, and §4 already says so about one of them.**
+They are computed over denominators of 6, 8, 40 and 134 and printed in one column with no interval.
+3/6 has a Wilson 95% interval of roughly [0.19, 0.81]. The §3 conclusion — "the riskiest gates are
+the ones that build the tools" — is therefore a **hypothesis over four unequal denominators, not a
+measured prior**, and must not be sold as one.
+
+**C6. What survives all of the above.** Three scripts written on 2026-08-19 shipped with a
+verdict-affecting defect, in two of six files; a fourth defect (R4) shipped in the same file and
+survived a further round. Firing a gate on a deliberately broken input found every one of them and
+no green run found any. That is the finding, and it is now enforced by
+`scripts/gate-positive-control.sh`, which covers R1, R2, R3, R4 and R6.
+
+**C7. A fourth vacuously passing rule, found the same week by looking in the other direction.**
+`insights/_template.md` has documented, since the gap-closure round, that `may-assert-cause: yes`
+"Requires strength >=2 in >=2 repos AND evidence-resolves-to: hard". **R2 never checked it.** It
+checked that the field existed and that it was coherent with `may-report`, and nothing else. Measured
+2026-09-03 under sale-gate condition 4: **7 of the 10 insights asserting cause resolved to `mixed`**,
+so seven causal claims had stood for four months against a condition written down and never
+enforced.
+
+That makes four rules in this one file found passing vacuously: R2 and R3 in the gap-closure round,
+R4 in the adversarial pass, and R2's documented-but-unchecked condition here. The generalisation is
+sharper than the original rule and is adopted as LOG anti-pattern #29:
+
+> **A condition written in a template and not written in the checker is not a condition.**
+> Two documents that must agree will disagree, and the one nobody executes is the one that drifts.
+> This is pre-call's "one file, not two", arriving a second time by a different route.
+
+Updated counts after the re-audit: **3** insights may assert cause (down from 10), all three
+`evidence-resolves-to: hard` and all three carrying `cause-scope: portfolio`. **2 of 4 causal
+playbooks were demoted to observational**, and R6 demanded both demotions on its own rather than
+being told.
+
+**C8. The withdrawal was repaired the same day, and the repair is the evidence that the gate
+works.** With the portfolio opened, all seventeen unresolvable pointers across the seven demoted
+insights were re-anchored against live repositories and every cited figure was re-counted:
+
+| Figure the corpus asserted | Re-measured 2026-09-03 |
+|---|---|
+| anti-silo carries 40 Claude trailers | **40**, of 103 commits |
+| Benchmark.ATS: 2 of 4 non-merge commits are Claude's | **exact** (`4cc723e`, `515d896`) |
+| chess-mind-patterns resumption deletes 69 lines | **69** = 24 + 23 + 22 across `875fe1c`, `f590fe6`, `2c7ced2` |
+| the resumption gap is 14 days | **14** (`5abaacd` 2026-03-09 -> `875fe1c` 2026-03-23) |
+| chess-mind-patterns has zero merged PRs | **zero** `Merge pull request` subjects in 175 commits |
+| All_Erez-s_Connections is the true negative | **6 commits, all `ereztash`, no trailer** |
+
+Corpus-wide resolution moved **`hard` 5 -> 12, `mixed` 12 -> 5, `prose` 0**. R1 refused the
+declared value until the pointers actually measured `hard`, so the restoration was granted by the
+gate rather than asserted by the author, and R6 then demanded both playbooks back to `causal` on
+its own.
+
+**The honest reading of a same-day demote-and-restore.** Net counts returned to where they started:
+10 causal insights, 4 causal playbooks. What changed is underneath them. Before, those claims rested
+on `mixed` evidence and a condition that was documented and never checked; now they rest on verified
+commits and PRs, an enforced condition, and a declared `cause-scope`. **One pointer did not come
+back**: `list_issues = {totalCount:0}` was removed from the evidence list entirely, because an
+absence has no artifact to cite and could never have resolved. Five insights remain `mixed`, and
+none of them regained a causal bit.

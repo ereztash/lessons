@@ -2,7 +2,17 @@
 
 > Tagline: Tell, in 30 seconds, whether your dormant Lovable repo is being silently invested in or quietly abandoned — by reading the last 10 commit subjects against a 4-register rubric.
 
-> **Claim strength: causal.** its backing insight carries `may-assert-cause: yes` — confirmed in 4 repos, mechanism isolated in agency-insight-analyzer.
+> **Claim strength: causal, scoped to one portfolio.** This declaration was **demoted to
+> `observational` and restored on the same day, 2026-09-03**, and the round trip is the point.
+> It was demoted because its backing insight's evidence resolved to `mixed` against a documented
+> requirement of `hard`, and R6 refused the causal declaration automatically. The operator then
+> opened the portfolio; three commit subjects that had been quoted as bare strings
+> (`'Save plan in Lovable'`, `'Preceding changes'`, `'Changes'`) were re-anchored to
+> `groundstate-protocol@6a901af`, `chess-mind-patterns@29a7152` and `chess-mind-patterns@3581185`;
+> R1 re-measured `hard`; and the claim came back on evidence rather than on argument.
+> **The scope limit is part of the claim, not a disclaimer**: `METHOD_LINEAGE.md` §3 records that
+> nothing here has been observed outside one operator's work, so this is a cause demonstrated
+> *about these repositories*.
 > The mechanism may be stated as a mechanism.
 
 ## Target buyer

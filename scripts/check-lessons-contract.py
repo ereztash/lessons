@@ -17,6 +17,9 @@ Each rule is ported from a repo in the portfolio that already had it:
        "Promoted" is one bit here and a ladder everywhere else. An insight must declare
        may-report and may-assert-cause separately, and anything shipped needs a reversibility
        call, because shipping a playbook is irreversible in a way distilling is not.
+       EXTENDED 2026-09-03: R2 now enforces the condition the template had only DOCUMENTED -
+       may-assert-cause: yes requires evidence-resolves-to: hard, >=2 evidence-repos, and a
+       cause-scope. 7 of 10 causal insights failed it on first run.
   R3 score-history           <- Agent-Architect docs/confidence-ladder.md
        A monetization score is a reading, not a stamp. Changing it appends; it never overwrites.
   R4 threshold-provenance    <- pre-call docs/market-ready.md
@@ -25,6 +28,10 @@ Each rule is ported from a repo in the portfolio that already had it:
   R5 bypass-log              <- pre-call docs/market-ready.md
        A gate with no record of being gone around is indistinguishable from a gate nobody needed
        to go around. --bypass requires a reason and appends to ground-truth/bypass-log.md.
+       NOTE (2026-09-03): R5 is a MECHANISM, not a rule that emits a verdict. It appears in no
+       violations.append() and therefore cannot be positive-controlled like R1-R4 and R6.
+       ground-truth/gate-reliability.md line 65 says "R1, R2, R3, R5 was fired once on a broken
+       file"; that is not possible for R5 and is corrected in that file's appended section.
   R6 claim-strength          <- proofminer docs/AUTHORITY.md ("a weak trace should not become a
        confident outbound asset just because the interface can generate one")
        A playbook is the outbound asset. It must declare "Claim strength: causal" or
@@ -118,10 +125,38 @@ def check():
         for f_ in ("may-report", "may-assert-cause"):
             if field(fm, f_) is None:
                 violations.append(("R2", rel, f"missing `{f_}`"))
-        if field(fm, "may-assert-cause") == "yes" and field(fm, "may-report") == "no":
+        mac = field(fm, "may-assert-cause")
+        if mac == "yes" and field(fm, "may-report") == "no":
             violations.append(("R2", rel, "may-assert-cause without may-report is incoherent"))
         if shipped and field(fm, "reversibility") is None:
             violations.append(("R2", rel, "ships a playbook but declares no `reversibility`"))
+        # Added 2026-09-03 (sale-gate condition 4). insights/_template.md has always DOCUMENTED the
+        # condition for `yes` - "strength >=2 in >=2 repos AND evidence-resolves-to: hard" - and R2
+        # never CHECKED it. Measured at the re-audit: 7 of 10 insights asserting cause resolved to
+        # `mixed`. That is the third rule in this file found passing vacuously (after R2 and R3 in
+        # the gap-closure round, and R4 in the adversarial pass), and the pattern is now explicit:
+        # a condition written in a template and not written in the checker is not a condition.
+        if mac == "yes":
+            repos = re.search(r"^evidence-repos:\s*\[(.*?)\]", fm, re.M)
+            n_repos = len([r for r in repos.group(1).split(",") if r.strip()]) if repos else 0
+            if actual != "hard":
+                violations.append(("R2", rel,
+                    f"may-assert-cause: yes but evidence-resolves-to measures `{actual}` - the "
+                    "documented condition is `hard`"))
+            if n_repos < 2:
+                violations.append(("R2", rel,
+                    f"may-assert-cause: yes on {n_repos} evidence-repo(s) - the documented "
+                    "condition is >=2"))
+            if field(fm, "cause-scope") is None:
+                violations.append(("R2", rel,
+                    "may-assert-cause: yes without `cause-scope`. METHOD_LINEAGE.md section 3 "
+                    "records that no principle here has been observed outside one operator's "
+                    "work, so a causal claim must name the scope it holds in "
+                    "(`portfolio` | `replicated`)"))
+        elif field(fm, "cause-scope") is not None:
+            violations.append(("R2", rel,
+                "declares `cause-scope` without may-assert-cause: yes - a scope on a claim that "
+                "may not be made is decoration"))
 
         # --- R3 score history ----------------------------------------------------------------
         hist = listfield(fm, "score-history")
@@ -140,6 +175,7 @@ def check():
 
     # --- R6 claim strength: a playbook may not out-claim the insights behind it ---------------
     backers = {}                                    # playbook path -> [(insight, may-assert-cause)]
+    scopes  = {}                                    # insight slug -> cause-scope
     for path in insight_files():
         fm = front_matter(open(path, encoding="utf-8").read())
         if not fm: continue
@@ -147,6 +183,7 @@ def check():
         if pb and pb not in ("none", "none yet"):
             backers.setdefault(pb, []).append(
                 (os.path.basename(path)[:-3], field(fm, "may-assert-cause")))
+            scopes[os.path.basename(path)[:-3]] = field(fm, "cause-scope")
     pbdir = os.path.join(ROOT, "products", "playbooks")
     if os.path.isdir(pbdir):
         for fn in sorted(os.listdir(pbdir)):
@@ -166,21 +203,50 @@ def check():
                         "declares a claim strength but no insight names it in `related-playbook`"))
                 continue
             allowed = "causal" if any(v == "yes" for _, v in mine) else "observational"
+            # Added 2026-09-03: a playbook is the outbound asset. If every insight behind its
+            # causal claim is scoped to this portfolio, the playbook must carry that limit in the
+            # declaration itself, where a buyer reads it - not in a file the buyer never opens.
+            if declared == "causal" and mine and all(
+                    scopes.get(n) == "portfolio" for n, v in mine if v == "yes"):
+                if not re.search(r"scope", text[m.start():m.start() + 400], re.I):
+                    violations.append(("R6", rel,
+                        "declares `causal` on insights whose `cause-scope` is `portfolio`, but the "
+                        "declaration does not state that limit where a buyer reads it"))
             if declared != allowed:
                 who = ", ".join(f"{n}={v}" for n, v in mine)
                 violations.append(("R6", rel,
                     f"declares `{declared}` but its backing insights allow `{allowed}` ({who})"))
 
     # --- R4 threshold provenance -------------------------------------------------------------
+    # Rewritten 2026-09-03 after the adversarial pass. The previous form could never fire, and
+    # reproduced LOG anti-pattern #22 twice over:
+    #   1. the pattern was r"\b(?:>=|<=|>=|<=)\s*(\d+)\b". A leading \b before ">" requires a word
+    #      character immediately to its left, so every threshold written with a space before the
+    #      operator ("work_sessions >= 2") was invisible. Measured against the live rubric the
+    #      match set was EMPTY, so the loop body never executed and R4 could not produce a verdict.
+    #   2. provenance was searched in every line CONTAINING THE DIGITS as a substring, so a
+    #      threshold of 77 matched the unrelated sentence "77 remote branches ... because".
+    #      That is the identical substring defect #22 records for R3.
+    # Now: match the operator without a leading word-boundary, and look for provenance inside the
+    # threshold's own "##" section rather than anywhere the digits appear.
     rubric = os.path.join(ROOT, "ground-truth", "rubric.md")
+    PROV = r"because|why|source|set-not-derived|set, not derived|derived|Faulkner|measured|cut-point|rationale"
     if os.path.exists(rubric):
-        t = open(rubric, encoding="utf-8").read()
-        for th in set(re.findall(r"\b(?:>=|<=|≥|≤)\s*(\d+)\b", t)):
-            near = "\n".join(l for l in t.splitlines() if th in l)
-            if not re.search(r"because|why|source|set-not-derived|derived|Faulkner|measured", near, re.I):
-                violations.append(("R4", "ground-truth/rubric.md",
-                    f"threshold {th} appears with no stated provenance "
-                    "(name the source, or label it set-not-derived)"))
+        lines = open(rubric, encoding="utf-8").read().splitlines()
+        bounds, start = [], 0
+        for i, l in enumerate(lines):          # section spans, so provenance is scoped
+            if l.startswith("## ") and i:
+                bounds.append((start, i)); start = i
+        bounds.append((start, len(lines)))
+        for a, b in bounds:
+            section = "\n".join(lines[a:b])
+            has_prov = re.search(PROV, section, re.I)
+            for m in re.finditer(r"(?:>=|<=|≥|≤)\s*(\d+(?:\.\d+)?)", section):
+                if not has_prov:
+                    violations.append(("R4", "ground-truth/rubric.md",
+                        f"threshold {m.group(1)} in section "
+                        f"{lines[a][:60].strip() or '(preamble)'!r} has no stated provenance "
+                        "(name the source, or label it set-not-derived)"))
     return violations
 
 def record_bypass(reason, violations):

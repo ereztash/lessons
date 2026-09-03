@@ -1,5 +1,10 @@
 # Lessons — Agent Entry Point
 
+> **Re-founded 2026-09-03.** Current thesis: `docs/REFOUNDATION_DECISION.md`.
+> Which document answers which question: `docs/AUTHORITY_MAP.md`.
+> What may not be edited: `research/re-foundation/DO_NOT_TOUCH.md` (five frozen classes, including
+> an open prospective test resolving 2026-11-17).
+
 ## GATE 0 — Session Init (BLOCKING — before ANY tool call)
 
 Read in this exact order:
@@ -10,6 +15,7 @@ Read in this exact order:
 | 2 | `MEMORY.md` | ~200 | State index: current phase, last-touched repo, open candidates |
 | 3 | `skill.md` | ~300 | 5 custom skills + 6 slash commands quick-ref |
 | 4 | `CLAUDE.md` (this file) | ~400 | Quick rules, two-layer architecture, navigation |
+| 5 | `docs/AUTHORITY_MAP.md` | ~500 | Which document is authoritative for which question |
 
 **Tier 1 — load only when task requires it:**
 - `index/CLAUDE.md` — master deep-dive (HE+EN), routing logic, 4-dimension MOC links
@@ -38,7 +44,10 @@ Dual-repo mode bypasses the standard LOG/MEMORY/skill read when the target repo 
 - **A green check never seen to go red is not evidence** — fire every gate once on a deliberately
   broken input before trusting it (`ground-truth/gate-reliability.md`).
 - **Two layers, never duplicate** — Claude-operational vs Human-narrative. Split, don't repeat.
-- **Monetization gate** — 4/5 criteria required (Reusable, Defensible, Time-saving, Encodable, Evidence-anchored).
+- **Monetization gate** — 4/5 criteria required. **Measured: 12 of 12 candidates passed. Nothing has
+  ever failed it, so treat it as a checklist, not a gate** (`research/re-foundation/CONTRADICTIONS.md` §6).
+- **Every gate must have a named consumer.** A verdict nobody acts on is `UNCONSUMED`, which is
+  neither a pass nor a missing measurement (LOG anti-pattern #24).
 - **GitHub MCP only** — `gh` CLI not available. Use `mcp__github__*` tools.
 - **English for machine-consumed files** (skills, LOG, MEMORY, pipelines). HE+EN bilingual for /index and /profile.
 
@@ -78,13 +87,17 @@ historical depth — the four originally deep-dived repos are all dormant.
 | chess-mind-patterns | Tier B | 149d | Phase 1–4 complete (not in session scope) |
 | core-unified-consciousness | Tier C | 163d | Phase 1–4 complete (not in session scope) |
 
-Full tier data for all 30 repos: `research/repo-index.md`
+Full tier data: `research/repo-index.md` (32 entries). **Never state the portfolio size — derive it:**
+`cut -f1 ground-truth/scores-2026-08-19*.tsv | grep -v '^repo$' | sort -u | wc -l` (40 on 2026-09-03).
+**All tier numbers are provisional** until `ground-truth/prediction-2026-08-19.md` resolves 2026-11-17.
 Delta + classifier corrections: `research/portfolio-scan/2026-08-19-rescan.md`
 
 ## Authorship rule (added 2026-08-19)
 
-Never claim which AI tools a repo used from `git log --author` alone — it undercounts by up to
-6.7× and misses agent surfaces entirely. Run `scripts/detect-agent-authorship.sh <repo>` and read
+Never claim which AI tools a repo used from `git log --author` alone. In the 12-repo measurement it
+undercounts by up to **6.7×** (`authorship-attribution.md`); the portfolio-wide record is **23×**
+(`_crm`, `research/portfolio-scan/2026-08-19-cohort2.md` §4, outside that table). Cite the figure to
+the file that contains it. It also misses agent surfaces entirely. Run `scripts/detect-agent-authorship.sh <repo>` and read
 both detectors. Full method + portfolio table: `research/cross-repo/authorship-attribution.md`.
 
 ## Navigation

@@ -2,7 +2,23 @@
 
 > Lightweight snapshot of current state. Updated by `/lesson-checkpoint` or end-of-session. Single source of truth for "where are we?"
 
-## Current State
+## Current State — 2026-09-03 (re-foundation round)
+
+- **Phase**: re-foundation complete. Decision **`PROCEED_SERVICE_ONLY`** (`docs/REFOUNDATION_DECISION.md`)
+- **Authority**: `docs/AUTHORITY_MAP.md` is now the authority for which document answers which question
+- **Frozen**: `research/re-foundation/DO_NOT_TOUCH.md`. The prospective test resolves 2026-11-17, 75 days out
+- **CI**: the previous workflow failed **14 of 14 runs over four months, unread**. Replaced with the
+  contract gate plus `scripts/gate-positive-control.sh`, which proves the gate can go red
+- **Causal authority, re-audited and then repaired 2026-09-03**: 7 of 10 causal insights were
+  demoted for `mixed` evidence, then **restored after the portfolio was opened and every pointer
+  re-anchored to a verified commit or PR**. Now **10** may assert cause, all `hard`, all
+  `cause-scope: portfolio`. Corpus resolution `hard` 5→12, `mixed` 12→5
+- **Portfolio**: **44 today**, 40 at the 2026-08-19 freeze (LOG #30). 33 repositories cloned locally
+- **All four sale-gate conditions discharged**
+- **Counts are derived, not stated.** Every number below this line predates the re-foundation and
+  four of them are stale; the derivations are in `docs/AUTHORITY_MAP.md` §5
+
+## Current State (pre-re-foundation, retained)
 
 - **Phase**: 4 + gap-closure complete; **+5-repo ingestion round complete (2026-08-19)**
 - **Last-touched repo**: lessons (ingestion round: 5 new deep-dives + method correction)

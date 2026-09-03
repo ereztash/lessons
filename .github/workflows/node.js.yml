@@ -1,31 +1,48 @@
-# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
+# Assurance Gate
+#
+# This file replaces a Node.js CI template that ran `npm ci` at the repository root, where no
+# package.json exists. It failed on all 14 of its runs between 2026-05-12 and 2026-09-02 and no
+# document in the repository mentioned it. That is recorded in
+# research/re-foundation/BASELINE.md §2 and research/re-foundation/CONTRADICTIONS.md §1.
+#
+# The replacement checks what this repository actually has, and proves it can fail:
+#
+#   gate             — scripts/check-lessons-contract.py, rules R1-R6
+#   positive-control — scripts/gate-positive-control.sh breaks the corpus on purpose and asserts
+#                      the gate goes red. A green check never observed to go red is not evidence
+#                      (LOG anti-pattern #22, ground-truth/gate-reliability.md §3).
+#
+# Deliberately absent: a TypeScript typecheck of saas/. Measured 2026-09-03, `npx tsc --noEmit`
+# in saas/app reports 8 errors in code that ASSET_REGISTER.md marks SUPERSEDE/ARCHIVE. Adding it
+# as a blocking check would fail; adding it with continue-on-error would create exactly the
+# UNCONSUMED gate state this round exists to name. It is recorded as a finding instead.
 
-name: Node.js CI
+name: Assurance Gate
 
 on:
   push:
     branches: [ "main" ]
   pull_request:
-    branches: [ "main" ]
 
 jobs:
-  build:
-
+  gate:
+    name: contract gate (R1-R6)
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [18.x, 20.x, 22.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
     steps:
-    - uses: actions/checkout@v4
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v4
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: npm ci
-    - run: npm run build --if-present
-    - run: npm test
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: check the lessons contract
+        run: python3 scripts/check-lessons-contract.py --explain
+
+  positive-control:
+    name: prove the gate can go red
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: break the corpus on purpose, assert the gate fires
+        run: bash scripts/gate-positive-control.sh

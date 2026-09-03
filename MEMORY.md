@@ -2,7 +2,17 @@
 
 > Lightweight snapshot of current state. Updated by `/lesson-checkpoint` or end-of-session. Single source of truth for "where are we?"
 
-## Current State
+## Current State — 2026-09-03 (re-foundation round)
+
+- **Phase**: re-foundation complete. Decision **`PROCEED_SERVICE_ONLY`** (`docs/REFOUNDATION_DECISION.md`)
+- **Authority**: `docs/AUTHORITY_MAP.md` is now the authority for which document answers which question
+- **Frozen**: `research/re-foundation/DO_NOT_TOUCH.md`. The prospective test resolves 2026-11-17, 75 days out
+- **CI**: the previous workflow failed **14 of 14 runs over four months, unread**. Replaced with the
+  contract gate plus `scripts/gate-positive-control.sh`, which proves the gate can go red
+- **Counts are derived, not stated.** Every number below this line predates the re-foundation and
+  four of them are stale; the derivations are in `docs/AUTHORITY_MAP.md` §5
+
+## Current State (pre-re-foundation, retained)
 
 - **Phase**: 4 + gap-closure complete; **+5-repo ingestion round complete (2026-08-19)**
 - **Last-touched repo**: lessons (ingestion round: 5 new deep-dives + method correction)

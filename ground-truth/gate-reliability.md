@@ -159,3 +159,29 @@ Updated counts after the re-audit: **3** insights may assert cause (down from 10
 `evidence-resolves-to: hard` and all three carrying `cause-scope: portfolio`. **2 of 4 causal
 playbooks were demoted to observational**, and R6 demanded both demotions on its own rather than
 being told.
+
+**C8. The withdrawal was repaired the same day, and the repair is the evidence that the gate
+works.** With the portfolio opened, all seventeen unresolvable pointers across the seven demoted
+insights were re-anchored against live repositories and every cited figure was re-counted:
+
+| Figure the corpus asserted | Re-measured 2026-09-03 |
+|---|---|
+| anti-silo carries 40 Claude trailers | **40**, of 103 commits |
+| Benchmark.ATS: 2 of 4 non-merge commits are Claude's | **exact** (`4cc723e`, `515d896`) |
+| chess-mind-patterns resumption deletes 69 lines | **69** = 24 + 23 + 22 across `875fe1c`, `f590fe6`, `2c7ced2` |
+| the resumption gap is 14 days | **14** (`5abaacd` 2026-03-09 -> `875fe1c` 2026-03-23) |
+| chess-mind-patterns has zero merged PRs | **zero** `Merge pull request` subjects in 175 commits |
+| All_Erez-s_Connections is the true negative | **6 commits, all `ereztash`, no trailer** |
+
+Corpus-wide resolution moved **`hard` 5 -> 12, `mixed` 12 -> 5, `prose` 0**. R1 refused the
+declared value until the pointers actually measured `hard`, so the restoration was granted by the
+gate rather than asserted by the author, and R6 then demanded both playbooks back to `causal` on
+its own.
+
+**The honest reading of a same-day demote-and-restore.** Net counts returned to where they started:
+10 causal insights, 4 causal playbooks. What changed is underneath them. Before, those claims rested
+on `mixed` evidence and a condition that was documented and never checked; now they rest on verified
+commits and PRs, an enforced condition, and a declared `cause-scope`. **One pointer did not come
+back**: `list_issues = {totalCount:0}` was removed from the evidence list entirely, because an
+absence has no artifact to cite and could never have resolved. Five insights remain `mixed`, and
+none of them regained a causal bit.

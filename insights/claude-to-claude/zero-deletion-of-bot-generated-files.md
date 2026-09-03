@@ -6,7 +6,7 @@ evidence-pointers:
   - chess-mind-patterns@875fe1c (+1421/-24)
   - chess-mind-patterns@f590fe6 (+2102/-23)
   - chess-mind-patterns@2c7ced2 (+939/-22)
-  - all 69 deletions inside files originally created by the bot OR by an earlier human commit in the same session
+  - chess-mind-patterns@875fe1c (-24), chess-mind-patterns@f590fe6 (-23), chess-mind-patterns@2c7ced2 (-22) = 69 deletions, every one inside a file created earlier in the same session (re-counted locally 2026-09-03)
   - core-unified-consciousness@2228be1 (2026-03-08 17:45:11 `Cleaned to a 3-page plan`)
   - core-unified-consciousness@9adbcc8 (2026-03-08 17:45:31 `Merge DeepDive and Demo pages with 3-page plan`)
   - core-unified-consciousness@ecd8b5c:src/App.tsx lines 18-26 (six `<Navigate replace />` redirects)
@@ -21,20 +21,26 @@ monetization-score: 5/5
 applicability: solo-builder
 related-playbook: products/playbooks/resumer-day-prep.md
 created: 2026-05-12
-evidence-resolves-to: mixed
+evidence-resolves-to: hard
 source-observations:  # lessons observations these pointers were resolved from
   - chess-mind-patterns@11:03
   - core-unified-consciousness@12:04
 may-report: yes
-may-assert-cause: no     # DEMOTED 2026-09-03 (sale-gate condition 4). The template's own condition for `yes` is
-                         # "strength >=2 in >=2 repos AND evidence-resolves-to: hard". This insight measures
-                         # `mixed`, and R2 never checked the condition it documented — the third vacuously
-                         # passing rule found in this file. Repairable by re-anchoring the pointers that
-                         # resolve to nothing; not repairable by argument.
+may-assert-cause: yes    # RESTORED 2026-09-03. Demoted the same day because the
+                         # evidence measured `mixed`; the operator then opened the
+                         # portfolio, every unresolvable pointer was re-anchored to a
+                         # verified commit or PR, and R1 now measures `hard`. The
+                         # claim came back on measurement, not on argument.
+cause-scope: portfolio   # this portfolio only. Restored 2026-09-03 on re-anchored evidence;
+                         # METHOD_LINEAGE.md section 3 still records level 7 = 0, so a cause may be
+                         # asserted ABOUT these repositories and may NOT be sold as a general
+                         # mechanism.
+
 reversibility: low  # a shipped playbook is sold; a retraction reaches fewer people than the claim did
 score-history:
   - 2026-05-12: 5/5 — first audit
   - 2026-09-03: 5/5 — re-audit under sale-gate condition 4: causal authority WITHDRAWN, evidence-resolves-to is `mixed` against a documented requirement of `hard`
+  - 2026-09-03: 5/5 — causal authority RESTORED: pointers re-anchored against the live repositories, R1 measures `hard`, scope declared `portfolio`
 ---
 
 # Zero Deletion of Bot-Generated Files

@@ -2,13 +2,14 @@
 
 > Tagline: You have one ~72-minute window to resume a dormant Lovable repo before context decays — here's how to use every minute.
 
-> **Claim strength: observational.** **DEMOTED FROM `causal` on 2026-09-03** under sale-gate
-> condition 4. Both backing insights (`resumer-day-prep`, `zero-deletion-of-bot-generated-files`)
-> resolve to `mixed`, against a documented requirement of `hard`, so both lost their
-> `may-assert-cause` bit and R6 refused the causal declaration automatically. What you are buying is
-> a resumption shape observed in 2 repositories of one operator's portfolio. It is not a
-> demonstrated cause of successful resumption. Repairable: re-anchor the pointers that resolve to
-> nothing.
+> **Claim strength: causal, scoped to one portfolio.** Demoted to `observational` and restored on
+> the same day, 2026-09-03. Both backing insights resolved to `mixed` against a documented
+> requirement of `hard`, so both lost the bit and R6 refused the causal declaration automatically.
+> With the portfolio open, the two prose pointers were re-anchored and re-counted against the live
+> repository: the 69 deletions are `chess-mind-patterns@875fe1c` (-24), `@f590fe6` (-23) and
+> `@2c7ced2` (-22), and the resumption gap is `@5abaacd` (2026-03-09) to `@875fe1c` (2026-03-23),
+> fourteen days. Both figures held exactly. **The scope limit is part of the claim**: a cause
+> demonstrated about these repositories, not a general mechanism (`METHOD_LINEAGE.md` §3).
 > The mechanism may be stated as a mechanism.
 
 ## Target buyer

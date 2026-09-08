@@ -61,6 +61,12 @@ def main(path):
         rows.append((r["repo"], pred, gt, RANK[pred]-RANK[gt]))
 
     n = len(rows)
+    if n == 0:
+        # Degenerate case. Every rate below divides by n, and every sentence after them
+        # reads as a finding. LOG anti-pattern #17: a verdict function must refuse an empty
+        # corpus rather than fall through to one.
+        print("NOT-MEASURED: the label file contains zero repos. No rate is defined.")
+        sys.exit(2)
     exact = sum(1 for _,_,_,e in rows if e == 0)
     adjacent = sum(1 for _,_,_,e in rows if abs(e) <= 1)
     over  = sum(1 for _,_,_,e in rows if e > 0)
@@ -89,16 +95,38 @@ def main(path):
 
     rho = spearman([r["classifier_score"] for r in d["repos"]],
                    [RANK[derive(r)] for r in d["repos"]])
-    print(f"\nSpearman rho (F-count vs ground-truth rank) = {rho:.2f}")
-    print("  high rho with low exact agreement = the classifier ORDERS well but is MIS-CALIBRATED.")
+    undefined = []
+    if rho != rho:                                   # NaN: one of the two rankings has no variance
+        # Zero variance is not a low correlation. The interpretation sentence below asserts an
+        # ordering property, and there is no ordering to assert. Print the absence instead.
+        print("\nSpearman rho = NOT-MEASURED: one of the two rankings has zero variance, "
+              "so the statistic is undefined. No ordering claim follows.")
+        undefined.append("spearman_rho")
+    else:
+        print(f"\nSpearman rho (F-count vs ground-truth rank) = {rho:.2f}")
+        print("  high rho with low exact agreement = the classifier ORDERS well but is MIS-CALIBRATED.")
 
     print("\nper-feature error analysis")
     mislabelled = [r for r in d["repos"] if RANK[r["classifier_tier"]] != RANK[derive(r)]]
-    no_consumer = sum(1 for r in mislabelled if not r["serving"])
-    stale = sum(1 for r in mislabelled if r["days_since_commit"] > CURRENT_DAYS)
-    print(f"  of {len(mislabelled)} mis-rated repos: {no_consumer} have no external consumer, "
-          f"{stale} have not been touched in {CURRENT_DAYS}+ days.")
-    print("  F1-F4 measures neither. That is the whole error.")
+    if not mislabelled:
+        # The two sentences below explain why repos were mis-rated. With none mis-rated they
+        # explain nothing and read as a finding about F1-F4.
+        print("  no repo was mis-rated in this corpus. Nothing to attribute.")
+        undefined.append("error_attribution")
+    else:
+        no_consumer = sum(1 for r in mislabelled if not r["serving"])
+        stale = sum(1 for r in mislabelled if r["days_since_commit"] > CURRENT_DAYS)
+        print(f"  of {len(mislabelled)} mis-rated repos: {no_consumer} have no external consumer, "
+              f"{stale} have not been touched in {CURRENT_DAYS}+ days.")
+        print("  F1-F4 measures neither. That is the whole error.")
+
+    if undefined:
+        # ASSURANCE_THESIS 1.2 point 2: NOT-MEASURED is a distinct state from PASS. Exiting 0
+        # here would collapse them, and a CI step calling this script would read the run as
+        # fully measured. Exit 3 keeps the distinction visible to a caller.
+        print(f"\nNOT-MEASURED: {', '.join(undefined)}. The run completed; these are undefined, "
+              "not zero and not passing.")
+        sys.exit(3)
 
 if __name__ == "__main__":
     main(sys.argv[1] if len(sys.argv) > 1 else "ground-truth/labels-2026-08-19.json")

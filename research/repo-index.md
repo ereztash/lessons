@@ -480,3 +480,269 @@
 - **Pattern**: empty placeholder (private)
 - **Key findings**: README only (329 bytes, "Demo Cal"). Created 2025-12-17.
 - **Action**: out of scope.
+
+---
+
+# Added 2026-09-14, after the 2026-08-19 freeze: not scored here
+
+> **Why this section exists.** On 2026-09-14 `gh repo list ereztash` returned **45** repositories and
+> this file had **32** `## ` entries. The 13 below had none (names compared case-insensitively
+> against the headers). Three of them, `Product-Perception-Sensemaking-Architect`, `lichess_app` and
+> `--Android`, are the **three most recently pushed repositories in the portfolio**
+> (`gh repo list ereztash --json pushedAt`, sorted).
+>
+> **No tier and no F-score is assigned in this section.** Scoring a repository after its outcome is
+> visible contaminates `ground-truth/prediction-2026-08-19.md` (contamination rule 1,
+> `research/re-foundation/DO_NOT_TOUCH.md` §1). The 13 fall into two cases, kept apart:
+>
+> - **5 were created after the freeze** (`--Android`, `lichess_app`, `strategic-portal`, `portal`,
+>   `Product-Perception-Sensemaking-Architect`). They are outside the prediction's frame by
+>   construction (`research/re-foundation/ENUMERATION_CORRECTION.md` §2, §4):
+>   `Tier: not scored (added after the 2026-08-19 freeze)`.
+> - **8 were scored at the freeze but never given an index entry** (`_crm`, `ground-state-protocol`,
+>   `ground-state-protocol-32679ce4`, `ground-state-protocol-02aba105`, `dod-validator`, `kol_kore`,
+>   `cognitive-sovereignty-ai-paper`, `ex2`). Their Tier line names the frozen row and does **not**
+>   restate it: a frozen number copied into a file whose Tier lines are superseded would read as a
+>   current tier.
+>
+> **How every figure was derived, 2026-09-14.** `gh api repos/ereztash/<repo>` for visibility,
+> created, last push (`pushed_at`, any ref), default branch, primary language and description.
+> Commits on the default branch: the `rel="last"` page of `commits?sha=<default>&per_page=1`,
+> cross-checked equal against GraphQL `history.totalCount` for all 13. Open PRs: `pulls?state=open`,
+> cross-checked equal against GraphQL `pullRequests(states:OPEN)`. Default-branch HEAD date:
+> `commits/<default>`. Days count back from 2026-09-14; as the header warns, any-ref and
+> default-branch dormancy can differ, so both are given.
+>
+> **Private repositories carry metadata only**: no README text, file names, branch names or commit
+> messages. **AI tools were not measured for any of the 13**; run `scripts/detect-agent-authorship.sh`
+> before stating one (`CLAUDE.md`, authorship rule).
+
+---
+
+## lichess_app
+
+- **Tier**: not scored (added after the 2026-08-19 freeze)
+- **Visibility**: public | **Created**: 2026-08-21 | **Default branch**: `main` | **Primary language**: TypeScript
+- **Activity**: last push 2026-09-14 (0d) · default-branch HEAD 2026-09-14 (0d) · **1,057 commits** on `main` · **11 open PRs**
+- **Description**: none set (README title: "Decision Lab")
+- **Key findings**:
+  - `docs/BUILD_TO_REVENUE_AUDIT.md` (`f9788db`, 2026-09-06, read against `main@2390b351`): "Minimum
+    build required for a first payment: none." Its first gate, G1, is 3 concierge reports offered
+    to 3 named prospects at $150 per report, zero build, passing only if at least 1 pays before delivery
+  - `research/mechanism/replication100/REPLICATION_100_REPORT.md` (`18cffe3`, 2026-09-11): 100 of 100
+    frozen members finished; verdict **`UNDETERMINED`**, because a red flag declared before any result
+    was met: `PERSONAL_RESIDUAL_CANDIDATE` in 17 of the 25 `RESIDUAL_POWERED` members (68.0%, flag at 50%)
+  - `docs/PRE_RELEASE_STATE.md` (`588b469`, 2026-09-06): disposition `NOT_READY_FOR_TARGET_DISTRIBUTION`
+    for `broad-public`, with **no repository-owned blocker**. The P1 blocker `F-HUMAN-CORE` has
+    authority **FIELD**; `R-21` is one ruleset checkbox (ENVIRONMENT)
+  - Enforces "evidence must postdate the claim" in the type system (`research/re-foundation/ENUMERATION_CORRECTION.md` §3.2)
+- **Watch for**: FIELD-required work cannot be closed by more code. The repository says so itself:
+  "No telemetry, probe, explanation surface, synthetic user, model simulation or retrospective
+  analysis closes a human-evidence gap." A request here that answers G1 or `F-HUMAN-CORE` with a
+  build is the failure its own audit names
+- **Deep-dive**: none (partial read in `research/re-foundation/ENUMERATION_CORRECTION.md` §3.2)
+
+---
+
+## Product-Perception-Sensemaking-Architect
+
+- **Tier**: not scored (added after the 2026-08-19 freeze)
+- **Visibility**: public | **Created**: 2026-09-03 | **Default branch**: `main` | **Primary language**: Python
+- **Activity**: last push 2026-09-14 (0d) · default-branch HEAD 2026-09-12 (2d) · **384 commits** on `main` · **5 open PRs**
+- **Description**: none set (README title: "Evidence-Bounded Peer-Agent System")
+- **Key findings**:
+  - `README.md`, `docs/CANONICAL_STATE.md` (`04574ab`): two peer agents, **Neta** (product perception
+    and sensemaking) and **R&D** (resource-to-telos calibration), under one shared epistemic kernel,
+    coordinated by a deterministic calibration loop that is deliberately not an agent. Orchestrator,
+    third peer and Architecture Agent are all `NOT_EARNED`
+  - `research/mechanism-transfer/extraction/RESULT_STAGE2_2026-09-09.md` (`5e156cd`):
+    **`STOP_EXTRACTION_UNIQUE_DELTA_UNSHOWN`**. The structured extraction prompt, frozen after a
+    Stage 1 win on `lichess_app`, won 0 of 4 out-of-sample pairs (median −0.25). **`lessons` itself was
+    one of the two out-of-sample targets**, at `ereztash/lessons@252f1446`
+  - `research/mechanism-transfer/executable-contract/RESULT_STAGE1_2026-09-09.md` (`8a6e63c`):
+    **`STOP_EXECUTABLE_UNIQUE_DELTA_UNSHOWN`**. Executable contract tests and an information-matched
+    prose contract both repaired all four seeded defects with 0 hidden critical failures
+  - `docs/CANONICAL_STATE.md` (`04574ab`) records its own branch drift: 14 branches ahead of `main`,
+    9 of them `STRANDED` with no pull request, and deletion refused to agents, so retirement is an owner action
+- **Watch for**: README §6 says of its active hypotheses, "Nothing in this table may be cited as a
+  finding." Cite only the two STOP results. The Stage 2 result is also evidence *about this
+  repository*: on `lessons`, a strong ordinary prompt recovered its mechanisms as well as the
+  structured one
+- **Deep-dive**: none
+
+---
+
+## --Android
+
+- **Tier**: not scored (added after the 2026-08-19 freeze)
+- **Visibility**: public | **Created**: 2026-08-20 | **Default branch**: `claude/hebrew-ime-android-v664dh` | **Primary language**: Kotlin
+- **Activity**: last push 2026-09-11 (3d) · default-branch HEAD 2026-09-11 (3d) · **131 commits** on the default branch · **2 open PRs**
+- **Description**: none set
+- **Key findings**:
+  - **The GitHub default branch is a `claude/*` working branch and there is no `main`** (3 branches).
+    Same shape as `Agent-Architect` and `keepath`. PR #1 merged into it 2026-08-26; #2 and #3 are open against it
+  - `scripts/run_gates.py` runs each gate's planted-defect positive control **first** and fails the
+    whole run as `NOT-A-GATE` if the control stays green (`research/re-foundation/ENUMERATION_CORRECTION.md` §3.1)
+  - `docs/RELEASE_READINESS.md` (`2c3329a`): verdict **NOT READY**, with no "ready except for". 22
+    device-blocked checks, generated from `docs/QA_MATRIX.md` and held in step by `GATE-DOC-1`, plus
+    an unsigned release artifact whose signing secrets are the operator's
+  - `README.md` + `docs/LABELING_LOG.md`: a shipped real-word-error layer was **withdrawn** after 320
+    real firings were blind-labelled at 12.5% to 39.7% precision, and `GATE-WITHDRAWN-1` fails the
+    build if it returns. The README also corrects its own earlier published completion figure
+    (23.72% to 10.33% on human-typed text, which it says was overstated 2.3×)
+- **Watch for**: both release blockers are device and operator work, and the blocked list grew from
+  20 to 22 while features shipped (`docs/RELEASE_READINESS.md`). More code does not shrink it. Any
+  lookup that assumes `main` exists fails here
+- **Deep-dive**: none (partial read in `research/re-foundation/ENUMERATION_CORRECTION.md` §3.1)
+
+---
+
+## _crm
+
+- **Tier**: not restated. Scored at the freeze: row `_crm` in `ground-truth/scores-2026-08-19-cohort2.tsv`
+- **Visibility**: **private**, metadata only | **Created**: 2026-06-13 | **Default branch**: `master` | **Primary language**: Python
+- **Activity**: last push 2026-09-06 (8d) · default-branch HEAD 2026-09-06 (8d) · **240 commits** on `master` · **2 open PRs**
+- **Description**: none set
+- **Watch for**: nothing from this repository beyond GitHub metadata may enter this public file.
+  `CRM_Google_ai` above is its public-facing mirror; score and resume the source, not the mirror
+- **Scan**: `research/portfolio-scan/2026-08-19-cohort2.md` §1
+
+---
+
+## strategic-portal
+
+- **Tier**: not scored (added after the 2026-08-19 freeze)
+- **Visibility**: public | **Created**: 2026-08-30 | **Default branch**: `main` | **Primary language**: JavaScript
+- **Activity**: last push 2026-08-30 (15d) · default-branch HEAD 2026-08-30 (15d) · **26 commits** on `main` · **1 open PR**
+- **Description**: none set
+- **Key findings**:
+  - `README.md`: a Hebrew "from pain to a prompt that works" portal. 50 prompt engines in 10
+    categories, searched by symptom, with a diff against a generic prompt. A local-first PWA with no
+    backend, no build step and no runtime dependencies
+  - Engines are plain data (`src/data/engines/*.js`), converted from v1 JavaScript closures so they can
+    be exported, diffed and tested (README, "Engines are data, not code")
+  - 6 test files in `tests/` run under `node --test`, with CI in `.github/workflows/ci.yml`. Already
+    recorded as a legitimate member the frozen scan never saw, and not an assurance implementation
+    (`research/re-foundation/ENUMERATION_CORRECTION.md` §3.3)
+- **Watch for**: a separate private repository named `portal` was created the same morning (next
+  entry). The names are not interchangeable; confirm which one a request means
+- **Deep-dive**: none
+
+---
+
+## portal
+
+- **Tier**: not scored (added after the 2026-08-19 freeze)
+- **Visibility**: **private**, metadata only | **Created**: 2026-08-30, 07:08 UTC (`strategic-portal`: 06:57 UTC the same day) | **Default branch**: `main` | **Primary language**: JavaScript
+- **Activity**: last push 2026-08-30 (15d) · default-branch HEAD 2026-08-30 (15d) · **1 commit** on `main` · **0 open PRs**
+- **Description**: none set
+
+---
+
+## ground-state-protocol
+
+- **Tier**: not restated. Scored at the freeze: row `ground-state-protocol` in `ground-truth/scores-2026-08-19.tsv` (cohort 1)
+- **Visibility**: **private**, metadata only | **Created**: 2026-05-20 | **Default branch**: `main` | **Primary language**: TypeScript
+- **Activity**: last push 2026-07-20 (56d) · default-branch HEAD 2026-05-19 (118d) · **67 commits** on `main` · **0 open PRs**
+- **Description**: none set
+- **Name family, from metadata only**:
+  - **Not `groundstate-protocol`** (public, entry above). Its default-branch HEAD is `d092210`, a
+    commit that also exists in public `groundstate-protocol`, whose `main` is 236 commits ahead of it
+    and 0 behind (`compare/d092210...main`): 67 + 236 = that repository's 303 default-branch commits.
+    All four name-family repositories share root commit `b331aa1a`
+  - The header above gives "43 commits" for this repository. Measured on 2026-09-14: **67** on `main`,
+    matching `research/portfolio-scan/2026-08-19-cohort2.md` §5. The header is left unedited
+  - 2 branches. `pushed_at` is 62 days later than the default-branch HEAD, so any-ref and
+    default-branch dormancy differ here
+- **Watch for**: say which of the four is meant, every time. `research/groundstate-protocol/`
+  describes the public one (`LOG.md`, repo-name collision)
+
+---
+
+## ground-state-protocol-32679ce4
+
+- **Tier**: not restated. Scored at the freeze: row `ground-state-protocol-32679ce4` in `ground-truth/scores-2026-08-19-cohort2.tsv`
+- **Visibility**: **private**, metadata only | **Created**: 2026-05-20, 20:33 UTC | **Default branch**: `main` | **Primary language**: TypeScript
+- **Activity**: last push 2026-05-20 (117d) · default-branch HEAD 2026-05-19 (118d) · **67 commits** on `main` · **0 open PRs**
+- **Description**: none set
+- **Identity, from metadata only**: default-branch HEAD commit **and** tree are identical to
+  `ground-state-protocol`'s (`d092210`, tree `365a084f`), so the three private copies hold one snapshot.
+  1 branch. Created 6 minutes after `ground-state-protocol` (20:27 UTC)
+- **Watch for**: the frozen scan scored this copy, `-02aba105` and `ground-state-protocol` as three
+  rows. By HEAD they are one measurement taken three times
+- **Scan**: `research/portfolio-scan/2026-08-19-cohort2.md` §5
+
+---
+
+## ground-state-protocol-02aba105
+
+- **Tier**: not restated. Scored at the freeze: row `ground-state-protocol-02aba105` in `ground-truth/scores-2026-08-19-cohort2.tsv`
+- **Visibility**: **private**, metadata only | **Created**: 2026-05-20, 20:32 UTC | **Default branch**: `main` | **Primary language**: TypeScript
+- **Activity**: last push 2026-05-20 (117d) · default-branch HEAD 2026-05-19 (118d) · **67 commits** on `main` · **0 open PRs**
+- **Description**: none set
+- **Identity, from metadata only**: default-branch HEAD commit **and** tree are identical to
+  `ground-state-protocol`'s and `-32679ce4`'s (`d092210`, tree `365a084f`). 1 branch. Created 5 minutes
+  after `ground-state-protocol`
+- **Watch for**: same as `ground-state-protocol-32679ce4`. One snapshot, three rows
+- **Scan**: `research/portfolio-scan/2026-08-19-cohort2.md` §5
+
+---
+
+## dod-validator
+
+- **Tier**: not restated. Scored at the freeze: row `dod-validator` in `ground-truth/scores-2026-08-19-cohort2.tsv`
+- **Visibility**: **private**, metadata only | **Created**: 2026-05-25 | **Default branch**: `master` | **Primary language**: Python
+- **Activity**: last push 2026-05-26 (111d) · default-branch HEAD 2026-05-26 (111d) · **44 commits** on `master` · **1 open PR**
+- **Description**: withheld (private repository)
+- **Scan**: `research/portfolio-scan/2026-08-19-cohort2.md` §1
+
+---
+
+## kol_kore
+
+- **Tier**: not restated. Scored at the freeze: row `kol_kore` in `ground-truth/scores-2026-08-19-cohort2.tsv`
+- **Visibility**: public | **Created**: 2026-06-22 | **Default branch**: `main` | **Primary language**: none detected
+- **Activity**: last push 2026-06-22 (84d) · default-branch HEAD 2026-06-22 (84d) · **2 commits** on `main` · **0 open PRs**
+- **Description**: none set
+- **Key findings**:
+  - Not a software project. The whole tree is two PDFs, each added by a web-upload commit titled
+    `Add files via upload`: `sentinel_mafat.pdf` (`22557c1`) and a PDF whose Hebrew filename reads
+    "call for proposals, AI directorate, for distribution" (`7ede1af`)
+  - No README and no code, so GitHub detects no language
+- **Watch for**: a document drop, like `Hr_SMB`. A knowledge source, not a build target
+- **Deep-dive**: none
+
+---
+
+## cognitive-sovereignty-ai-paper
+
+- **Tier**: not restated. Scored at the freeze: row `cognitive-sovereignty-ai-paper` in `ground-truth/scores-2026-08-19-cohort2.tsv`
+- **Visibility**: public | **Created**: 2026-06-02 | **Default branch**: `main` | **Primary language**: Python
+- **Activity**: last push 2026-06-03 (103d) · default-branch HEAD 2026-06-03 (103d) · **20 commits** on `main` · **0 open PRs**
+- **Description**: none set
+- **Key findings**:
+  - `README.md` states its own evidence ceiling: "currently a theoretical-computational paper … They
+    do not yet constitute causal empirical proof." The planned three-condition study (No AI,
+    Uncalibrated AI, Fortified AI) is described as the next step, not as done
+  - `results/experiment/REPORT.md` (`429d79e`): every experiment output is **SYNTHETIC**, generated
+    under the preregistered assumptions, so the hypotheses "appear supported here *by construction*"
+  - `results/real_data/REAL_DATA_REPORT.md` (`733bbd4`): the only real data is a secondary analysis of
+    a published dataset (Hu, Luo & Fleming 2019), labelled a related paradigm and not the preregistered study
+- **Watch for**: the synthetic tables are well-formed (for example CSS Cronbach α 0.958) and read like
+  results. They are not. Never cite `results/experiment/` as evidence
+- **Deep-dive**: none
+
+---
+
+## ex2
+
+- **Tier**: not restated. Scored at the freeze: row `ex2` in `ground-truth/scores-2026-08-19-cohort2.tsv`
+- **Visibility**: public, **fork** of `WernerGHub/ex2` | **Created**: 2025-04-08 | **Default branch**: `main` | **Primary language**: none detected
+- **Activity**: last push 2025-10-27 (322d) · default-branch HEAD 2025-04-02 (530d, older than the fork) · **7 commits** on `main` · **0 open PRs**
+- **Description**: none set
+- **Key findings**:
+  - `compare/main...ereztash:main` against the parent returns **ahead 0, behind 0, identical**. The
+    default branch carries no commit that is not upstream's
+  - The tree is `README.md` (a link to external instructions) and `ex2.c`, at HEAD `6dae2a3`
+- **Watch for**: not portfolio work. Any metric on this repository measures the upstream author
+- **Deep-dive**: none

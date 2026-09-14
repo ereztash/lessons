@@ -87,7 +87,7 @@ historical depth — the four originally deep-dived repos are all dormant.
 | chess-mind-patterns | Tier B | 149d | Phase 1–4 complete (not in session scope) |
 | core-unified-consciousness | Tier C | 163d | Phase 1–4 complete (not in session scope) |
 
-Full tier data: `research/repo-index.md` (32 entries). **Never state the portfolio size — derive it:**
+Full tier data: `research/repo-index.md` (45 entries on 2026-09-14). **Never state the portfolio size — derive it:**
 `cut -f1 ground-truth/scores-2026-08-19*.tsv | grep -v '^repo$' | sort -u | wc -l` (40 on 2026-09-03).
 **All tier numbers are provisional** until `ground-truth/prediction-2026-08-19.md` resolves 2026-11-17.
 Delta + classifier corrections: `research/portfolio-scan/2026-08-19-rescan.md`

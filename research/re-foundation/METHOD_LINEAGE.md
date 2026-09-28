@@ -122,3 +122,16 @@ Recorded so the absence is deliberate rather than an oversight.
 | "reality levels" as a ladder | the corpus contains reality *distinctions* (synthetic vs real calls; local vs deployed; publish vs consumed; agreement vs enforced payment) but **no repo defines an ordered ladder**. `ASSURANCE_MODEL_FIT.md` §3 derives one; it is therefore a construction of this round, not a finding. |
 | "cross-project failure lineage" | `LOG.md` is single-project. `patterns-matrix.md` is cross-repo but tracks patterns, not failures. No artifact in the portfolio tracks a **failure class** across projects. This is a proposed capability with no lineage. |
 | "agent permissions" as an enforced set | `CRM_Google_ai/AGENTS.md` is a concurrency contract (lane split, one-writer-per-file, freeze, handshake) between Codex and Claude, and it is the closest artifact. It governs *collision*, not *authority*. No repo restricts what an agent may **conclude**. |
+
+## 5. Addendum, 2026-09-28 — evidence registered, nothing promoted
+
+Appended, not rewritten. `produced_by: agent (Claude)`; PROMOTE is human-required
+(`product/ASSURANCE_THESIS.md` §4), so **§2 and §3 above are unchanged**.
+
+- **Evidence after 2026-09-03** from `lichess_app` and its private successor `decision-lab` (one
+  lineage, counted once) is registered in `DECISION_LAB_EVIDENCE.md`. It recommends three
+  promotions from 5 to 6 and one strongest-implementation review, and it registers the lineage's
+  counter-evidence beside them. They wait for the operator.
+- **"Cross-project failure lineage"** (§4) now has an artifact: `../cross-repo/failure-lineage.md`,
+  three failure classes, each verified in two or three projects. It is portfolio-internal, so P4
+  still reads zero, and every row shares one operator and one agent family.

@@ -4,6 +4,10 @@
 > reviewed by him. Per `product/ASSURANCE_THESIS.md` §4 an agent may REGISTER_EVIDENCE and
 > RECOMMEND_PROMOTION; PROMOTE is human-required. **This file promotes nothing.
 > `METHOD_LINEAGE.md` §2 and §3 are unchanged.** Every recommendation below waits for the operator.
+>
+> **Update, 2026-09-28:** the operator promoted the three 5 → 6 candidates in §1. The promotion is
+> recorded in `METHOD_LINEAGE.md` §6, not here. The strongest-implementation review was not part of
+> that decision and still waits.
 
 ---
 

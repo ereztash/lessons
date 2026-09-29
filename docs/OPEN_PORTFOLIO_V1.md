@@ -6,15 +6,6 @@ A public GitHub repository is not automatically open source. An open-source labe
 
 ## Tier A — publish now
 
-### Decision Lab — public GPL line
-Repository: https://github.com/ereztash/lichess_app  
-Status: **Open source — GPL-3.0-or-later**
-
-Public value: captures chess decision evidence before engine feedback, preserves it across games, separates predictive structure from player-specific residuals, and keeps observation / prediction / intervention / outcome as distinct evidence states.
-
-Public description:
-> A chess research instrument that studies the player's decisions before the engine speaks.
-
 ### Cognitive Sovereignty AI Paper
 Repository: https://github.com/ereztash/cognitive-sovereignty-ai-paper  
 Status: **Open source — MIT**
@@ -56,6 +47,16 @@ Status: **Public source; code + dataset licensing/provenance review required**
 
 Public value: runnable resume-parser benchmark with fixed reference outputs and validators.
 
+## Public historical / research line — not the current product
+
+### lichess_app — historical GPL line
+Repository: https://github.com/ereztash/lichess_app  
+Status: **Open source historical line — GPL-3.0-or-later; frozen for first-party product development**
+
+Public value: preserves the earlier public research/product line around recording chess decision evidence before engine feedback.
+
+Important boundary: **this is not the current Decision Lab product.** Current first-party Decision Lab development lives in the private `ereztash/decision-lab` repository and should not be described as open source. The public GPL repository is a historical record whose existing license grants remain valid.
+
 ## Public but not open source
 
 ### Anti-Silo
@@ -78,6 +79,7 @@ These may be discussed publicly, but must not be described as open source.
 - `Agent-Architect` — method/evaluation artifacts may be publishable later; commercial product core is still under validation.
 - `_crm` / Ownership Engine — research artifacts are potentially publishable, but the engine contains commercial and corpus-sensitive material.
 - `organizational-diagnostic-system` — useful method, still tied to an unvalidated commercial field hypothesis.
+- `decision-lab` — current Decision Lab product; private/proprietary development. The goal is to open the application to users, not open-source the code.
 - `COR-SYS-Graph` — internal operating memory and coded case graph; keep private.
 
 ## Shared publication gate

@@ -1,5 +1,8 @@
 # Lessons — An Assurance Method, and the Portfolio It Came From
 
+
+> **Open Portfolio v1:** [`docs/OPEN_PORTFOLIO_V1.md`](docs/OPEN_PORTFOLIO_V1.md) separates genuinely open-source projects from public/source-visible, proprietary, and private work. Lessons itself is public source; a root OSS license has not yet been verified. See [`docs/PUBLIC_RELEASE_READINESS.md`](docs/PUBLIC_RELEASE_READINESS.md).
+
 > **STATUS, 2026-09-03 — read this first.**
 > This repository has been re-founded. The playbook-and-RepoHealth framing below is **retained as
 > the historical record of Phases A–D** and is no longer the current thesis.

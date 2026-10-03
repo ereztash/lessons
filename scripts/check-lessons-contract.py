@@ -188,7 +188,7 @@ def check():
     if os.path.isdir(pbdir):
         for fn in sorted(os.listdir(pbdir)):
             if not fn.endswith(".md"): continue
-            rel = os.path.join("products", "playbooks", fn)
+            rel = "products/playbooks/" + fn
             text = open(os.path.join(pbdir, fn), encoding="utf-8").read()
             m = re.search(r"\*\*Claim strength: (causal|observational)", text)
             mine = backers.get(rel, [])
